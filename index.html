@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 6 Math Interactive Tutor - 數學互動學習平台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5B56E4;
+            --primary-dark: #3E38B5;
+            --success: #10B981;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8F9FF;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --border: #E5E7EB;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .main-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .language-section {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--border);
+            background: var(--bg-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(91, 86, 228, 0.3);
+        }
+
+        .lang-btn:hover:not(.active) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .stats-section {
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, white 100%);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(91, 86, 228, 0.1);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .content-section {
+            padding: 2rem;
+        }
+
+        .topic-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .topic-btn {
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .topic-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .topic-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(91, 86, 228, 0.2);
+        }
+
+        .question-section {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .question-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .question-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-main {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .question-alt {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 86, 228, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            flex: 1;
+            min-width: 150px;
+            box-shadow: 0 4px 12px rgba(91, 86, 228, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(91, 86, 228, 0.4);
+        }
+
+        .hint-btn {
+            background: var(--bg-secondary);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .hint-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .next-btn {
+            background: var(--success);
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .next-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .feedback {
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #ECFDF5;
+            border-left: 4px solid var(--success);
+            color: #065F46;
+        }
+
+        .feedback.incorrect {
+            background: #FEF2F2;
+            border-left: 4px solid var(--danger);
+            color: #7F1D1D;
+        }
+
+        .feedback strong {
+            font-size: 1.1rem;
+        }
+
+        .steps {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+            border: 1px solid var(--border);
+        }
+
+        .steps.show {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .steps-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding-left: 32px;
+            position: relative;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .step-zh {
+            color: var(--text-primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .step-en {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-explain {
+            background: white;
+            padding: 0.75rem;
+            border-left: 3px solid var(--warning);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .step-explain strong {
+            color: var(--text-primary);
+        }
+
+        .hint {
+            background: #FEF3C7;
+            border-left: 4px solid var(--warning);
+            color: #78350F;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .hint.show {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .hint strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .hint-en {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats-section {
+                padding: 1.5rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .question-section {
+                padding: 1.5rem;
+            }
+
+            button {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .step {
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 數學互動學習平台</h1>
+            <p>Grade 6 Math Interactive Tutor</p>
+        </header>
+
+        <div class="main-card">
+            <div class="language-section">
+                <button class="lang-btn active" onclick="setLanguage('zh')">中文 (中文)</button>
+                <button class="lang-btn" onclick="setLanguage('en')">English (English)</button>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-label" id="label-correct">正確</div>
+                    <div class="stat-value" id="correctCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" id="label-incorrect">錯誤</div>
+                    <div class="stat-value" id="incorrectCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label" id="label-accuracy">準確率</div>
+                    <div class="stat-value" id="accuracy">0%</div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="topic-section">
+                    <div class="section-title" id="topicTitle">選擇主題開始練習</div>
+                    <div class="topic-grid" id="topicSelector"></div>
+                </div>
+
+                <div class="question-section" id="questionSection" style="display: none;">
+                    <div class="question-title" id="questionTitle"></div>
+                    <div id="questionContent"></div>
+                    <div class="input-group" id="inputGroup" style="display: none;">
+                        <input type="text" id="answer" />
+                    </div>
+                    <div class="button-group" id="buttonGroup" style="display: none;">
+                        <button class="submit-btn" id="submitBtn" onclick="submitAnswer()">提交答案</button>
+                        <button class="hint-btn" id="hintBtn" onclick="showHint()">提示</button>
+                    </div>
+                    <div class="feedback" id="feedback"></div>
+                    <div class="hint" id="hint"></div>
+                    <div class="steps" id="steps"></div>
+                    <button class="next-btn hidden" id="nextBtn" onclick="generateNewQuestion()"></button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 每次答錯時，系統會提供詳細的步驟解說，幫助你理解正確的做法。 | Each incorrect answer provides detailed step-by-step guidance.</p>
+        </footer>
+    </div>
+
+    <script>
+        const questionTypes = {
+            '乘法表 / Times Tables': {
+                generate: function() {
+                    const a = Math.floor(Math.random() * 10) + 2;
+                    const b = Math.floor(Math.random() * 10) + 2;
+                    const answer = a * b;
+                    return {
+                        q_zh: `${a} × ${b} = ?`,
+                        q_en: `${a} × ${b} = ?`,
+                        a: answer.toString(),
+                        hint_zh: `${a} × ${b} = ${answer}`,
+                        hint_en: `${a} × ${b} = ${answer}`,
+                        steps: [
+                            {
+                                title_zh: '第一步：理解乘法的意義',
+                                title_en: 'Step 1: Understanding multiplication',
+                                zh: `${a} × ${b} 的意思是：${b} 個 ${a}，或 ${a} 個 ${b}`,
+                                en: `${a} × ${b} means: ${a} groups of ${b}, or ${b} groups of ${a}`,
+                                explain_zh: `乘法就是「重複加法」。例如 3 × 4 = 4 + 4 + 4 = 12`,
+                                explain_en: `Multiplication is "repeated addition". For example, 3 × 4 = 4 + 4 + 4 = 12`
+                            },
+                            {
+                                title_zh: '第二步：計算結果',
+                                title_en: 'Step 2: Calculate the result',
+                                zh: `${a} × ${b} = ${answer}`,
+                                en: `${a} × ${b} = ${answer}`,
+                                explain_zh: `直接計算：${a} 乘以 ${b} 等於 ${answer}`,
+                                explain_en: `Direct calculation: ${a} multiplied by ${b} equals ${answer}`
+                            }
+                        ]
+                    };
+                }
+            },
+            
+            '除法 / Division': {
+                generate: function() {
+                    const b = Math.floor(Math.random() * 10) + 2;
+                    const q = Math.floor(Math.random() * 10) + 2;
+                    const a = b * q;
+                    return {
+                        q_zh: `${a} ÷ ${b} = ?`,
+                        q_en: `${a} ÷ ${b} = ?`,
+                        a: q.toString(),
+                        hint_zh: `${b} × ${q} = ${a}，所以 ${a} ÷ ${b} = ${q}`,
+                        hint_en: `${b} × ${q} = ${a}, so ${a} ÷ ${b} = ${q}`,
+                        steps: [
+                            {
+                                title_zh: '第一步：理解除法',
+                                title_en: 'Step 1: Understanding division',
+                                zh: `${a} ÷ ${b} 的意思是：${a} 分成 ${b} 個相等的部分，每部分是多少？`,
+                                en: `${a} ÷ ${b} means: How much is each part if ${a} is divided into ${b} equal parts?`,
+                                explain_zh: `除法和乘法相反。如果 ${b} × ? = ${a}，那麼 ? 就是 ${a} ÷ ${b} 的答案`,
+                                explain_en: `Division is the opposite of multiplication. If ${b} × ? = ${a}, then ? is the answer to ${a} ÷ ${b}`
+                            },
+                            {
+                                title_zh: '第二步：用乘法驗證',
+                                title_en: 'Step 2: Verify using multiplication',
+                                zh: `反過來想：${b} × ${q} = ${a}`,
+                                en: `Think backwards: ${b} × ${q} = ${a}`,
+                                explain_zh: `所以 ${a} ÷ ${b} = ${q}（因為 ${b} 個 ${q} 等於 ${a}）`,
+                                explain_en: `So ${a} ÷ ${b} = ${q} (because ${b} groups of ${q} equals ${a})`
+                            }
+                        ]
+                    };
+                }
+            },
+
+            '四捨五入 / Rounding': {
+                generate: function() {
+                    const roundTypes = [10, 100, 1000];
+                    const roundType = roundTypes[Math.floor(Math.random() * roundTypes.length)];
+                    const num = Math.floor(Math.random() * roundType * 100) + 1;
+                    const rounded = Math.round(num / roundType) * roundType;
+                    const checkDigit = Math.floor((num % roundType) / (roundType / 10));
+                    
+                    return {
+                        q_zh: `將 ${num} 四捨五入到最近的 ${roundType}`,
+                        q_en: `Round ${num} to the nearest ${roundType}`,
+                        a: rounded.toString(),
+                        hint_zh: `看倒數第 ${roundType === 10 ? '一' : roundType === 100 ? '二' : '三'} 位的數字`,
+                        hint_en: `Check the digit at the position before the rounding mark`,
+                        steps: [
+                            {
+                                title_zh: '第一步：找出要四捨五入的位置',
+                                title_en: 'Step 1: Find the rounding position',
+                                zh: `${num} 四捨五入到最近的 ${roundType}，要看第 ${roundType === 10 ? '一' : roundType === 100 ? '二' : '三'} 位數字`,
+                                en: `To round ${num} to the nearest ${roundType}, check the digit in the ${roundType === 10 ? 'ones' : roundType === 100 ? 'tens' : 'hundreds'} place`,
+                                explain_zh: `四捨五入時，要看「要進位的位置」的前一位。如果前一位是 5 或以上，就向上進位；如果是 4 或以下，就向下捨去。`,
+                                explain_en: `When rounding, check the digit before the rounding position. If it's 5 or more, round up. If it's 4 or less, round down.`
+                            },
+                            {
+                                title_zh: '第二步：檢查要進位的數字',
+                                title_en: 'Step 2: Check the digit to decide',
+                                zh: `${num} 的第 ${roundType === 10 ? '一' : roundType === 100 ? '二' : '三'} 位數字是 ${checkDigit}`,
+                                en: `The digit in the rounding position of ${num} is ${checkDigit}`,
+                                explain_zh: `因為 ${checkDigit} ${checkDigit >= 5 ? '≥ 5，所以向上進位' : '< 5，所以向下捨去'}`,
+                                explain_en: `Since ${checkDigit} ${checkDigit >= 5 ? '≥ 5, round up' : '< 5, round down'}`
+                            },
+                            {
+                                title_zh: '第三步：寫出答案',
+                                title_en: 'Step 3: Write the answer',
+                                zh: `${num} 四捨五入到最近的 ${roundType} = ${rounded}`,
+                                en: `${num} rounded to the nearest ${roundType} = ${rounded}`,
+                                explain_zh: `答案是 ${rounded}。驗證：${num} 比較接近 ${rounded} 還是 ${rounded === Math.round(num / roundType) * roundType ? '另一邊' : '另一邊'}？`,
+                                explain_en: `The answer is ${rounded}. Check: Is ${num} closer to ${rounded} or the nearest other ${roundType} interval?`
+                            }
+                        ]
+                    };
+                }
+            },
+
+            '分數 / Fractions': {
+                generate: function() {
+                    const numerator = Math.floor(Math.random() * 7) + 1;
+                    const denominator = Math.floor(Math.random() * 7) + 2;
+                    const wholeNum = Math.floor(Math.random() * 50) + 10;
+                    const step1 = wholeNum / denominator;
+                    const result = Math.round((numerator / denominator) * wholeNum * 100) / 100;
+                    
+                    return {
+                        q_zh: `${numerator}/${denominator} of ${wholeNum} = ?`,
+                        q_en: `${numerator}/${denominator} of ${wholeNum} = ?`,
+                        a: result.toString(),
+                        hint_zh: `先算 ${wholeNum} ÷ ${denominator} = ${step1.toFixed(2)}，再 × ${numerator}`,
+                        hint_en: `First calculate ${wholeNum} ÷ ${denominator} = ${step1.toFixed(2)}, then × ${numerator}`,
+                        steps: [
+                            {
+                                title_zh: '第一步：理解分數的意義',
+                                title_en: 'Step 1: Understanding fractions',
+                                zh: `${numerator}/${denominator} of ${wholeNum} 的意思是：把 ${wholeNum} 分成 ${denominator} 等份，取其中的 ${numerator} 份`,
+                                en: `${numerator}/${denominator} of ${wholeNum} means: Divide ${wholeNum} into ${denominator} equal parts, and take ${numerator} of them`,
+                                explain_zh: `分子（上面的數）表示「取幾份」，分母（下面的數）表示「分成幾份」`,
+                                explain_en: `The numerator (top number) shows how many parts to take, the denominator (bottom number) shows how many parts in total`
+                            },
+                            {
+                                title_zh: '第二步：先算 1 份是多少',
+                                title_en: 'Step 2: Calculate one part first',
+                                zh: `${wholeNum} ÷ ${denominator} = ${step1.toFixed(2)}（這是 1/${denominator} of ${wholeNum}）`,
+                                en: `${wholeNum} ÷ ${denominator} = ${step1.toFixed(2)} (this is 1/${denominator} of ${wholeNum})`,
+                                explain_zh: `要求分數，先把總數除以分母，這樣就知道每一份是多少。`,
+                                explain_en: `To find a fraction, first divide the total by the denominator to find the size of one part`
+                            },
+                            {
+                                title_zh: '第三步：乘以所需的份數',
+                                title_en: 'Step 3: Multiply by the number of parts needed',
+                                zh: `${step1.toFixed(2)} × ${numerator} = ${result}（這是 ${numerator}/${denominator} of ${wholeNum}）`,
+                                en: `${step1.toFixed(2)} × ${numerator} = ${result} (this is ${numerator}/${denominator} of ${wholeNum})`,
+                                explain_zh: `再乘以分子，就得到最終答案。因為我們需要 ${numerator} 份，每份 ${step1.toFixed(2)}`,
+                                explain_en: `Multiply by the numerator to get the final answer. Since we need ${numerator} parts, each worth ${step1.toFixed(2)}`
+                            }
+                        ]
+                    };
+                }
+            },
+
+            '簡化分數 / Simplifying': {
+                generate: function() {
+                    const gcd = Math.floor(Math.random() * 8) + 2;
+                    const mult1 = Math.floor(Math.random() * 8) + 1;
+                    const mult2 = Math.floor(Math.random() * 8) + 1;
+                    const numerator = gcd * mult1;
+                    const denominator = gcd * mult2;
+                    
+                    return {
+                        q_zh: `簡化 ${numerator}/${denominator}`,
+                        q_en: `Simplify ${numerator}/${denominator}`,
+                        a: `${mult1}/${mult2}`,
+                        hint_zh: `最大公因數是 ${gcd}，分子分母都除以 ${gcd}`,
+                        hint_en: `GCD is ${gcd}. Divide both numerator and denominator by ${gcd}`,
+                        steps: [
+                            {
+                                title_zh: '第一步：找最大公因數（GCF）',
+                                title_en: 'Step 1: Find the Greatest Common Factor (GCF)',
+                                zh: `${numerator} 和 ${denominator} 的最大公因數是 ${gcd}`,
+                                en: `The GCF of ${numerator} and ${denominator} is ${gcd}`,
+                                explain_zh: `最大公因數就是能同時整除分子和分母的最大數字。簡化分數時，分子分母要除以同一個數。`,
+                                explain_en: `The GCF is the largest number that divides both the numerator and denominator. When simplifying, divide both by the same number`
+                            },
+                            {
+                                title_zh: '第二步：分子分母同時除以最大公因數',
+                                title_en: 'Step 2: Divide both by the GCF',
+                                zh: `分子：${numerator} ÷ ${gcd} = ${mult1}`,
+                                en: `Numerator: ${numerator} ÷ ${gcd} = ${mult1}`,
+                                explain_zh: `分子除以最大公因數`,
+                                explain_en: `Divide the numerator by the GCF`
+                            },
+                            {
+                                title_zh: '第三步：完成簡化',
+                                title_en: 'Step 3: Complete the simplification',
+                                zh: `分母：${denominator} ÷ ${gcd} = ${mult2}，所以 ${numerator}/${denominator} = ${mult1}/${mult2}`,
+                                en: `Denominator: ${denominator} ÷ ${gcd} = ${mult2}, so ${numerator}/${denominator} = ${mult1}/${mult2}`,
+                                explain_zh: `分母也除以同一個最大公因數。最後得到的分數 ${mult1}/${mult2} 就是簡化後的結果。`,
+                                explain_en: `Divide the denominator by the same GCF. The result ${mult1}/${mult2} is the simplified fraction`
+                            }
+                        ]
+                    };
+                }
+            },
+
+            '小數運算 / Decimals': {
+                generate: function() {
+                    const opType = Math.floor(Math.random() * 2);
+                    const a = (Math.random() * 9).toFixed(1);
+                    const b = (Math.random() * 9).toFixed(1);
+                    
+                    if (opType === 0) {
+                        const result = (parseFloat(a) + parseFloat(b)).toFixed(1);
+                        return {
+                            q_zh: `${a} + ${b} = ?`,
+                            q_en: `${a} + ${b} = ?`,
+                            a: result,
+                            hint_zh: `對齊小數點後相加`,
+                            hint_en: `Align decimal points and add`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：對齊小數點',
+                                    title_en: 'Step 1: Align decimal points',
+                                    zh: `${a} 和 ${b} 要對齊小數點上下排列`,
+                                    en: `Arrange ${a} and ${b} vertically with decimal points aligned`,
+                                    explain_zh: `小數加法時，最重要的是對齊小數點。這樣才能確保個位加個位，小數第一位加小數第一位，等等。`,
+                                    explain_en: `The most important step in decimal addition is aligning decimal points. This ensures ones place adds to ones place, tenths to tenths, etc.`
+                                },
+                                {
+                                    title_zh: '第二步：從右邊開始相加',
+                                    title_en: 'Step 2: Add from right to left',
+                                    zh: `小數部分：${a.split('.')[1]} + ${b.split('.')[1]} = ${result.split('.')[1]}`,
+                                    en: `Decimal parts: ${a.split('.')[1]} + ${b.split('.')[1]} = ${result.split('.')[1]}`,
+                                    explain_zh: `先加小數部分（小數點後面的數字）`,
+                                    explain_en: `First add the decimal parts (numbers after the decimal point)`
+                                },
+                                {
+                                    title_zh: '第三步：加整數部分',
+                                    title_en: 'Step 3: Add the whole numbers',
+                                    zh: `整數部分：${a.split('.')[0]} + ${b.split('.')[0]} = ${result.split('.')[0]}`,
+                                    en: `Whole parts: ${a.split('.')[0]} + ${b.split('.')[0]} = ${result.split('.')[0]}`,
+                                    explain_zh: `再加整數部分（小數點前面的數字）`,
+                                    explain_en: `Then add the whole number parts (numbers before the decimal point)`
+                                },
+                                {
+                                    title_zh: '第四步：寫出最終答案',
+                                    title_en: 'Step 4: Write the final answer',
+                                    zh: `${a} + ${b} = ${result}`,
+                                    en: `${a} + ${b} = ${result}`,
+                                    explain_zh: `把整數部分和小數部分用小數點連接起來，就是最終答案。`,
+                                    explain_en: `Connect the whole and decimal parts with a decimal point to get the final answer`
+                                }
+                            ]
+                        };
+                    } else {
+                        const result = (parseFloat(a) - parseFloat(b)).toFixed(1);
+                        return {
+                            q_zh: `${a} - ${b} = ?`,
+                            q_en: `${a} - ${b} = ?`,
+                            a: result,
+                            hint_zh: `對齊小數點後相減`,
+                            hint_en: `Align decimal points and subtract`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：對齊小數點',
+                                    title_en: 'Step 1: Align decimal points',
+                                    zh: `${a} 和 ${b} 要對齊小數點上下排列`,
+                                    en: `Arrange ${a} and ${b} vertically with decimal points aligned`,
+                                    explain_zh: `小數減法也要對齊小數點。大的數字放在上面，小的放在下面。`,
+                                    explain_en: `Decimal subtraction also requires aligning decimal points. Put the larger number on top and smaller below`
+                                },
+                                {
+                                    title_zh: '第二步：從右邊開始相減',
+                                    title_en: 'Step 2: Subtract from right to left',
+                                    zh: `小數部分：${a.split('.')[1]} - ${b.split('.')[1]} = ${result.split('.')[1]}`,
+                                    en: `Decimal parts: ${a.split('.')[1]} - ${b.split('.')[1]} = ${result.split('.')[1]}`,
+                                    explain_zh: `先減小數部分。如果不夠減，就要向整數部分借 1。`,
+                                    explain_en: `First subtract the decimal parts. If necessary, borrow 1 from the whole number part`
+                                },
+                                {
+                                    title_zh: '第三步：減整數部分',
+                                    title_en: 'Step 3: Subtract the whole numbers',
+                                    zh: `整數部分：${a.split('.')[0]} - ${b.split('.')[0]} = ${result.split('.')[0]}`,
+                                    en: `Whole parts: ${a.split('.')[0]} - ${b.split('.')[0]} = ${result.split('.')[0]}`,
+                                    explain_zh: `再減整數部分（注意如果借過 1，就要減去 1）`,
+                                    explain_en: `Then subtract the whole number parts (remember to account for any borrowed 1)`
+                                },
+                                {
+                                    title_zh: '第四步：寫出最終答案',
+                                    title_en: 'Step 4: Write the final answer',
+                                    zh: `${a} - ${b} = ${result}`,
+                                    en: `${a} - ${b} = ${result}`,
+                                    explain_zh: `把整數部分和小數部分用小數點連接起來，就是最終答案。`,
+                                    explain_en: `Connect the whole and decimal parts with a decimal point to get the final answer`
+                                }
+                            ]
+                        };
+                    }
+                }
+            }
+        };
+
+        let language = 'zh';
+        let stats = { correct: 0, incorrect: 0 };
+        let currentTopic = null;
+        let currentQuestion = null;
+
+        function setLanguage(lang) {
+            language = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            updateUIText();
+            if (currentQuestion) displayQuestion();
+        }
+
+        function updateUIText() {
+            if (language === 'zh') {
+                document.getElementById('label-correct').textContent = '正確';
+                document.getElementById('label-incorrect').textContent = '錯誤';
+                document.getElementById('label-accuracy').textContent = '準確率';
+                document.getElementById('topicTitle').textContent = '選擇主題開始練習';
+                document.getElementById('submitBtn').textContent = '提交答案';
+                document.getElementById('hintBtn').textContent = '提示';
+                document.getElementById('nextBtn').textContent = '下一題（類似題型）';
+                document.getElementById('answer').placeholder = '輸入你的答案';
+            } else {
+                document.getElementById('label-correct').textContent = 'Correct';
+                document.getElementById('label-incorrect').textContent = 'Incorrect';
+                document.getElementById('label-accuracy').textContent = 'Accuracy';
+                document.getElementById('topicTitle').textContent = 'Select a Topic to Start';
+                document.getElementById('submitBtn').textContent = 'Submit Answer';
+                document.getElementById('hintBtn').textContent = 'Hint';
+                document.getElementById('nextBtn').textContent = 'Next Question';
+                document.getElementById('answer').placeholder = 'Enter your answer';
+            }
+        }
+
+        function initializeTopic() {
+            const selector = document.getElementById('topicSelector');
+            Object.keys(questionTypes).forEach(topic => {
+                const btn = document.createElement('button');
+                btn.className = 'topic-btn';
+                btn.textContent = topic;
+                btn.onclick = () => selectTopic(topic, btn);
+                selector.appendChild(btn);
+            });
+        }
+
+        function selectTopic(topic, btn) {
+            document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTopic = topic;
+            document.getElementById('questionSection').style.display = 'block';
+            generateNewQuestion();
+        }
+
+        function generateNewQuestion() {
+            if (!currentTopic) return;
+            currentQuestion = questionTypes[currentTopic].generate();
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const titleText = language === 'zh' 
+                ? `${currentTopic.split(' / ')[0]} - 練習題` 
+                : `${currentTopic.split(' / ')[1]} - Practice`;
+            document.getElementById('questionTitle').textContent = titleText;
+            
+            let content = '<div class="question-box">';
+            content += `<div class="question-main">${language === 'zh' ? currentQuestion.q_zh : currentQuestion.q_en}</div>`;
+            content += `<div class="question-alt"><em>${language === 'zh' ? currentQuestion.q_en : currentQuestion.q_zh}</em></div>`;
+            content += '</div>';
+            
+            document.getElementById('questionContent').innerHTML = content;
+            document.getElementById('inputGroup').style.display = 'flex';
+            document.getElementById('buttonGroup').style.display = 'flex';
+            document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect');
+            document.getElementById('steps').classList.remove('show');
+            document.getElementById('hint').classList.remove('show');
+            document.getElementById('nextBtn').classList.add('hidden');
+            
+            const answer = document.getElementById('answer');
+            answer.value = '';
+            answer.focus();
+        }
+
+        function submitAnswer() {
+            const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+            const correctAnswer = currentQuestion.a.toString().toLowerCase();
+            const feedback = document.getElementById('feedback');
+            const steps = document.getElementById('steps');
+            
+            if (userAnswer === correctAnswer) {
+                stats.correct++;
+                feedback.className = 'feedback show correct';
+                feedback.innerHTML = language === 'zh' 
+                    ? '<strong>✓ 太棒了！</strong><br>你的答案是正確的！' 
+                    : '<strong>✓ Excellent!</strong><br>Your answer is correct!';
+                document.getElementById('nextBtn').classList.remove('hidden');
+            } else {
+                stats.incorrect++;
+                feedback.className = 'feedback show incorrect';
+                const msg = language === 'zh'
+                    ? `<strong>✗ 不對</strong><br>你的答案是「${userAnswer}」，正確答案應該是「${correctAnswer}」`
+                    : `<strong>✗ Not correct</strong><br>Your answer was "${userAnswer}", correct answer is "${correctAnswer}"`;
+                feedback.innerHTML = msg;
+                
+                steps.className = 'steps show';
+                const stepsTitle = language === 'zh' ? '📚 詳細步驟解說' : '📚 Step-by-step explanation';
+                steps.innerHTML = `<div class="steps-title">${stepsTitle}：</div>`;
+                
+                currentQuestion.steps.forEach((step, idx) => {
+                    const stepDiv = document.createElement('div');
+                    stepDiv.className = 'step';
+                    stepDiv.setAttribute('data-step', idx + 1);
+                    
+                    const title = language === 'zh' ? step.title_zh : step.title_en;
+                    const zh = step.zh;
+                    const en = step.en;
+                    const explain = language === 'zh' ? step.explain_zh : step.explain_en;
+                    const explainOther = language === 'zh' ? step.explain_en : step.explain_zh;
+                    
+                    let stepContent = `<div class="step-title">${title}</div>`;
+                    stepContent += `<div class="step-zh">${zh}</div>`;
+                    stepContent += `<div class="step-en">${en}</div>`;
+                    stepContent += `<div class="step-explain"><strong>💡 ${language === 'zh' ? '為什麼' : 'Why'}:</strong> ${explain}<br><em>${explainOther}</em></div>`;
+                    
+                    stepDiv.innerHTML = stepContent;
+                    steps.appendChild(stepDiv);
+                });
+                
+                document.getElementById('nextBtn').classList.remove('hidden');
+            }
+            
+            updateStats();
+        }
+
+        function showHint() {
+            const hint = document.getElementById('hint');
+            hint.className = 'hint show';
+            const hintText = language === 'zh' ? currentQuestion.hint_zh : currentQuestion.hint_en;
+            const otherHint = language === 'zh' ? currentQuestion.hint_en : currentQuestion.hint_zh;
+            hint.innerHTML = `<strong>💡 ${language === 'zh' ? '提示' : 'Hint'}：</strong> ${hintText}<div class="hint-en">${otherHint}</div>`;
+        }
+
+        function updateStats() {
+            const total = stats.correct + stats.incorrect;
+            const accuracy = total > 0 ? Math.round((stats.correct / total) * 100) : 0;
+            document.getElementById('correctCount').textContent = stats.correct;
+            document.getElementById('incorrectCount').textContent = stats.incorrect;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+        }
+
+        initializeTopic();
+        updateUIText();
+    </script>
+</body>
+</html>

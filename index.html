@@ -663,6 +663,101 @@
                 }
             },
 
+            '質因數分解 / Prime Factorization': {
+                generate: function() {
+                    const questionType = Math.floor(Math.random() * 2);
+                    
+                    if (questionType === 0) { // 找質因數
+                        const numbers = [
+                            { num: 12, factors: [2, 3], factorStr: '2 和 3', factorStrEn: '2 and 3' },
+                            { num: 18, factors: [2, 3], factorStr: '2 和 3', factorStrEn: '2 and 3' },
+                            { num: 20, factors: [2, 5], factorStr: '2 和 5', factorStrEn: '2 and 5' },
+                            { num: 24, factors: [2, 3], factorStr: '2 和 3', factorStrEn: '2 and 3' },
+                            { num: 30, factors: [2, 3, 5], factorStr: '2、3 和 5', factorStrEn: '2, 3 and 5' },
+                            { num: 36, factors: [2, 3], factorStr: '2 和 3', factorStrEn: '2 and 3' }
+                        ];
+                        const data = numbers[Math.floor(Math.random() * numbers.length)];
+                        const factorAnswer = data.factors.join(' ');
+                        return {
+                            q_zh: `${data.num} 有哪些質因數？（用空格分開答案，如：2 3）`,
+                            q_en: `What are the prime factors of ${data.num}? (Separate with space, e.g. 2 3)`,
+                            a: factorAnswer,
+                            hint_zh: `質因數是既是因數又是質數的數`,
+                            hint_en: `Prime factors are numbers that are both factors and prime`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：找所有因數',
+                                    title_en: 'Step 1: Find all factors',
+                                    zh: `${data.num} 的所有因數`,
+                                    en: `All factors of ${data.num}`,
+                                    explain_zh: `列出所有能整除 ${data.num} 的數`,
+                                    explain_en: `List all numbers that divide ${data.num}`
+                                },
+                                {
+                                    title_zh: '第二步：找質數因數',
+                                    title_en: 'Step 2: Find prime factors',
+                                    zh: `其中哪些是質數？${data.factorStr}`,
+                                    en: `Which are prime? ${data.factorStrEn}`,
+                                    explain_zh: `質因數是只能被 1 和它自己整除的因數`,
+                                    explain_en: `Prime factors are divisible only by 1 and themselves`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `${data.num} 的質因數是：${data.factorStr}`,
+                                    en: `Prime factors of ${data.num}: ${data.factorStrEn}`,
+                                    explain_zh: `答案是 ${data.factorStr}`,
+                                    explain_en: `Answer is ${data.factorStrEn}`
+                                }
+                            ]
+                        };
+                    } else { // 質因數分解
+                        const numbers = [
+                            { num: 12, expression: '2^2 x 3' },
+                            { num: 18, expression: '2 x 3^2' },
+                            { num: 20, expression: '2^2 x 5' },
+                            { num: 24, expression: '2^3 x 3' },
+                            { num: 30, expression: '2 x 3 x 5' },
+                            { num: 36, expression: '2^2 x 3^2' }
+                        ];
+                        const data = numbers[Math.floor(Math.random() * numbers.length)];
+                        return {
+                            q_zh: `將 ${data.num} 分解成質因數相乘的形式（用 ^ 表示次方，如 2^3）`,
+                            q_en: `Express ${data.num} as prime factorization (use ^ for power, e.g. 2^3)`,
+                            a: data.expression,
+                            hint_zh: `使用因數樹幫助分解`,
+                            hint_en: `Use a factor tree to help`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：質因數分解的意義',
+                                    title_en: 'Step 1: What is prime factorization?',
+                                    zh: `把一個數寫成質因數相乘的形式`,
+                                    en: `Express a number as a product of prime factors`,
+                                    explain_zh: `每個質因數可能重複出現`,
+                                    explain_en: `Each prime factor might appear multiple times`
+                                },
+                                {
+                                    title_zh: '第二步：找出質因數',
+                                    title_en: 'Step 2: Find prime factors',
+                                    zh: `${data.num} = ${data.expression}`,
+                                    en: `${data.num} = ${data.expression}`,
+                                    explain_zh: `列出所有質因數及其個數`,
+                                    explain_en: `List all prime factors and their counts`
+                                },
+                                {
+                                    title_zh: '第三步：驗證',
+                                    title_en: 'Step 3: Verify',
+                                    zh: `驗證：${data.expression} = ${data.num}`,
+                                    en: `Check: ${data.expression} = ${data.num}`,
+                                    explain_zh: `確認相乘後得到原數`,
+                                    explain_en: `Confirm multiplication gives original number`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
             '分數加減 / Add/Subtract Fractions': {
                 generate: function() {
                     const opType = Math.floor(Math.random() * 2);
@@ -867,6 +962,913 @@
                             }
                         ]
                     };
+                }
+            },
+
+            '體積和容量 / Volume and Capacity': {
+                generate: function() {
+                    const questionType = Math.floor(Math.random() * 3);
+                    
+                    if (questionType === 0) { // 立方體體積
+                        const side = Math.floor(Math.random() * 8) + 2;
+                        const volume = side * side * side;
+                        return {
+                            q_zh: `一個邊長為 ${side} cm 的立方體，它的體積是多少立方公分？`,
+                            q_en: `A cube with side length ${side} cm. What is its volume in cm³?`,
+                            a: volume.toString(),
+                            hint_zh: `立方體體積 = 邊 × 邊 × 邊`,
+                            hint_en: `Cube volume = side × side × side`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解立方體體積',
+                                    title_en: 'Step 1: Understanding cube volume',
+                                    zh: `立方體體積公式 = 邊 × 邊 × 邊`,
+                                    en: `Cube volume = side × side × side`,
+                                    explain_zh: `體積是三維空間的大小`,
+                                    explain_en: `Volume measures 3D space`
+                                },
+                                {
+                                    title_zh: '第二步：代入數值',
+                                    title_en: 'Step 2: Substitute values',
+                                    zh: `體積 = ${side} × ${side} × ${side}`,
+                                    en: `Volume = ${side} × ${side} × ${side}`,
+                                    explain_zh: `把邊長代入公式`,
+                                    explain_en: `Put side length into formula`
+                                },
+                                {
+                                    title_zh: '第三步：計算',
+                                    title_en: 'Step 3: Calculate',
+                                    zh: `體積 = ${volume} cm³`,
+                                    en: `Volume = ${volume} cm³`,
+                                    explain_zh: `答案是 ${volume} 立方公分`,
+                                    explain_en: `Answer is ${volume} cm³`
+                                }
+                            ]
+                        };
+                    } else if (questionType === 1) { // 長方體體積
+                        const length = Math.floor(Math.random() * 8) + 2;
+                        const width = Math.floor(Math.random() * 8) + 2;
+                        const height = Math.floor(Math.random() * 8) + 2;
+                        const volume = length * width * height;
+                        return {
+                            q_zh: `一個長方體，長 ${length} cm，寬 ${width} cm，高 ${height} cm。它的體積是多少立方公分？`,
+                            q_en: `A rectangular box: length ${length} cm, width ${width} cm, height ${height} cm. Volume in cm³?`,
+                            a: volume.toString(),
+                            hint_zh: `長方體體積 = 長 × 寬 × 高`,
+                            hint_en: `Rectangular volume = length × width × height`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：長方體體積公式',
+                                    title_en: 'Step 1: Rectangular volume formula',
+                                    zh: `體積 = 長 × 寬 × 高`,
+                                    en: `Volume = length × width × height`,
+                                    explain_zh: `長方體的三個維度相乘`,
+                                    explain_en: `Multiply all three dimensions`
+                                },
+                                {
+                                    title_zh: '第二步：代入數值',
+                                    title_en: 'Step 2: Substitute values',
+                                    zh: `體積 = ${length} × ${width} × ${height}`,
+                                    en: `Volume = ${length} × ${width} × ${height}`,
+                                    explain_zh: `把數值代入公式`,
+                                    explain_en: `Put values into formula`
+                                },
+                                {
+                                    title_zh: '第三步：計算',
+                                    title_en: 'Step 3: Calculate',
+                                    zh: `體積 = ${volume} cm³`,
+                                    en: `Volume = ${volume} cm³`,
+                                    explain_zh: `答案是 ${volume} 立方公分`,
+                                    explain_en: `Answer is ${volume} cm³`
+                                }
+                            ]
+                        };
+                    } else { // 容量單位轉換
+                        const conversionType = Math.floor(Math.random() * 2);
+                        if (conversionType === 0) { // 毫升到升
+                            const ml = Math.floor(Math.random() * 9000) + 1000;
+                            const liters = ml / 1000;
+                            return {
+                                q_zh: `${ml} 毫升 = ? 升`,
+                                q_en: `${ml} mL = ? L`,
+                                a: liters.toString(),
+                                hint_zh: `1 升 = 1000 毫升`,
+                                hint_en: `1 L = 1000 mL`,
+                                steps: [
+                                    {
+                                        title_zh: '第一步：記住單位轉換',
+                                        title_en: 'Step 1: Remember conversion',
+                                        zh: `1 升 = 1000 毫升`,
+                                        en: `1 L = 1000 mL`,
+                                        explain_zh: `升和毫升的轉換關係`,
+                                        explain_en: `Relationship between liters and milliliters`
+                                    },
+                                    {
+                                        title_zh: '第二步：毫升除以 1000',
+                                        title_en: 'Step 2: Divide by 1000',
+                                        zh: `${ml} ÷ 1000 = ${liters}`,
+                                        en: `${ml} ÷ 1000 = ${liters}`,
+                                        explain_zh: `毫升轉升要除以 1000`,
+                                        explain_en: `To convert mL to L, divide by 1000`
+                                    },
+                                    {
+                                        title_zh: '第三步：答案',
+                                        title_en: 'Step 3: Answer',
+                                        zh: `${ml} 毫升 = ${liters} 升`,
+                                        en: `${ml} mL = ${liters} L`,
+                                        explain_zh: `答案是 ${liters} 升`,
+                                        explain_en: `Answer is ${liters} L`
+                                    }
+                                ]
+                            };
+                        } else { // 升到毫升
+                            const liters = Math.floor(Math.random() * 9) + 1;
+                            const ml = liters * 1000;
+                            return {
+                                q_zh: `${liters} 升 = ? 毫升`,
+                                q_en: `${liters} L = ? mL`,
+                                a: ml.toString(),
+                                hint_zh: `1 升 = 1000 毫升`,
+                                hint_en: `1 L = 1000 mL`,
+                                steps: [
+                                    {
+                                        title_zh: '第一步：記住單位轉換',
+                                        title_en: 'Step 1: Remember conversion',
+                                        zh: `1 升 = 1000 毫升`,
+                                        en: `1 L = 1000 mL`,
+                                        explain_zh: `升和毫升的轉換關係`,
+                                        explain_en: `Relationship between liters and milliliters`
+                                    },
+                                    {
+                                        title_zh: '第二步：升乘以 1000',
+                                        title_en: 'Step 2: Multiply by 1000',
+                                        zh: `${liters} × 1000 = ${ml}`,
+                                        en: `${liters} × 1000 = ${ml}`,
+                                        explain_zh: `升轉毫升要乘以 1000`,
+                                        explain_en: `To convert L to mL, multiply by 1000`
+                                    },
+                                    {
+                                        title_zh: '第三步：答案',
+                                        title_en: 'Step 3: Answer',
+                                        zh: `${liters} 升 = ${ml} 毫升`,
+                                        en: `${liters} L = ${ml} mL`,
+                                        explain_zh: `答案是 ${ml} 毫升`,
+                                        explain_en: `Answer is ${ml} mL`
+                                    }
+                                ]
+                            };
+                        }
+                    }
+                }
+            },
+
+            '質量 / Mass': {
+                generate: function() {
+                    const isKgToG = Math.random() > 0.5;
+                    if (isKgToG) {
+                        const kg = Math.floor(Math.random() * 8) + 1;
+                        const grams = kg * 1000;
+                        return {
+                            q_zh: `${kg} 公斤 = ? 克`,
+                            q_en: `${kg} kg = ? g`,
+                            a: grams.toString(),
+                            hint_zh: `1 公斤 = 1000 克`,
+                            hint_en: `1 kg = 1000 g`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：記住轉換',
+                                    title_en: 'Step 1: Remember conversion',
+                                    zh: `1 公斤 = 1000 克`,
+                                    en: `1 kg = 1000 g`,
+                                    explain_zh: `公斤和克的關係`,
+                                    explain_en: `Relationship between kg and g`
+                                },
+                                {
+                                    title_zh: '第二步：乘以 1000',
+                                    title_en: 'Step 2: Multiply by 1000',
+                                    zh: `${kg} × 1000 = ${grams}`,
+                                    en: `${kg} × 1000 = ${grams}`,
+                                    explain_zh: `公斤轉克要乘以 1000`,
+                                    explain_en: `To convert kg to g, multiply by 1000`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `${kg} 公斤 = ${grams} 克`,
+                                    en: `${kg} kg = ${grams} g`,
+                                    explain_zh: `答案是 ${grams} 克`,
+                                    explain_en: `Answer is ${grams} g`
+                                }
+                            ]
+                        };
+                    } else {
+                        const grams = Math.floor(Math.random() * 7000) + 1000;
+                        const kg = grams / 1000;
+                        return {
+                            q_zh: `${grams} 克 = ? 公斤`,
+                            q_en: `${grams} g = ? kg`,
+                            a: kg.toString(),
+                            hint_zh: `1000 克 = 1 公斤`,
+                            hint_en: `1000 g = 1 kg`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：記住轉換',
+                                    title_en: 'Step 1: Remember conversion',
+                                    zh: `1 公斤 = 1000 克`,
+                                    en: `1 kg = 1000 g`,
+                                    explain_zh: `公斤和克的關係`,
+                                    explain_en: `Relationship between kg and g`
+                                },
+                                {
+                                    title_zh: '第二步：除以 1000',
+                                    title_en: 'Step 2: Divide by 1000',
+                                    zh: `${grams} ÷ 1000 = ${kg}`,
+                                    en: `${grams} ÷ 1000 = ${kg}`,
+                                    explain_zh: `克轉公斤要除以 1000`,
+                                    explain_en: `To convert g to kg, divide by 1000`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `${grams} 克 = ${kg} 公斤`,
+                                    en: `${grams} g = ${kg} kg`,
+                                    explain_zh: `答案是 ${kg} 公斤`,
+                                    explain_en: `Answer is ${kg} kg`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '二維形狀 / 2D Shapes': {
+                generate: function() {
+                    const shapeType = Math.floor(Math.random() * 3);
+                    if (shapeType === 0) { // 矩形周長
+                        const length = Math.floor(Math.random() * 8) + 2;
+                        const width = Math.floor(Math.random() * 8) + 2;
+                        const perimeter = 2 * (length + width);
+                        return {
+                            q_zh: `矩形長 ${length} cm，寬 ${width} cm，周長是多少 cm？`,
+                            q_en: `Rectangle: length ${length} cm, width ${width} cm. Perimeter in cm?`,
+                            a: perimeter.toString(),
+                            hint_zh: `矩形周長 = 2 × (長 + 寬)`,
+                            hint_en: `Rectangle perimeter = 2 × (length + width)`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：周長公式',
+                                    title_en: 'Step 1: Perimeter formula',
+                                    zh: `矩形周長 = 2 × (長 + 寬)`,
+                                    en: `Perimeter = 2 × (length + width)`,
+                                    explain_zh: `周長是形狀周圍的距離`,
+                                    explain_en: `Perimeter is the distance around the shape`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `周長 = 2 × (${length} + ${width}) = 2 × ${length + width}`,
+                                    en: `Perimeter = 2 × (${length} + ${width}) = 2 × ${length + width}`,
+                                    explain_zh: `把數值代入公式`,
+                                    explain_en: `Put values into formula`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `周長 = ${perimeter} cm`,
+                                    en: `Perimeter = ${perimeter} cm`,
+                                    explain_zh: `答案是 ${perimeter} cm`,
+                                    explain_en: `Answer is ${perimeter} cm`
+                                }
+                            ]
+                        };
+                    } else if (shapeType === 1) { // 矩形面積
+                        const length = Math.floor(Math.random() * 8) + 2;
+                        const width = Math.floor(Math.random() * 8) + 2;
+                        const area = length * width;
+                        return {
+                            q_zh: `矩形長 ${length} cm，寬 ${width} cm，面積是多少平方公分？`,
+                            q_en: `Rectangle: length ${length} cm, width ${width} cm. Area in cm²?`,
+                            a: area.toString(),
+                            hint_zh: `矩形面積 = 長 × 寬`,
+                            hint_en: `Rectangle area = length × width`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：面積公式',
+                                    title_en: 'Step 1: Area formula',
+                                    zh: `矩形面積 = 長 × 寬`,
+                                    en: `Area = length × width`,
+                                    explain_zh: `面積是形狀內部的大小`,
+                                    explain_en: `Area is the space inside the shape`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `面積 = ${length} × ${width}`,
+                                    en: `Area = ${length} × ${width}`,
+                                    explain_zh: `把數值代入公式`,
+                                    explain_en: `Put values into formula`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `面積 = ${area} cm²`,
+                                    en: `Area = ${area} cm²`,
+                                    explain_zh: `答案是 ${area} 平方公分`,
+                                    explain_en: `Answer is ${area} cm²`
+                                }
+                            ]
+                        };
+                    } else { // 三角形面積
+                        const base = Math.floor(Math.random() * 8) + 2;
+                        const height = Math.floor(Math.random() * 8) + 2;
+                        const area = (base * height) / 2;
+                        return {
+                            q_zh: `三角形底 ${base} cm，高 ${height} cm，面積是多少平方公分？`,
+                            q_en: `Triangle: base ${base} cm, height ${height} cm. Area in cm²?`,
+                            a: area.toString(),
+                            hint_zh: `三角形面積 = (底 × 高) ÷ 2`,
+                            hint_en: `Triangle area = (base × height) ÷ 2`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：面積公式',
+                                    title_en: 'Step 1: Area formula',
+                                    zh: `三角形面積 = (底 × 高) ÷ 2`,
+                                    en: `Area = (base × height) ÷ 2`,
+                                    explain_zh: `三角形是矩形的一半`,
+                                    explain_en: `Triangle is half of a rectangle`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `面積 = (${base} × ${height}) ÷ 2 = ${base * height} ÷ 2`,
+                                    en: `Area = (${base} × ${height}) ÷ 2 = ${base * height} ÷ 2`,
+                                    explain_zh: `把數值代入公式`,
+                                    explain_en: `Put values into formula`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `面積 = ${area} cm²`,
+                                    en: `Area = ${area} cm²`,
+                                    explain_zh: `答案是 ${area} 平方公分`,
+                                    explain_en: `Answer is ${area} cm²`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '圓的部分 / Parts of a Circle': {
+                generate: function() {
+                    const questionType = Math.floor(Math.random() * 3);
+                    const radius = Math.floor(Math.random() * 8) + 2;
+                    
+                    if (questionType === 0) { // 直徑
+                        const diameter = radius * 2;
+                        return {
+                            q_zh: `圓的半徑是 ${radius} cm，直徑是多少 cm？`,
+                            q_en: `Circle radius is ${radius} cm. What is the diameter?`,
+                            a: diameter.toString(),
+                            hint_zh: `直徑 = 2 × 半徑`,
+                            hint_en: `Diameter = 2 × radius`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解半徑和直徑',
+                                    title_en: 'Step 1: Understand radius and diameter',
+                                    zh: `半徑是從圓心到邊的距離`,
+                                    en: `Radius is distance from center to edge`,
+                                    explain_zh: `直徑通過圓心`,
+                                    explain_en: `Diameter passes through the center`
+                                },
+                                {
+                                    title_zh: '第二步：公式',
+                                    title_en: 'Step 2: Formula',
+                                    zh: `直徑 = 2 × 半徑`,
+                                    en: `Diameter = 2 × radius`,
+                                    explain_zh: `直徑是半徑的兩倍`,
+                                    explain_en: `Diameter is twice the radius`
+                                },
+                                {
+                                    title_zh: '第三步：計算',
+                                    title_en: 'Step 3: Calculate',
+                                    zh: `直徑 = 2 × ${radius} = ${diameter} cm`,
+                                    en: `Diameter = 2 × ${radius} = ${diameter} cm`,
+                                    explain_zh: `答案是 ${diameter} cm`,
+                                    explain_en: `Answer is ${diameter} cm`
+                                }
+                            ]
+                        };
+                    } else if (questionType === 1) { // 圓周長
+                        const circumference = (2 * radius * 3.14).toFixed(2);
+                        return {
+                            q_zh: `圓的半徑是 ${radius} cm，圓周長是多少 cm？（π ≈ 3.14）`,
+                            q_en: `Circle radius is ${radius} cm. Circumference? (π ≈ 3.14)`,
+                            a: circumference.toString(),
+                            hint_zh: `圓周長 = 2πr`,
+                            hint_en: `Circumference = 2πr`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：圓周長公式',
+                                    title_en: 'Step 1: Circumference formula',
+                                    zh: `圓周長 = 2 × π × 半徑`,
+                                    en: `Circumference = 2 × π × radius`,
+                                    explain_zh: `π ≈ 3.14`,
+                                    explain_en: `π ≈ 3.14`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `圓周長 = 2 × 3.14 × ${radius}`,
+                                    en: `Circumference = 2 × 3.14 × ${radius}`,
+                                    explain_zh: `把數值代入`,
+                                    explain_en: `Put values in`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `圓周長 ≈ ${circumference} cm`,
+                                    en: `Circumference ≈ ${circumference} cm`,
+                                    explain_zh: `答案約是 ${circumference} cm`,
+                                    explain_en: `Answer is approximately ${circumference} cm`
+                                }
+                            ]
+                        };
+                    } else { // 圓面積
+                        const area = (radius * radius * 3.14).toFixed(2);
+                        return {
+                            q_zh: `圓的半徑是 ${radius} cm，面積是多少平方公分？（π ≈ 3.14）`,
+                            q_en: `Circle radius is ${radius} cm. Area in cm²? (π ≈ 3.14)`,
+                            a: area.toString(),
+                            hint_zh: `圓面積 = πr²`,
+                            hint_en: `Circle area = πr²`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：圓面積公式',
+                                    title_en: 'Step 1: Area formula',
+                                    zh: `圓面積 = π × 半徑²`,
+                                    en: `Area = π × radius²`,
+                                    explain_zh: `π ≈ 3.14`,
+                                    explain_en: `π ≈ 3.14`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `面積 = 3.14 × ${radius}² = 3.14 × ${radius * radius}`,
+                                    en: `Area = 3.14 × ${radius}² = 3.14 × ${radius * radius}`,
+                                    explain_zh: `把數值代入`,
+                                    explain_en: `Put values in`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `面積 ≈ ${area} cm²`,
+                                    en: `Area ≈ ${area} cm²`,
+                                    explain_zh: `答案約是 ${area} 平方公分`,
+                                    explain_en: `Answer is approximately ${area} cm²`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '變換 / Transformations': {
+                generate: function() {
+                    const transformType = Math.floor(Math.random() * 3);
+                    if (transformType === 0) {
+                        return {
+                            q_zh: `一個點在坐標 (2, 3) 處，向右移動 4 個單位，向上移動 2 個單位後，新坐標是什麼？`,
+                            q_en: `Point at (2, 3). Move right 4 units, up 2 units. New coordinates?`,
+                            a: '(6, 5)',
+                            hint_zh: `平移時：新 x = 舊 x + 向右移動，新 y = 舊 y + 向上移動`,
+                            hint_en: `Translation: new x = old x + right, new y = old y + up`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解平移',
+                                    title_en: 'Step 1: Understand translation',
+                                    zh: `平移就是將圖形移動到新位置`,
+                                    en: `Translation moves a shape to a new position`,
+                                    explain_zh: `坐標會改變，但形狀不變`,
+                                    explain_en: `Coordinates change, but shape stays the same`
+                                },
+                                {
+                                    title_zh: '第二步：計算新坐標',
+                                    title_en: 'Step 2: Calculate new coordinates',
+                                    zh: `新 x = 2 + 4 = 6，新 y = 3 + 2 = 5`,
+                                    en: `New x = 2 + 4 = 6, new y = 3 + 2 = 5`,
+                                    explain_zh: `向右加，向上加`,
+                                    explain_en: `Add for right and up`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `新坐標是 (6, 5)`,
+                                    en: `New coordinates are (6, 5)`,
+                                    explain_zh: `答案是 (6, 5)`,
+                                    explain_en: `Answer is (6, 5)`
+                                }
+                            ]
+                        };
+                    } else if (transformType === 1) {
+                        return {
+                            q_zh: `一個圖形繞中心旋轉 90 度，旋轉後形狀會改變嗎？`,
+                            q_en: `A shape is rotated 90 degrees. Does it change shape? Answer: yes or no`,
+                            a: 'no',
+                            hint_zh: `旋轉時形狀不會改變`,
+                            hint_en: `Rotation does not change the shape`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解旋轉',
+                                    title_en: 'Step 1: Understand rotation',
+                                    zh: `旋轉是將圖形繞一個點轉動`,
+                                    en: `Rotation turns a shape around a point`,
+                                    explain_zh: `旋轉可以改變方向，但不改變形狀`,
+                                    explain_en: `Rotation changes direction, not shape`
+                                },
+                                {
+                                    title_zh: '第二步：旋轉的性質',
+                                    title_en: 'Step 2: Properties of rotation',
+                                    zh: `旋轉後：邊長相同，角度相同`,
+                                    en: `After rotation: sides and angles stay the same`,
+                                    explain_zh: `形狀保持不變`,
+                                    explain_en: `Shape remains unchanged`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `答案是：不會改變 (no)`,
+                                    en: `Answer is: no`,
+                                    explain_zh: `旋轉不改變形狀`,
+                                    explain_en: `Rotation does not change shape`
+                                }
+                            ]
+                        };
+                    } else {
+                        return {
+                            q_zh: `一個圖形被鏡像（翻轉），鏡像後形狀的大小會改變嗎？`,
+                            q_en: `A shape is reflected (flipped). Does it change size? Answer: yes or no`,
+                            a: 'no',
+                            hint_zh: `鏡像後形狀和大小都不變`,
+                            hint_en: `Reflection does not change size or shape`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解鏡像',
+                                    title_en: 'Step 1: Understand reflection',
+                                    zh: `鏡像是沿著一條線翻轉圖形`,
+                                    en: `Reflection flips a shape along a line`,
+                                    explain_zh: `就像照鏡子一樣`,
+                                    explain_en: `Like looking in a mirror`
+                                },
+                                {
+                                    title_zh: '第二步：鏡像的性質',
+                                    title_en: 'Step 2: Properties of reflection',
+                                    zh: `鏡像後：邊長相同，大小相同`,
+                                    en: `After reflection: sides and size stay the same`,
+                                    explain_zh: `只是方向改變`,
+                                    explain_en: `Only direction changes`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `答案是：不會改變 (no)`,
+                                    en: `Answer is: no`,
+                                    explain_zh: `鏡像不改變大小`,
+                                    explain_en: `Reflection does not change size`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '角度 / Angles': {
+                generate: function() {
+                    const angleType = Math.floor(Math.random() * 3);
+                    if (angleType === 0) { // 角度分類
+                        const angles = [
+                            { value: 30, type_zh: '銳角', type_en: 'acute' },
+                            { value: 60, type_zh: '銳角', type_en: 'acute' },
+                            { value: 45, type_zh: '銳角', type_en: 'acute' },
+                            { value: 90, type_zh: '直角', type_en: 'right' },
+                            { value: 120, type_zh: '鈍角', type_en: 'obtuse' },
+                            { value: 150, type_zh: '鈍角', type_en: 'obtuse' }
+                        ];
+                        const angle = angles[Math.floor(Math.random() * angles.length)];
+                        return {
+                            q_zh: `${angle.value}° 是什麼角？答：銳角、直角 或 鈍角`,
+                            q_en: `${angle.value}° is what type? Answer: acute, right, or obtuse`,
+                            a: angle.type_en,
+                            hint_zh: `銳角 < 90°，直角 = 90°，鈍角 > 90°`,
+                            hint_en: `Acute < 90°, right = 90°, obtuse > 90°`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解角度類型',
+                                    title_en: 'Step 1: Understanding angle types',
+                                    zh: `銳角：小於 90° 的角`,
+                                    en: `Acute: angle less than 90°`,
+                                    explain_zh: `銳角很尖`,
+                                    explain_en: `Acute angles are sharp`
+                                },
+                                {
+                                    title_zh: '第二步：其他角度',
+                                    title_en: 'Step 2: Other angles',
+                                    zh: `直角 = 90°，鈍角 > 90°`,
+                                    en: `Right = 90°, obtuse > 90°`,
+                                    explain_zh: `直角看起來像 L，鈍角很寬`,
+                                    explain_en: `Right looks like L, obtuse is wide`
+                                },
+                                {
+                                    title_zh: '第三步：分類',
+                                    title_en: 'Step 3: Classify',
+                                    zh: `${angle.value}° 是 ${angle.type_zh}`,
+                                    en: `${angle.value}° is ${angle.type_en}`,
+                                    explain_zh: `答案是 ${angle.type_zh}`,
+                                    explain_en: `Answer is ${angle.type_en}`
+                                }
+                            ]
+                        };
+                    } else if (angleType === 1) { // 補角
+                        const angle1 = Math.floor(Math.random() * 80) + 10;
+                        const complement = 90 - angle1;
+                        return {
+                            q_zh: `${angle1}° 的補角是多少度？`,
+                            q_en: `What is the complement of ${angle1}°?`,
+                            a: complement.toString(),
+                            hint_zh: `補角 = 90° - 角`,
+                            hint_en: `Complement = 90° - angle`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解補角',
+                                    title_en: 'Step 1: Understanding complement',
+                                    zh: `兩個角相加等於 90° 時，它們互為補角`,
+                                    en: `Two angles that add to 90° are complements`,
+                                    explain_zh: `補角總和是 90°`,
+                                    explain_en: `Complements always sum to 90°`
+                                },
+                                {
+                                    title_zh: '第二步：計算',
+                                    title_en: 'Step 2: Calculate',
+                                    zh: `補角 = 90° - ${angle1}° = ${complement}°`,
+                                    en: `Complement = 90° - ${angle1}° = ${complement}°`,
+                                    explain_zh: `用 90° 減去已知角`,
+                                    explain_en: `Subtract the angle from 90°`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `補角是 ${complement}°`,
+                                    en: `Complement is ${complement}°`,
+                                    explain_zh: `答案是 ${complement}°`,
+                                    explain_en: `Answer is ${complement}°`
+                                }
+                            ]
+                        };
+                    } else { // 餘角
+                        const angle1 = Math.floor(Math.random() * 160) + 20;
+                        const supplement = 180 - angle1;
+                        return {
+                            q_zh: `${angle1}° 的餘角是多少度？`,
+                            q_en: `What is the supplement of ${angle1}°?`,
+                            a: supplement.toString(),
+                            hint_zh: `餘角 = 180° - 角`,
+                            hint_en: `Supplement = 180° - angle`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：理解餘角',
+                                    title_en: 'Step 1: Understanding supplement',
+                                    zh: `兩個角相加等於 180° 時，它們互為餘角`,
+                                    en: `Two angles that add to 180° are supplements`,
+                                    explain_zh: `餘角總和是 180°`,
+                                    explain_en: `Supplements always sum to 180°`
+                                },
+                                {
+                                    title_zh: '第二步：計算',
+                                    title_en: 'Step 2: Calculate',
+                                    zh: `餘角 = 180° - ${angle1}° = ${supplement}°`,
+                                    en: `Supplement = 180° - ${angle1}° = ${supplement}°`,
+                                    explain_zh: `用 180° 減去已知角`,
+                                    explain_en: `Subtract the angle from 180°`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `餘角是 ${supplement}°`,
+                                    en: `Supplement is ${supplement}°`,
+                                    explain_zh: `答案是 ${supplement}°`,
+                                    explain_en: `Answer is ${supplement}°`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '溫度 / Temperature': {
+                generate: function() {
+                    const isCtoF = Math.random() > 0.5;
+                    if (isCtoF) {
+                        const celsius = Math.floor(Math.random() * 50) + 10;
+                        const fahrenheit = (celsius * 9/5) + 32;
+                        return {
+                            q_zh: `${celsius}°C = ?°F`,
+                            q_en: `${celsius}°C = ?°F`,
+                            a: fahrenheit.toString(),
+                            hint_zh: `°F = °C × 9/5 + 32`,
+                            hint_en: `°F = °C × 9/5 + 32`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：公式',
+                                    title_en: 'Step 1: Formula',
+                                    zh: `華氏度 = 攝氏度 × 9/5 + 32`,
+                                    en: `Fahrenheit = Celsius × 9/5 + 32`,
+                                    explain_zh: `攝氏度和華氏度的轉換公式`,
+                                    explain_en: `Conversion formula between Celsius and Fahrenheit`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `°F = ${celsius} × 9/5 + 32 = ${(celsius * 9/5)} + 32`,
+                                    en: `°F = ${celsius} × 9/5 + 32 = ${(celsius * 9/5)} + 32`,
+                                    explain_zh: `先乘後加`,
+                                    explain_en: `Multiply first, then add`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `${celsius}°C = ${fahrenheit}°F`,
+                                    en: `${celsius}°C = ${fahrenheit}°F`,
+                                    explain_zh: `答案是 ${fahrenheit}°F`,
+                                    explain_en: `Answer is ${fahrenheit}°F`
+                                }
+                            ]
+                        };
+                    } else {
+                        const fahrenheit = Math.floor(Math.random() * 90) + 50;
+                        const celsius = ((fahrenheit - 32) * 5/9).toFixed(1);
+                        return {
+                            q_zh: `${fahrenheit}°F = ?°C`,
+                            q_en: `${fahrenheit}°F = ?°C`,
+                            a: celsius.toString(),
+                            hint_zh: `°C = (°F - 32) × 5/9`,
+                            hint_en: `°C = (°F - 32) × 5/9`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：公式',
+                                    title_en: 'Step 1: Formula',
+                                    zh: `攝氏度 = (華氏度 - 32) × 5/9`,
+                                    en: `Celsius = (Fahrenheit - 32) × 5/9`,
+                                    explain_zh: `華氏度轉攝氏度的公式`,
+                                    explain_en: `Convert Fahrenheit to Celsius`
+                                },
+                                {
+                                    title_zh: '第二步：代入',
+                                    title_en: 'Step 2: Substitute',
+                                    zh: `°C = (${fahrenheit} - 32) × 5/9 = ${fahrenheit - 32} × 5/9`,
+                                    en: `°C = (${fahrenheit} - 32) × 5/9 = ${fahrenheit - 32} × 5/9`,
+                                    explain_zh: `先減後乘`,
+                                    explain_en: `Subtract first, then multiply`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `${fahrenheit}°F = ${celsius}°C`,
+                                    en: `${fahrenheit}°F = ${celsius}°C`,
+                                    explain_zh: `答案是 ${celsius}°C`,
+                                    explain_en: `Answer is ${celsius}°C`
+                                }
+                            ]
+                        };
+                    }
+                }
+            },
+
+            '數據處理 / Data Handling': {
+                generate: function() {
+                    const dataType = Math.floor(Math.random() * 3);
+                    
+                    if (dataType === 0) { // 平均值
+                        const numbers = [
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10
+                        ];
+                        const sum = numbers.reduce((a, b) => a + b, 0);
+                        const average = sum / numbers.length;
+                        return {
+                            q_zh: `數據：${numbers.join(', ')}。平均值是多少？`,
+                            q_en: `Data: ${numbers.join(', ')}. What is the mean?`,
+                            a: average.toString(),
+                            hint_zh: `平均值 = 所有數字的和 ÷ 數字個數`,
+                            hint_en: `Mean = sum of all numbers ÷ count`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：求和',
+                                    title_en: 'Step 1: Find sum',
+                                    zh: `${numbers.join(' + ')} = ${sum}`,
+                                    en: `${numbers.join(' + ')} = ${sum}`,
+                                    explain_zh: `把所有數字加起來`,
+                                    explain_en: `Add all numbers together`
+                                },
+                                {
+                                    title_zh: '第二步：除以個數',
+                                    title_en: 'Step 2: Divide by count',
+                                    zh: `${sum} ÷ ${numbers.length} = ${average}`,
+                                    en: `${sum} ÷ ${numbers.length} = ${average}`,
+                                    explain_zh: `用和除以數字個數`,
+                                    explain_en: `Divide sum by how many numbers`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `平均值是 ${average}`,
+                                    en: `Mean is ${average}`,
+                                    explain_zh: `答案是 ${average}`,
+                                    explain_en: `Answer is ${average}`
+                                }
+                            ]
+                        };
+                    } else if (dataType === 1) { // 中位數
+                        const numbers = [
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10,
+                            Math.floor(Math.random() * 20) + 10
+                        ].sort((a, b) => a - b);
+                        const median = numbers[2];
+                        return {
+                            q_zh: `有序數據：${numbers.join(', ')}。中位數是多少？`,
+                            q_en: `Ordered data: ${numbers.join(', ')}. What is the median?`,
+                            a: median.toString(),
+                            hint_zh: `中位數是中間的數`,
+                            hint_en: `Median is the middle number`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：排序',
+                                    title_en: 'Step 1: Order data',
+                                    zh: `數據已排序：${numbers.join(', ')}`,
+                                    en: `Data ordered: ${numbers.join(', ')}`,
+                                    explain_zh: `從小到大排列`,
+                                    explain_en: `Arrange from smallest to largest`
+                                },
+                                {
+                                    title_zh: '第二步：找中間',
+                                    title_en: 'Step 2: Find middle',
+                                    zh: `共 ${numbers.length} 個數，中間是第 ${Math.ceil(numbers.length/2)} 個`,
+                                    en: `${numbers.length} numbers, middle is position ${Math.ceil(numbers.length/2)}`,
+                                    explain_zh: `中位數在最中間`,
+                                    explain_en: `Median is in the middle`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `中位數是 ${median}`,
+                                    en: `Median is ${median}`,
+                                    explain_zh: `答案是 ${median}`,
+                                    explain_en: `Answer is ${median}`
+                                }
+                            ]
+                        };
+                    } else { // 眾數
+                        const mode = Math.floor(Math.random() * 20) + 10;
+                        const numbers = [mode, mode, Math.floor(Math.random() * 20) + 10, Math.floor(Math.random() * 20) + 10, Math.floor(Math.random() * 20) + 10];
+                        return {
+                            q_zh: `數據：${numbers.join(', ')}。眾數是多少？（眾數是出現最多次的數）`,
+                            q_en: `Data: ${numbers.join(', ')}. What is the mode?`,
+                            a: mode.toString(),
+                            hint_zh: `眾數是出現最多次的數`,
+                            hint_en: `Mode is the number that appears most often`,
+                            steps: [
+                                {
+                                    title_zh: '第一步：計數',
+                                    title_en: 'Step 1: Count frequency',
+                                    zh: `每個數字出現的次數`,
+                                    en: `Count how many times each number appears`,
+                                    explain_zh: `找出哪個數出現最多`,
+                                    explain_en: `Find which number appears most`
+                                },
+                                {
+                                    title_zh: '第二步：比較',
+                                    title_en: 'Step 2: Compare',
+                                    zh: `${mode} 出現 2 次，其他數字只出現 1 次`,
+                                    en: `${mode} appears 2 times, others appear 1 time`,
+                                    explain_zh: `${mode} 出現最多次`,
+                                    explain_en: `${mode} appears most often`
+                                },
+                                {
+                                    title_zh: '第三步：答案',
+                                    title_en: 'Step 3: Answer',
+                                    zh: `眾數是 ${mode}`,
+                                    en: `Mode is ${mode}`,
+                                    explain_zh: `答案是 ${mode}`,
+                                    explain_en: `Answer is ${mode}`
+                                }
+                            ]
+                        };
+                    }
                 }
             }
         };

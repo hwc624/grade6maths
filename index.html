@@ -125,6 +125,22 @@
         .nl-dot { position: absolute; top: 4px; transform: translateX(-50%); color: var(--danger); font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
         .viz-groups { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.6rem 0; }
         .viz-groups .grp { border: 2px dashed var(--primary); border-radius: 8px; padding: 2px 6px; letter-spacing: 1px; color: var(--primary); font-size: 0.8rem; word-break: break-all; }
+        .ap-intro { background: #F8F9FF; border: 1px solid var(--border); border-radius: var(--radius-md); padding: .75rem 1rem; margin: .75rem 0; }
+        .ap-intro summary { cursor: pointer; font-weight: 700; color: var(--primary-dark); }
+        .ap-cols { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: .75rem 0; }
+        .ap-cols > div { background: #fff; border-radius: 10px; padding: .6rem .75rem; overflow-x: auto; }
+        .ap-cols h4, .ap-demo h4 { margin-bottom: .3rem; }
+        .ap-same { font-weight: 600; background: #FEF3C7; border-radius: 8px; padding: .5rem .75rem; }
+        .ap-demo { background: #fff; border-radius: 10px; padding: .75rem; margin-top: .75rem; }
+        .ap-ctrl { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; align-items: center; margin: .4rem 0; }
+        .ap-ctrl .hint-btn { padding: .2rem .7rem; min-width: 2.2rem; }
+        .ap-res { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; font-size: 1.05rem; margin-bottom: .3rem; }
+        .ap-p { color: #C2410C; } .ap-a { color: #3730A3; }
+        .ap-note { text-align: center; font-size: .85rem; color: var(--text-secondary); }
+        .ap-pair { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; } .ap-pair > div { text-align: center; }
+        .why-box { margin-top: .6rem; padding: .5rem .75rem; background: #FFF7ED; border-left: 4px solid #F59E0B; border-radius: 6px; color: #1F2937; font-weight: 400; }
+        .why-en { color: #4B5563; font-style: italic; margin-top: .25rem; }
+        @media (max-width: 600px) { .ap-cols { grid-template-columns: 1fr; } }
         .pic { display: flex; justify-content: center; margin: 0.75rem 0; }
         .pic svg { height: auto; }
         .viz-grid { display: grid; gap: 2px; margin: 0.6rem 0; }
@@ -180,6 +196,7 @@
                     <div class="question-title" id="questionTitle"></div>
                     <div class="progress-line" id="progressLine"></div>
                     <div id="notice"></div>
+                    <div id="topicIntro"></div>
                     <div id="questionContent"></div>
                     <div class="input-group" id="inputGroup" style="display: none;">
                         <input type="text" id="answer" autocomplete="off" inputmode="text" />
@@ -289,6 +306,15 @@ function checkAnswer(spec, raw) {
             const m = toHalfWidth(String(raw)).match(/-?\d+/g);
             return { ok: !!m && m.length === 2 && +m[0] === spec.x && +m[1] === spec.y };
         }
+        case 'pair': {
+            const m = (toHalfWidth(String(raw)).match(/-?\d+(\.\d+)?/g) || []).map(Number);
+            if (m.length === 2 && m[0] === spec.v[0] && m[1] === spec.v[1]) return { ok: true };
+            if (m.length === 2 && m[0] === spec.v[1] && m[1] === spec.v[0]) return { ok: false, partial: L('兩個數字都對，但順序反了：先寫面積，再寫周長。', 'Both numbers are right but in the wrong order: area first, then perimeter.') };
+            if (m.length !== 2) return { ok: false, partial: L('請寫兩個數字，中間用逗號隔開，例如：24, 20', 'Write two numbers separated by a comma, e.g. 24, 20') };
+            if (m[0] === spec.v[0] || m[1] === spec.v[1]) return { ok: false, partial: L(m[0] === spec.v[0] ? '面積對了！周長再算一次。' : '周長對了！面積再算一次。', m[0] === spec.v[0] ? 'The area is right! Check the perimeter.' : 'The perimeter is right! Check the area.') };
+            return { ok: false };
+        }
+        case 'approx': { const v = parseNum(raw); return { ok: v !== null && Math.abs(v - spec.v) <= spec.tol }; }
         case 'choice': {
             const r = normText(raw);
             const o = spec.opts.find(o => o.v === spec.v);
@@ -306,6 +332,8 @@ function answerText(spec, lang) {
         case 'set': return spec.v.join(' ');
         case 'factor': { const c = {}; spec.v.forEach(p => c[p] = (c[p] || 0) + 1); return Object.keys(c).map(p => c[p] > 1 ? `${p}^${c[p]}` : p).join(' × '); }
         case 'point': return `(${spec.x}, ${spec.y})`;
+        case 'pair': return spec.v.join(', ');
+        case 'approx': return `≈ ${fmt(spec.v)}`;
         case 'choice': { const o = spec.opts.find(o => o.v === spec.v); return lang === 'zh' ? `${o.zh}（${o.en}）` : o.en; }
     }
 }
@@ -1042,6 +1070,235 @@ wrapTopic('3D 物體 / 3D Objects', ['picSolid', 'picEuler', 'picRound'], .6, su
             steps: [{ p: L('它的平面是什麼形狀？若沒有平面寫 0；是圓形寫 1。', 'What shape are its flat faces? Write 1 if circles, 0 if it has none.'), ans: N(flat ? 1 : 0), ok: L('好！', 'Good!') }, { p: L('一共有幾個平面？', 'How many flat faces?'), ans: N(flat), ok: L('完成！', 'Done!') }], sol: L(`${s[1]}有 ${flat} 個平面。`, `A ${ty} has ${flat} flat face(s).`), alt: L('想像把它蓋在印台上蓋印章：能蓋出幾個圓形，就有幾個平面。', 'Imagine stamping it on an ink pad: each circle you can print is one flat face.') }; }
     const q = picSolidQ(sub === 'picEuler' ? 'picEuler' : pick(['picCount', 'picName']), 'D'); q.sub = sub; return q;
 });
+// 24 面積與周長 ------------------------------------------------------
+const AP_CELL = 26;
+const apKey = cells => [...cells].sort().join(';');
+const apNb = (c, x, y) => (c.has(`${x - 1},${y}`) ? 1 : 0) + (c.has(`${x + 1},${y}`) ? 1 : 0) + (c.has(`${x},${y - 1}`) ? 1 : 0) + (c.has(`${x},${y + 1}`) ? 1 : 0);
+function apPolyomino(cols, rows, n) {
+    for (let t = 0; t < 200; t++) {
+        const c = new Set([`${R(0, cols - 1)},${R(0, rows - 1)}`]);
+        while (c.size < n) { const [x, y] = pick([...c]).split(',').map(Number); const [dx, dy] = pick([[1, 0], [-1, 0], [0, 1], [0, -1]]); const nx = x + dx, ny = y + dy; if (nx >= 0 && ny >= 0 && nx < cols && ny < rows) c.add(`${nx},${ny}`); }
+        // reject holes: flood empty cells from outside (padded)
+        const out = new Set(['-1,-1']), st = [[-1, -1]];
+        while (st.length) { const [x, y] = st.pop(); for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = `${nx},${ny}`; if (nx < -1 || ny < -1 || nx > cols || ny > rows || out.has(k) || c.has(k)) continue; out.add(k); st.push([nx, ny]); } }
+        if (out.size + c.size !== (cols + 2) * (rows + 2)) continue;
+        const xs = [...c].map(s => +s.split(',')[0]), ys = [...c].map(s => +s.split(',')[1]), mx = Math.min(...xs), my = Math.min(...ys);
+        return new Set([...c].map(s => { const [x, y] = s.split(',').map(Number); return `${x - mx},${y - my}`; }));
+    }
+    return null;
+}
+const apPerim = c => [...c].reduce((s, k) => { const [x, y] = k.split(',').map(Number); return s + 4 - apNb(c, x, y); }, 0);
+// grid SVG: cells Set "x,y" placed at offset; mode 'area' (fill+number) | 'per' (edges numbered) | 'plain'
+function apGridSVG(cols, rows, cells, ox, oy, col, mode) {
+    const S = AP_CELL, W = cols * S + 2, H = rows * S + 2; let g = '';
+    for (let i = 0; i <= cols; i++) g += `<line x1="${1 + i * S}" y1="1" x2="${1 + i * S}" y2="${H - 1}" stroke="#CBD5E1" stroke-width="1"/>`;
+    for (let j = 0; j <= rows; j++) g += `<line x1="1" y1="${1 + j * S}" x2="${W - 1}" y2="${1 + j * S}" stroke="#CBD5E1" stroke-width="1"/>`;
+    let f = '', e = '', n = 0, m = 0;
+    [...cells].sort((a, b) => { const [ax, ay] = a.split(',').map(Number), [bx, by] = b.split(',').map(Number); return ay - by || ax - bx; }).forEach(k => {
+        const [x, y] = k.split(',').map(Number), px = 1 + (x + ox) * S, py = 1 + (y + oy) * S;
+        f += `<rect x="${px}" y="${py}" width="${S}" height="${S}" fill="${col[1]}"/>`;
+        if (mode === 'area') f += `<text x="${px + S / 2}" y="${py + S / 2 + 4}" font-size="11" text-anchor="middle" fill="${col[0]}">${++m}</text>`;
+        [[0, -1, px, py, px + S, py], [1, 0, px + S, py, px + S, py + S], [0, 1, px, py + S, px + S, py + S], [-1, 0, px, py, px, py + S]].forEach(([dx, dy, x1, y1, x2, y2]) => {
+            if (cells.has(`${x + dx},${y + dy}`)) return;
+            e += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${mode === 'per' ? '#EA580C' : col[0]}" stroke-width="${mode === 'per' ? 4 : 3}" stroke-linecap="round"/>`;
+            if (mode === 'per') e += `<text x="${(x1 + x2) / 2 + dx * 8}" y="${(y1 + y2) / 2 + dy * 8 + 4}" font-size="10" text-anchor="middle" fill="#9A3412" font-weight="700">${++n}</text>`;
+        });
+    });
+    return `<svg viewBox="0 0 ${W} ${H}" width="${Math.min(W, 340)}" role="img" aria-label="grid shape"><rect x="0" y="0" width="${W}" height="${H}" fill="#fff"/>${g}${f}${e}</svg>`;
+}
+const AP_UNIT_NOTE = L('（每一小格是 1 cm × 1 cm）', '(each small square is 1 cm × 1 cm)');
+function apPolyLen(v) { let p = 0; for (let i = 0; i < v.length; i++) { const a = v[i], b = v[(i + 1) % v.length]; p += Math.hypot(b[0] - a[0], b[1] - a[1]); } return p; }
+function apShoelace(v) { let s = 0; for (let i = 0; i < v.length; i++) { const a = v[i], b = v[(i + 1) % v.length]; s += a[0] * b[1] - b[0] * a[1]; } return s / 2; }
+// labelled polygon SVG; labels[i] for edge i (null = hidden '?'), drawn scaled to fit
+function apShapeSVG(v, labels, col, opt = {}) {
+    if (apShoelace(v) < 0) { /* keep clockwise on screen (y down => positive) */ }
+    const xs = v.map(p => p[0]), ys = v.map(p => p[1]), mnx = Math.min(...xs), mny = Math.min(...ys), w = Math.max(...xs) - mnx, h = Math.max(...ys) - mny;
+    const sc = Math.min(220 / w, 170 / h), pad = 34, W = w * sc + pad * 2, H = h * sc + pad * 2;
+    const P = v.map(p => [pad + (p[0] - mnx) * sc, pad + (p[1] - mny) * sc]); const sgn = apShoelace(v) > 0 ? 1 : -1;
+    let t = '';
+    P.forEach((a, i) => { const b = P[(i + 1) % P.length], dx = b[0] - a[0], dy = b[1] - a[1], ln = Math.hypot(dx, dy) || 1; const nx = sgn * dy / ln, ny = -sgn * dx / ln;
+        const lb = labels[i]; if (lb === undefined) return; const mx = (a[0] + b[0]) / 2 + nx * 15, my = (a[1] + b[1]) / 2 + ny * 15 + 4;
+        if (opt.ticks) { const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2; t += `<line x1="${cx - nx * 5}" y1="${cy - ny * 5}" x2="${cx + nx * 5}" y2="${cy + ny * 5}" stroke="#111" stroke-width="1.5"/>`; }
+        if (lb !== '') t += `<text x="${mx}" y="${my}" font-size="13" font-weight="700" text-anchor="middle" fill="${lb === null ? '#DC2626' : '#1F2937'}">${lb === null ? '?' : lb + ' cm'}</text>`; });
+    return `<svg viewBox="0 0 ${W.toFixed(1)} ${H.toFixed(1)}" width="${Math.min(W, 320).toFixed(0)}" role="img" aria-label="shape"><polygon points="${P.map(p => p.map(z => z.toFixed(1)).join(',')).join(' ')}" fill="${col[1]}" stroke="${col[0]}" stroke-width="3" stroke-linejoin="round"/>${t}${opt.nts ? `<text x="${W / 2}" y="${H - 6}" font-size="11" text-anchor="middle" fill="#6B7280">不按比例 not to scale</text>` : ''}</svg>`;
+}
+const AP_WHY_PER = L('周長是「繞圖形外圍走一圈」的總長度：把外面每一條邊的長度都加起來，單位是 cm。裡面的格子不算。', 'Perimeter is the total distance around the outside: add up the length of every outside edge. Its unit is cm. Squares inside do not count.');
+const AP_WHY_AREA = L('面積是「圖形裡面佔了多少個 1 cm² 的小方格」，單位是 cm²。長方形可以用 長 × 寬。', 'Area is how many 1 cm² squares fit inside the shape; its unit is cm². For a rectangle use length × width.');
+function apWhy(kind, perV, areaV) { return raw => { const v = parseNum(raw); const base = kind === 'per' ? AP_WHY_PER : AP_WHY_AREA;
+    if (v !== null && kind === 'per' && areaV !== undefined && v === areaV) return L('你算出來的是「面積」（裡面的格子數）喔！題目問的是周長。' + base.zh, 'That number is the AREA (squares inside)! The question asks for the perimeter. ' + base.en);
+    if (v !== null && kind === 'area' && perV !== undefined && v === perV) return L('你算出來的是「周長」（外圍的長度）喔！題目問的是面積。' + base.zh, 'That number is the PERIMETER (distance around)! The question asks for the area. ' + base.en);
+    return base; }; }
+const AP_POLY = [['三角形', 'triangle'], ['正方形', 'square'], ['五邊形', 'pentagon'], ['六邊形', 'hexagon'], ['七邊形', 'heptagon'], ['八邊形', 'octagon'], ['九邊形', 'nonagon'], ['十邊形', 'decagon']];
+function apRegPts(n, rot) { return Array.from({ length: n }, (_, i) => { const a = (rot + 360 * i / n - 90) * Math.PI / 180; return [Math.cos(a) * 10, Math.sin(a) * 10]; }); }
+function apCompShape(kind) {
+    // returns {v, rects:[[w,h]...], name}
+    if (kind === 'L') { const W = R(5, 14), H = R(5, 12), a = R(2, W - 2), b = R(2, H - 2);
+        return { v: [[0, 0], [a, 0], [a, H - b], [W, H - b], [W, H], [0, H]], rects: [[a, H - b], [W, b]], name: L('L 形', 'L-shape'), hide: [2, 1], W, H }; }
+    if (kind === 'T') { const W = R(6, 15), h1 = R(2, 8), c = R(2, W - 3), x0 = R(1, W - c - 1), h2 = R(2, 8);
+        return { v: [[0, h2], [x0, h2], [x0, 0], [x0 + c, 0], [x0 + c, h2], [W, h2], [W, h2 + h1], [0, h2 + h1]], rects: [[W, h1], [c, h2]], name: L('凸字形', 'T-shape'), hide: [0, 7], W, H: h1 + h2 }; }
+    const a = R(2, 6), b = R(2, 6), c = R(2, 6), d = R(2, 6); // staircase
+    return { v: [[0, 0], [a, 0], [a, b], [a + c, b], [a + c, b + d], [0, b + d]], rects: [[a, b], [a + c, d]], name: L('階梯形', 'step shape'), hide: [2, 5], W: a + c, H: b + d };
+}
+function apBlob() {
+    const cols = 12, rows = 9, kind = pick(['blob', 'blob', 'moon', 'house']); let v, sig;
+    if (kind === 'blob') { const r0 = R(25, 38) / 10, k = R(2, 4), amp = R(10, 25) / 100, ph = R(0, 11), cx = 6, cy = 4.5;
+        v = Array.from({ length: 36 }, (_, i) => { const t = i / 36 * 2 * Math.PI, r = r0 * (1 + amp * Math.sin(k * t + ph)); return [cx + r * Math.cos(t), cy + r * Math.sin(t) * 0.95]; }); sig = `b${r0}${k}${amp}${ph}`; }
+    else if (kind === 'moon') { const r = R(30, 42) / 10, off = R(12, 22) / 10, cx = 6, cy = 4.5;
+        const outer = Array.from({ length: 25 }, (_, i) => { const t = Math.PI * (0.5 + i / 24); return [cx + r * Math.cos(t), cy + r * Math.sin(t)]; });
+        // inner arc: an ellipse arc bulging left, offset right so a crescent remains
+        v = outer.concat(Array.from({ length: 25 }, (_, i) => { const t = Math.PI * (1.5 - i / 24); return [cx + off + r * 0.85 * Math.cos(t), cy + r * Math.sin(t)]; }));
+        sig = `m${r}${off}`; }
+    else { const w = R(4, 7), h = R(2, 4), rf = R(15, 30) / 10, x0 = R(2, 11 - w) , y0 = rows - 1 - h; v = [[x0, y0 + h], [x0, y0], [x0 + w / 2, y0 - rf], [x0 + w, y0], [x0 + w, y0 + h]]; sig = `h${w}${h}${rf}${x0}`; }
+    const area = Math.abs(apShoelace(v));
+    // count full / partial cells by sampling
+    const inside = (x, y) => { let c = false; for (let i = 0, j = v.length - 1; i < v.length; j = i++) { const [xi, yi] = v[i], [xj, yj] = v[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+    let full = 0, part = 0;
+    for (let gx = 0; gx < cols; gx++) for (let gy = 0; gy < rows; gy++) { let k = 0; for (let a = 0; a < 6; a++) for (let b = 0; b < 6; b++) if (inside(gx + (a + .5) / 6, gy + (b + .5) / 6)) k++; if (k === 36) full++; else if (k > 0) part++; }
+    return { v, area, full, part, cols, rows, kind, sig };
+}
+function apBlobSVG(b, col) { const S = AP_CELL, W = b.cols * S + 2, H = b.rows * S + 2; let g = '';
+    for (let i = 0; i <= b.cols; i++) g += `<line x1="${1 + i * S}" y1="1" x2="${1 + i * S}" y2="${H - 1}" stroke="#CBD5E1"/>`;
+    for (let j = 0; j <= b.rows; j++) g += `<line x1="1" y1="${1 + j * S}" x2="${W - 1}" y2="${1 + j * S}" stroke="#CBD5E1"/>`;
+    return `<svg viewBox="0 0 ${W} ${H}" width="${Math.min(W, 340)}" role="img" aria-label="irregular shape on grid"><rect width="${W}" height="${H}" fill="#fff"/>${g}<polygon points="${b.v.map(p => `${(1 + p[0] * S).toFixed(1)},${(1 + p[1] * S).toFixed(1)}`).join(' ')}" fill="${col[1]}" fill-opacity=".75" stroke="${col[0]}" stroke-width="2.5"/></svg>`; }
+const apRectSVG = (w, h, col, lw = true) => apShapeSVG([[0, 0], [w, 0], [w, h], [0, h]], lw ? [`${w}`, `${h}`] : [], col);
+const AP_EX = new Set(['0,0', '1,0', '2,0', '3,0', '0,1', '1,1', '2,1', '3,1']);
+const AP_CHOICES = [{ v: 'A', zh: 'A', en: 'A' }, { v: 'B', zh: 'B', en: 'B' }, { v: 'same', zh: '一樣大', en: 'the same', alias: ['一樣', 'same', 'equal', '相同'] }];
+
+TOPICS['面積與周長 / Area and Perimeter'] = { gen(sub) {
+    sub = sub || pick(['gridPer', 'gridArea', 'compPer', 'compMissing', 'compArea', 'polyPer', 'both', 'compare', 'findSide', 'estimate']);
+    const ci = R(0, 5), col = PIC_COLORS[ci];
+    if (sub === 'gridPer' || sub === 'gridArea') {
+        const n = R(4, 14), c = apPolyomino(7, 5, n); const A = c.size, P = apPerim(c);
+        const xs = [...c].map(s => +s.split(',')[0]), ys = [...c].map(s => +s.split(',')[1]), cols = 10, rows = 7, ox = 1 + Math.floor((8 - 1 - Math.max(...xs)) / 2), oy = 1;
+        const pic = apGridSVG(cols, rows, c, ox, oy, col, 'plain') + `<div class="ap-note">${AP_UNIT_NOTE.zh} ${AP_UNIT_NOTE.en}</div>`;
+        const key = `${sub}|${apKey(c)}`;
+        const sharedEdges = (4 * A - P) / 2;
+        if (sub === 'gridArea') return { key, sub, pic, q: L(`數一數：方格上這個圖形的面積是多少 cm²？${AP_UNIT_NOTE.zh}`, `Count: what is the area of the shape on the grid, in cm²? ${AP_UNIT_NOTE.en}`), ans: N(A), why: apWhy('area', P, A),
+            h1: L('面積 = 圖形「裡面」有幾個小方格。每一格是 1 cm²。', 'Area = how many small squares are INSIDE the shape. Each is 1 cm².'),
+            h2: L('一排一排數，數過的格子在心裡打勾，不要重複。', 'Count row by row and tick each square in your head so you don’t count twice.'),
+            steps: [{ p: L('最上面那一排有幾格塗色？', 'How many shaded squares are in the top row?'), ans: N([...c].filter(s => s.split(',')[1] === '0').length), ok: L('好！再往下一排一排數。', 'Good! Keep going row by row.') }, { p: L('全部加起來共有幾格？', 'How many squares altogether?'), ans: N(A), ok: L(`對！面積就是 ${A} cm²。`, `Yes! The area is ${A} cm².`) }],
+            sol: L(`裡面一共 ${A} 個 1 cm² 的格子，面積 = ${A} cm²。${apGridSVG(cols, rows, c, ox, oy, col, 'area')}`, `There are ${A} squares of 1 cm² inside, so area = ${A} cm².`),
+            alt: L(`想像每一格是一塊地磚：要鋪滿這個圖形需要幾塊地磚？那就是面積。（周長是圍一圈籬笆的長度，跟面積不一樣：這個圖形的周長是另一個數。）`, `Think of each square as a floor tile: how many tiles cover the shape? That is the area. (The perimeter is the length of a fence around it — a different number.)`) };
+        return { key, sub, pic, q: L(`數一數：方格上這個圖形的周長是多少 cm？${AP_UNIT_NOTE.zh}`, `Count: what is the perimeter of the shape on the grid, in cm? ${AP_UNIT_NOTE.en}`), ans: N(P), why: apWhy('per', P, A),
+            h1: L('周長 = 沿著外圍走一圈，數走過幾條小格的邊。每條是 1 cm。', 'Perimeter = walk around the outside and count the small square edges you pass. Each is 1 cm.'),
+            h2: L('從一個角開始，用手指沿著外框走，回到起點就停。凹進去的地方也要走進去。', 'Start at a corner, trace the outline with your finger and stop back at the start. Go into the dents too.'),
+            steps: [{ p: L(`有幾個塗色的格子？`, 'How many shaded squares are there?'), ans: N(A), ok: L('好！', 'Good!') }, { p: L(`如果每格分開，共有 ${A} × 4 = ? 條邊`, `If the squares were separate, they’d have ${A} × 4 = ? edges`), ans: N(4 * A), ok: L(`對。但有 ${sharedEdges} 處兩格貼在一起，貼住的邊是在裡面，每處會少掉 2 條。`, `Right. But there are ${sharedEdges} places where two squares touch — each hides 2 edges inside.`) },
+                { p: L(`${4 * A} − 2 × ${sharedEdges} = ?`, `${4 * A} − 2 × ${sharedEdges} = ?`), ans: N(P), ok: L(`對！周長 ${P} cm。`, `Yes! Perimeter ${P} cm.`) }],
+            sol: L(`沿外圍數，一共 ${P} 條 1 cm 的邊，周長 = ${P} cm。${apGridSVG(cols, rows, c, ox, oy, col, 'per')}`, `Counting around the outside gives ${P} edges of 1 cm, so perimeter = ${P} cm.`),
+            alt: L(`想像一隻螞蟻沿著圖形的邊爬一圈：牠走了幾格長，就是周長。只走外面，不能穿過裡面。（裡面的格子數 ${A} 是面積，不是周長。）`, `Imagine an ant walking once around the edge: the number of 1 cm steps it takes is the perimeter. It may not cut through the inside. (The ${A} squares inside are the area, not the perimeter.)`) };
+    }
+    if (sub === 'compPer' || sub === 'compMissing' || sub === 'compArea') {
+        const sh = apCompShape(pick(['L', 'T', 'S'])), v = sh.v, lens = v.map((p, i) => { const b = v[(i + 1) % v.length]; return Math.abs(b[0] - p[0]) + Math.abs(b[1] - p[1]); });
+        const P = lens.reduce((a, b) => a + b, 0), A = sh.rects.reduce((s, r) => s + r[0] * r[1], 0);
+        const key = `${sub}|${JSON.stringify(v)}`;
+        if (sub === 'compArea') { const [r1, r2] = sh.rects;
+            return { key, sub, pic: apShapeSVG(v, lens.map(String), col), q: L(`這個${sh.name.zh}的面積是多少 cm²？（可以把它切成兩個長方形）`, `What is the area of this ${sh.name.en} in cm²? (Split it into two rectangles.)`), ans: N(A), why: apWhy('area', P, A),
+                h1: L('畫一條線，把圖形切成兩個長方形。', 'Draw a line to cut the shape into two rectangles.'), h2: L(`一塊是 ${r1[0]} × ${r1[1]}，另一塊是 ${r2[0]} × ${r2[1]}。`, `One piece is ${r1[0]} × ${r1[1]}, the other ${r2[0]} × ${r2[1]}.`),
+                steps: [{ p: L(`第一塊長方形：${r1[0]} × ${r1[1]} = ?`, `First rectangle: ${r1[0]} × ${r1[1]} = ?`), ans: N(r1[0] * r1[1]), ok: L('好！', 'Good!') }, { p: L(`第二塊長方形：${r2[0]} × ${r2[1]} = ?`, `Second rectangle: ${r2[0]} × ${r2[1]} = ?`), ans: N(r2[0] * r2[1]), ok: L('好！', 'Good!') }, { p: L(`加起來：${r1[0] * r1[1]} + ${r2[0] * r2[1]} = ?`, `Add: ${r1[0] * r1[1]} + ${r2[0] * r2[1]} = ?`), ans: N(A), ok: L('完成！', 'Done!') }],
+                sol: L(`${r1[0]} × ${r1[1]} + ${r2[0]} × ${r2[1]} = ${r1[0] * r1[1]} + ${r2[0] * r2[1]} = ${A} cm²`, `${r1[0]} × ${r1[1]} + ${r2[0]} × ${r2[1]} = ${A} cm²`),
+                alt: L(`另一種方法：先算外面的大長方形 ${sh.W} × ${sh.H} = ${sh.W * sh.H}，再減掉缺掉的那一塊 ${sh.W * sh.H - A}，也得到 ${A} cm²。`, `Another way: the big outer rectangle ${sh.W} × ${sh.H} = ${sh.W * sh.H}, minus the missing piece ${sh.W * sh.H - A}, also gives ${A} cm².`) }; }
+        const labels = lens.map(String); if (sub === 'compMissing') sh.hide.forEach(i => labels[i] = null);
+        const miss = sub === 'compMissing' ? sh.hide.map(i => lens[i]) : [];
+        const steps = sub === 'compMissing' ? [{ p: L('先找第一個「?」：和它平行、在對面的邊加起來要一樣長。它是幾 cm？', 'Find the first “?”: opposite parallel sides must add up to the same length. How many cm?'), ans: N(miss[0]), ok: L('好！', 'Good!') }, { p: L('第二個「?」是幾 cm？', 'And the second “?”?'), ans: N(miss[1]), ok: L('好！', 'Good!') }, { p: L(`把所有 ${lens.length} 條邊加起來：${lens.join(' + ')} = ?`, `Add all ${lens.length} sides: ${lens.join(' + ')} = ?`), ans: N(P), ok: L('完成！', 'Done!') }]
+            : [{ p: L('這個圖形有幾條邊？', 'How many sides does the shape have?'), ans: N(lens.length), ok: L('好，每一條都要加。', 'Good — add every one.') }, { p: L(`${lens.join(' + ')} = ?`, `${lens.join(' + ')} = ?`), ans: N(P), ok: L('完成！', 'Done!') }];
+        return { key, sub, pic: apShapeSVG(v, labels, col), q: sub === 'compMissing' ? L(`這個${sh.name.zh}有兩條邊沒有標長度（?）。先推算出來，再求周長（cm）。`, `Two sides of this ${sh.name.en} are not labelled (?). Work them out, then find the perimeter in cm.`) : L(`這個${sh.name.zh}的周長是多少 cm？`, `What is the perimeter of this ${sh.name.en} in cm?`),
+            ans: N(P), why: apWhy('per', P, A), h1: L('周長 = 外圍「每一條」邊加起來，一條都不能漏。', 'Perimeter = add EVERY outside side; don’t miss any.'),
+            h2: sub === 'compMissing' ? L(`缺的邊：用「對面的邊」來推算，例如全寬 ${sh.W} cm 減掉已知的部分。`, `For a missing side use the opposite side, e.g. full width ${sh.W} cm minus the known part.`) : L('從一個角開始沿著邊走，邊走邊加，最後回到起點。', 'Start at a corner, walk round adding as you go, finish at the start.'),
+            steps, sol: L(`${lens.join(' + ')} = ${P} cm`, `${lens.join(' + ')} = ${P} cm`),
+            alt: L(`捷徑：這種「直角轉彎」的圖形，周長和外面框住它的大長方形一樣：2 × (${sh.W} + ${sh.H}) = ${2 * (sh.W + sh.H)} cm。${2 * (sh.W + sh.H) === P ? '' : `（凸字形中間那塊突出來，多了兩段豎邊，所以要再加上。）`}`, `Shortcut: for right-angled shapes like this, the perimeter often equals that of the surrounding rectangle: 2 × (${sh.W} + ${sh.H}) = ${2 * (sh.W + sh.H)} cm.${2 * (sh.W + sh.H) === P ? '' : ' (The T-shape’s tab adds two extra vertical pieces, so add those too.)'}`) };
+    }
+    if (sub === 'polyPer') {
+        const kind = pick(['reg', 'reg', 'star', 'trap', 'house', 'kite', 'quad']);
+        if (kind === 'reg' || kind === 'star') { const n = kind === 'star' ? 10 : R(3, 10), s = R(2, 25), rot = R(0, 5) * 15, P = n * s; let v;
+            if (kind === 'star') v = Array.from({ length: 10 }, (_, i) => { const a = (rot + 36 * i - 90) * Math.PI / 180, r = i % 2 ? 4.2 : 10; return [Math.cos(a) * r, Math.sin(a) * r]; }); else v = apRegPts(n, rot);
+            const nm = kind === 'star' ? L('星形', 'star') : n === 4 ? L('正方形', 'square') : L(`正${AP_POLY[n - 3][0]}`, `regular ${AP_POLY[n - 3][1]}`);
+            const labels = v.map((_, i) => i === 0 ? `${s}` : '');
+            return { key: `${sub}|${kind}${n}s${s}r${rot}`, sub, pic: apShapeSVG(v, labels, col, { ticks: true, nts: true }), q: L(`這個${nm.zh}每一條邊都一樣長（短線記號表示等長），一條邊是 ${s} cm。周長是多少 cm？（不按比例）`, `Every side of this ${nm.en} is the same length (tick marks mean equal), and one side is ${s} cm. What is its perimeter in cm? (not to scale)`), ans: N(P), why: apWhy('per'),
+                h1: L('先數它有幾條邊。', 'First count how many sides it has.'), h2: L('邊都一樣長，所以周長 = 邊數 × 一條邊的長度。', 'All sides are equal, so perimeter = number of sides × one side.'),
+                steps: [{ p: L('它有幾條邊？', 'How many sides?'), ans: N(n), ok: L('好！', 'Good!') }, { p: L(`${n} × ${s} = ?`, `${n} × ${s} = ?`), ans: N(P), ok: L('完成！', 'Done!') }], sol: L(`${n} 條邊 × ${s} cm = ${P} cm`, `${n} sides × ${s} cm = ${P} cm`),
+                alt: L(`也可以一條一條加：${Array(n).fill(s).join(' + ')} = ${P}。乘法只是比較快的加法。`, `You can also add them one by one: ${Array(n).fill(s).join(' + ')} = ${P}. Multiplying is just faster adding.`) }; }
+        let v, sides;
+        if (kind === 'trap') { const t = R(2, 10), b = t + R(2, 8), l = R(3, 12); v = [[-t / 2, 0], [t / 2, 0], [b / 2, 6], [-b / 2, 6]]; sides = [t, l, b, l]; }
+        else if (kind === 'house') { const w = R(3, 12), h = R(3, 10), r = R(3, 9); v = [[0, -4], [5, 0], [5, 6], [-5, 6], [-5, 0]]; sides = [r, h, w, h, r]; }
+        else if (kind === 'kite') { const a = R(2, 9), b = a + R(2, 9); v = [[0, 0], [4, 3], [0, 11], [-4, 3]]; sides = [a, b, b, a]; }
+        else { sides = [R(2, 15), R(2, 15), R(2, 15), R(2, 15)]; v = [[0, 0], [9, 1], [8, 7], [1, 6]]; }
+        const P = sides.reduce((a, b) => a + b, 0);
+        return { key: `${sub}|${kind}${sides.join(',')}`, sub, pic: apShapeSVG(v, sides.map(String), col, { nts: true }), q: L('求這個圖形的周長（cm）。圖不按比例畫，要用標的數字。', 'Find the perimeter of this shape in cm. It is not drawn to scale — use the numbers shown.'), ans: N(P), why: apWhy('per'),
+            h1: L('不按比例 = 不能用尺量，只能用標示的長度。', 'Not to scale = don’t measure with a ruler; use the labels.'), h2: L(`有 ${sides.length} 條邊，全部加起來。`, `There are ${sides.length} sides; add them all.`),
+            steps: [{ p: L('有幾條邊？', 'How many sides?'), ans: N(sides.length), ok: L('好！', 'Good!') }, { p: L(`${sides.join(' + ')} = ?`, `${sides.join(' + ')} = ?`), ans: N(P), ok: L('完成！', 'Done!') }], sol: L(`${sides.join(' + ')} = ${P} cm`, `${sides.join(' + ')} = ${P} cm`),
+            alt: L('想像拿一條繩子把圖形圍起來，再把繩子拉直量長度：每一段邊的長度合起來就是繩子的長度。', 'Imagine wrapping a string around the shape and then straightening it: its length is all the sides added together.') };
+    }
+    if (sub === 'both') { const w = R(2, 15), h = R(2, 12), A = w * h, P = 2 * (w + h), sq = w === h;
+        return { key: `${sub}|${w}x${h}`, sub, pic: apRectSVG(w, h, col), q: L(`這個${sq ? '正方形' : '長方形'}長 ${w} cm、寬 ${h} cm。請同時寫出它的「面積, 周長」，例如：24, 20`, `This ${sq ? 'square' : 'rectangle'} is ${w} cm by ${h} cm. Write its “area, perimeter”, for example: 24, 20`), ans: { t: 'pair', v: [A, P] },
+            why: raw => { const m = (toHalfWidth(String(raw)).match(/\d+(\.\d+)?/g) || []).map(Number); if (m[0] === P && m[1] === A) return L('順序反過來了：先寫面積（cm²），再寫周長（cm）。', 'Wrong order: area (cm²) first, then perimeter (cm).'); return L(AP_WHY_AREA.zh + AP_WHY_PER.zh, AP_WHY_AREA.en + ' ' + AP_WHY_PER.en); },
+            h1: L('面積 = 長 × 寬；周長 = (長 + 寬) × 2。', 'Area = length × width; perimeter = (length + width) × 2.'), h2: L(`面積 ${w} × ${h}；周長 (${w} + ${h}) × 2。`, `Area ${w} × ${h}; perimeter (${w} + ${h}) × 2.`),
+            steps: [{ p: L(`面積：${w} × ${h} = ? cm²`, `Area: ${w} × ${h} = ? cm²`), ans: N(A), ok: L('好！', 'Good!') }, { p: L(`周長：(${w} + ${h}) × 2 = ? cm`, `Perimeter: (${w} + ${h}) × 2 = ? cm`), ans: N(P), ok: L(`完成！答案寫成 ${A}, ${P}`, `Done! Answer: ${A}, ${P}`) }],
+            sol: L(`面積 = ${w} × ${h} = ${A} cm²；周長 = (${w} + ${h}) × 2 = ${P} cm`, `Area = ${w} × ${h} = ${A} cm²; perimeter = (${w} + ${h}) × 2 = ${P} cm`),
+            alt: L(`面積是「鋪地磚」：${h} 排、每排 ${w} 塊 = ${A} 塊。周長是「圍籬笆」：上下兩邊各 ${w}、左右兩邊各 ${h}，${w} + ${w} + ${h} + ${h} = ${P}。`, `Area is tiling: ${h} rows of ${w} tiles = ${A}. Perimeter is fencing: ${w} + ${w} + ${h} + ${h} = ${P}.`) }; }
+    if (sub === 'compare') { const half = R(6, 14); let w1 = R(1, half - 1), w2 = R(1, half - 1); if (w1 === w2 || w1 === half - w2) return this.gen(sub);
+        const sameP = Math.random() < .5; let A1, A2, P1, P2, h1, h2;
+        if (sameP) { h1 = half - w1; h2 = half - w2; }
+        else { const A = pick([12, 16, 18, 24, 30, 36, 48]); const ds = []; for (let d = 1; d <= A; d++) if (A % d === 0 && d <= A / d) ds.push(d); if (ds.length < 2) return this.gen(sub); [w1, w2] = shuffle(ds).slice(0, 2); h1 = A / w1; h2 = A / w2; }
+        A1 = w1 * h1; A2 = w2 * h2; P1 = 2 * (w1 + h1); P2 = 2 * (w2 + h2);
+        const ask = sameP ? 'area' : 'per', a = ask === 'area' ? [A1, A2] : [P1, P2], v = a[0] === a[1] ? 'same' : a[0] > a[1] ? 'A' : 'B';
+        const pic = `<div class="ap-pair"><div><b>A</b>${apRectSVG(w1, h1, PIC_COLORS[0])}</div><div><b>B</b>${apRectSVG(w2, h2, PIC_COLORS[2])}</div></div>`;
+        const word = ask === 'area' ? L('面積', 'area') : L('周長', 'perimeter'), same = ask === 'area' ? L('周長', 'perimeter') : L('面積', 'area');
+        return { key: `${sub}|${[[w1, h1], [w2, h2]].map(x => x.join('x')).join('-')}${ask}`, sub, pic, q: L(`長方形 A（${w1} cm × ${h1} cm）和 B（${w2} cm × ${h2} cm）的${same.zh}一樣。哪一個的${word.zh}比較大？（A / B / 一樣大）`, `Rectangles A (${w1} cm × ${h1} cm) and B (${w2} cm × ${h2} cm) have the same ${same.en}. Which has the larger ${word.en}? (A / B / the same)`),
+            ans: { t: 'choice', v, opts: AP_CHOICES }, why: () => L(`${same.zh}一樣，不代表${word.zh}一樣！面積和周長是兩種不同的量，要分別算。`, `Same ${same.en} does NOT mean same ${word.en}! Area and perimeter are different measures — work each out.`),
+            h1: L(`分別算出 A 和 B 的${word.zh}。`, `Work out the ${word.en} of A and of B.`), h2: ask === 'area' ? L('面積 = 長 × 寬。', 'Area = length × width.') : L('周長 = (長 + 寬) × 2。', 'Perimeter = (length + width) × 2.'),
+            steps: [{ p: L(`A 的${word.zh}是？`, `${word.en} of A?`), ans: N(a[0]), ok: L('好！', 'Good!') }, { p: L(`B 的${word.zh}是？`, `${word.en} of B?`), ans: N(a[1]), ok: L('好！', 'Good!') }, { p: L('哪一個比較大？', 'Which is larger?'), ans: { t: 'choice', v, opts: AP_CHOICES }, ok: L('完成！', 'Done!') }],
+            sol: L(`A：面積 ${A1} cm²、周長 ${P1} cm；B：面積 ${A2} cm²、周長 ${P2} cm。答案：${v === 'same' ? '一樣大' : v}`, `A: area ${A1} cm², perimeter ${P1} cm; B: area ${A2} cm², perimeter ${P2} cm. Answer: ${v === 'same' ? 'the same' : v}`),
+            alt: L('同樣長的繩子可以圍出胖胖的長方形或細細長長的長方形：越接近正方形，圍出來的面積越大；越細長，面積越小。', 'The same length of string can make a fat rectangle or a long thin one: the closer to a square, the bigger the area; the thinner, the smaller.') }; }
+    if (sub === 'findSide') { const v = pick(['sqA', 'rectA', 'sqP', 'rectP']);
+        if (v === 'sqA') { const s = R(2, 15), A = s * s; return { key: `${sub}|${v}${s}`, sub, pic: apShapeSVG([[0, 0], [1, 0], [1, 1], [0, 1]], [null, ''], col, { ticks: true }), q: L(`一個正方形的面積是 ${A} cm²。它的邊長是多少 cm？`, `A square has an area of ${A} cm². How long is each side in cm?`), ans: N(s), why: () => L('正方形面積 = 邊長 × 邊長。要找「哪個數自己乘自己」等於面積，不是把面積除以 4（除以 4 是周長的算法）。', 'Square area = side × side. Find the number that times itself gives the area — don’t divide by 4 (that is for perimeter).'),
+            h1: L('正方形的面積 = 邊長 × 邊長。', 'Area of a square = side × side.'), h2: L(`哪一個數 × 自己 = ${A}？`, `Which number × itself = ${A}?`), steps: [{ p: L(`? × ? = ${A}（兩個數一樣）`, `? × ? = ${A} (same number)`), ans: N(s), ok: L('完成！', 'Done!') }], sol: L(`${s} × ${s} = ${A}，所以邊長 ${s} cm`, `${s} × ${s} = ${A}, so the side is ${s} cm`), alt: L(`把 ${A} 個小方格排成正方形：每排要放幾個，才剛好排成一樣多排？試 ${s - 1}、${s}、${s + 1} 看看。`, `Arrange ${A} unit squares into a square: how many per row so rows = columns? Try ${s - 1}, ${s}, ${s + 1}.`) }; }
+        if (v === 'rectA') { const w = R(2, 12), l = R(2, 15), A = w * l; return { key: `${sub}|${v}${w}x${l}`, sub, pic: apShapeSVG([[0, 0], [l, 0], [l, w], [0, w]], [null, `${w}`], col), q: L(`一個長方形的面積是 ${A} cm²，寬是 ${w} cm。長（?）是多少 cm？`, `A rectangle has area ${A} cm² and width ${w} cm. What is its length (?) in cm?`), ans: N(l), why: () => L('面積 = 長 × 寬，反過來：長 = 面積 ÷ 寬。', 'Area = length × width, so length = area ÷ width.'),
+            h1: L('面積 = 長 × 寬。', 'Area = length × width.'), h2: L(`? × ${w} = ${A}，用除法。`, `? × ${w} = ${A} — use division.`), steps: [{ p: L(`${A} ÷ ${w} = ?`, `${A} ÷ ${w} = ?`), ans: N(l), ok: L('完成！', 'Done!') }], sol: L(`${A} ÷ ${w} = ${l} cm（檢查：${l} × ${w} = ${A}）`, `${A} ÷ ${w} = ${l} cm (check: ${l} × ${w} = ${A})`), alt: L(`${A} 個小方格排成 ${w} 排，每排有幾格？${A} ÷ ${w} = ${l}。`, `${A} squares in ${w} rows: how many per row? ${A} ÷ ${w} = ${l}.`) }; }
+        if (v === 'sqP') { const s = R(2, 25), P = 4 * s; return { key: `${sub}|${v}${s}`, sub, pic: apShapeSVG([[0, 0], [1, 0], [1, 1], [0, 1]], [null, ''], col, { ticks: true }), q: L(`一個正方形的周長是 ${P} cm。它的邊長是多少 cm？`, `A square has a perimeter of ${P} cm. How long is each side in cm?`), ans: N(s), why: () => L('正方形有 4 條一樣長的邊，周長 = 4 × 邊長，所以邊長 = 周長 ÷ 4。', 'A square has 4 equal sides: perimeter = 4 × side, so side = perimeter ÷ 4.'),
+            h1: L('正方形有 4 條一樣長的邊。', 'A square has 4 equal sides.'), h2: L(`${P} ÷ 4`, `${P} ÷ 4`), steps: [{ p: L(`${P} ÷ 4 = ?`, `${P} ÷ 4 = ?`), ans: N(s), ok: L('完成！', 'Done!') }], sol: L(`${P} ÷ 4 = ${s} cm`, `${P} ÷ 4 = ${s} cm`), alt: L(`把 ${P} cm 的繩子圍成正方形，平分成 4 段，每段 ${s} cm。`, `Bend a ${P} cm string into a square: 4 equal pieces of ${s} cm.`) }; }
+        const w = R(2, 12), l = R(2, 15), P = 2 * (w + l); return { key: `${sub}|${v}${w}x${l}`, sub, pic: apShapeSVG([[0, 0], [l, 0], [l, w], [0, w]], [`${l}`, null], col), q: L(`一個長方形的周長是 ${P} cm，長是 ${l} cm。寬（?）是多少 cm？`, `A rectangle has perimeter ${P} cm and length ${l} cm. What is its width (?) in cm?`), ans: N(w), why: () => L('周長 = (長 + 寬) × 2。先把周長除以 2 得到「長 + 寬」，再減掉長。', 'Perimeter = (length + width) × 2. Halve the perimeter to get length + width, then subtract the length.'),
+            h1: L('周長 = (長 + 寬) × 2。', 'Perimeter = (length + width) × 2.'), h2: L(`先算 ${P} ÷ 2，再減 ${l}。`, `Work out ${P} ÷ 2, then subtract ${l}.`), steps: [{ p: L(`長 + 寬 = ${P} ÷ 2 = ?`, `length + width = ${P} ÷ 2 = ?`), ans: N(P / 2), ok: L('好！', 'Good!') }, { p: L(`${P / 2} − ${l} = ?`, `${P / 2} − ${l} = ?`), ans: N(w), ok: L('完成！', 'Done!') }], sol: L(`${P} ÷ 2 − ${l} = ${w} cm`, `${P} ÷ 2 − ${l} = ${w} cm`), alt: L(`繞長方形走半圈，剛好走過一條長和一條寬：${P / 2} cm。長佔了 ${l}，剩下的就是寬。`, `Half-way round a rectangle covers one length and one width: ${P / 2} cm. Take away the length ${l}.`) }; }
+    // estimate irregular area on grid
+    const b = apBlob(), est = Math.round(b.full + b.part / 2), tol = Math.max(2, Math.round(b.area * 0.15));
+    const nm = { blob: L('不規則圖形', 'irregular shape'), moon: L('月亮', 'moon'), house: L('房子', 'house') }[b.kind];
+    return { key: `${sub}|${b.sig}`, sub, pic: apBlobSVG(b, col) + `<div class="ap-note">${AP_UNIT_NOTE.zh} ${AP_UNIT_NOTE.en}</div>`, q: L(`估算這個${nm.zh}的面積大約是多少 cm²？（誤差 ±${tol} 以內都算對）`, `Estimate the area of this ${nm.en} in cm². (Within ±${tol} counts as correct.)`), ans: { t: 'approx', v: Math.round(b.area), tol }, why: () => L('估算面積：完整的格子一格算 1；被切到的格子，超過一半的算 1、不到一半的不算（或者全部被切到的格子數 ÷ 2）。', 'Estimating area: count each whole square as 1; for cut squares, count those at least half covered as 1 and ignore the rest (or take half the number of cut squares).'),
+        h1: L('先數「完整」在圖形裡面的格子。', 'First count the squares that are COMPLETELY inside.'), h2: L('再數被邊線切到的格子：兩個半格大約湊成一格。', 'Then count squares cut by the edge: two half squares make about one.'),
+        steps: [{ p: L(`完整的格子大約有幾個？（數到 ${b.full} 左右）`, `About how many whole squares? (around ${b.full})`), ans: { t: 'approx', v: b.full, tol: 2 }, ok: L(`好，算 ${b.full} 個。`, `Good, call it ${b.full}.`) }, { p: L(`被切到的格子大約 ${b.part} 個，除以 2 大約是？`, `About ${b.part} cut squares; half of that is about?`), ans: { t: 'approx', v: Math.round(b.part / 2), tol: 1 }, ok: L('好！', 'Good!') }, { p: L(`${b.full} + ${Math.round(b.part / 2)} = ?`, `${b.full} + ${Math.round(b.part / 2)} = ?`), ans: { t: 'approx', v: est, tol: 1 }, ok: L('這就是估計值！', 'That is your estimate!') }],
+        sol: L(`完整格子約 ${b.full} 個，切到的約 ${b.part} 個（算一半 ≈ ${Math.round(b.part / 2)}），估計約 ${est} cm²（精確值約 ${fmt(Math.round(b.area * 10) / 10)} cm²）。`, `About ${b.full} whole squares and ${b.part} cut squares (≈ ${Math.round(b.part / 2)}), so about ${est} cm² (exact ≈ ${fmt(Math.round(b.area * 10) / 10)} cm²).`),
+        alt: L('估算不用剛剛好，只要接近就好。像拼拼圖一樣，把兩塊不完整的小碎片想成拼在一起變成一整格。', 'An estimate only needs to be close. Like a jigsaw, imagine pairing up two broken bits to make one whole square.') };
+},
+intro() { return `<details class="ap-intro" open><summary>📘 面積和周長有什麼不同？ What is the difference between area and perimeter?</summary>
+<div class="ap-cols"><div><h4>周長 Perimeter（中文）</h4><p>周長是<b>繞著圖形外圍走一圈</b>的總長度。把外面每一條邊加起來。單位是 <b>cm</b>（公分）。</p><p>長方形周長 = (長 + 寬) × 2</p></div>
+<div><h4>Perimeter (English)</h4><p>Perimeter is the <b>total distance around the outside</b> of a shape. Add up every outside edge. Its unit is <b>cm</b>.</p><p>Rectangle: P = (length + width) × 2</p></div>
+<div><h4>面積 Area（中文）</h4><p>面積是圖形<b>裡面佔了幾個 1 cm² 的小方格</b>。單位是 <b>cm²</b>（平方公分）。</p><p>長方形面積 = 長 × 寬</p></div>
+<div><h4>Area (English)</h4><p>Area is <b>how many 1 cm² squares fit inside</b> the shape. Its unit is <b>cm²</b>.</p><p>Rectangle: A = length × width</p></div></div>
+<div class="ap-cols"><div><b>圖例：周長 Perimeter = 12 cm（外框 12 段）</b>${apGridSVG(7, 5, AP_EX, 1, 1, PIC_COLORS[2], 'per')}</div>
+<div><b>圖例：面積 Area = 8 cm²</b>${apGridSVG(7, 5, AP_EX, 1, 1, PIC_COLORS[0], 'area')}</div></div><p class="ap-same">同一個 4 × 2 的長方形：外框長 12 cm（周長），裡面 8 格（面積）。兩個數字不一樣，單位也不一樣！ The same 4 × 2 rectangle: 12 cm around the outside (perimeter), 8 squares inside (area). Different numbers, different units!</p>
+<div class="ap-demo" id="apDemo"><h4>🧪 互動示範 Try it: 同一個長方形，同時看周長和面積 One rectangle, both measures</h4>
+<div class="ap-ctrl"><span>長 Length: <button type="button" class="hint-btn" id="apWm" onclick="apDemo('w',-1)">−</button> <b id="apW">4</b> <button type="button" class="hint-btn" id="apWp" onclick="apDemo('w',1)">＋</button> cm</span>
+<span>寬 Width: <button type="button" class="hint-btn" id="apHm" onclick="apDemo('h',-1)">−</button> <b id="apH">3</b> <button type="button" class="hint-btn" id="apHp" onclick="apDemo('h',1)">＋</button> cm</span></div>
+<div class="ap-ctrl"><label><input type="checkbox" id="apShowP" checked onchange="apDemo()"> 顯示周長（橘色外框）Show perimeter (orange border)</label><label><input type="checkbox" id="apShowA" checked onchange="apDemo()"> 顯示面積（塗色格子）Show area (filled squares)</label></div>
+<div id="apDemoPic" class="pic"></div><div id="apDemoOut" class="ap-out"></div></div></details>`; },
+afterIntro() { apDemoState = { w: 4, h: 3 }; apDemo(); } };
+let apDemoState = { w: 4, h: 3 };
+function apDemo(k, d) {
+    if (k) apDemoState[k] = Math.max(1, Math.min(k === 'w' ? 10 : 7, apDemoState[k] + d));
+    const { w, h } = apDemoState, sp = document.getElementById('apShowP').checked, sa = document.getElementById('apShowA').checked;
+    const S = AP_CELL, cols = 12, rows = 9, W = cols * S + 2, H = rows * S + 2; let g = '';
+    for (let i = 0; i <= cols; i++) g += `<line x1="${1 + i * S}" y1="1" x2="${1 + i * S}" y2="${H - 1}" stroke="#CBD5E1"/>`;
+    for (let j = 0; j <= rows; j++) g += `<line x1="1" y1="${1 + j * S}" x2="${W - 1}" y2="${1 + j * S}" stroke="#CBD5E1"/>`;
+    let f = '', n = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) { const px = 1 + (x + 1) * S, py = 1 + (y + 1) * S; f += `<rect class="ap-cell" x="${px}" y="${py}" width="${S}" height="${S}" fill="${sa ? '#C7D2FE' : '#fff'}" fill-opacity="${sa ? 1 : 0}"/>`; if (sa) f += `<text x="${px + S / 2}" y="${py + S / 2 + 4}" font-size="11" text-anchor="middle" fill="#3730A3">${++n}</text>`; }
+    let e = `<rect x="${1 + S}" y="${1 + S}" width="${w * S}" height="${h * S}" fill="none" stroke="${sp ? '#EA580C' : '#6B7280'}" stroke-width="${sp ? 5 : 2}"/>`;
+    if (sp) { let m = 0; const lab = (x, y) => e += `<text class="ap-edge" x="${x}" y="${y}" font-size="10" font-weight="700" text-anchor="middle" fill="#9A3412">${++m}</text>`;
+        for (let x = 0; x < w; x++) lab(1 + (x + 1.5) * S, 1 + S - 5); for (let y = 0; y < h; y++) lab(1 + (w + 1) * S + 9, 1 + (y + 1.5) * S + 4);
+        for (let x = w - 1; x >= 0; x--) lab(1 + (x + 1.5) * S, 1 + (h + 1) * S + 13); for (let y = h - 1; y >= 0; y--) lab(1 + S - 9, 1 + (y + 1.5) * S + 4); }
+    document.getElementById('apW').textContent = w; document.getElementById('apH').textContent = h;
+    document.getElementById('apDemoPic').innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="${Math.min(W, 340)}" role="img" aria-label="interactive rectangle"><rect width="${W}" height="${H}" fill="#fff"/>${g}${f}${e}</svg>`;
+    const P = 2 * (w + h), A = w * h, sq = (P / 4) ** 2;
+    document.getElementById('apDemoOut').innerHTML = `<div class="ap-res"><span class="ap-p">周長 Perimeter = (${w} + ${h}) × 2 = <b id="apPval">${P}</b> cm</span><span class="ap-a">面積 Area = ${w} × ${h} = <b id="apAval">${A}</b> cm²</span></div>
+<div>${w === h ? '這是正方形！同樣的周長裡，正方形的面積最大。 This is a square — for the same perimeter, a square has the biggest area.' : `同樣周長 ${P} cm，如果圍成${Number.isInteger(P / 4) ? `${P / 4} × ${P / 4} 的正方形，面積會是 ${sq} cm²` : '接近正方形的長方形，面積會更大'}。 With the same perimeter ${P} cm, ${Number.isInteger(P / 4) ? `a ${P / 4} × ${P / 4} square would have area ${sq} cm²` : 'a more square-like rectangle would have more area'}.`}</div>`;
+}
 /*TOPICS-END*/
 // ---------- no-repeat question picker ----------
 const SEEN_KEY = 'g6m_seen_v2';
@@ -1098,7 +1355,7 @@ function initializeTopic() {
 }
 function selectTopic(topic, btn) {
     document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
-    currentTopic = topic; $('questionSection').style.display = 'block'; generateNewQuestion();
+    currentTopic = topic; $('questionSection').style.display = 'block'; const T = TOPICS[topic]; $('topicIntro').innerHTML = T.intro ? T.intro() : ''; if (T.afterIntro) T.afterIntro(); generateNewQuestion();
     $('questionSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 function generateNewQuestion(similar) {
@@ -1178,11 +1435,12 @@ function submitAnswer() {
         qs.fb = { kind: 'correct', html: () => `<strong>✓ ${tx(p)}</strong><br>${tx(currentQuestion.sol)}${helped ? `<br><br>${tx(UI.afterHelp)}` : ''}` };
     } else {
         const e = res.partial || ENCOURAGE[Math.min(qs.attempts - 1, ENCOURAGE.length - 1)];
-        qs.fb = { kind: 'incorrect', html: () => `<strong>${res.partial ? '🟡' : '✗'} ${tx(e)}</strong><br><small>${tx(UI.yourAns)}${language === "zh" ? `：「${esc(raw)}」` : `: "${esc(raw)}"`}</small>` };
+        qs.fb = { kind: 'incorrect', html: () => `<strong>${res.partial ? '🟡' : '✗'} ${tx(e)}</strong><br><small>${tx(UI.yourAns)}${language === "zh" ? `：「${esc(raw)}」` : `: "${esc(raw)}"`}</small>${whyHTML(currentQuestion, raw)}` };
         if (qs.attempts >= 3 && !qs.guided) startGuided(true);
     }
     renderAll();
 }
+function whyHTML(q, raw) { if (!q.why) return ''; const w = typeof q.why === 'function' ? q.why(raw) : q.why; return w ? `<div class="why-box"><div>📝 ${w.zh}</div><div class="why-en">📝 ${w.en}</div></div>` : ''; }
 function showHint() { qs.hintLevel = Math.min(2, qs.hintLevel + 1); renderAll(); }
 function startGuided(silent) { qs.guided = true; qs.step = 0; qs.stepTries = 0; qs.stepMsg = null; if (!silent) renderAll(); setTimeout(() => { const s = $('stepAnswer'); if (s && window.innerWidth > 700) s.focus(); }, 0); }
 function checkStep() {

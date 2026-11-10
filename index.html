@@ -109,6 +109,11 @@
         .gstep.current { border-left-color: var(--primary); }
         .gstep.done { border-left-color: var(--success); opacity: 0.9; }
         .gstep-head { font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+
+        .gstep-head, .steps-title, .tts-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem; }
+        .tts-btn { display: none; padding: 4px 10px; font-size: 0.78rem; line-height: 1.2; margin: 0; font-weight: 600; box-shadow: none; }
+        html.tts-ready .tts-btn { display: inline-block; }
+        .tts-head strong, .hint-item .tts-head strong { display: inline; margin-bottom: 0; }
         .gstep-ok { color: #065F46; font-size: 0.92rem; margin-top: 0.25rem; }
         .gstep-msg { color: #B45309; font-weight: 600; margin-top: 0.25rem; }
         .gstep-final { background: #ECFDF5; color: #065F46; padding: 0.9rem; border-radius: 8px; font-weight: 600; }
@@ -1436,14 +1441,15 @@ function renderAll() {
     $('ladder').innerHTML = lad.join('');
     // hints
     const h = $('hint');
-    if (qs.hintLevel > 0) { h.className = 'hint show'; h.innerHTML = [q.h1, q.h2].slice(0, qs.hintLevel).map((x, i) => `<div class="hint-item"><strong>💡 ${tx(UI.hintTitle)} ${i + 1}：</strong>${tx(x)}<div class="hint-en">${other(x)}</div></div>`).join(''); } else { h.className = 'hint'; h.innerHTML = ''; }
+    if (qs.hintLevel > 0) { h.className = 'hint show'; h.innerHTML = [q.h1, q.h2].slice(0, qs.hintLevel).map((x, i) => `<div class="hint-item"><div class="tts-head"><strong>💡 ${tx(UI.hintTitle)} ${i + 1}：</strong>${ttsBtnHtml('maths-hint-' + i, [tx(x), other(x)].filter(Boolean).join('\n'))}</div>${tx(x)}<div class="hint-en">${other(x)}</div></div>`).join(''); } else { h.className = 'hint'; h.innerHTML = ''; }
     renderGuided();
     // solution
     const s = $('steps');
-    if (qs.showSol) { s.className = 'steps show'; s.innerHTML = `<div class="steps-title">${tx(UI.solTitle)}</div><div class="step-zh">${tx(q.sol)}</div><div class="step-en">${other(q.sol)}</div><div class="step-explain">${q.steps.map((st, i) => `<div>${i + 1}. ${tx(st.p)} → <b>${esc(answerText(st.ans, language))}</b></div>`).join('')}</div>`; } else { s.className = 'steps'; s.innerHTML = ''; }
+    if (qs.showSol) { const solSpeak = [tx(q.sol), other(q.sol)].concat(q.steps.map((st, i) => `${i + 1}. ${tx(st.p)}`)).filter(Boolean).join('\n'); s.className = 'steps show'; s.innerHTML = `<div class="steps-title">${tx(UI.solTitle)}${ttsBtnHtml('maths-sol', solSpeak)}</div><div class="step-zh">${tx(q.sol)}</div><div class="step-en">${other(q.sol)}</div><div class="step-explain">${q.steps.map((st, i) => `<div>${i + 1}. ${tx(st.p)} → <b>${esc(answerText(st.ans, language))}</b></div>`).join('')}</div>`; } else { s.className = 'steps'; s.innerHTML = ''; }
     const a = $('altBox');
-    if (qs.altLevel > 0) { a.className = 'alt-box show'; a.innerHTML = `<div class="steps-title">${tx(UI.altTitle)}</div><div>${tx(q.alt)}</div>${qs.altLevel > 1 ? `<div class="alt-more">${tx(UI.alt2)}</div>` : ''}`; } else { a.className = 'alt-box'; a.innerHTML = ''; }
+    if (qs.altLevel > 0) { a.className = 'alt-box show'; a.innerHTML = `<div class="steps-title">${tx(UI.altTitle)}${ttsBtnHtml('maths-alt', [tx(q.alt), qs.altLevel > 1 ? tx(UI.alt2) : ''].filter(Boolean).join('\n'))}</div><div>${tx(q.alt)}</div>${qs.altLevel > 1 ? `<div class="alt-more">${tx(UI.alt2)}</div>` : ''}`; } else { a.className = 'alt-box'; a.innerHTML = ''; }
     $('nextBtn').textContent = tx(UI.next); $('nextBtn').classList.toggle('hidden', !(qs.solved || qs.showSol || qs.attempts >= 1));
+    ttsAfterRender();
 }
 function renderGuided() {
     const g = $('guided'), q = currentQuestion;
@@ -1452,7 +1458,7 @@ function renderGuided() {
     q.steps.forEach((st, i) => {
         if (i > qs.step) return;
         const log = qs.stepLog[i];
-        h += `<div class="gstep ${i < qs.step ? 'done' : 'current'}"><div class="gstep-head">${tx(UI.stepOf)} ${i + 1} / ${q.steps.length}</div><div class="step-zh">${tx(st.p)}</div>`;
+        h += `<div class="gstep ${i < qs.step ? 'done' : 'current'}"><div class="gstep-head">${tx(UI.stepOf)} ${i + 1} / ${q.steps.length}${ttsBtnHtml('maths-gstep-' + i, [tx(st.p), other(st.p)].filter(Boolean).join('\n'))}</div><div class="step-zh">${tx(st.p)}</div>`;
         if (i < qs.step) h += `<div class="gstep-ok">${log && log.revealed ? `🙂 ${tx(UI.stepReveal)} <b>${esc(answerText(st.ans, language))}</b>。${tx(UI.stepReveal2)}` : `✓ <b>${esc(log ? log.val : '')}</b> — ${tx(st.ok)}`}</div>`;
         else { h += choiceButtons(st.ans, 'step') + `<div class="input-group step-input"><input type="text" id="stepAnswer" placeholder="${tx(UI.placeholder)}" onkeydown="if(event.key==='Enter')checkStep()"><button class="submit-btn" id="stepCheckBtn" onclick="checkStep()">${tx(UI.check)}</button></div>`;
             if (qs.stepMsg) h += `<div class="gstep-msg">${tx(qs.stepMsg)}</div>`; }
@@ -1494,6 +1500,127 @@ function updateStats() {
     $('correctCount').textContent = stats.correct; $('incorrectCount').textContent = stats.incorrect; $('accuracy').textContent = acc + '%';
 }
 $('answer').addEventListener('keydown', e => { if (e.key === 'Enter') submitAnswer(); });
+
+/* TTS: browser speechSynthesis only. Hidden when the API or voices are missing. */
+const TTS_RATE = 0.9;
+const TTS_LABEL_PLAY = '🔊 唸給我聽';
+const TTS_LABEL_STOP = '⏹ 停止';
+let ttsToken = 0;
+let ttsActiveId = '';
+let ttsBound = false;
+
+function ttsAvailable() {
+    try { return typeof speechSynthesis !== 'undefined' && typeof SpeechSynthesisUtterance !== 'undefined'; }
+    catch (e) { return false; }
+}
+function ttsVoices() {
+    try { return speechSynthesis.getVoices() || []; }
+    catch (e) { return []; }
+}
+function ttsReady() { return ttsAvailable() && ttsVoices().length > 0; }
+function ttsUpdateReady() {
+    const on = ttsReady();
+    document.documentElement.classList.toggle('tts-ready', on);
+    if (!on) ttsStop();
+    else ttsSyncButtons();
+    return on;
+}
+function ttsInit() {
+    if (!ttsAvailable() || ttsBound) return;
+    ttsBound = true;
+    document.addEventListener('click', ttsOnClick);
+    ttsVoices();
+    ttsUpdateReady();
+    if (typeof speechSynthesis.addEventListener === 'function') speechSynthesis.addEventListener('voiceschanged', ttsUpdateReady);
+    else speechSynthesis.onvoiceschanged = ttsUpdateReady;
+}
+function ttsOnClick(e) {
+    const btn = e.target.closest && e.target.closest('.tts-btn');
+    if (!btn) return;
+    e.preventDefault();
+    ttsToggle(btn.getAttribute('data-tts-id') || '', btn.getAttribute('data-tts') || '');
+}
+function ttsNormLang(v) { return String((v && (v.lang || v.voiceURI)) || '').toLowerCase().replace(/_/g, '-'); }
+function ttsPickVoice(lang) {
+    const voices = ttsVoices();
+    const pref = lang === 'zh' ? ['zh-tw', 'zh-hant', 'zh'] : ['en-za', 'en-gb', 'en-us', 'en'];
+    for (const p of pref) {
+        const hit = voices.find(v => { const l = ttsNormLang(v); return l === p || l.startsWith(p + '-'); });
+        if (hit) return hit;
+    }
+    return null;
+}
+function ttsSplit(text) {
+    const raw = String(text || '').replace(/\s+/g, ' ').trim();
+    if (!raw) return [];
+    const re = /([\u3000-\u303f\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]+)|([^\u3000-\u303f\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff\uff00-\uffef]+)/g;
+    const out = [];
+    let m;
+    while ((m = re.exec(raw))) {
+        const t = m[0].trim();
+        if (!t) continue;
+        const lang = m[1] ? 'zh' : 'en';
+        if (out.length && /^[\s\p{P}\p{S}]+$/u.test(t)) { out[out.length - 1].text += t; continue; }
+        out.push({ lang, text: t });
+    }
+    return out;
+}
+function ttsStop() {
+    ttsToken += 1;
+    ttsActiveId = '';
+    try { if (ttsAvailable()) speechSynthesis.cancel(); } catch (e) {}
+    ttsSyncButtons();
+}
+function ttsToggle(id, text) {
+    if (!ttsReady()) return;
+    if (id && ttsActiveId === id) { ttsStop(); return; }
+    ttsSpeak(id, text);
+}
+function ttsSpeak(id, text) {
+    if (!ttsReady()) return;
+    ttsStop();
+    const chunks = ttsSplit(text);
+    if (!chunks.length) return;
+    const token = ttsToken;
+    ttsActiveId = id || 'tts';
+    ttsSyncButtons();
+    const play = (i) => {
+        if (token !== ttsToken) return;
+        if (i >= chunks.length) { ttsActiveId = ''; ttsSyncButtons(); return; }
+        const c = chunks[i];
+        const u = new SpeechSynthesisUtterance(c.text);
+        u.rate = TTS_RATE;
+        const voice = ttsPickVoice(c.lang);
+        u.lang = voice && voice.lang ? voice.lang : (c.lang === 'zh' ? 'zh-TW' : 'en-ZA');
+        try { if (voice) u.voice = voice; } catch (e) {}
+        u.onend = () => play(i + 1);
+        u.onerror = () => { if (token === ttsToken) { ttsActiveId = ''; ttsSyncButtons(); } };
+        try {
+            if (typeof window.__ttsOnSpeak === 'function') window.__ttsOnSpeak(u);
+            speechSynthesis.speak(u);
+        } catch (e) { ttsActiveId = ''; ttsSyncButtons(); }
+    };
+    play(0);
+}
+function ttsBtnHtml(id, text) {
+    const on = ttsActiveId === id;
+    return `<button type="button" class="hint-btn tts-btn" data-tts-id="${esc(id)}" data-tts="${esc(text)}" aria-label="${on ? TTS_LABEL_STOP : TTS_LABEL_PLAY}">${on ? TTS_LABEL_STOP : TTS_LABEL_PLAY}</button>`;
+}
+function ttsSyncButtons() {
+    document.querySelectorAll('.tts-btn').forEach(btn => {
+        const on = ttsActiveId && btn.getAttribute('data-tts-id') === ttsActiveId;
+        const label = on ? TTS_LABEL_STOP : TTS_LABEL_PLAY;
+        btn.textContent = label;
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+}
+function ttsAfterRender() {
+    if (ttsActiveId && !document.querySelector('.tts-btn[data-tts-id="' + ttsActiveId + '"]')) ttsStop();
+    else ttsSyncButtons();
+}
+window.TTS = { split: ttsSplit, pickVoice: ttsPickVoice, speak: ttsSpeak, stop: ttsStop, toggle: ttsToggle, ready: ttsReady, updateReady: ttsUpdateReady };
+
 /*NST-START*/
 // Natural Sciences & Technology. Lesson text is loaded from nst-lessons.json.
 const NST_TODO_KEY = 'g6nst_to_add_v1';
@@ -1943,7 +2070,8 @@ function nstAiOfferHtml() {
 function nstAiBoxHtml() {
     if (!nst.ai.show) return '';
     const body = nst.ai.pending && !nst.ai.reply ? nz('AI 小老師正在想…', 'The AI tutor is thinking…') : (nst.ai.reply || '');
-    return `<div class="alt-box show" id="nstAiBox"><div class="steps-title">AI 小老師 · simple English</div><div class="nst-reply" id="nstAiText">${esc(body)}</div><p class="nst-ai-note">${nz('AI 只用簡單英文，而且只根據這個單元。下面的確認題仍由課文判斷，不由 AI 批改。', 'The AI replies in simple English from this unit only. The check below is marked from the lesson, not by the AI.')}</p></div>`;
+    const speak = nst.ai.reply && !(nst.ai.pending && !nst.ai.reply) ? ttsBtnHtml('nst-ai', nst.ai.reply) : '';
+    return `<div class="alt-box show" id="nstAiBox"><div class="steps-title">AI 小老師 · simple English${speak}</div><div class="nst-reply" id="nstAiText">${esc(body)}</div><p class="nst-ai-note">${nz('AI 只用簡單英文，而且只根據這個單元。下面的確認題仍由課文判斷，不由 AI 批改。', 'The AI replies in simple English from this unit only. The check below is marked from the lesson, not by the AI.')}</p></div>`;
 }
 function nstTodoHtml() {
     const list = nstLoadTodo();
@@ -1984,7 +2112,8 @@ function nstStepsHtml(unit) {
         const primary = language === 'en' ? (en || zh) : zh;
         const secondary = language === 'en' ? (en ? zh : '') : en;
         const hint = s.diagram_hint ? `<div class="diagram-hint"><strong>${nz('圖示', 'Diagram')}</strong>${esc(s.diagram_hint)}</div>` : '';
-        return `<div class="gstep"><div class="gstep-head">${nz('步驟', 'Step')} ${i + 1}</div><div class="step-zh">${esc(primary)}</div>${secondary ? `<div class="step-en">${esc(secondary)}</div>` : ''}${hint}</div>`;
+        const speak = [primary, secondary, s.diagram_hint || ''].filter(Boolean).join('\n');
+        return `<div class="gstep"><div class="gstep-head">${nz('步驟', 'Step')} ${i + 1}${ttsBtnHtml('nst-step-' + i, speak)}</div><div class="step-zh">${esc(primary)}</div>${secondary ? `<div class="step-en">${esc(secondary)}</div>` : ''}${hint}</div>`;
     }).join('');
 }
 function nstGlossHtml(unit) {
@@ -2003,11 +2132,11 @@ function nstCheckHtml(unit) {
     const secondary = language === 'en' ? (en ? zh : '') : en;
     let fb = '';
     if (nst.qResult) {
-        fb = `<div class="feedback show ${nst.qResult.ok ? 'correct' : 'incorrect'}"><strong>${nst.qResult.ok ? nz('對了。', 'Correct.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.qResult.why ? `<div>${esc(nst.qResult.why)}</div>` : ''}</div>`;
+        fb = `<div class="feedback show ${nst.qResult.ok ? 'correct' : 'incorrect'}"><strong>${nst.qResult.ok ? nz('對了。', 'Correct.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.qResult.why ? `<div>${esc(nst.qResult.why)}${ttsBtnHtml('nst-check-why-' + qid, nst.qResult.why)}</div>` : ''}</div>`;
         if (nst.qIndex < qs.length - 1) fb += `<button type="button" class="next-btn" data-act="next-q">${nz('下一題', 'Next question')}</button>`;
         else fb += `<p class="gstep-final">${nz('這個單元的練習題做完了。還可以按「我不懂」再練困惑的地方。', 'That was the last check. You can still press “I don’t get it”.')}</p>`;
     }
-    return `<div class="question-box" id="nstCheck" data-qid="${esc(qid)}"><div class="gstep-head">${nz('練習', 'Check')} ${nst.qIndex + 1} / ${qs.length}</div><div class="question-main">${esc(primary)}</div>${secondary ? `<div class="question-alt"><em>${esc(secondary)}</em></div>` : ''}${nst.qResult ? '' : nstOptionsHtml(q.options, 'check', q.answer)}${fb}</div>`;
+    return `<div class="question-box" id="nstCheck" data-qid="${esc(qid)}"><div class="gstep-head">${nz('練習', 'Check')} ${nst.qIndex + 1} / ${qs.length}${ttsBtnHtml('nst-check-' + qid, [primary, secondary].filter(Boolean).join('\n'))}</div><div class="question-main">${esc(primary)}</div>${secondary ? `<div class="question-alt"><em>${esc(secondary)}</em></div>` : ''}${nst.qResult ? '' : nstOptionsHtml(q.options, 'check', q.answer)}${fb}</div>`;
 }
 function nstLessonHtml() {
     const unit = nstUnit(); if (!unit) return nstGridHtml();
@@ -2041,18 +2170,18 @@ function nstDetailHtml() {
     const follow = nstAskField('follow_up_zh');
     let why = '';
     if (nst.confirmResult) {
-        why = `<div class="feedback show ${nst.confirmResult.ok ? 'correct' : 'incorrect'}" id="nstWhy"><strong>${nst.confirmResult.ok ? nz('對，就是這樣。', 'Yes — that’s it.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.confirmResult.why ? `<div>${esc(nst.confirmResult.why)}</div>` : ''}</div>`;
+        why = `<div class="feedback show ${nst.confirmResult.ok ? 'correct' : 'incorrect'}" id="nstWhy"><strong>${nst.confirmResult.ok ? nz('對，就是這樣。', 'Yes — that’s it.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.confirmResult.why ? `<div>${esc(nst.confirmResult.why)}${ttsBtnHtml('nst-why-' + c.id, nst.confirmResult.why)}</div>` : ''}</div>`;
     }
     let confirm = '';
     if (nst.showConfirm && c.confirm_question) {
         const q = c.confirm_question;
-        confirm = `<div class="question-box" id="nstConfirm"><div class="question-main">${esc(q.q_zh || '')}</div>${nst.confirmResult ? '' : nstOptionsHtml(q.options || [], 'confirm')}</div>`;
+        confirm = `<div class="question-box" id="nstConfirm"><div class="tts-head"><div class="question-main">${esc(q.q_zh || '')}</div>${ttsBtnHtml('nst-confirm-' + c.id, q.q_zh || '')}</div>${nst.confirmResult ? '' : nstOptionsHtml(q.options || [], 'confirm')}</div>`;
     }
     const stuck = nstAskField('if_still_stuck_zh');
     const adult = nst.parentHint ? `<div class="hint show" id="nstAdult"><strong>問爸爸或老師</strong>${stuck ? `<div>${esc(stuck)}</div>` : ''}</div>` : '';
     const more = nst.layer < 2 ? `<button type="button" class="hint-btn" id="nstStill" data-act="still">${nz('還是不懂', 'Still don’t get it')}</button>` : '';
     const next = nst.confirmResult && !nst.confirmResult.ok && nst.layer < 2 ? `<button type="button" class="hint-btn" id="nstNextLayer" data-act="next-layer">${nz('再看下一層', 'Read the next layer')}</button>` : '';
-    return `<div id="nstDetail">${nstBack('dont', '← 其他困惑', '← Other confusions')}<div class="question-title">${esc(c.label_zh)}</div><div class="gstep current" id="nstLayer"><div class="gstep-head">${esc(layer.k)} · ${nst.layer + 1} / 3</div><div class="step-zh">${esc(layer.t || '')}</div></div>${why}${confirm}${follow && !nst.showConfirm ? `<p class="progress-line">${esc(follow)}</p>` : ''}<div class="ladder">${more}<button type="button" class="submit-btn" id="nstQuiz" data-act="quiz">${nz('我懂了，考考我', 'I get it — quiz me')}</button>${next}<button type="button" class="hint-btn" data-act="adult">${nz('問爸爸或老師', 'Ask a parent or teacher')}</button></div>${adult}${nstAiBoxHtml()}</div>`;
+    return `<div id="nstDetail">${nstBack('dont', '← 其他困惑', '← Other confusions')}<div class="question-title">${esc(c.label_zh)}</div><div class="gstep current" id="nstLayer"><div class="gstep-head">${esc(layer.k)} · ${nst.layer + 1} / 3${ttsBtnHtml('nst-layer-' + c.id + '-' + nst.layer, layer.t || '')}</div><div class="step-zh">${esc(layer.t || '')}</div></div>${why}${confirm}${follow && !nst.showConfirm ? `<p class="progress-line">${esc(follow)}</p>` : ''}<div class="ladder">${more}<button type="button" class="submit-btn" id="nstQuiz" data-act="quiz">${nz('我懂了，考考我', 'I get it — quiz me')}</button>${next}<button type="button" class="hint-btn" data-act="adult">${nz('問爸爸或老師', 'Ask a parent or teacher')}</button></div>${adult}${nstAiBoxHtml()}</div>`;
 }
 function nstRender() {
     const root = $('nstRoot');
@@ -2072,6 +2201,7 @@ function nstRender() {
     else if (nst.view === 'confused') body = nstConfusedHtml();
     else if (nst.view === 'detail') body = nstDetailHtml();
     root.innerHTML = nstAiOfferHtml() + body + nstTodoHtml();
+    ttsAfterRender();
 }
 
 window.NST = {
@@ -2085,7 +2215,7 @@ window.NST = {
 };
 /*NST-END*/
 
-initializeTopic(); updateUIText();
+initializeTopic(); updateUIText(); ttsInit();
     </script>
 </body>
 </html>

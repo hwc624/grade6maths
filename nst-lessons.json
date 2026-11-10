@@ -1,0 +1,3061 @@
+{
+  "meta": {
+    "title_en": "Grade 6 Natural Sciences and Technology: Term 3 and Term 4 Lessons",
+    "title_zh": "六年級自然科學與科技：第三、四學期分單元講解",
+    "subject": "Natural Sciences and Technology",
+    "grade": 6,
+    "curriculum": "CAPS (South Africa)",
+    "audience_en": "An 11–12-year-old Taiwanese child at an English-medium South African school, preparing for an English NS&T controlled test.",
+    "language_notes_zh": "講解用臺灣慣用的繁體中文。專有名詞、公式、單位和考試會用到的句子保留英文，方便孩子直接寫在考卷上。小數寫法跟南非學校一樣，用逗號，例如 1,5 Ω 和 23,5°。",
+    "disclaimer_zh": "這些是幫助孩子複習與理解的學習內容，不是學校正式考卷，也不是過去試題。",
+    "how_the_site_should_use_this_zh": "每個單元先依 explanation_steps 分段講解，再做 check_questions。若孩子說還是不懂，先用 ask_what_confused 請他指出卡在哪個詞或哪一步，再打開對應的 confusions：先看 simpler_explanation_zh，不夠再看 analogy_zh，還不夠就用 even_simpler_zh，最後用 confirm_question 確認他懂了。不要一次倒出三層解釋。語氣要像有耐心的老師，不要責備孩子。"
+  },
+  "ask_what_confused": {
+    "intro_zh": "沒關係，我們慢慢來。你不用覺得自己應該一次就全部聽懂。先告訴我，哪一個地方讓你卡住了？",
+    "prompts_zh": [
+      "剛才哪個英文詞你覺得最陌生？例如 voltage、series、rotation……",
+      "哪一個步驟你看完還是不太明白？",
+      "是公式不會用，還是道理聽起來怪怪的？",
+      "你也可以指著某一句話跟我說：「這句我看不懂。」",
+      "如果一時說不出來，也可以選下面這些常見的困惑，我們再講一次。"
+    ],
+    "encouragement_zh": "卡住是正常的，很多小朋友一開始也會在同一個地方停住。你指出哪裡不懂，我就只講那一塊，用更簡單的方法再說一次。",
+    "follow_up_zh": "聽完這一小段以後，我們會再問你一個小小的問題。不是要考倒你，只是確認這一次有沒有講清楚。如果還是模糊，我們還可以再講得更慢。",
+    "if_still_stuck_zh": "如果講了兩三次還是不明白，沒關係。請你用自己的話說說「我現在想到的是……」，我們再從你的想法開始改。千萬不要隨便猜過就好。"
+  },
+  "flagged_facts": [
+    {
+      "id": "moon-period",
+      "units": [
+        "unit-08-moon"
+      ],
+      "note_zh": "月球自轉一圈和繞地球公轉一圈的時間大約都是 27,3 天（教材常寫約 27 天）。月相從新月再回到新月大約是 29,5 天。有些學習單會寫 28 天，那只是約略說法，本教材不採用 28 天，以免和這兩個不同週期混在一起。",
+      "note_en": "Sidereal rotation/orbit ≈ 27,3 days; synodic month (phase cycle) ≈ 29,5 days. Some worksheets say 28 days; that figure is not used here."
+    },
+    {
+      "id": "solstice-equinox-dates",
+      "units": [
+        "unit-07-earth-movement"
+      ],
+      "note_zh": "南半球冬至約 6 月 21 日，夏至約 12 月 21 或 22 日；春分、秋分約 3 月 20–21 日和 9 月 22–23 日，實際日期每年可能前後差一天。學校範圍寫約 3 月 21 日和 9 月 23 日，講解時用「大約」即可。",
+      "note_en": "Solstice and equinox dates can shift by a day from year to year."
+    },
+    {
+      "id": "leap-year-simplification",
+      "units": [
+        "unit-07-earth-movement"
+      ],
+      "note_zh": "六年級通常說地球公轉約 365¼ 天，所以每四年加一天當閏年。更精確的規則（例如世紀年要能被 400 整除才是閏年）不必先教；若孩子問起，可在 notes 層說明這是簡化版。",
+      "note_en": "The Grade 6 model is 365¼ days and a leap day every four years. The century-year rule is not required at this level."
+    },
+    {
+      "id": "oort-cloud-not-directly-observed",
+      "units": [
+        "unit-06-sun-solar-system"
+      ],
+      "note_zh": "歐特雲（Oort cloud）是科學家根據彗星軌道推論出來的遙遠冰凍天體區，目前還沒有直接拍到它。對孩子說明時要用「科學家認為」或「科學家推想」，不要說成已經完全觀測證實。",
+      "note_en": "The Oort cloud is inferred, not directly imaged."
+    },
+    {
+      "id": "salt-partner-countries",
+      "units": [
+        "unit-09-telescopes"
+      ],
+      "note_zh": "SALT（南非大型望遠鏡）由多個國家的機構合作興建。有些學校備忘寫「6 個國家」，但公開資料裡的合作國家名單可能不只這個數字，而且成員也可能隨時間調整。本教材只寫「多個國家合作」，不寫確切國數，以免記錯。",
+      "note_en": "The exact number of SALT partner countries is not stated here; school memos that say 'six countries' may be imprecise."
+    },
+    {
+      "id": "venus-day-year-rounded",
+      "units": [
+        "unit-06-sun-solar-system"
+      ],
+      "note_zh": "金星自轉一圈約 243 個地球日，繞太陽一圈約 225 個地球日（更精確約 224,7 天）。教材用整數 243 和 225 即可。金星是逆向自轉，六年級不一定要考，可當補充，不要當成必記重點。",
+      "note_en": "Venus rotation ≈ 243 Earth days; orbital period ≈ 225 Earth days (about 224,7). Retrograde rotation is optional extension."
+    },
+    {
+      "id": "dwarf-planet-haumea",
+      "units": [
+        "unit-06-sun-solar-system"
+      ],
+      "note_zh": "國際天文聯會目前承認的矮行星包括 Ceres、Pluto、Haumea、Makemake 和 Eris。若學校學習單只列出其中四顆、沒有 Haumea，講解可補上 Haumea，並說明考試時寫出學習單上的例子通常即可。",
+      "note_en": "Haumea is also an official IAU dwarf planet, even if a school list omits it."
+    }
+  ],
+  "units": [
+    {
+      "id": "unit-01-circuits",
+      "title_en": "Electric circuits and circuit symbols",
+      "title_zh": "電路和電路符號",
+      "term": "Term 3: Energy and Change",
+      "notes": [],
+      "key_terms": [
+        {
+          "en": "cell",
+          "zh": "單電池／一顆電池",
+          "kid_definition_zh": "提供電能的一顆小電池。電路圖裡，長細線是正極（+），短粗線是負極（−）。"
+        },
+        {
+          "en": "battery",
+          "zh": "電池組",
+          "kid_definition_zh": "兩顆或兩顆以上的 cell 接在一起，就叫做 battery。它能提供更多電能。"
+        },
+        {
+          "en": "switch",
+          "zh": "開關",
+          "kid_definition_zh": "用來接通或切斷電路的零件。closed switch 是關上、電路接通；open switch 是打開、電路中斷。"
+        },
+        {
+          "en": "bulb / lamp",
+          "zh": "燈泡",
+          "kid_definition_zh": "讓電能轉成光能（也會發出熱）的零件。符號是一個圓，裡面有一個叉。"
+        },
+        {
+          "en": "buzzer",
+          "zh": "蜂鳴器",
+          "kid_definition_zh": "讓電能轉成聲音的零件，通電時會發出嗡嗡聲。"
+        },
+        {
+          "en": "motor",
+          "zh": "馬達",
+          "kid_definition_zh": "讓電能轉成運動（動能）的零件，可以轉動輪子或扇葉。符號常是一個圓，裡面寫 M。"
+        },
+        {
+          "en": "resistor",
+          "zh": "電阻器",
+          "kid_definition_zh": "用來限制電流大小的零件，通電時常常也會發熱。符號常畫成一個長方形。"
+        },
+        {
+          "en": "voltmeter",
+          "zh": "電壓表",
+          "kid_definition_zh": "用來測量電壓的儀器。符號是一個圓，裡面寫 V。它要並聯在零件兩端。"
+        },
+        {
+          "en": "ammeter",
+          "zh": "電流表",
+          "kid_definition_zh": "用來測量電流的儀器。符號是一個圓，裡面寫 A。它要串聯在電路裡。"
+        },
+        {
+          "en": "closed circuit",
+          "zh": "閉合電路",
+          "kid_definition_zh": "一個完整的迴路，從電源出發又回到電源，中間沒有缺口，電流可以流動。"
+        },
+        {
+          "en": "open circuit",
+          "zh": "開路／不完整電路",
+          "kid_definition_zh": "迴路有缺口，例如開關打開，或電線沒接好，電流無法流動。"
+        },
+        {
+          "en": "series",
+          "zh": "串聯",
+          "kid_definition_zh": "零件一個接一個，排成一條路。電流只有一條路徑可以走。"
+        },
+        {
+          "en": "parallel",
+          "zh": "並聯",
+          "kid_definition_zh": "零件接在不同的分支上，電流有兩條或更多路徑可以走。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u1-s1",
+          "zh": "電路（circuit）就像一條讓電可以走的路。要讓燈泡亮起來，這條路必須從電池的一端出發，經過電線和零件，再回到電池的另一端，圍成一個完整的圈。這個完整的圈叫做 closed circuit。",
+          "en_exam_sentence": "A closed circuit is a complete path that allows electric current to flow.",
+          "diagram_hint": "Simple loop: cell, two wires, one bulb, all joined with no gaps."
+        },
+        {
+          "id": "u1-s2",
+          "zh": "如果路上有缺口，電流就走不過去，燈泡不會亮。缺口可能是開關被打開，或是電線沒接好。這樣的電路叫做 open circuit。記住：開關「打開」（open）時，路是斷的；開關「關上」（closed）時，路是通的。這個跟房間門的說法有點像，可是要看英文 open / closed，不要只靠中文的「開、關」去猜。",
+          "en_exam_sentence": "If the switch is open, the circuit is incomplete and the bulb will not light.",
+          "diagram_hint": "Same loop as s1, but with an open-switch symbol (a gap) so the bulb is off."
+        },
+        {
+          "id": "u1-s3",
+          "zh": "考試要畫的是電路符號圖（circuit diagram），不是把實物畫出來。cell 的符號是一長一短兩條平行線：長細線是正極，短粗線是負極。兩顆或更多 cell 畫在一起，就是 battery。接電池組時，通常是一顆的正極接下一個的負極。",
+          "en_exam_sentence": "A cell is shown as a long thin line and a short thick line; a battery is two or more cells together.",
+          "diagram_hint": "Show one cell, then a battery of two cells (long-short, long-short). Label + on the long line and − on the short thick line."
+        },
+        {
+          "id": "u1-s4",
+          "zh": "其他常見符號也要認得、會畫：燈泡是圓裡有一個叉；開關在閉合時是接通的線，打開時有缺口；蜂鳴器會發出聲音；馬達的符號常是圓裡寫 M；電阻器常畫成長方形；電壓表是圓裡寫 V；電流表是圓裡寫 A。電線要用直尺畫成整齊的直線，轉彎處盡量畫成直角。",
+          "en_exam_sentence": "A circuit diagram uses standard symbols joined by neat, straight lines.",
+          "diagram_hint": "Symbol key: cell, battery, open and closed switch, bulb (circle with cross), buzzer, motor (circle with M), resistor (rectangle), voltmeter (circle with V), ammeter (circle with A)."
+        },
+        {
+          "id": "u1-s5",
+          "zh": "串聯（series）是把零件一個接著一個排成同一條路。電流只有一條路徑。想像一條單車道，所有車子都走同一條路。如果串聯電路裡有一顆燈泡燒壞了，路就斷了，其他燈泡也會一起熄滅。",
+          "en_exam_sentence": "In a series circuit there is only one path for the current.",
+          "diagram_hint": "One loop with a battery, a closed switch and two bulbs one after the other."
+        },
+        {
+          "id": "u1-s6",
+          "zh": "並聯（parallel）是把零件接在不同的分支上。電流可以走不同的路。想像一條路在某個地方分成兩條巷子，再匯合。如果並聯的其中一顆燈泡燒壞了，那一條分支斷了，可是另一條分支還是通的，所以另一顆燈泡通常還能亮。家裡的電燈大多用並聯，這樣一盞燈壞了，其他燈還能用。",
+          "en_exam_sentence": "In a parallel circuit there is more than one path for the current.",
+          "diagram_hint": "Battery and switch in the main loop; two bulbs on separate branches side by side."
+        },
+        {
+          "id": "u1-s7",
+          "zh": "要讓電路工作，通常需要：電源（cell 或 battery）提供能量、電線把零件連起來、還有一個用電的零件（例如燈泡）。開關可以控制電路要不要接通。畫圖時，所有符號必須連成一個完整的迴路，不能留下沒接上的線頭。",
+          "en_exam_sentence": "A simple working circuit needs a cell or battery, connecting wires and a component such as a bulb, joined in a complete loop."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u1-q1",
+          "q_en": "A circuit has a cell, a bulb and an open switch. Will the bulb light? Give a reason.",
+          "q_zh": "一個電路裡有一顆 cell、一顆燈泡和一個打開的開關。燈泡會亮嗎？請說出理由。",
+          "options": [
+            "A  Yes, because there is a cell.",
+            "B  No, because the switch is open so the circuit is not complete.",
+            "C  Yes, because the bulb is connected to a wire.",
+            "D  No, because a cell cannot provide energy."
+          ],
+          "answer": "B  No, because the switch is open so the circuit is not complete.",
+          "why_zh": "開關打開時，電路有缺口，電流無法流動，所以燈泡不亮。只看到有電池還不夠，路必須是完整的。"
+        },
+        {
+          "id": "u1-q2",
+          "q_en": "Which statement about series and parallel circuits is correct?",
+          "q_zh": "關於串聯和並聯，哪一句是對的？",
+          "options": [
+            "A  In a series circuit there are many paths for the current.",
+            "B  In a parallel circuit there is only one path for the current.",
+            "C  If one bulb breaks in a series circuit, the other bulbs usually stay on.",
+            "D  If one bulb breaks in a parallel circuit, the bulbs on other branches can still light."
+          ],
+          "answer": "D  If one bulb breaks in a parallel circuit, the bulbs on other branches can still light.",
+          "why_zh": "並聯有兩條或更多路徑。一條分支斷了，其他分支還能走通。串聯只有一條路，一顆燈壞了，其他燈也會滅。"
+        },
+        {
+          "id": "u1-q3",
+          "q_en": "What is the difference between a cell and a battery?",
+          "q_zh": "cell 和 battery 有什麼差別？",
+          "options": [
+            "A  They are two names for the same thing.",
+            "B  A cell is one energy source; a battery is two or more cells joined together.",
+            "C  A battery is weaker than a cell.",
+            "D  A cell is used only in series, and a battery only in parallel."
+          ],
+          "answer": "B  A cell is one energy source; a battery is two or more cells joined together.",
+          "why_zh": "在自然課裡，cell 是單一一顆電池，battery 是兩顆或更多 cell 接在一起。考試畫圖時也要分清楚。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u1-c1",
+          "keywords": [
+            "電池",
+            "電池組",
+            "cell",
+            "battery",
+            "一顆還是兩顆",
+            "單電池",
+            "不一樣",
+            "差在哪裡"
+          ],
+          "label_zh": "電池跟電池組有什麼不一樣？",
+          "simpler_explanation_zh": "cell 就是單獨的一顆電池，好像一節小小的能量來源。兩顆或三顆 cell 接在一起，才叫做 battery（電池組）。一顆 cell 能給電路一些能量；接得越多，通常能給的能量越多。",
+          "analogy_zh": "一節充電電池像一個人推腳踏車；兩、三節接在一起，就像兩、三個人一起推，力氣比較大。那一組人，就是 battery。",
+          "even_simpler_zh": "先數一數：只有一顆，就叫 cell。有兩顆或更多顆接在一起，就叫 battery。考試看到 battery，請你畫出兩顆或更多顆 cell 的符號。",
+          "confirm_question": {
+            "q_zh": "兩顆 cell 接在一起，正確的英文名稱是什麼？",
+            "options": [
+              "A  a cell",
+              "B  a battery",
+              "C  a switch",
+              "D  a resistor"
+            ],
+            "answer": "B  a battery",
+            "why_zh": "兩顆或更多 cell 接在一起才叫 battery。"
+          }
+        },
+        {
+          "id": "u1-c2",
+          "keywords": [
+            "開關",
+            "打開",
+            "燈不亮",
+            "open switch",
+            "open circuit",
+            "為什麼不亮",
+            "開路",
+            "開關打開"
+          ],
+          "label_zh": "為什麼開關打開，燈就不會亮？",
+          "simpler_explanation_zh": "電流一定要走出一個完整的圓圈才能工作。開關打開時，這個圓圈被剪開一個缺口，電流到缺口就停了，走不回電池，所以燈泡得不到電流，就不會亮。",
+          "analogy_zh": "想像遊樂園的小火車一定要沿著圓形軌道跑回站。如果軌道中間缺了一截，火車就過不去。打開的開關，就是那截缺掉的軌道。",
+          "even_simpler_zh": "燈要亮，路就要連起來，像一個完整的圈。開關打開＝路斷了。路斷了，電就走不動，燈就不亮。",
+          "confirm_question": {
+            "q_zh": "開關打開（open switch）時，為什麼燈泡不亮？",
+            "options": [
+              "A  因為電池沒有能量",
+              "B  因為電路不完整，電流無法流動",
+              "C  因為燈泡只能在白天亮",
+              "D  因為電線太短"
+            ],
+            "answer": "B  因為電路不完整，電流無法流動",
+            "why_zh": "open switch 造成缺口，電路不完整。"
+          }
+        },
+        {
+          "id": "u1-c3",
+          "keywords": [
+            "串聯",
+            "並聯",
+            "series",
+            "parallel",
+            "差在哪裡",
+            "幾條路",
+            "路徑",
+            "有沒有岔路"
+          ],
+          "label_zh": "串聯和並聯到底差在哪裡？",
+          "simpler_explanation_zh": "差在「電可以走幾條路」。串聯只有一條路，所有零件排成一列，電流依序穿過每一個零件。並聯有兩條或更多路，零件在不同分支上，電流可以分開走，再匯合。",
+          "analogy_zh": "串聯像一條只能單排走的獨木橋，大家都走同一條。並聯像河上有兩座橋，你可以走左邊或右邊那一座。",
+          "even_simpler_zh": "先問自己：電流有沒有岔路？沒有岔路，就是串聯。有岔路、可以選不同分支走，就是並聯。",
+          "confirm_question": {
+            "q_zh": "「電流只有一條路徑」描述的是哪一種電路？",
+            "options": [
+              "A  並聯 parallel",
+              "B  開路 open circuit",
+              "C  串聯 series",
+              "D  電池組 battery"
+            ],
+            "answer": "C  串聯 series",
+            "why_zh": "series 的意思就是零件排成一條路，電流只有一條路徑。"
+          }
+        },
+        {
+          "id": "u1-c4",
+          "keywords": [
+            "一個圈",
+            "迴路",
+            "closed circuit",
+            "完整的路",
+            "為什麼要成圈",
+            "回路",
+            "complete path",
+            "圍成圈"
+          ],
+          "label_zh": "為什麼電路一定要形成一個圈？",
+          "simpler_explanation_zh": "電流要從電池的一端出發，做完事以後再回到另一端，這樣能量才能持續被送到燈泡。如果只接一邊，或中間斷掉，電流就沒有完整的去路和回路，燈就不會亮。",
+          "analogy_zh": "這有點像操場跑步：要從起點跑一圈再回來，才算跑完。如果跑道中間圍起來不能過，就跑不成一圈。",
+          "even_simpler_zh": "電池有兩端，一端像出口，一端像入口。電要從出口走出去，再從入口走回來。少接任何一端，或中間斷了，就不成圈，燈就不亮。",
+          "confirm_question": {
+            "q_zh": "一個完整的閉合電路，電流要怎麼走？",
+            "options": [
+              "A  只從電池的一端出發就夠了",
+              "B  從電池一端出發，經過零件，再回到電池另一端",
+              "C  電流可以停在燈泡裡，不必回去",
+              "D  電流只在開關裡流動"
+            ],
+            "answer": "B  從電池一端出發，經過零件，再回到電池另一端",
+            "why_zh": "閉合電路是一個完整迴路，必須回到電源的另一端。"
+          }
+        },
+        {
+          "id": "u1-c5",
+          "keywords": [
+            "符號",
+            "電路符號",
+            "symbol",
+            "怎麼畫",
+            "分不清楚",
+            "circuit diagram",
+            "畫圖",
+            "符號記不起來"
+          ],
+          "label_zh": "那些電路符號我分不清楚",
+          "simpler_explanation_zh": "先記四個最常考的：cell 是一長一短兩條線；battery 是好幾組這樣的線；燈泡是圓加一個叉；開關打開有缺口、關上是接通的。電壓表圓裡寫 V，電流表圓裡寫 A，馬達圓裡寫 M。畫的時候用直尺，不要畫成實物圖。",
+          "analogy_zh": "電路符號像馬桶、餐廳在地圖上的小圖示：不是要把馬桶畫得很像，而是用大家約定好的簡單記號，讓別人一看就懂。",
+          "even_simpler_zh": "每次只記一個：先會畫 cell 和燈泡，再學開關，然後才記 V、A、M。考試評分很看重：符號要對，而且線要連成一個完整的圈。",
+          "confirm_question": {
+            "q_zh": "燈泡在電路圖裡，正確的畫法是什麼？",
+            "options": [
+              "A  畫一個很像真正燈泡的圖",
+              "B  一個圓，裡面有一個叉",
+              "C  一個圓，裡面寫 V",
+              "D  一長一短兩條線"
+            ],
+            "answer": "B  一個圓，裡面有一個叉",
+            "why_zh": "標準燈泡符號是 circle with a cross。畫實物通常不能得分。圓裡寫 V 是電壓表，一長一短是 cell。"
+          }
+        },
+        {
+          "id": "u1-c6",
+          "keywords": [
+            "燒壞",
+            "一起滅",
+            "其他燈也滅",
+            "並聯還會亮",
+            "bulb breaks",
+            "一顆燈壞掉",
+            "串聯會全滅",
+            "blown bulb"
+          ],
+          "label_zh": "為什麼一顆燈泡燒壞，串聯的其他燈會一起滅，並聯卻不會？",
+          "simpler_explanation_zh": "燈泡燒壞，通常表示那一點變成斷路，電流過不去。串聯只有一條路，路一斷，所有燈都沒電。並聯像有好幾條分路，一條斷了，電流還可以走別條，所以其他燈還能亮。",
+          "analogy_zh": "串聯像一串聖誕燈共用同一條線，一顆壞了整串都不亮。並聯像家裡不同房間的燈，客廳燈泡壞了，房間的燈還是可以開。",
+          "even_simpler_zh": "串聯：大家走同一條路，路斷了就全部停。並聯：大家走不同的路，一條路斷了，別條路還通。",
+          "confirm_question": {
+            "q_zh": "兩顆燈泡串聯，其中一顆燒壞了，另一顆通常會怎樣？",
+            "options": [
+              "A  還是會亮，因為另一顆沒壞",
+              "B  也會熄滅，因為唯一的路徑斷了",
+              "C  會變得更亮",
+              "D  會變成並聯"
+            ],
+            "answer": "B  也會熄滅，因為唯一的路徑斷了",
+            "why_zh": "串聯只有一條路徑，一顆燈燒壞就變成開路。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "畫電路圖要用正確符號，不要畫實物。線條要直、要整齊，轉彎盡量用直角。",
+        "圖一定要連成一個完整的迴路，不能有沒接上的線頭。",
+        "看清楚題目要的是 open switch 還是 closed switch；燈泡會不會亮，先問電路完不完整。",
+        "寫 cell 和 battery 時要分清楚：一顆是 cell，兩顆或以上才是 battery。",
+        "如果題目說 explain 或 give a reason，一定要用完整句子寫出原因，只寫 Yes / No 通常拿不到全部分數。"
+      ],
+      "common_mistakes_zh": [
+        "把開關的 open 和 closed 搞反：open 是斷路，燈不亮；closed 是通路，燈才可能亮。",
+        "電池符號的正負極畫反，或只畫一顆卻寫 battery。",
+        "串聯、並聯只看「好不好看」，沒有先數電流有幾條路。",
+        "說明為什麼燈不亮時，只寫「因為開關」，沒寫「電路不完整／電流無法流動」。"
+      ]
+    },
+    {
+      "id": "unit-02-ohms-law",
+      "title_en": "Voltage, current, resistance and Ohm's triangle",
+      "title_zh": "電壓、電流、電阻和歐姆三角形",
+      "term": "Term 3: Energy and Change",
+      "notes": [
+        "南非學校小數常用逗號，例如 1,5 A。孩子在考卷上應跟隨學校寫法。本單元例題都用逗號小數。",
+        "並聯總電阻公式 1/R = 1/R1 + 1/R2 在學校學習單裡有出現，但對許多六年級孩子偏難。本單元用兩個相同電阻的簡單例子（兩個 4 Ω 並聯，總電阻是 2 Ω）來建立觀念，不引入難算的分數。"
+      ],
+      "key_terms": [
+        {
+          "en": "voltage (V)",
+          "zh": "電壓",
+          "kid_definition_zh": "電壓可以想成「推動電荷走的力氣」。單位是 volt，符號是 V。用電壓表（voltmeter）來測量。"
+        },
+        {
+          "en": "current (I)",
+          "zh": "電流",
+          "kid_definition_zh": "電流是電荷在電路裡流動的快慢或多少。單位是 ampere，簡稱 amp，符號是 A。用電流表（ammeter）來測量。公式裡用字母 I 表示電流。"
+        },
+        {
+          "en": "resistance (R)",
+          "zh": "電阻",
+          "kid_definition_zh": "電阻是電路對電流的阻力，會讓電流比較不容易通過。單位是 ohm，符號是 Ω。電阻越大，同樣電壓下電流通常越小。"
+        },
+        {
+          "en": "Ohm's law",
+          "zh": "歐姆定律",
+          "kid_definition_zh": "電壓、電流和電阻的關係是 V = I × R。只要知道其中兩個量，就可以求出第三個。"
+        },
+        {
+          "en": "Ohm's triangle",
+          "zh": "歐姆三角形",
+          "kid_definition_zh": "一個幫助記憶公式的三角形：V 在上面，I 在左下，R 在右下。用手遮住要求的量，下面兩個相乘，或上面除以下面剩下的那一個。"
+        },
+        {
+          "en": "ammeter in series",
+          "zh": "電流表要串聯",
+          "kid_definition_zh": "要測量通過某個零件的電流，電流表必須接在同一條路徑上，讓電流也流過電流表。"
+        },
+        {
+          "en": "voltmeter in parallel",
+          "zh": "電壓表要並聯",
+          "kid_definition_zh": "要測量某個零件兩端的電壓，電壓表要接在那個零件的兩端，也就是並聯。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u2-s1",
+          "zh": "電路裡常要量三個量。Voltage（電壓，V）是推動電荷的「力氣」，單位是 volt（V）。Current（電流，I）是電荷流動的情形，單位是 ampere（A）。Resistance（電阻，R）是阻擋電流的程度，單位是 ohm（Ω）。把單位寫出來很重要，考試算對卻忘了單位，常常會被扣分。",
+          "en_exam_sentence": "Voltage is measured in volts (V), current in amperes (A), and resistance in ohms (Ω)."
+        },
+        {
+          "id": "u2-s2",
+          "zh": "這三個量的關係叫做 Ohm's law（歐姆定律）：V = I × R。意思是：電壓等於電流乘以電阻。如果要求電流，就把公式變成 I = V ÷ R，也就是 I = V / R。如果要求電阻，就變成 R = V / I。",
+          "en_exam_sentence": "Ohm's law: V = I × R, so I = V / R and R = V / I.",
+          "diagram_hint": "Ohm's triangle: V on top, I at bottom left, R at bottom right."
+        },
+        {
+          "id": "u2-s3",
+          "zh": "歐姆三角形很好用：把 V 寫在三角形頭頂，I 在左下，R 在右下。要求哪一個，就用手遮住哪一個。遮住 V，下面露出 I 和 R，所以 V = I × R。遮住 I，看到 V 在 R 的上面，所以 I = V / R。遮住 R，看到 V 在 I 的上面，所以 R = V / I。",
+          "en_exam_sentence": "Cover the quantity you want to find in Ohm's triangle, then multiply or divide the other two.",
+          "diagram_hint": "Three mini-triangles showing V covered (I×R), I covered (V/R), and R covered (V/I)."
+        },
+        {
+          "id": "u2-s4",
+          "zh": "考試計算題要寫出過程，不只寫答案。請養成固定的四步：第一，寫公式；第二，把數字代入（substitution）；第三，算出來；第四，寫答案並加上正確單位。例如：電流是 2 A，電阻是 3 Ω，求電壓。公式：V = I × R。代入：V = 2 × 3。答案：V = 6 V。",
+          "en_exam_sentence": "V = I × R = 2 × 3 = 6 V"
+        },
+        {
+          "id": "u2-s5",
+          "zh": "再看兩個例子。例二：電壓 6 V，電阻 4 Ω，求電流。I = V / R = 6 / 4 = 1,5 A。注意：1,5 在南非是用逗號當小數點。例三：電壓 3 V，電流 2 A，求電阻。R = V / I = 3 / 2 = 1,5 Ω。",
+          "en_exam_sentence": "I = V / R = 6 / 4 = 1,5 A.    R = V / I = 3 / 2 = 1,5 Ω."
+        },
+        {
+          "id": "u2-s6",
+          "zh": "電流表（ammeter）要串聯，因為它要測量「通過這條路」的電流，所以電流必須流過它。電壓表（voltmeter）要並聯，因為它要測量「這個零件兩端」差了多少電壓，所以要接在零件的兩端。接錯位置，讀數會不對，也可能損壞儀器。",
+          "en_exam_sentence": "An ammeter is connected in series; a voltmeter is connected in parallel.",
+          "diagram_hint": "One diagram: ammeter drawn in the main loop in series with a resistor; voltmeter on a branch across the resistor, labelled V."
+        },
+        {
+          "id": "u2-s7",
+          "zh": "串聯電路有三句很常考的話，請背熟並理解：電流處處相同；總電阻等於各電阻相加；各零件的電壓相加等於總電壓（電源電壓）。例子：R1 = 2 Ω，R2 = 4 Ω，總電阻 R = 2 + 4 = 6 Ω。若電池電壓是 12 V，則電流 I = V / R = 12 / 6 = 2 A，兩顆電阻都是 2 A。R1 兩端電壓 V1 = I × R1 = 2 × 2 = 4 V；R2 兩端電壓 V2 = 2 × 4 = 8 V。檢查：4 V + 8 V = 12 V，跟電池電壓一樣。",
+          "en_exam_sentence": "In series, the current is the same everywhere, the resistances add, and the voltages add up to the supply voltage.",
+          "diagram_hint": "Series loop: 12 V battery, 2 Ω and 4 Ω resistors, ammeter in the loop; optionally voltmeters across each resistor showing 4 V and 8 V."
+        },
+        {
+          "id": "u2-s8",
+          "zh": "並聯電路也有三句話：各分支兩端的電壓相同，都等於電源電壓；各分支的電流可以不同，總電流等於各分支電流相加；總電阻會比最小的那一個分支電阻還小。簡單例子：兩個 4 Ω 的電阻並聯，電源 8 V。每一個電阻兩端都是 8 V。每一分支的電流 I = V / R = 8 / 4 = 2 A。總電流 I = 2 + 2 = 4 A。因為 1/R = 1/4 + 1/4 = 1/2，所以總電阻 R = 2 Ω。再用總公式檢查：I = V / R = 8 / 2 = 4 A，跟前面一樣。",
+          "en_exam_sentence": "In parallel, the voltage is the same across each branch, and the branch currents add up to the total current.",
+          "diagram_hint": "8 V battery with two parallel 4 Ω branches; 2 A in each branch, 4 A in the main loop."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u2-q1",
+          "q_en": "A current of 2 A flows through a resistor of 3 Ω. Calculate the voltage. Show the formula, working and unit.",
+          "q_zh": "2 A 的電流通過 3 Ω 的電阻。求電壓。請寫出公式、計算過程和單位。",
+          "options": [
+            "A  V = I × R = 2 × 3 = 6 V",
+            "B  V = I / R = 2 / 3 = 0,67 V",
+            "C  V = I × R = 2 × 3 = 6 A",
+            "D  V = I + R = 2 + 3 = 5 V"
+          ],
+          "answer": "A  V = I × R = 2 × 3 = 6 V",
+          "why_zh": "要求電壓，用 V = I × R。2 × 3 = 6，單位是 V，不是 A。"
+        },
+        {
+          "id": "u2-q2",
+          "q_en": "The voltage across a resistor is 6 V and the resistance is 4 Ω. What is the current?",
+          "q_zh": "電阻兩端電壓是 6 V，電阻是 4 Ω。電流是多少？",
+          "options": [
+            "A  24 A",
+            "B  1,5 A",
+            "C  0,67 A",
+            "D  2 A"
+          ],
+          "answer": "B  1,5 A",
+          "why_zh": "I = V / R = 6 / 4 = 1,5 A。不要用 V × R，那會得到 24，而且那不是電流的公式。"
+        },
+        {
+          "id": "u2-q3",
+          "q_en": "How should an ammeter and a voltmeter be connected in a circuit?",
+          "q_zh": "電流表和電壓表分別要怎麼接到電路裡？",
+          "options": [
+            "A  The ammeter in parallel and the voltmeter in series.",
+            "B  Both in series.",
+            "C  The ammeter in series and the voltmeter in parallel.",
+            "D  Both in parallel."
+          ],
+          "answer": "C  The ammeter in series and the voltmeter in parallel.",
+          "why_zh": "電流表要讓電流從它內部流過，所以串聯；電壓表要量零件兩端的電壓，所以並聯。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u2-c1",
+          "keywords": [
+            "v是什麼",
+            "i是什麼",
+            "r是什麼",
+            "電壓",
+            "電流",
+            "電阻",
+            "voltage",
+            "current",
+            "resistance",
+            "記混"
+          ],
+          "label_zh": "V、I、R 到底是什麼？我老是記混。",
+          "simpler_explanation_zh": "先記中文和單位，再記字母。V 是電壓，單位 V（volt），好像推動的力氣。I 是電流，單位 A（ampere），好像水在管子裡流。R 是電阻，單位 Ω（ohm），好像管子變細或裡面有阻礙。公式裡電流不寫 C，而寫 I，這是約定，只要記住就好。",
+          "analogy_zh": "用水管來想：電壓像水龍頭打開的壓力，電流像水流了多少，電阻像水管細不細、裡面有沒有堵住。壓力大、管子越不堵，水就流得越多。",
+          "even_simpler_zh": "三張小卡片：V＝推的力（volt）；I＝流多少（amp）；R＝阻礙（ohm）。每次做題先在旁邊寫這三張卡片，再開始選公式。",
+          "confirm_question": {
+            "q_zh": "電流的符號和單位是哪一組？",
+            "options": [
+              "A  V，單位 Ω",
+              "B  I，單位 A",
+              "C  R，單位 V",
+              "D  I，單位 V"
+            ],
+            "answer": "B  I，單位 A",
+            "why_zh": "電流用 I 表示，單位是 A（ampere）。"
+          }
+        },
+        {
+          "id": "u2-c2",
+          "keywords": [
+            "歐姆三角形",
+            "ohm's triangle",
+            "怎麼用",
+            "遮住",
+            "公式怎麼選",
+            "三角形",
+            "i = v / r",
+            "怎麼套公式"
+          ],
+          "label_zh": "歐姆三角形要怎麼用？",
+          "simpler_explanation_zh": "先畫三角形：上面 V，左下 I，右下 R。題目問什麼，就遮住什麼。遮住上面的 V，下面兩個要相乘：V = I × R。遮住下面其中一個，就用上面的 V 除以剩下那個。所以 I = V / R，R = V / I。",
+          "analogy_zh": "像玩遮卡片。你想找出被遮住的那一張，規則永遠不變：上面是乘積，下面是相除。",
+          "even_simpler_zh": "不要同時想三個公式。先問：我要找 V、I 還是 R？找 V 就用乘法。找 I 或 R 就用除法，而且一定是 V 當被除數（放在上面）。",
+          "confirm_question": {
+            "q_zh": "已知電壓和電阻，要求電流，該用哪一個公式？",
+            "options": [
+              "A  V = I × R",
+              "B  I = V / R",
+              "C  R = V × I",
+              "D  I = V × R"
+            ],
+            "answer": "B  I = V / R",
+            "why_zh": "要求 I，就用 I = V / R。不要把 V 和 R 相乘。"
+          }
+        },
+        {
+          "id": "u2-c3",
+          "keywords": [
+            "電流表",
+            "ammeter",
+            "為什麼要串聯",
+            "電流表串聯",
+            "電流表怎麼接",
+            "in series",
+            "量電流"
+          ],
+          "label_zh": "為什麼電流表要串聯？",
+          "simpler_explanation_zh": "電流表要數的是「這條路到底流過多少電流」。它必須成為這條路的一部分，讓電流也從它裡面走過去，才能數得準。如果把它並聯到旁邊，大部分電流可能不走它，讀數就不對了。",
+          "analogy_zh": "想像要數一條人行道上走過去多少人，你必須站在這條人行道上數。如果你站在旁邊另一條巷子，數到的就不是這條路的人數。",
+          "even_simpler_zh": "要量「通過這裡的電流」，電流表就要接在同一條路上，一個接著一個，這叫串聯。記住口訣：電流表跟零件走同一條路。",
+          "confirm_question": {
+            "q_zh": "要把電流表接到電路裡，正確的方法是？",
+            "options": [
+              "A  並聯在零件兩端",
+              "B  串聯在同一條路徑上",
+              "C  不一定要接到電路裡",
+              "D  只接到電池外面"
+            ],
+            "answer": "B  串聯在同一條路徑上",
+            "why_zh": "電流必須流過電流表，所以要串聯。"
+          }
+        },
+        {
+          "id": "u2-c4",
+          "keywords": [
+            "電壓表",
+            "voltmeter",
+            "為什麼要並聯",
+            "電壓表並聯",
+            "電壓表怎麼接",
+            "in parallel",
+            "量電壓",
+            "跨接"
+          ],
+          "label_zh": "為什麼電壓表要並聯？",
+          "simpler_explanation_zh": "電壓比的是「這個零件兩端差了多少」。所以電壓表的兩條線，要分別接到這個零件的兩端。這種接法就是並聯。它不是要讓大量電流走它內部，只是在旁邊比較兩端的差異。",
+          "analogy_zh": "要量一座小橋兩頭誰高誰低，尺子要同時碰到橋的兩頭。電壓表的兩條線，就像尺子的兩端，要分別碰零件的兩邊。",
+          "even_simpler_zh": "電壓是看零件「兩端」差多少，所以電壓表要跨接在那兩端，也就是並聯。口訣：電壓表跨在零件兩邊。",
+          "confirm_question": {
+            "q_zh": "要測量燈泡兩端的電壓，電壓表應該怎麼接？",
+            "options": [
+              "A  串聯在燈泡後面",
+              "B  並聯，接到燈泡的兩端",
+              "C  只接電池的一端",
+              "D  代替燈泡，把燈泡拿掉"
+            ],
+            "answer": "B  並聯，接到燈泡的兩端",
+            "why_zh": "電壓表測量兩端的電壓差，所以要並聯在燈泡兩端。"
+          }
+        },
+        {
+          "id": "u2-c5",
+          "keywords": [
+            "串聯怎麼算",
+            "series calculation",
+            "電阻相加",
+            "電流相同",
+            "電壓相加",
+            "怎麼算",
+            "串聯公式"
+          ],
+          "label_zh": "串聯的時候，電壓、電流、電阻要怎麼算？",
+          "simpler_explanation_zh": "先記三句：電流到處一樣；電阻要相加；電壓也要相加，加起來等於電池電壓。例如 2 Ω 和 4 Ω 串聯，總電阻是 6 Ω。若電池是 12 V，電流是 12 ÷ 6 = 2 A，兩個電阻都是 2 A。再用 V = I × R 分別算每個電阻的電壓：2 × 2 = 4 V，2 × 4 = 8 V。最後檢查 4 + 8 = 12。",
+          "analogy_zh": "串聯像一條水管只通向一個方向。水流（電流）到哪裡都一樣多。沿路每一段的阻力加起來，就是總阻力。每一段被「推」的力加起來，等於一開始總共的推力。",
+          "even_simpler_zh": "串聯計算三步：先把電阻加起來；再用 I = V / R 算一次電流（這一個電流全線通用）；最後用 V = I × R 算每一個零件的電壓，並檢查它們加起來是不是等於電池電壓。",
+          "confirm_question": {
+            "q_zh": "2 Ω 和 4 Ω 串聯，接在 12 V 電池上。電路中的電流是多少？",
+            "options": [
+              "A  2 A",
+              "B  6 A",
+              "C  12 A",
+              "D  1,5 A"
+            ],
+            "answer": "A  2 A",
+            "why_zh": "總電阻 2 + 4 = 6 Ω。I = 12 / 6 = 2 A。串聯時這個電流處處相同。"
+          }
+        },
+        {
+          "id": "u2-c6",
+          "keywords": [
+            "並聯怎麼算",
+            "parallel calculation",
+            "單位",
+            "逗號",
+            "小數",
+            "1,5",
+            "branch current",
+            "為什麼要寫單位"
+          ],
+          "label_zh": "並聯又要怎麼算？還有為什麼答案一定要寫單位，小數為什麼用逗號？",
+          "simpler_explanation_zh": "並聯先記兩句最重要的：每個分支兩端電壓相同，都等於電池電壓；總電流等於各分支電流加起來。例如兩個 4 Ω 並聯，電池 8 V，每個分支都是 8 V，每個分支電流是 8 / 4 = 2 A，總電流是 2 + 2 = 4 A。答案一定要寫單位，因為 6 V 和 6 A 意思完全不同。南非考卷的小數常用逗號，所以 1.5 要寫成 1,5。",
+          "analogy_zh": "並聯像兩條水管接在同一個水龍頭上，兩條水管受到的壓力一樣。兩條管子流掉的水加起來，才是總共流掉的水。",
+          "even_simpler_zh": "並聯不要急著先算總電阻。先寫：每個分支電壓＝電池電壓。再對每一分支用 I = V / R。最後把分支電流加起來，就是總電流。寫完再檢查單位：電壓 V，電流 A，電阻 Ω。小數用逗號，例如 1,5 A。",
+          "confirm_question": {
+            "q_zh": "兩個 4 Ω 電阻並聯，接在 8 V 電池上。總電流是多少？",
+            "options": [
+              "A  2 A",
+              "B  4 A",
+              "C  8 A",
+              "D  16 A"
+            ],
+            "answer": "B  4 A",
+            "why_zh": "每個分支 I = 8 / 4 = 2 A。總電流 2 + 2 = 4 A。也可以先算總電阻為 2 Ω，再算 8 / 2 = 4 A。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "計算題務必寫：公式 → 代入數字 → 答案＋單位。學校評分常看這三步是否完整。",
+        "先分清要求的是 V、I 還是 R，再用歐姆三角形選對公式。",
+        "小數跟著南非學校寫法，用逗號：1,5 A、1,5 Ω。",
+        "做完串聯題，用「電壓相加是否等於電源電壓」來檢查；做完並聯題，用「分支電流相加是否等於總電流」來檢查。",
+        "畫圖時：A 在同一條路上（串聯），V 跨在零件兩端（並聯）。"
+      ],
+      "common_mistakes_zh": [
+        "公式選錯，例如用 I = V × R，或把單位寫成另一個量的單位（算出 6 卻寫 A 而不是 V）。",
+        "只寫一個數字，沒寫公式和單位，因而被扣分。",
+        "把電流表並聯、電壓表串聯，接反了。",
+        "把串聯規則用到並聯：例如誤以為並聯時電流處處相同，或誤以為並聯電壓要相加。",
+        "把 6 / 4 寫成 1.5，沒有依學校習慣寫成 1,5。"
+      ]
+    },
+    {
+      "id": "unit-03-conductors-insulators",
+      "title_en": "Conductors, insulators and energy changes",
+      "title_zh": "導體、絕緣體，以及能量的轉換",
+      "term": "Term 3: Energy and Change",
+      "notes": [
+        "石墨（graphite）能導電，但它不是金屬。這是六年級常考的例外，必須特別記住。鉛筆芯的主要成分就是石墨。",
+        "銀和金是很好的導體，可是太貴，家裡電線通常用銅，有時也用鋁。"
+      ],
+      "key_terms": [
+        {
+          "en": "conductor",
+          "zh": "導體",
+          "kid_definition_zh": "讓電流容易通過的材料。大多數金屬都是好導體，例如銅、鋁、銀、金。石墨雖然不是金屬，也能導電。"
+        },
+        {
+          "en": "insulator",
+          "zh": "絕緣體",
+          "kid_definition_zh": "不容易讓電流通過的材料，例如塑膠、橡膠、木頭、玻璃、陶瓷。絕緣體可以保護我們，避免觸電。"
+        },
+        {
+          "en": "metal",
+          "zh": "金屬",
+          "kid_definition_zh": "大多數金屬都是電的好導體。常見例子：copper（銅）、aluminium（鋁）、silver（銀）、gold（金）、iron or steel（鐵或鋼）。"
+        },
+        {
+          "en": "graphite",
+          "zh": "石墨",
+          "kid_definition_zh": "一種不是金屬、卻能導電的材料。鉛筆芯裡就有石墨，所以用鉛筆芯做實驗時，燈泡有時會亮。"
+        },
+        {
+          "en": "energy change",
+          "zh": "能量轉換",
+          "kid_definition_zh": "能量不會憑空消失，只是從一種形式變成另一種。電路裡，電能可以變成熱、光、聲音或運動。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u3-s1",
+          "zh": "有些材料讓電流很容易走過去，叫做 conductors（導體）。大多數金屬都是好導體，例如 copper（銅）、aluminium（鋁）、silver（銀）和 gold（金）。家裡的電線芯常常是銅做的，因為銅導電很好，價格也比銀、金合理。",
+          "en_exam_sentence": "Metals such as copper, aluminium, silver and gold are good conductors of electricity."
+        },
+        {
+          "id": "u3-s2",
+          "zh": "有一個很重要的例外：graphite（石墨）不是金屬，可是它也能導電。考試常會給「pencil lead」（鉛筆芯），正確答案是 graphite，而且它是 conductor。不要看到「不是金屬」就立刻寫 insulator。",
+          "en_exam_sentence": "Graphite is a conductor of electricity, even though it is not a metal."
+        },
+        {
+          "id": "u3-s3",
+          "zh": "有些材料不容易讓電流通過，叫做 insulators（絕緣體）。常見例子：plastic（塑膠）、rubber（橡膠）、wood（木頭）、glass（玻璃）和 ceramic（陶瓷）。電線外面那一層塑膠皮，就是絕緣體。它把電流留在金屬線裡面，避免我們碰到時觸電，也減少短路和火災的危險。",
+          "en_exam_sentence": "Plastic, rubber, wood, glass and ceramic are electrical insulators."
+        },
+        {
+          "id": "u3-s4",
+          "zh": "判斷一個物品是不是導體，可以用簡單電路來試：把物品接到電路的缺口中，看燈泡會不會亮。燈泡亮，表示電流走得過去，這個物品是導體。燈泡不亮，通常表示它是絕緣體（當然也要先確認電池、燈泡和電線本身是好的）。",
+          "en_exam_sentence": "If a material is placed in a gap in a circuit and the bulb lights, the material is a conductor.",
+          "diagram_hint": "Simple test circuit: cell, closed switch, bulb, and a gap labelled 'material being tested'."
+        },
+        {
+          "id": "u3-s5",
+          "zh": "電路裡的零件會把電能（electrical energy）轉成其他形式。燈泡：electrical energy → light energy（and heat）。電阻器或電暖器：electrical energy → heat energy。蜂鳴器或喇叭：electrical energy → sound energy。馬達：electrical energy → kinetic energy（movement）。寫能量轉換時，前後都要寫「哪一種 energy」，中間用箭頭。",
+          "en_exam_sentence": "A glowing bulb changes electrical energy into light energy and heat energy."
+        },
+        {
+          "id": "u3-s6",
+          "zh": "絕緣體不只出現在電線外皮。插頭外殼、吹風機握把、陶瓷絕緣子，都是為了把人和電流隔開。水、尤其是不純的水，可以導電，所以不能用濕手去摸開關或插頭。這既是科學觀念，也是用電安全。",
+          "en_exam_sentence": "We use insulators to stop current leaving a wire, which helps prevent electric shocks."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u3-q1",
+          "q_en": "Which material is a conductor but is not a metal?",
+          "q_zh": "哪一種材料是導體，卻不是金屬？",
+          "options": [
+            "A  copper",
+            "B  rubber",
+            "C  graphite",
+            "D  glass"
+          ],
+          "answer": "C  graphite",
+          "why_zh": "銅是金屬導體；橡膠和玻璃是絕緣體；石墨不是金屬，卻能導電。"
+        },
+        {
+          "id": "u3-q2",
+          "q_en": "Electrical wires in our homes are covered with plastic. Explain why.",
+          "q_zh": "家裡的電線外面包著塑膠。請解釋為什麼。",
+          "options": [
+            "A  Plastic is a conductor, so it helps more current flow.",
+            "B  Plastic is an insulator, so it stops current leaving the wire and helps prevent electric shocks.",
+            "C  Plastic makes the wire heavier so it does not move.",
+            "D  Plastic changes electrical energy into light."
+          ],
+          "answer": "B  Plastic is an insulator, so it stops current leaving the wire and helps prevent electric shocks.",
+          "why_zh": "解釋題要包含兩部分：塑膠是絕緣體，以及它的作用（防止觸電／把電流留在線裡）。"
+        },
+        {
+          "id": "u3-q3",
+          "q_en": "What energy change takes place in an electric motor?",
+          "q_zh": "電動馬達裡發生的能量轉換是什麼？",
+          "options": [
+            "A  electrical energy → sound energy",
+            "B  light energy → electrical energy",
+            "C  electrical energy → kinetic energy (movement)",
+            "D  heat energy → electrical energy"
+          ],
+          "answer": "C  electrical energy → kinetic energy (movement)",
+          "why_zh": "馬達的工作就是把電能轉成運動。蜂鳴器才是轉成聲音，燈泡才是轉成光和熱。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u3-c1",
+          "keywords": [
+            "導體",
+            "絕緣體",
+            "conductor",
+            "insulator",
+            "差在哪裡",
+            "能不能導電",
+            "什麼可以過電"
+          ],
+          "label_zh": "導體和絕緣體差在哪裡？",
+          "simpler_explanation_zh": "差別在於電流容不容易走過去。導體讓電流容易通過，像銅線。絕緣體不容易讓電流通過，像塑膠皮。不是「絕緣體裡完全沒有任何東西」，只是電流很難從它裡面走。",
+          "analogy_zh": "導體像一條暢通的走廊，人走得很順。絕緣體像一堵牆，人不容易穿過去。",
+          "even_simpler_zh": "先問：電能不能很容易走過去？能，就是 conductor。不能，就是 insulator。銅、鋁、銀、金、石墨：能走。塑膠、橡膠、木頭、玻璃、陶瓷：不容易走。",
+          "confirm_question": {
+            "q_zh": "塑膠通常被分類成什麼？",
+            "options": [
+              "A  導體 conductor",
+              "B  絕緣體 insulator",
+              "C  金屬 metal",
+              "D  電池 cell"
+            ],
+            "answer": "B  絕緣體 insulator",
+            "why_zh": "塑膠不容易讓電流通過，是常見的絕緣體。"
+          }
+        },
+        {
+          "id": "u3-c2",
+          "keywords": [
+            "塑膠皮",
+            "電線外面",
+            "為什麼包塑膠",
+            "觸電",
+            "plastic covering",
+            "包起來",
+            "絕緣保護",
+            "wire covering"
+          ],
+          "label_zh": "為什麼塑膠皮要包在電線外面？",
+          "simpler_explanation_zh": "裡面的金屬線是導體，電流走在裡面。外面的塑膠是絕緣體，電流不容易穿出來。這樣我們摸到電線外皮時比較安全，也可以避免兩條金屬線碰到一起造成短路。",
+          "analogy_zh": "很像熱可可外面的杯子：可可是熱的，杯子把熱隔開，手才不會直接碰到燙的液體。塑膠皮就是那層杯子。",
+          "even_simpler_zh": "裡面：金屬，讓電通過。外面：塑膠，不讓電隨便跑出來。這樣人比較不容易觸電。",
+          "confirm_question": {
+            "q_zh": "電線外面包塑膠，主要是因為塑膠是什麼？",
+            "options": [
+              "A  導體，可以讓更多電流通過",
+              "B  絕緣體，可以阻止電流跑出來",
+              "C  金屬，可以讓電線更亮",
+              "D  電池，可以提供能量"
+            ],
+            "answer": "B  絕緣體，可以阻止電流跑出來",
+            "why_zh": "塑膠是絕緣體，用來保護使用的人，並把電流留在金屬線裡。"
+          }
+        },
+        {
+          "id": "u3-c3",
+          "keywords": [
+            "石墨",
+            "graphite",
+            "不是金屬",
+            "鉛筆芯",
+            "pencil lead",
+            "也能導電",
+            "非金屬導體"
+          ],
+          "label_zh": "石墨不是金屬，為什麼也能導電？",
+          "simpler_explanation_zh": "「大多數導體是金屬」這句話大致正確，可是不是全部。石墨是一種碳的材料，它的結構讓電荷比較容易移動，所以它能導電。你不必在六年級把原子結構背得很深，但一定要記住這個例外：graphite is a conductor, but it is not a metal。",
+          "analogy_zh": "就像「大多數鳥都會飛」，可是企鵝是鳥卻不太飛。規則有例外。石墨就是導體家族裡那個不是金屬的例外。",
+          "even_simpler_zh": "記住這一句就很好用：不是金屬，也可以是導體。石墨（鉛筆芯）就是例子。考試看到 pencil lead / graphite，燈泡會亮，它是 conductor。",
+          "confirm_question": {
+            "q_zh": "關於石墨（graphite），哪一句正確？",
+            "options": [
+              "A  它是金屬，所以能導電",
+              "B  它不是金屬，也不能導電",
+              "C  它不是金屬，但能導電",
+              "D  它是絕緣體，因為它是黑色的"
+            ],
+            "answer": "C  它不是金屬，但能導電",
+            "why_zh": "石墨是非金屬導體，常出現在「哪一個不是金屬卻能導電」這類題。"
+          }
+        },
+        {
+          "id": "u3-c4",
+          "keywords": [
+            "能量轉換",
+            "energy change",
+            "能量消失了嗎",
+            "變成光",
+            "變成熱",
+            "變成聲音",
+            "運動",
+            "electrical energy"
+          ],
+          "label_zh": "電真的可以變成熱、光、聲音和運動嗎？能量是不是消失了？",
+          "simpler_explanation_zh": "能量不會無緣無故消失，只是換了樣子。電能進到燈泡，大部分變成光，也有一些變成熱，所以燈泡會燙。進到蜂鳴器就變成聲音，進到馬達就變成轉動。寫的時候用「electrical energy → … energy」。",
+          "analogy_zh": "像把積木拆開再排成另一種形狀：積木還在，只是樣子變了。能量也是從一種形式換成另一種形式。",
+          "even_simpler_zh": "記住四個常用句子：燈泡→光和熱；電暖器或電阻→熱；蜂鳴器→聲音；馬達→運動。左邊都是 electrical energy。",
+          "confirm_question": {
+            "q_zh": "發光的燈泡，主要把電能轉成什麼？",
+            "options": [
+              "A  只有聲音",
+              "B  光能和熱能",
+              "C  只有動能",
+              "D  電能消失了，什麼都沒剩下"
+            ],
+            "answer": "B  光能和熱能",
+            "why_zh": "燈泡把 electrical energy 轉成 light energy and heat energy。能量沒有消失。"
+          }
+        },
+        {
+          "id": "u3-c5",
+          "keywords": [
+            "所有金屬",
+            "木頭濕了",
+            "wet wood",
+            "金屬都可以嗎",
+            "濕的木頭",
+            "dry wood",
+            "濕手",
+            "每一種金屬"
+          ],
+          "label_zh": "是不是所有金屬都可以導電？木頭濕了還算絕緣體嗎？",
+          "simpler_explanation_zh": "在六年級的範圍裡，我們把常見金屬當作好導體，這在考試中通常是對的。木頭、塑膠在乾燥時是絕緣體。可是水，尤其是不純的水，可以幫助導電，所以濕手不能摸電器。如果木頭很濕，它也可能變得比較能導電，因此實驗時材料要說明是乾的還是濕的。",
+          "analogy_zh": "乾的襪子不容易傳水，濕透的襪子就會把水帶到地上。材料乾濕不同，表現也可能不同。",
+          "even_simpler_zh": "考試一般答案：金屬→導體；乾燥的塑膠、橡膠、木頭、玻璃、陶瓷→絕緣體。另外記住安全規則：不要用濕手碰插頭或開關。",
+          "confirm_question": {
+            "q_zh": "在一般的六年級題目裡，乾燥的木頭通常是什麼？",
+            "options": [
+              "A  導體",
+              "B  絕緣體",
+              "C  金屬",
+              "D  電池"
+            ],
+            "answer": "B  絕緣體",
+            "why_zh": "乾燥的木頭通常當作絕緣體。金屬才是典型導體。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "列出導體時不要漏掉 graphite，也不要把塑膠、橡膠寫進去。",
+        "解釋「為什麼電線包塑膠」時，要寫出 insulator 這個詞，並加上「防止觸電」或「不讓電流跑出來」。",
+        "能量轉換要寫完整：electrical energy → light / heat / sound / kinetic energy。",
+        "答案可用材料名稱（copper）或物品名稱（foil strip），但不要把導體和絕緣體混在同一份名單裡。"
+      ],
+      "common_mistakes_zh": [
+        "以為只有金屬才能導電，因而把 graphite 寫成絕緣體。",
+        "把 aluminium 拼成 aluminum 也可以被理解，但南非英語建議寫 aluminium。",
+        "只寫「包塑膠是為了好看／比較耐用」，沒有提到絕緣和安全。",
+        "能量轉換只寫 light，忘了燈泡也會發熱；或箭頭方向寫反。"
+      ]
+    },
+    {
+      "id": "unit-04-investigations",
+      "title_en": "Scientific investigations and variables",
+      "title_zh": "科學探究：變數、重複實驗和結論",
+      "term": "Term 3: Energy and Change",
+      "notes": [
+        "本單元用「蜂鳴器音量隨電壓如何變化」當主例子，因為它同時複習電路，也符合學校常見的探究題型。",
+        "平均（average）時若有明顯異常值，六年級通常是先認出它，再決定是否把它排除後重算。教材強調：先找出 anomaly，並想可能原因（例如線沒接好），不要偷偷改數據。"
+      ],
+      "key_terms": [
+        {
+          "en": "investigative question",
+          "zh": "探究問題",
+          "kid_definition_zh": "這次實驗想回答的問題，通常寫成 How does … affect …? 例如：How does voltage affect the loudness of a buzzer?"
+        },
+        {
+          "en": "independent variable",
+          "zh": "自變數",
+          "kid_definition_zh": "你故意改變的那個條件。在蜂鳴器實驗裡，就是 voltage（電壓）。"
+        },
+        {
+          "en": "dependent variable",
+          "zh": "應變數",
+          "kid_definition_zh": "你去測量、看它怎麼跟著變的結果。在這個實驗裡，就是 buzzer 的 loudness（音量）。"
+        },
+        {
+          "en": "controlled variables",
+          "zh": "控制變數",
+          "kid_definition_zh": "你保持不變的其他條件，例如同一個蜂鳴器、同一組電線、測量音量的距離相同。這樣結果才能公平比較。"
+        },
+        {
+          "en": "repeat and average",
+          "zh": "重複再平均",
+          "kid_definition_zh": "同一個電壓至少做三次，再算平均值。這樣一次的小錯誤比較不會把結論帶歪。"
+        },
+        {
+          "en": "anomaly / anomalous result",
+          "zh": "異常值",
+          "kid_definition_zh": "和大多數結果明顯不合的那一個數據。可能是量錯、線松了或讀數看錯。要認出來，並在結論裡誠實說明。"
+        },
+        {
+          "en": "conclusion",
+          "zh": "結論",
+          "kid_definition_zh": "用結果回答探究問題的一句或兩句話，要說出兩個變數之間的關係，不要只寫「實驗成功了」。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u4-s1",
+          "zh": "我們用一個具體實驗來學探究：改變電池的電壓，看蜂鳴器的聲音會不會比較大聲。探究問題可以寫成：How does the voltage affect the loudness of a buzzer? 好的探究問題通常包含你要改的東西，和你要量的東西。",
+          "en_exam_sentence": "An investigative question can be: How does voltage affect the loudness of a buzzer?",
+          "diagram_hint": "Simple circuit with a battery (or variable number of cells), an ammeter optional, and a buzzer; a sound level meter or ear at a fixed distance."
+        },
+        {
+          "id": "u4-s2",
+          "zh": "三個變數一定要分得清楚。Independent variable（自變數）是你故意改變的：voltage。Dependent variable（應變數）是你測量的結果：loudness。Controlled variables（控制變數）是你保持一樣的條件：同一個蜂鳴器、同樣的電線、同樣的測量距離、同一種測量方法。一次實驗通常只故意改一個自變數。",
+          "en_exam_sentence": "The independent variable is what you change; the dependent variable is what you measure; controlled variables are kept the same."
+        },
+        {
+          "id": "u4-s3",
+          "zh": "為什麼控制變數很重要？如果你同時改電壓又換一個不同的蜂鳴器，最後聲音變了，你就不知道到底是電壓造成的，還是蜂鳴器不同造成的。只有其他條件保持一樣，你才有把握說：音量的改變是因為電壓改變。",
+          "en_exam_sentence": "We keep controlled variables the same so that a fair test is carried out."
+        },
+        {
+          "id": "u4-s4",
+          "zh": "同一個電壓要重複做三次（repeat 3 times），再算 average（平均值）。例如三次音量讀數是 60、62、61，平均大約是 61。重複的原因是：量一次可能碰巧量錯；做三次再平均，結論比較可靠。",
+          "en_exam_sentence": "Repeat the investigation three times and calculate an average to make the results more reliable."
+        },
+        {
+          "id": "u4-s5",
+          "zh": "如果三次裡有一次跟另外兩次差很多，那可能是 anomaly（異常值）。例如 60、62、20，那個 20 就很可疑。先不要假裝沒看到。想一想可能原因：電線鬆了、電池沒接好、或讀數看錯。有時可以再做一次來檢查。寫結果時要誠實。",
+          "en_exam_sentence": "An anomaly is a result that does not fit the pattern of the other results."
+        },
+        {
+          "id": "u4-s6",
+          "zh": "結論要回答一開始的問題，並說出關係。例如：As the voltage increases, the loudness of the buzzer increases. 不要寫「I enjoyed the experiment」或只寫「It worked」。如果題目給了數據，結論必須跟數據相符，不要寫自己猜的、數據沒有支持的話。",
+          "en_exam_sentence": "A conclusion answers the investigative question and describes the relationship shown by the results."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u4-q1",
+          "q_en": "In an investigation of buzzer loudness and voltage, what is the independent variable?",
+          "q_zh": "在「蜂鳴器音量和電壓」的探究裡，自變數是什麼？",
+          "options": [
+            "A  the loudness of the buzzer",
+            "B  the voltage",
+            "C  the length of the wires",
+            "D  the type of buzzer"
+          ],
+          "answer": "B  the voltage",
+          "why_zh": "自變數是你故意改變的條件。這個實驗故意改變的是 voltage。音量是被測量的應變數；電線長度和同一種蜂鳴器應保持不變。"
+        },
+        {
+          "id": "u4-q2",
+          "q_en": "Why do we repeat an investigation three times and calculate an average?",
+          "q_zh": "為什麼要把探究重複三次，再算平均值？",
+          "options": [
+            "A  To make the experiment look longer.",
+            "B  To change more than one variable at a time.",
+            "C  To make the results more reliable and reduce the effect of a single mistake.",
+            "D  So that we do not need a conclusion."
+          ],
+          "answer": "C  To make the results more reliable and reduce the effect of a single mistake.",
+          "why_zh": "重複再平均，是為了讓結果更可靠，一次的小錯誤比較不會決定整個結論。"
+        },
+        {
+          "id": "u4-q3",
+          "q_en": "The loudness readings at 6 V are 70, 72 and 30. Which reading is an anomaly, and what should you do?",
+          "q_zh": "在 6 V 時音量讀數是 70、72 和 30。哪一個是異常值？你該怎麼做？",
+          "options": [
+            "A  72 is the anomaly; ignore all the results.",
+            "B  30 is the anomaly; notice it, think of a possible cause, and do not pretend it fits the pattern.",
+            "C  70 is the anomaly because it is the first reading.",
+            "D  There is no anomaly because all numbers are allowed."
+          ],
+          "answer": "B  30 is the anomaly; notice it, think of a possible cause, and do not pretend it fits the pattern.",
+          "why_zh": "30 明顯低於 70 和 72，是 anomaly。要認出來並思考原因，不能裝作它跟其他數據一樣合理。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u4-c1",
+          "keywords": [
+            "自變數",
+            "應變數",
+            "控制變數",
+            "independent",
+            "dependent",
+            "controlled variable",
+            "分不清楚",
+            "哪一個是變數"
+          ],
+          "label_zh": "自變數、應變數、控制變數我分不清楚",
+          "simpler_explanation_zh": "用三句話來分：我故意改什麼？那是自變數（independent）。我量什麼結果？那是應變數（dependent）。還有哪些東西必須保持一樣？那些是控制變數（controlled）。在蜂鳴器實驗裡：改電壓、量音量、其他都保持一樣。",
+          "analogy_zh": "好像考試成績和讀書時間。你改變每天讀書多久（自變數），再看成績怎麼變（應變數）；考試題目難度、睡眠時間如果也能保持差不多，比較才公平（控制變數）。",
+          "even_simpler_zh": "先填空：我改 ______；我量 ______；我保持 ______ 一樣。第一格是 independent，第二格是 dependent，第三格是 controlled。不要把「我量的東西」寫成自變數。",
+          "confirm_question": {
+            "q_zh": "在蜂鳴器實驗裡，音量（loudness）是哪一種變數？",
+            "options": [
+              "A  自變數 independent",
+              "B  應變數 dependent",
+              "C  控制變數 controlled",
+              "D  不是變數"
+            ],
+            "answer": "B  應變數 dependent",
+            "why_zh": "音量是你測量的結果，它依賴電壓的改變，所以是 dependent variable。"
+          }
+        },
+        {
+          "id": "u4-c2",
+          "keywords": [
+            "重複三次",
+            "平均",
+            "average",
+            "repeat",
+            "做一次就好嗎",
+            "為什麼要三次",
+            "更可靠",
+            "reliable"
+          ],
+          "label_zh": "為什麼要重複做三次再平均？做一次不是比較快？",
+          "simpler_explanation_zh": "做一次比較快，可是也比較容易被一次失誤影響。也許那一次電線鬆了，或你看錯數字。做三次，如果三次都很接近，你就比較有信心。再平均以後，單一一次的小小偏差影響會變小。",
+          "analogy_zh": "量身高如果只量一次，可能站姿不對。量三次再平均，比較接近真正的身高。",
+          "even_simpler_zh": "一次可能是碰巧。三次都差不多，才比較可信。把三次加起來除以 3，就是 average。",
+          "confirm_question": {
+            "q_zh": "重複三次再平均，主要是為了什麼？",
+            "options": [
+              "A  讓實驗看起來比較辛苦",
+              "B  讓結果更可靠",
+              "C  一次改變很多個變數",
+              "D  不必再寫結論"
+            ],
+            "answer": "B  讓結果更可靠",
+            "why_zh": "重複和平均是為了提高可靠性（more reliable）。"
+          }
+        },
+        {
+          "id": "u4-c3",
+          "keywords": [
+            "anomaly",
+            "異常值",
+            "奇怪的數據",
+            "怎麼辦",
+            "不合群的數字",
+            "要不要丟掉",
+            "偏掉的結果"
+          ],
+          "label_zh": "什麼是 anomaly（異常值）？看到了該怎麼辦？",
+          "simpler_explanation_zh": "異常值就是那個「跟大家長得不像」的數據。例如三次是 70、72、30，30 就很奇怪。先把它圈出來，想可能原因，必要時再做一次。不要為了讓圖比較好看就偷偷改掉它，也不要完全裝作沒看到。",
+          "analogy_zh": "一排小朋友身高都在 140 到 145 公分，突然有一個寫 40 公分，那個數字就很可疑，可能是漏寫了 1。",
+          "even_simpler_zh": "先找「特別不合群」的那個數字。找到以後：1. 認出來；2. 想為什麼；3. 誠實寫在結果或討論裡。不要偷偷擦掉。",
+          "confirm_question": {
+            "q_zh": "讀數是 70、72、30，哪一個最可能是 anomaly？",
+            "options": [
+              "A  70",
+              "B  72",
+              "C  30",
+              "D  三個都是"
+            ],
+            "answer": "C  30",
+            "why_zh": "30 明顯偏離另外兩個很接近的讀數。"
+          }
+        },
+        {
+          "id": "u4-c4",
+          "keywords": [
+            "結論",
+            "conclusion",
+            "怎麼寫",
+            "怎麼寫才對",
+            "as the voltage",
+            "關係怎麼寫",
+            "實驗成功了嗎"
+          ],
+          "label_zh": "結論要怎麼寫才對？",
+          "simpler_explanation_zh": "結論要回答探究問題，並用結果說出兩個變數的關係。句型很實用：As the independent variable increases, the dependent variable increases / decreases / stays the same. 例如：As the voltage increases, the buzzer gets louder.",
+          "analogy_zh": "結論不像日記結尾的「今天玩得很開心」，比較像用一句話回答老師的問題：電壓變大以後，聲音怎麼了？",
+          "even_simpler_zh": "用這句填空就很穩：When the voltage increases, the loudness ________. 把空白填成 increases、decreases 或 does not change，而且要跟你的數據一致。",
+          "confirm_question": {
+            "q_zh": "哪一句比較像合適的結論？",
+            "options": [
+              "A  The experiment was fun.",
+              "B  As the voltage increased, the buzzer became louder.",
+              "C  We used a buzzer.",
+              "D  The teacher said we were right."
+            ],
+            "answer": "B  As the voltage increased, the buzzer became louder.",
+            "why_zh": "這句回答了探究問題，也說出兩個變數的關係。"
+          }
+        },
+        {
+          "id": "u4-c5",
+          "keywords": [
+            "保持一樣",
+            "其他條件",
+            "fair test",
+            "為什麼要一樣",
+            "公平試驗",
+            "一次只改一樣",
+            "控制不變"
+          ],
+          "label_zh": "為什麼其他條件都要保持一樣？",
+          "simpler_explanation_zh": "因為我們想知道「到底是誰造成改變」。如果電壓改了，蜂鳴器也換了，距離也變了，聲音變大時，你就說不準是哪一件事造成的。保持其他條件一樣，叫做 fair test（公平試驗）。",
+          "analogy_zh": "要比較兩種肥料好不好，應該種同一種植物、給差不多的水陽光，只改肥料。如果一邊種在陰暗浴室、一邊種在花園，比較就不公平了。",
+          "even_simpler_zh": "一次只故意改一樣東西。其他東西保持一樣。這樣最後才能說：結果的改變是因為我改的那一樣。",
+          "confirm_question": {
+            "q_zh": "做蜂鳴器實驗時，為什麼要用同一個蜂鳴器、同樣的距離？",
+            "options": [
+              "A  因為這些是自變數，要一直改",
+              "B  因為這些是控制變數，必須保持一樣，試驗才公平",
+              "C  因為這樣就不必測量音量",
+              "D  因為電壓不能改變"
+            ],
+            "answer": "B  因為這些是控制變數，必須保持一樣，試驗才公平",
+            "why_zh": "同一個蜂鳴器和固定距離是 controlled variables，用來做 fair test。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "探究問題最好寫成問句，並包含兩個變數，例如 How does voltage affect loudness?",
+        "先寫出 independent、dependent 和至少兩個 controlled variables。",
+        "題目若問 What did she change? 答案是自變數；What did she measure? 是應變數。",
+        "結論要用結果描述關係，不要寫感受或「實驗成功」。",
+        "看到一個特別奇怪的數據，要能指出它是 anomaly。"
+      ],
+      "common_mistakes_zh": [
+        "把應變數和自變數寫反：把「量到的音量」當成自己改變的東西。",
+        "一次改很多條件，結果無法解釋。",
+        "結論寫成 I did it correctly 或 The bulb is a conductor，沒有回答問題。",
+        "探究問題沒有寫成問句，因而被扣分。"
+      ]
+    },
+    {
+      "id": "unit-05-mains-electricity",
+      "title_en": "Mains electricity: fossil fuels and wind energy",
+      "title_zh": "市電：化石燃料和風力發電",
+      "term": "Term 3: Energy and Change",
+      "notes": [
+        "南非大部分市電目前仍主要來自燃煤發電，這與學校題目「Most of South Africa’s mains electricity is generated by burning coal」相符。風力、太陽能正在增加，但不要把「大部分」說成已經是風力為主。",
+        "發電過程在六年級可簡化為：燃料燃燒加熱水 → 蒸氣推動渦輪 → 發電機發電。不必展開到電磁學細節。"
+      ],
+      "key_terms": [
+        {
+          "en": "mains electricity",
+          "zh": "市電／家用電",
+          "kid_definition_zh": "發電廠發出、再經電纜和電線送到家裡、學校和工廠的電。插頭插上牆壁插座，用的就是 mains electricity。"
+        },
+        {
+          "en": "fossil fuels",
+          "zh": "化石燃料",
+          "kid_definition_zh": "煤（coal）、石油（oil）和天然氣（natural gas）。它們由古代生物的遺體在地下經過很長很長的時間形成，所以叫做 fossil fuels。"
+        },
+        {
+          "en": "non-renewable",
+          "zh": "非再生／不可再生",
+          "kid_definition_zh": "用完以後，在人的一生或很短時間內無法再補回來。化石燃料就是 non-renewable，因為再形成需要數百萬年。"
+        },
+        {
+          "en": "renewable",
+          "zh": "再生／可再生",
+          "kid_definition_zh": "可以持續或較快再補回來的能源，例如風、陽光。我們用風來發電，風還是會再吹。"
+        },
+        {
+          "en": "power station",
+          "zh": "發電廠",
+          "kid_definition_zh": "把其他形式的能量轉成電能的地方。許多發電廠燃燒化石燃料來發電。"
+        },
+        {
+          "en": "wind turbine",
+          "zh": "風力發電機／風力渦輪機",
+          "kid_definition_zh": "高大的機器，風推動葉片轉動，再帶動發電機發電。"
+        },
+        {
+          "en": "pollution",
+          "zh": "污染",
+          "kid_definition_zh": "把有害的物質加到空氣、水和土地裡。燃燒化石燃料會放出廢氣，造成空氣污染，也會放出二氧化碳。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u5-s1",
+          "zh": "我們在家裡插頭上用的電，叫做 mains electricity。這些電大多不是在家裡產生的，而是在 power station（發電廠）產生，再經由電纜送到各地方。南非目前大部分市電，仍是靠燃燒煤（coal）發出來的。",
+          "en_exam_sentence": "Mains electricity is generated in power stations and sent to homes through cables and wires."
+        },
+        {
+          "id": "u5-s2",
+          "zh": "Fossil fuels 包括 coal（煤）、oil（石油）和 natural gas（天然氣）。很久很久以前，植物和動物的遺體被埋在地下，經過數百萬年（millions of years）的壓力和變化，才變成這些燃料。正因為需要這麼長的時間，它們被用完以後，無法在短時間內再形成。",
+          "en_exam_sentence": "Fossil fuels such as coal, oil and natural gas formed over millions of years from the remains of living things."
+        },
+        {
+          "id": "u5-s3",
+          "zh": "在燃煤發電廠裡，煤被燒掉，放出的熱把水加熱成蒸氣。蒸氣推動渦輪（turbine）轉動，渦輪再帶動發電機（generator）發出電。因為煤、石油、天然氣用掉就不能很快再補回來，所以它們是 non-renewable energy sources。",
+          "en_exam_sentence": "Coal is burned in a power station to heat water; steam turns a turbine and a generator produces electricity.",
+          "diagram_hint": "Simple flow diagram: coal → burned in power station → heat → steam → turbine → generator → mains electricity."
+        },
+        {
+          "id": "u5-s4",
+          "zh": "燃燒化石燃料會造成 pollution（污染）。廢氣進入空氣，對人和動植物的健康不好，也會放出二氧化碳（carbon dioxide）等氣體，和地球暖化有關。另外，挖煤、運煤也會影響土地。所以我們一方面要了解市電從哪裡來，一方面也要節約用電。",
+          "en_exam_sentence": "Burning fossil fuels causes air pollution and releases gases such as carbon dioxide."
+        },
+        {
+          "id": "u5-s5",
+          "zh": "Wind energy（風能）是另一種發電方式。風推動 wind turbine（風力渦輪機）的葉片，葉片轉動後帶動發電機發電。風會再吹回來，所以風能是 renewable。發電過程中不會像燒煤那樣放出大量廢氣。可是風不是每天、每個時刻都有，所以風力發電有時不穩定，常要和其他發電方式一起使用。",
+          "en_exam_sentence": "Wind is a renewable energy source because the wind can blow again and again.",
+          "diagram_hint": "Side view of a wind turbine: blades, tower, nacelle; arrow for wind, arrow for electricity into cables."
+        },
+        {
+          "id": "u5-s6",
+          "zh": "比較的時候，可以從三個角度想：會不會用完？會不會造成空氣污染？穩不穩定？化石燃料能量集中、目前仍是南非主要電力來源，但是非再生，也會污染。風力可再生、發電時比較乾淨，可是要靠有風的地方和有風的時候。節約用電（關掉不用的燈、用節能燈泡）可以少燒一些煤，也比較省錢。",
+          "en_exam_sentence": "Fossil fuels are non-renewable, but wind energy is renewable."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u5-q1",
+          "q_en": "Why are coal, oil and natural gas called non-renewable fossil fuels?",
+          "q_zh": "為什麼煤、石油和天然氣被叫做非再生的化石燃料？",
+          "options": [
+            "A  They form in a few days whenever we need them.",
+            "B  They formed over millions of years and cannot be replaced quickly once they are used up.",
+            "C  They do not come from living things.",
+            "D  They produce no pollution when they are burned."
+          ],
+          "answer": "B  They formed over millions of years and cannot be replaced quickly once they are used up.",
+          "why_zh": "化石燃料由古代生物經過數百萬年形成，用掉就無法在短時間補回，所以是 non-renewable。"
+        },
+        {
+          "id": "u5-q2",
+          "q_en": "Which statement about wind energy is correct?",
+          "q_zh": "關於風能，哪一句是正確的？",
+          "options": [
+            "A  Wind is a fossil fuel.",
+            "B  A wind turbine burns coal to make the blades turn.",
+            "C  Wind is renewable, and turbines use moving air to turn a generator.",
+            "D  Wind energy can never be used in South Africa."
+          ],
+          "answer": "C  Wind is renewable, and turbines use moving air to turn a generator.",
+          "why_zh": "風推動葉片，再帶動發電機。風能是可再生的，不是化石燃料，也不需要燒煤。"
+        },
+        {
+          "id": "u5-q3",
+          "q_en": "Give one environmental problem caused by burning coal in power stations.",
+          "q_zh": "在發電廠燒煤，會造成哪一種環境問題？",
+          "options": [
+            "A  Air pollution / release of carbon dioxide",
+            "B  The wind stops blowing",
+            "C  The coal turns into a renewable fuel",
+            "D  Homes receive no cables"
+          ],
+          "answer": "A  Air pollution / release of carbon dioxide",
+          "why_zh": "燃燒煤會造成空氣污染，並放出二氧化碳等氣體。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u5-c1",
+          "keywords": [
+            "化石燃料",
+            "fossil fuels",
+            "為什麼叫化石",
+            "煤",
+            "石油",
+            "天然氣",
+            "coal",
+            "oil",
+            "gas",
+            "是什麼"
+          ],
+          "label_zh": "化石燃料是什麼？為什麼要叫「化石」？",
+          "simpler_explanation_zh": "化石燃料不是石頭做的電池，而是煤、石油、天然氣這些能燃燒的燃料。它們來自很久以前的植物和動物遺體，在地下經過數百萬年才變成現在可以開採的燃料。因為跟很古老的生物遺體有關，所以名字裡有 fossil。",
+          "analogy_zh": "有點像樹葉掉進泥裡，經過非常非常久以後變成另一種東西。只是化石燃料等了數百萬年，不是等幾個星期。",
+          "even_simpler_zh": "記住三個名字：coal、oil、natural gas。它們都是很久以前的生物變成的，可以燒掉來取得能量。這三個合稱 fossil fuels。",
+          "confirm_question": {
+            "q_zh": "下列哪一組全部是化石燃料？",
+            "options": [
+              "A  coal, oil, natural gas",
+              "B  wind, coal, sunlight",
+              "C  plastic, rubber, glass",
+              "D  steam, wind, oil"
+            ],
+            "answer": "A  coal, oil, natural gas",
+            "why_zh": "三種主要化石燃料就是煤、石油和天然氣。風和陽光不是化石燃料。"
+          }
+        },
+        {
+          "id": "u5-c2",
+          "keywords": [
+            "用完就沒了",
+            "non-renewable",
+            "不能再做嗎",
+            "數百萬年",
+            "補不回來",
+            "為什麼會用完",
+            "millions of years"
+          ],
+          "label_zh": "為什麼化石燃料用完就沒了？我們不能再做嗎？",
+          "simpler_explanation_zh": "不是完全不能再形成，而是再形成要數百萬年。我們現在用的速度，遠比它再形成的速度最快。對我們的人生、甚至很多很多代以後來說，用掉的那一批等於補不回來，所以叫 non-renewable。",
+          "analogy_zh": "像撲滿裡的錢，如果只出不進，用完就空了。風比較像可以再吹來的風，不是撲滿裡有限的硬幣。",
+          "even_simpler_zh": "化石燃料要等數百萬年才形成。我們幾十年就可能用掉很多。等不了那麼久再做一批，所以說它是非再生的。",
+          "confirm_question": {
+            "q_zh": "化石燃料被稱為 non-renewable，最主要的原因是？",
+            "options": [
+              "A  它們永遠用不完",
+              "B  它們形成需要數百萬年，用完無法很快再補回",
+              "C  它們完全不會造成污染",
+              "D  它們是由風直接變成的"
+            ],
+            "answer": "B  它們形成需要數百萬年，用完無法很快再補回",
+            "why_zh": "非再生指的是無法在短時間內再補回來。"
+          }
+        },
+        {
+          "id": "u5-c3",
+          "keywords": [
+            "風力發電",
+            "wind turbine",
+            "風是電嗎",
+            "怎麼發出電",
+            "葉片",
+            "generator",
+            "風車",
+            "風本身是電"
+          ],
+          "label_zh": "風力發電到底是怎麼發出電的？風本身是電嗎？",
+          "simpler_explanation_zh": "風本身不是電。風是流動的空氣，它有動能。葉片被風推動而轉動，連著的發電機再把這個轉動變成電能。所以路徑是：風的運動 → 葉片轉動 → 發電機 → 電。",
+          "analogy_zh": "很像用手轉一個能發電的小手電筒發電機，或像腳踏車的發電機燈：轉動變成電。只是風力發電機的「手」換成了風。",
+          "even_simpler_zh": "風吹 → 大風車葉片轉 → 發電機工作 → 電送出去。風不是電，風是推動葉片的力量。",
+          "confirm_question": {
+            "q_zh": "風力發電機發出電，靠的是什麼？",
+            "options": [
+              "A  在塔裡燃燒煤",
+              "B  風推動葉片轉動，再帶動發電機",
+              "C  把風直接裝進電線裡",
+              "D  用石油把葉片黏住"
+            ],
+            "answer": "B  風推動葉片轉動，再帶動發電機",
+            "why_zh": "風能先變成葉片的轉動，再由發電機轉成電能。"
+          }
+        },
+        {
+          "id": "u5-c4",
+          "keywords": [
+            "再生能源",
+            "非再生能源",
+            "renewable",
+            "差在哪",
+            "能不能再補",
+            "renewable vs non-renewable",
+            "會不會再有"
+          ],
+          "label_zh": "再生能源和非再生能源差在哪？",
+          "simpler_explanation_zh": "差別在「用了以後，能不能在合理的時間內再補回來」。風、陽光用了還會再有，屬於 renewable。煤、石油、天然氣用了要再等數百萬年，屬於 non-renewable。可再生不是說「完全沒有缺點」，只是來源可以再補。",
+          "analogy_zh": "再生像水龍頭還會再流出來的水；非再生像寶特瓶裡僅有的一口水，喝完這瓶就沒有了（再裝滿要等太久，等於來不及）。",
+          "even_simpler_zh": "問自己一句：它用完以後，很快還會再有嗎？會，就是 renewable，例如 wind。不會，就是 non-renewable，例如 coal。",
+          "confirm_question": {
+            "q_zh": "風能屬於哪一類？",
+            "options": [
+              "A  non-renewable fossil fuel",
+              "B  renewable energy",
+              "C  a metal conductor",
+              "D  mains cable only"
+            ],
+            "answer": "B  renewable energy",
+            "why_zh": "風會再吹，所以風能是 renewable。"
+          }
+        },
+        {
+          "id": "u5-c5",
+          "keywords": [
+            "燒煤",
+            "污染",
+            "pollution",
+            "空氣污染",
+            "carbon dioxide",
+            "為什麼會髒",
+            "廢氣",
+            "burning coal"
+          ],
+          "label_zh": "為什麼燒煤會造成污染？跟我們有什麼關係？",
+          "simpler_explanation_zh": "煤燒掉以後，不只得到熱，也會把一些廢氣和微小顆粒送到空氣裡。這些東西讓空氣變髒，可能影響呼吸；其中的二氧化碳也和地球暖化有關。因為南非很多電仍靠燒煤，我們節省用電，就能少燒一些煤。",
+          "analogy_zh": "像在室內燒太多東西，房間會變煙霧瀰漫，人會想咳嗽。發電廠的煙囱把廢氣送到外面的空氣裡，影響的範圍更大。",
+          "even_simpler_zh": "燒煤→得到熱來發電，可是也會冒出髒的廢氣。廢氣造成 air pollution，對環境和健康不好。所以化石燃料有這個缺點。",
+          "confirm_question": {
+            "q_zh": "燃燒化石燃料的一個主要缺點是什麼？",
+            "options": [
+              "A  它會造成空氣污染",
+              "B  風會因此永遠停止",
+              "C  它讓煤變成再生能源",
+              "D  電線會變成絕緣體"
+            ],
+            "answer": "A  它會造成空氣污染",
+            "why_zh": "燃燒化石燃料會造成 air pollution，並放出二氧化碳等氣體。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "寫出三種化石燃料：coal, oil and natural gas，並寫 formed over millions of years。",
+        "比較題先寫 renewable 或 non-renewable，再補一個理由（能否很快再補回／會不會造成空氣污染）。",
+        "若題目問南非大部分市電怎麼來，正確方向通常是 burning coal in power stations。",
+        "節約用電的例子要具體：關掉不用的燈、用 LED、只燒需要的水，並說明可減少燒煤或省錢。"
+      ],
+      "common_mistakes_zh": [
+        "把風或陽光寫進化石燃料的名單。",
+        "以為 renewable 代表「完全沒有缺點」或「已經是南非最主要的發電方式」。",
+        "只寫「燒煤不好」，沒有提到 pollution 或 non-renewable 這些考試關鍵詞。",
+        "把 mains electricity 說成電池裡的電。市電來自發電廠和牆上的插座。"
+      ]
+    },
+    {
+      "id": "unit-06-sun-solar-system",
+      "title_en": "The Sun and the solar system",
+      "title_zh": "太陽和太陽系",
+      "term": "Term 4: Planet Earth and Beyond",
+      "notes": [
+        "歐特雲目前尚未被直接拍攝到，說明時用「科學家認為／推想」。",
+        "金星自轉約 243 個地球日、公轉約 225 個地球日，採用整數即可。金星逆向自轉屬補充，不當作必考點。",
+        "IAU 承認的矮行星包含 Ceres、Pluto、Haumea、Makemake、Eris。若學校名單沒有 Haumea，可補上並說明考試寫出學習單上的例子通常即可。",
+        "天王星和海王星更精確地說是冰巨行星，六年級常把它們和外層巨行星放在一起。本教材採用題目指定的說法：inner rocky planets 與 outer giants，並輕輕提到天王星、海王星含有較多冰冷物質，避免講死成「全部都只是氣體」。"
+      ],
+      "key_terms": [
+        {
+          "en": "nuclear fusion",
+          "zh": "核融合",
+          "kid_definition_zh": "在太陽核心，氫原子核結合變成氦，並放出巨大能量。太陽的光和熱主要來自這裡。"
+        },
+        {
+          "en": "photosphere",
+          "zh": "光球",
+          "kid_definition_zh": "我們平常看見的太陽「表面」。它實際上是太陽大氣中發出可見光的那一層。"
+        },
+        {
+          "en": "chromosphere",
+          "zh": "色球",
+          "kid_definition_zh": "光球外面的一層太陽大氣。"
+        },
+        {
+          "en": "corona",
+          "zh": "日冕",
+          "kid_definition_zh": "太陽最外面、非常熱也非常稀薄的大氣。日全食時比較容易看見它像一圈白光。"
+        },
+        {
+          "en": "inner rocky planets",
+          "zh": "內側岩石行星",
+          "kid_definition_zh": "水星 Mercury、金星 Venus、地球 Earth、火星 Mars。它們比較靠近太陽，主要由岩石構成。"
+        },
+        {
+          "en": "outer giants",
+          "zh": "外側巨行星",
+          "kid_definition_zh": "木星 Jupiter、土星 Saturn、天王星 Uranus、海王星 Neptune。它們比內側行星大得多。木星和土星主要是氣體；天王星和海王星還含有較多冰冷的物質。"
+        },
+        {
+          "en": "asteroid belt",
+          "zh": "小行星帶",
+          "kid_definition_zh": "火星和木星之間，有許多岩石和金屬小天體運行的區域。"
+        },
+        {
+          "en": "Kuiper belt",
+          "zh": "柯伊伯帶",
+          "kid_definition_zh": "海王星軌道以外的一個冰凍小天體帶。冥王星就在這個區域。"
+        },
+        {
+          "en": "Oort cloud",
+          "zh": "歐特雲",
+          "kid_definition_zh": "科學家推想，在太陽系更外圍有一個很遠的冰凍天體區，長週期彗星可能來自這裡。它還沒有被直接拍到。"
+        },
+        {
+          "en": "dwarf planet",
+          "zh": "矮行星",
+          "kid_definition_zh": "繞太陽公轉、形狀大致呈圓，可是還沒有把軌道附近的其他物體清開的天體。例如 Ceres、Pluto、Haumea、Makemake、Eris。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u6-s1",
+          "zh": "太陽是一顆恆星，不是行星。它主要由氫（hydrogen）和氦（helium）組成。在最內層的 core（核心），氫透過 nuclear fusion（核融合）變成氦，並放出巨大能量。這些能量一路向外傳送，最後成為我們收到的光和熱。",
+          "en_exam_sentence": "The Sun produces energy by nuclear fusion in its core, changing hydrogen into helium."
+        },
+        {
+          "id": "u6-s2",
+          "zh": "太陽由內而外，可以先記這些層：core（核心）→ radiation zone（輻射區）→ convection zone（對流區）→ photosphere（光球）→ chromosphere（色球）→ corona（日冕）。核心是核融合發生的地方；光球是我們平常看到的明亮「表面」；日冕是最外層的大氣，日全食時比較容易看見。",
+          "en_exam_sentence": "The layers of the Sun include the core, radiation zone, convection zone, photosphere, chromosphere and corona.",
+          "diagram_hint": "Cutaway of the Sun with six labelled layers from the centre outwards."
+        },
+        {
+          "id": "u6-s3",
+          "zh": "太陽系有八顆行星，依離太陽由近到遠是：Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune。英文口訣可以用：My Very Educated Mother Just Served Us Nachos。內側四顆是岩石行星，外側四顆是巨行星。火星和木星之間有 asteroid belt（小行星帶）。",
+          "en_exam_sentence": "The eight planets in order from the Sun are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune.",
+          "diagram_hint": "Not-to-scale solar system: Sun, eight planets, asteroid belt marked between Mars and Jupiter."
+        },
+        {
+          "id": "u6-s4",
+          "zh": "金星（Venus）不是離太陽最近的行星，最近的是水星（Mercury）。可是金星卻是最熱的行星。原因是它有非常厚的二氧化碳（carbon dioxide）大氣，把熱困住，好像厚被子一樣，這叫做溫室效應。所以「離太陽越近就越熱」這句話，在金星這裡不成立。",
+          "en_exam_sentence": "Venus is the hottest planet because its thick carbon dioxide atmosphere traps heat."
+        },
+        {
+          "id": "u6-s5",
+          "zh": "金星還有一個特別的地方：它自轉一圈大約要 243 個地球日，可是它繞太陽公轉一圈大約只要 225 個地球日。也就是說，金星的一天比它的一年還長。火星（Mars）看起來是紅色的，主要因為土壤和塵埃裡有 iron oxide（氧化鐵），也就是類似鐵鏽的物質。",
+          "en_exam_sentence": "A day on Venus (about 243 Earth days) is longer than a year on Venus (about 225 Earth days)."
+        },
+        {
+          "id": "u6-s6",
+          "zh": "海王星以外還有 Kuiper belt（柯伊伯帶），裡面有許多冰凍的小天體，也包括一些矮行星。再更遠的地方，科學家推想有 Oort cloud（歐特雲），可能是一些長週期彗星的家；要注意，歐特雲還沒有被直接觀測到。",
+          "en_exam_sentence": "The asteroid belt lies between Mars and Jupiter; the Kuiper belt lies beyond Neptune."
+        },
+        {
+          "id": "u6-s7",
+          "zh": "Pluto（冥王星）以前被算成第九顆行星，後來被歸類為 dwarf planet（矮行星）。矮行星也繞太陽公轉，形狀大致是圓的，可是它們還沒有把軌道附近的其他物體清開（has not cleared its orbit），所以不符合行星的完整定義。常見例子：Ceres（在小行星帶）、Pluto、Haumea、Makemake、Eris。",
+          "en_exam_sentence": "Pluto is a dwarf planet because it has not cleared its orbit of other objects."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u6-q1",
+          "q_en": "Why is Venus hotter than Mercury, even though Mercury is closer to the Sun?",
+          "q_zh": "金星比水星離太陽更遠，為什麼反而更熱？",
+          "options": [
+            "A  Venus is made of fire.",
+            "B  Venus has a thick carbon dioxide atmosphere that traps heat.",
+            "C  Mercury has no sunlight.",
+            "D  Venus is a dwarf planet."
+          ],
+          "answer": "B  Venus has a thick carbon dioxide atmosphere that traps heat.",
+          "why_zh": "金星厚厚的二氧化碳大氣把熱困住，所以它是最熱的行星。"
+        },
+        {
+          "id": "u6-q2",
+          "q_en": "Why is Pluto no longer classed as a planet?",
+          "q_zh": "為什麼冥王星不再被歸類為行星？",
+          "options": [
+            "A  It does not orbit the Sun.",
+            "B  It is not round at all.",
+            "C  It has not cleared its orbit of other objects.",
+            "D  It is closer to the Sun than Mercury."
+          ],
+          "answer": "C  It has not cleared its orbit of other objects.",
+          "why_zh": "矮行星還沒有清除軌道附近的其他物體，所以 Pluto 被歸為 dwarf planet。"
+        },
+        {
+          "id": "u6-q3",
+          "q_en": "Where is the asteroid belt found?",
+          "q_zh": "小行星帶在哪裡？",
+          "options": [
+            "A  Between Mercury and Venus",
+            "B  Between Mars and Jupiter",
+            "C  Between Earth and the Moon",
+            "D  Beyond the Oort cloud only"
+          ],
+          "answer": "B  Between Mars and Jupiter",
+          "why_zh": "asteroid belt 位於火星和木星之間。柯伊伯帶才在海王星以外。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u6-c1",
+          "keywords": [
+            "核融合",
+            "nuclear fusion",
+            "太陽為什麼會亮",
+            "氫",
+            "氦",
+            "hydrogen",
+            "helium",
+            "核心",
+            "core"
+          ],
+          "label_zh": "核融合是什麼？太陽為什麼會發光？",
+          "simpler_explanation_zh": "太陽不是在燃燒木頭或煤。它的核心溫度極高、壓力極大，氫會結合成氦，並放出能量。這個過程叫 nuclear fusion。能量向外傳，我們就收到光和熱。",
+          "analogy_zh": "比較像把許多顆很小的珠子擠在一起，變成一顆比較大的珠子，同時放出光和熱。它不是地球上燒柴火的那種「火」。",
+          "even_simpler_zh": "記住三句：太陽主要有氫和氦；在核心，氫變成氦；這個過程叫 nuclear fusion，會放出光和熱。",
+          "confirm_question": {
+            "q_zh": "太陽的能量主要來自哪裡？",
+            "options": [
+              "A  燃燒煤",
+              "B  核心裡氫融合成氦（nuclear fusion）",
+              "C  月球反射的光",
+              "D  地球上的發電廠"
+            ],
+            "answer": "B  核心裡氫融合成氦（nuclear fusion）",
+            "why_zh": "太陽能量來自核心的核融合，不是燃燒化石燃料。"
+          }
+        },
+        {
+          "id": "u6-c2",
+          "keywords": [
+            "太陽的層",
+            "layers of the sun",
+            "怎麼記",
+            "photosphere",
+            "corona",
+            "光球",
+            "日冕",
+            "由內到外"
+          ],
+          "label_zh": "太陽的那幾層要怎麼記？",
+          "simpler_explanation_zh": "由內到外數：先是核心 core，然後輻射區 radiation zone，再來對流區 convection zone，接著是我們看見的光球 photosphere，外面還有色球 chromosphere，最外面是日冕 corona。先抓住三個最常考的：core（產生能量）、photosphere（我們看見的面）、corona（最外層）。",
+          "analogy_zh": "像一顆煮熟的蛋再套兩層薄紗：最裡面是蛋黃（核心），蛋白像中間的層，蛋殼表面像光球，薄紗像更外面的大氣。",
+          "even_simpler_zh": "先會默寫六個英文名稱，並知道順序是由內到外。若一時記不全，至少要能寫：energy is produced in the core；the photosphere is the visible surface.",
+          "confirm_question": {
+            "q_zh": "我們平常看見的太陽「表面」叫做什麼？",
+            "options": [
+              "A  core",
+              "B  corona",
+              "C  photosphere",
+              "D  asteroid belt"
+            ],
+            "answer": "C  photosphere",
+            "why_zh": "photosphere 是可見的光球面。core 在最裡面，corona 在最外面。"
+          }
+        },
+        {
+          "id": "u6-c3",
+          "keywords": [
+            "金星更熱",
+            "venus hottest",
+            "為什麼比水星熱",
+            "carbon dioxide",
+            "大氣把熱困住",
+            "traps heat",
+            "不是最近"
+          ],
+          "label_zh": "為什麼金星比水星還熱？",
+          "simpler_explanation_zh": "水星離太陽較近，可是它幾乎沒有厚大氣把熱留住。金星離得稍遠，卻有非常厚的二氧化碳大氣，熱被包住、跑不掉，所以地表反而更熱。關鍵不是「誰比較近」，而是「誰把熱困住了」。",
+          "analogy_zh": "晴天把車子關窗停在太陽下，車內會變得非常熱，因為熱被關在車裡。金星的厚大氣，就像那輛關緊窗的車。",
+          "even_simpler_zh": "記住這句就能得分：Venus is the hottest planet because its thick carbon dioxide atmosphere traps heat. 不要寫「因為它離太陽最近」，那是錯的，最近的是 Mercury。",
+          "confirm_question": {
+            "q_zh": "金星是最熱的行星，主要原因是？",
+            "options": [
+              "A  它離太陽最近",
+              "B  它的厚二氧化碳大氣把熱困住",
+              "C  它是最大的行星",
+              "D  它沒有大氣"
+            ],
+            "answer": "B  它的厚二氧化碳大氣把熱困住",
+            "why_zh": "厚 CO2 大氣造成強烈溫室效應。離太陽最近的是水星。"
+          }
+        },
+        {
+          "id": "u6-c4",
+          "keywords": [
+            "冥王星",
+            "pluto",
+            "不是行星",
+            "dwarf planet",
+            "矮行星",
+            "cleared its orbit",
+            "為什麼被取消",
+            "軌道沒清開"
+          ],
+          "label_zh": "為什麼冥王星不是行星？",
+          "simpler_explanation_zh": "不是因為它不夠圓，也不是因為它不繞太陽。科學家後來把行星的定義說得更清楚：除了繞太陽、形狀大致是圓的，還要把軌道附近的其他物體清開。冥王星還沒做到這一點，所以改稱為 dwarf planet。Ceres、Haumea、Makemake、Eris 也是。",
+          "analogy_zh": "好像有人坐在一張還堆滿其他書包的椅子上，位子沒有完全屬於他。行星要把自己的「軌道位子」清得比較空；矮行星還沒清開。",
+          "even_simpler_zh": "考試句子：Pluto is a dwarf planet because it has not cleared its orbit. 不要寫「因為它太小所以不繞太陽」，那是錯的。",
+          "confirm_question": {
+            "q_zh": "矮行星和行星差在哪個重要條件？",
+            "options": [
+              "A  矮行星不繞太陽",
+              "B  矮行星還沒有把軌道附近的其他物體清開",
+              "C  矮行星都比太陽大",
+              "D  矮行星都不會反射陽光"
+            ],
+            "answer": "B  矮行星還沒有把軌道附近的其他物體清開",
+            "why_zh": "關鍵定義是 has not cleared its orbit。"
+          }
+        },
+        {
+          "id": "u6-c5",
+          "keywords": [
+            "小行星帶",
+            "柯伊伯帶",
+            "歐特雲",
+            "asteroid belt",
+            "kuiper belt",
+            "oort cloud",
+            "差在哪",
+            "在哪裡"
+          ],
+          "label_zh": "小行星帶、柯伊伯帶、歐特雲差在哪？",
+          "simpler_explanation_zh": "先記位置。Asteroid belt：火星和木星之間，比較多岩石小天體。Kuiper belt：海王星以外，比較多冰凍小天體，冥王星在這裡。Oort cloud：更遠，是科學家推想的冰凍天體區，可能和長週期彗星有關，但還沒直接拍到。",
+          "analogy_zh": "像學校到家的路上三個區域：校門口前的石子路（小行星帶）、出了市區以後的冰凍郊區（柯伊伯帶）、以及更遠、我們還沒親眼走到的傳說森林（歐特雲）。",
+          "even_simpler_zh": "三張位置卡：小行星帶＝Mars 和 Jupiter 中間；柯伊伯帶＝Neptune 外面；歐特雲＝更遠，而且是推想的。不要把這三個地點寫反。",
+          "confirm_question": {
+            "q_zh": "冥王星所在的區域，較正確的是？",
+            "options": [
+              "A  asteroid belt",
+              "B  Kuiper belt",
+              "C  the core of the Sun",
+              "D  between Earth and Venus"
+            ],
+            "answer": "B  Kuiper belt",
+            "why_zh": "Pluto 在海王星以外的柯伊伯帶。Ceres 才在小行星帶。"
+          }
+        },
+        {
+          "id": "u6-c6",
+          "keywords": [
+            "一天比一年長",
+            "venus day",
+            "243",
+            "225",
+            "火星為什麼是紅色",
+            "iron oxide",
+            "氧化鐵",
+            "mars red"
+          ],
+          "label_zh": "金星的一天怎麼會比一年還長？火星為什麼是紅色？",
+          "simpler_explanation_zh": "「一天」指自轉一圈的時間，「一年」指繞太陽公轉一圈的時間。地球的一天約 24 小時，一年約 365 天，所以一年裡有很多天。金星轉得很慢，自轉約 243 個地球日，可是它繞太陽一圈只要約 225 個地球日，所以它的一天比一年長。火星的紅色，主要是泥土和塵埃裡有氧化鐵，像鐵鏽的顏色。",
+          "analogy_zh": "如果有人慢慢原地轉圈要轉很久才轉完一圈（一天很長），可是他繞操場走一圈反而比較快（一年比較短），就會出現「一天比一年長」這種奇怪但真實的情況。",
+          "even_simpler_zh": "兩句話分開記：Venus: day about 243 Earth days, year about 225 Earth days, so the day is longer than the year. Mars is red because of iron oxide in its soil.",
+          "confirm_question": {
+            "q_zh": "關於金星和火星，哪一句正確？",
+            "options": [
+              "A  金星的一天比它的一年短",
+              "B  金星的一天約 243 個地球日，比一年（約 225 個地球日）更長",
+              "C  火星是紅色，因為它正在燃燒",
+              "D  火星比水星更靠近太陽"
+            ],
+            "answer": "B  金星的一天約 243 個地球日，比一年（約 225 個地球日）更長",
+            "why_zh": "243 大於 225，所以金星的一天比一年長。火星紅是因為氧化鐵，不是因為它在燃燒。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "行星順序一定要能默寫，並會用英文口訣 My Very Educated Mother Just Served Us Nachos。",
+        "內側岩石行星四顆、外側巨行星四顆，不要把 Pluto 寫回八大行星裡。",
+        "金星最熱的理由要寫 thick carbon dioxide atmosphere traps heat，不要寫 closest to the Sun。",
+        "提到歐特雲時，用 scientists think 比較妥當。",
+        "寫矮行星例子時，Ceres、Pluto、Makemake、Eris 都很實用；也可以加上 Haumea。"
+      ],
+      "common_mistakes_zh": [
+        "把水星當成最熱的行星，只因為它離太陽最近。",
+        "把冥王星仍寫成第九顆行星。",
+        "把小行星帶寫到海王星外面，或把柯伊伯帶寫到火星和木星之間。",
+        "太陽層次順序記反，或把光球和日冕對調。",
+        "說太陽是「燃燒煤或氣體的大火球」，沒有提到 nuclear fusion。"
+      ]
+    },
+    {
+      "id": "unit-07-earth-movement",
+      "title_en": "The movement of the Earth: day, night, leap years and seasons",
+      "title_zh": "地球的運動：晝夜、閏年和季節",
+      "term": "Term 4: Planet Earth and Beyond",
+      "notes": [
+        "至日和分日的日期每年可能前後差一天。本教材採用：南半球冬至約 6 月 21 日，夏至約 12 月 21 或 22 日；春分、秋分約 3 月 21 日和 9 月 23 日（實際可能是 3 月 20–21 日、9 月 22–23 日）。",
+        "六年級通常說公轉約 365¼ 天，每四年加一天當閏年。世紀年規則（例如 1900 不是閏年、2000 是閏年）不必先教，若孩子問起再說明這是簡化版。",
+        "地軸傾角採用 23,5°。季節的原因是地軸傾斜，不是因為夏天地球離太陽比較近。事實上，地球在 1 月初稍稍接近太陽，那時南半球反而是夏天；不要把「距離遠近」當成季節的主因。"
+      ],
+      "key_terms": [
+        {
+          "en": "rotation",
+          "zh": "自轉",
+          "kid_definition_zh": "地球繞自己的地軸轉動。自轉一圈大約 24 小時，造成 day and night（晝夜）。"
+        },
+        {
+          "en": "revolution / orbit",
+          "zh": "公轉",
+          "kid_definition_zh": "地球繞太陽走一圈。公轉一圈大約 365¼ 天，也就是一年。"
+        },
+        {
+          "en": "axis / tilt",
+          "zh": "地軸／地軸傾斜",
+          "kid_definition_zh": "地軸是地球自轉時繞著轉的那條想像中的線。它不是直直豎著，而是傾斜約 23,5°。這個傾斜造成季節。"
+        },
+        {
+          "en": "leap year",
+          "zh": "閏年",
+          "kid_definition_zh": "地球公轉約 365¼ 天，平常年只算 365 天，剩下的 ¼ 天大約每四年累積成一天，加在 2 月 29 日，這一年叫做 leap year。"
+        },
+        {
+          "en": "solstice",
+          "zh": "至日（夏至或冬至）",
+          "kid_definition_zh": "一年中白天最長或最短的日子。在南半球，約 12 月 21 或 22 日是夏至（白天最長），約 6 月 21 日是冬至（白天最短）。"
+        },
+        {
+          "en": "equinox",
+          "zh": "分日（春分或秋分）",
+          "kid_definition_zh": "白天和黑夜大約一樣長的日子。大約在 3 月 21 日和 9 月 23 日。"
+        },
+        {
+          "en": "Southern Hemisphere",
+          "zh": "南半球",
+          "kid_definition_zh": "赤道以南的地球那一半。南非就在南半球，季節和北半球相反。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u7-s1",
+          "zh": "先分清兩個動作，不要混。Rotation（自轉）是地球像陀螺一樣繞自己的地軸轉，大約 24 小時轉一圈。Revolution（公轉）是地球沿著軌道繞太陽走，大約 365¼ 天走一圈。自轉造成晝夜，公轉加上地軸傾斜才造成一年和季節。",
+          "en_exam_sentence": "The Earth rotates on its axis in about 24 hours and revolves around the Sun in about 365¼ days.",
+          "diagram_hint": "Two diagrams: Earth spinning on its axis labelled rotation / 24 hours; Earth on an orbit around the Sun labelled revolution / 365¼ days."
+        },
+        {
+          "id": "u7-s2",
+          "zh": "白天和晚上怎麼來的？太陽光只照亮地球朝向太陽的那一面。朝向太陽的那一面是 day，背向太陽的那一面是 night。地球持續自轉，本來在白天的地方會轉到背面變成晚上，本來在晚上的地方會轉到正面變成白天。太陽看起來從東方升起、在西方落下，其實是地球在轉。",
+          "en_exam_sentence": "Day and night are caused by the Earth rotating on its axis; the side facing the Sun has day.",
+          "diagram_hint": "Earth with sunlight coming from one side; a point P on the dark side labelled night, a point on the lit side labelled day."
+        },
+        {
+          "id": "u7-s3",
+          "zh": "一年不是正好 365 天，而是約 365¼ 天。如果每年都只過 365 天，日曆會慢慢跟季節對不齊。於是大約每四年加一天，成為 leap year（閏年），2 月有 29 日。這樣日曆才能大致跟上地球真正公轉的時間。",
+          "en_exam_sentence": "A leap year has an extra day (29 February) because the Earth takes about 365¼ days to revolve around the Sun."
+        },
+        {
+          "id": "u7-s4",
+          "zh": "地球的地軸傾斜約 23,5°。地球繞太陽公轉時，地軸傾斜的方向幾乎保持一樣。於是有些月份南半球比較朝向太陽，有些月份比較遠離太陽。比較朝向太陽時，陽光較直射，白天也較長，就是夏天；比較遠離時，陽光較斜，白天較短，就是冬天。季節的主因是這個傾斜，不是因為夏天地球離太陽比較近。",
+          "en_exam_sentence": "Seasons are caused by the tilt of the Earth’s axis (about 23,5°), not by the Earth being much closer to the Sun in summer.",
+          "diagram_hint": "Earth shown at four points in its orbit, axis always tilted the same way; Southern Hemisphere labelled summer at the December position and winter at the June position."
+        },
+        {
+          "id": "u7-s5",
+          "zh": "我們住在南半球，季節和北半球相反，這一點考試很愛問。約 6 月 21 日，南半球較遠離太陽，是冬至：冬天，白天最短。約 12 月 21 或 22 日，南半球較朝向太陽，是夏至：夏天，白天最長。約 3 月 21 日和約 9 月 23 日是春分和秋分，白天和黑夜大約一樣長。日期每年可能差一天，寫「大約」即可。",
+          "en_exam_sentence": "In the Southern Hemisphere, the winter solstice is around 21 June and the summer solstice is around 21 or 22 December."
+        },
+        {
+          "id": "u7-s6",
+          "zh": "同一個時候，南北半球的季節相反。當南非是冬天，北半球許多國家是夏天；當南非是夏天，那些地方是冬天。看題目時一定先看清它問的是 Southern Hemisphere 還是 Northern Hemisphere，不要用北半球的記憶直接套用。",
+          "en_exam_sentence": "When it is winter in the Southern Hemisphere, it is summer in the Northern Hemisphere."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u7-q1",
+          "q_en": "What is the difference between rotation and revolution of the Earth?",
+          "q_zh": "地球的自轉和公轉有什麼差別？",
+          "options": [
+            "A  Rotation is around the Sun in 24 hours; revolution is on its axis in 365 days.",
+            "B  Rotation is the spin on its axis in about 24 hours; revolution is the journey around the Sun in about 365¼ days.",
+            "C  They are two words for the same movement.",
+            "D  Revolution causes day and night only."
+          ],
+          "answer": "B  Rotation is the spin on its axis in about 24 hours; revolution is the journey around the Sun in about 365¼ days.",
+          "why_zh": "自轉是繞地軸轉，約 24 小時，造成晝夜。公轉是繞太陽走，約 365¼ 天。"
+        },
+        {
+          "id": "u7-q2",
+          "q_en": "Why does the Southern Hemisphere have winter around 21 June?",
+          "q_zh": "為什麼南半球在大約 6 月 21 日是冬天？",
+          "options": [
+            "A  The Earth is much farther from the Sun in June than in December, and that is the only reason.",
+            "B  The Southern Hemisphere is tilted away from the Sun then, so sunlight is less direct and days are shorter.",
+            "C  The Moon blocks the Sun for the whole winter.",
+            "D  South Africa moves to the Northern Hemisphere in June."
+          ],
+          "answer": "B  The Southern Hemisphere is tilted away from the Sun then, so sunlight is less direct and days are shorter.",
+          "why_zh": "6 月南半球較遠離太陽（地軸傾斜造成），陽光較斜、白天較短，所以是冬天。主因不是日地距離。"
+        },
+        {
+          "id": "u7-q3",
+          "q_en": "Why do we have a leap year every four years?",
+          "q_zh": "為什麼大約每四年會有一個閏年？",
+          "options": [
+            "A  Because the Earth rotates in 24 hours.",
+            "B  Because the Earth takes about 365¼ days to revolve around the Sun, so an extra day is added to keep the calendar in line.",
+            "C  Because February is too short for the Moon.",
+            "D  Because the axis tilt changes every four years."
+          ],
+          "answer": "B  Because the Earth takes about 365¼ days to revolve around the Sun, so an extra day is added to keep the calendar in line.",
+          "why_zh": "公轉約 365¼ 天，四年大約多出一天，加在 2 月 29 日。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u7-c1",
+          "keywords": [
+            "自轉",
+            "公轉",
+            "rotation",
+            "revolution",
+            "搞混",
+            "24 hours",
+            "365¼",
+            "哪個是自己轉"
+          ],
+          "label_zh": "自轉和公轉我老是搞混",
+          "simpler_explanation_zh": "Rotation 是自己轉，像陀螺，大約一天轉完，造成白天黑夜。Revolution 是繞太陽公轉，像繞操場跑一大圈，大約一年跑完。兩個詞不要對調。可以用手比：手指點著地球中心轉，是自轉；手繞著一顆想像中的太陽走，是公轉。",
+          "analogy_zh": "你原地轉圈，是 rotation。你繞著公園中心的樹走一大圈，是 revolution。",
+          "even_simpler_zh": "兩張卡片：rotation＝自己轉＝約 24 hours＝day and night。revolution＝繞太陽＝約 365¼ days＝一年。先把這兩張卡片背熟再往下看季節。",
+          "confirm_question": {
+            "q_zh": "造成白天和黑夜的，主要是地球的哪一種運動？",
+            "options": [
+              "A  公轉 revolution",
+              "B  自轉 rotation",
+              "C  閏年 leap year",
+              "D  月相 phases"
+            ],
+            "answer": "B  自轉 rotation",
+            "why_zh": "晝夜由自轉造成。公轉和地軸傾斜主要和一年、季節有關。"
+          }
+        },
+        {
+          "id": "u7-c2",
+          "keywords": [
+            "白天",
+            "晚上",
+            "day and night",
+            "太陽在走嗎",
+            "東升西落",
+            "面向太陽",
+            "為什麼會天黑",
+            "地球在轉"
+          ],
+          "label_zh": "為什麼會有白天和晚上？是不是太陽在走來走去？",
+          "simpler_explanation_zh": "太陽並沒有繞著我們每天轉一圈。是地球自己在轉。同一時間，一半的地球面向太陽，是白天；另一半背對太陽，是晚上。你所在的地方轉到正面，天就亮了；轉到背面，天就黑了。",
+          "analogy_zh": "在黑暗房間裡用手電筒照一顆球。被照到的那一面是亮的，背面是暗的。把球慢慢轉，亮面和暗面就會交換。手電筒（太陽）可以幾乎不動，球（地球）在轉就夠了。",
+          "even_simpler_zh": "面向太陽＝白天。背向太陽＝晚上。地球一直轉，所以白天晚上會交換。太陽看起來東升西落，是因為我們站在轉動的地球上。",
+          "confirm_question": {
+            "q_zh": "地球上某一個地方是晚上，主要是因為什麼？",
+            "options": [
+              "A  太陽那天沒有發光",
+              "B  那個地方轉到背向太陽的那一面",
+              "C  月球把太陽完全擋住，而且每天都這樣",
+              "D  地球停止自轉"
+            ],
+            "answer": "B  那個地方轉到背向太陽的那一面",
+            "why_zh": "夜晚就是該地處於地球背向太陽的那一面。"
+          }
+        },
+        {
+          "id": "u7-c3",
+          "keywords": [
+            "地軸傾斜",
+            "tilt",
+            "23,5",
+            "季節",
+            "seasons",
+            "不是因為比較近",
+            "為什麼有夏天冬天",
+            "axis"
+          ],
+          "label_zh": "地軸傾斜為什麼會造成季節？不是因為離太陽遠近嗎？",
+          "simpler_explanation_zh": "很多人以為夏天是地球走得比較靠近太陽，冬天走得比較遠。這不是季節的主因。真正重要的是地軸斜了約 23,5°。南半球比較朝向太陽時，陽光較直、白天較長，就是夏天；比較遠離時，就是冬天。即使地球和太陽的距離差不多，傾斜也會讓兩個半球的受熱不同。",
+          "analogy_zh": "用手電筒斜斜地照桌子，光斑會變大、變淡，那一塊就比較不熱。直直對準時，光較集中，也較熱。夏天的陽光比較像直射，冬天比較像斜射。",
+          "even_simpler_zh": "不要寫「夏天離太陽近」。要寫：The tilt of the Earth’s axis causes the seasons. 南半球朝向太陽時是夏天，遠離太陽時是冬天。",
+          "confirm_question": {
+            "q_zh": "季節的主要原因是什麼？",
+            "options": [
+              "A  夏天時地球離太陽近得多",
+              "B  地軸傾斜約 23,5°，使一個半球有時較朝向太陽，有時較遠離太陽",
+              "C  月球每個季節都把太陽擋住",
+              "D  太陽有時會關掉"
+            ],
+            "answer": "B  地軸傾斜約 23,5°，使一個半球有時較朝向太陽，有時較遠離太陽",
+            "why_zh": "季節的主因是軸傾，不是日地距離的明顯變化。"
+          }
+        },
+        {
+          "id": "u7-c4",
+          "keywords": [
+            "閏年",
+            "leap year",
+            "多一天",
+            "365¼",
+            "2月29",
+            "february 29",
+            "為什麼要加一天",
+            "四年一次"
+          ],
+          "label_zh": "閏年是怎麼來的？為什麼要多一天？",
+          "simpler_explanation_zh": "地球繞太陽一圈大約要 365 天再多四分之一天。如果年年只過 365 天，四年就大約少算了一整天，日曆會慢慢錯位。所以大約每四年加一天，讓日曆再對回來。這一天加在 2 月 29 日。",
+          "analogy_zh": "好像每次排隊少走 1/4 步，走四次就差不多少了一步。閏年就是補上那一步。",
+          "even_simpler_zh": "公轉 ≈ 365¼ days。四個 ¼ 加起來是 1 天。所以大約每四年有一個 leap year，2 月有 29 日。",
+          "confirm_question": {
+            "q_zh": "閏年多出來的那一天，是為了補上什麼？",
+            "options": [
+              "A  地球自轉少轉的時間",
+              "B  地球公轉約 365¼ 天，比平常年的 365 天多出來的時間",
+              "C  月球少掉的光",
+              "D  南半球多出來的冬天"
+            ],
+            "answer": "B  地球公轉約 365¼ 天，比平常年的 365 天多出來的時間",
+            "why_zh": "閏年是為了讓日曆跟上約 365¼ 天的公轉週期。"
+          }
+        },
+        {
+          "id": "u7-c5",
+          "keywords": [
+            "南半球",
+            "冬至",
+            "夏至",
+            "southern hemisphere",
+            "日期",
+            "21 june",
+            "december",
+            "跟北半球相反"
+          ],
+          "label_zh": "南半球的冬至夏至為什麼跟北半球相反？我該記哪些日期？",
+          "simpler_explanation_zh": "同一個時候，一個半球朝向太陽，另一個半球就相對遠離太陽，所以季節相反。你在南非，請先記南半球：約 6 月 21 日冬至（冬天、白天最短）；約 12 月 21 或 22 日夏至（夏天、白天最長）；約 3 月 21 日和約 9 月 23 日是晝夜差不多長的分日。不要把北半球「6 月是夏天」直接搬過來。",
+          "analogy_zh": "一把傾斜的雨傘，一邊比較朝向燈光，另一邊就比較背光。同一盞燈，兩邊的感覺相反。",
+          "even_simpler_zh": "在南非先記住：6 月是冬天，12 月是夏天。冬至約 21 June，夏至約 21/22 December。分日約 21 March 和 23 September。題目若寫 Northern Hemisphere，再把它們對調。",
+          "confirm_question": {
+            "q_zh": "在南半球，大約 12 月 21 日是什麼日子？",
+            "options": [
+              "A  冬至，白天最短",
+              "B  夏至，白天最長",
+              "C  只有北半球才有季節",
+              "D  地球停止公轉的日子"
+            ],
+            "answer": "B  夏至，白天最長",
+            "why_zh": "12 月下旬南半球較朝向太陽，是夏至。6 月才是南半球冬至。"
+          }
+        },
+        {
+          "id": "u7-c6",
+          "keywords": [
+            "離太陽遠近",
+            "不是主因",
+            "軌道不是正圓",
+            "closer to the sun",
+            "距離造成季節嗎",
+            "orbit not a circle",
+            "靠近就夏天嗎"
+          ],
+          "label_zh": "如果地球離太陽的遠近不是主因，為什麼還會聽說軌道不是正圓？",
+          "simpler_explanation_zh": "地球軌道的確不是完美正圓，距離會有一點點變化。可是這點變化不是造成季節的主要原因。證據之一是：南半球的夏天大約在 12 月到 1 月，而那時地球其實稍稍接近太陽；如果「靠近就一定是全世界都夏天」，北半球就不該在那時過冬天。可見關鍵仍是地軸傾斜。",
+          "analogy_zh": "你靠近燈一點點，房間不會整間忽然變成夏天；可是你把臉正對燈或側對燈，冷熱感覺差很多。傾斜比那一點點距離更重要。",
+          "even_simpler_zh": "考試只要抓主因：seasons are caused by the tilt of the Earth’s axis. 不必主動寫軌道遠近。如果題目問「是不是因為比較近」，答案通常是 No。",
+          "confirm_question": {
+            "q_zh": "「南非夏天是因為那時地球離太陽近得多」，這句話對嗎？",
+            "options": [
+              "A  對，這是季節的主因",
+              "B  不對，季節的主因是地軸傾斜",
+              "C  對，所以北半球那時也一定是夏天",
+              "D  對，因為 6 月地球最靠近太陽"
+            ],
+            "answer": "B  不對，季節的主因是地軸傾斜",
+            "why_zh": "日地距離的小小變化不是季節主因。地軸傾斜才是。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "先看題目是問 rotation 還是 revolution，再寫時間：約 24 hours / 約 365¼ days。",
+        "解釋晝夜要提到 rotate / spin on its axis，以及 facing the Sun / facing away。",
+        "在南非作答，季節日期要用南半球：21 June 冬天，21/22 December 夏天。",
+        "解釋季節一定要寫 tilt / 23,5°，不要寫 closest to the Sun。",
+        "閏年的完整答案包含 365¼ days 和 extra day on 29 February。"
+      ],
+      "common_mistakes_zh": [
+        "把自轉和公轉的時間對調，例如寫公轉 24 小時。",
+        "用北半球的季節日期來答南非的題目。",
+        "說夏天是因為地球較靠近太陽。",
+        "只寫「地球在動」來解釋晝夜，沒有提到自轉和向陽、背陽。",
+        "把 23,5° 寫成 23.5° 也可以被理解，但南非教材常用逗號 23,5°。"
+      ]
+    },
+    {
+      "id": "unit-08-moon",
+      "title_en": "The Moon: movement, phases and Apollo 11",
+      "title_zh": "月球：運動、月相和阿波羅 11 號",
+      "term": "Term 4: Planet Earth and Beyond",
+      "notes": [
+        "月球自轉一圈和繞地球公轉一圈的時間大約都是 27,3 天（常約寫為 27 天），所以我們幾乎總是看到同一面。月相從新月再回到新月約 29,5 天（synodic month）。有些學習單寫 28 天，本教材不採用，以免把這兩個不同週期混在一起。",
+        "Apollo 11 登陸日期依國際常用紀錄為 1969 年 7 月 20 日（UTC）。Armstrong 先踏上月球，接著是 Aldrin；Collins 留在指令艙繞月飛行。"
+      ],
+      "key_terms": [
+        {
+          "en": "moon / natural satellite",
+          "zh": "月球／天然衛星",
+          "kid_definition_zh": "月球是地球的天然衛星，它繞著地球公轉。它自己不會發光，我們看見的是它反射太陽光。"
+        },
+        {
+          "en": "phases of the Moon",
+          "zh": "月相",
+          "kid_definition_zh": "我們從地球上看，月球被陽光照射的那一半有多少被看見，於是看起來有時像細彎、有時半圓、有時是滿月。一共常分成 8 個相位。"
+        },
+        {
+          "en": "waxing",
+          "zh": "盈（漸漸變圓、變亮）",
+          "kid_definition_zh": "滿月之前，可見的亮面一天天變大，叫做 waxing。"
+        },
+        {
+          "en": "waning",
+          "zh": "虧（漸漸變細、變暗）",
+          "kid_definition_zh": "滿月之後，可見的亮面一天天變小，叫做 waning。"
+        },
+        {
+          "en": "new moon / full moon",
+          "zh": "新月／滿月",
+          "kid_definition_zh": "新月時，被太陽照亮的那一面幾乎背對我們，看起來很暗。滿月時，整個被照亮的那一面朝向我們。"
+        },
+        {
+          "en": "first quarter / last quarter",
+          "zh": "上弦月／下弦月",
+          "kid_definition_zh": "看起來約一半亮、一半暗。上弦在滿月前，下弦（也叫 third quarter）在滿月後。"
+        },
+        {
+          "en": "Apollo 11",
+          "zh": "阿波羅 11 號",
+          "kid_definition_zh": "1969 年 7 月 20 日，人類第一次登月的任務。Neil Armstrong 和 Buzz Aldrin 踏上月球，Michael Collins 留在軌道上的指令艙。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u8-s1",
+          "zh": "月球自己不會發光。我們能看見它，是因為它反射太陽光（The Moon reflects light from the Sun）。地球上看起來月亮有時圓、有時缺，不是因為月球一會兒自己亮一會兒自己暗，而是我們看見的「被照亮的那一部分」比例在改變。",
+          "en_exam_sentence": "The Moon does not make its own light; we can see it because it reflects sunlight."
+        },
+        {
+          "id": "u8-s2",
+          "zh": "為什麼我們幾乎總是只看到月球的同一面？因為月球自轉一圈的時間，和它繞地球公轉一圈的時間幾乎一樣，大約都是 27 天（更精確約 27,3 天）。它一邊繞地球走，也一邊慢慢自轉，剛好讓同一面朝著我們。背面不是永遠沒有陽光，只是那一面不容易從地球看見。",
+          "en_exam_sentence": "We always see the same side of the Moon because it rotates once in about the same time it takes to revolve once around the Earth (about 27 days).",
+          "diagram_hint": "Moon shown at several places in its orbit, with the same face marked and always turned towards Earth."
+        },
+        {
+          "id": "u8-s3",
+          "zh": "月相（phases）一共常分成 8 個，依序是：new moon（新月）→ waxing crescent（盈的娥眉月）→ first quarter（上弦月）→ waxing gibbous（盈凸月）→ full moon（滿月）→ waning gibbous（虧凸月）→ last / third quarter（下弦月）→ waning crescent（虧的殘月），然後又回到新月。從新月再回到新月，大約是 29,5 天。注意：約 27 天是自轉／公轉一圈，約 29,5 天是月相走完一輪，兩個數字不一樣。",
+          "en_exam_sentence": "The Moon takes about 29,5 days to go through all its phases.",
+          "diagram_hint": "Circle of 8 moon phases in order, with the Sun off to one side and the Earth at the centre; waxing labelled before full moon and waning after."
+        },
+        {
+          "id": "u8-s4",
+          "zh": "怎樣分辨 waxing 和 waning？滿月之前亮面越來越大，是 waxing（盈）。滿月之後亮面越來越小，是 waning（虧）。上弦（first quarter）在盈的過程中，看起來約一半；下弦（last quarter）在虧的過程中，也約一半。記順序比死背每一張圖更重要。",
+          "en_exam_sentence": "Waxing means the lit part we see is growing; waning means the lit part we see is shrinking."
+        },
+        {
+          "id": "u8-s5",
+          "zh": "很多小朋友會以為月相是地球把太陽擋住、在月球上投下影子。那其實是月食（lunar eclipse），一年只有偶爾幾次，不是每個月的月相。平常的月相，是因為月球繞地球走，我們看見被太陽照亮的那一半有時正對我們、有時側對我們、有時幾乎背對我們。地球的影子不是每個晚上都照在月球上。",
+          "en_exam_sentence": "The phases of the Moon are caused by how much of the sunlit half we can see, not by the Earth’s shadow.",
+          "diagram_hint": "Contrast two sketches: everyday phases (half the Moon always lit by the Sun, different amounts visible from Earth) versus a lunar eclipse (Earth’s shadow falling on the Moon)."
+        },
+        {
+          "id": "u8-s6",
+          "zh": "1969 年 7 月 20 日，Apollo 11 的太空人第一次登上月球。Neil Armstrong 最先踏上去，接著是 Buzz Aldrin。第三位 Michael Collins 留在指令艙 Columbia 裡，繼續繞月球飛行，沒有踏上月面。這是人類探索月球很重要的一頁，考試常會問日期和這三個人的工作。",
+          "en_exam_sentence": "Apollo 11 landed on the Moon on 20 July 1969; Armstrong and Aldrin walked on the Moon, and Collins stayed in orbit."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u8-q1",
+          "q_en": "Why do we always see the same side of the Moon from Earth?",
+          "q_zh": "為什麼我們從地球上總是看到月球的同一面？",
+          "options": [
+            "A  The Moon does not move at all.",
+            "B  The Moon rotates once in about the same time it takes to revolve once around the Earth.",
+            "C  The Earth does not rotate.",
+            "D  The far side of the Moon never receives sunlight."
+          ],
+          "answer": "B  The Moon rotates once in about the same time it takes to revolve once around the Earth.",
+          "why_zh": "自轉週期和公轉週期幾乎相同（約 27 天），所以同一面朝著地球。背面不是永遠沒有陽光。"
+        },
+        {
+          "id": "u8-q2",
+          "q_en": "What causes the phases of the Moon?",
+          "q_zh": "月相是什麼原因造成的？",
+          "options": [
+            "A  The Earth’s shadow covers a different part of the Moon each night.",
+            "B  Clouds hide different parts of the Moon.",
+            "C  We see different amounts of the half of the Moon that is lit by the Sun.",
+            "D  The Moon makes more of its own light at full moon."
+          ],
+          "answer": "C  We see different amounts of the half of the Moon that is lit by the Sun.",
+          "why_zh": "月相是「被太陽照亮的那一半，有多少朝向我們」。地球影子造成的是月食，不是每天的月相。"
+        },
+        {
+          "id": "u8-q3",
+          "q_en": "Which statement about Apollo 11 is correct?",
+          "q_zh": "關於 Apollo 11，哪一句正確？",
+          "options": [
+            "A  It landed on 20 July 1969; Armstrong and Aldrin walked on the Moon, and Collins remained in orbit.",
+            "B  It landed in 1971, and all three astronauts walked on the Moon.",
+            "C  It was the first rover on Mars.",
+            "D  It landed on 20 June 1969, and only Collins walked on the Moon."
+          ],
+          "answer": "A  It landed on 20 July 1969; Armstrong and Aldrin walked on the Moon, and Collins remained in orbit.",
+          "why_zh": "日期是 20 July 1969。Armstrong 和 Aldrin 登月，Collins 留在軌道上。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u8-c1",
+          "keywords": [
+            "同一面",
+            "same side",
+            "背面",
+            "far side",
+            "永遠是黑的嗎",
+            "只看到一面",
+            "自轉公轉一樣久",
+            "why same face"
+          ],
+          "label_zh": "為什麼我們永遠只看到月球的同一面？背面是不是永遠黑的？",
+          "simpler_explanation_zh": "月球一邊繞地球走，也一邊自己轉。這兩個動作的時間差不多，都約 27 天，所以它剛好一直把同一面朝著我們。背面不是永遠黑暗，太陽還是會照到那一面；只是我們站在地球上不容易看見那一面。",
+          "analogy_zh": "請一個同學面對你，邊側著走繞你一圈，同時也慢慢自轉，而且一直把臉對著你。你全程都只看到他的臉，看不到後腦勺。可是燈還是可以照到他的後腦勺。",
+          "even_simpler_zh": "記住這句：The Moon rotates in about the same time it revolves around the Earth, so the same side always faces us. 背面＝從地球較難看到的那一面，不是「從來沒有陽光」。",
+          "confirm_question": {
+            "q_zh": "我們總是看到月球同一面，是因為？",
+            "options": [
+              "A  月球完全不會動",
+              "B  月球自轉一圈的時間和繞地球公轉一圈的時間幾乎相同",
+              "C  背面永遠沒有陽光",
+              "D  地球沒有自轉"
+            ],
+            "answer": "B  月球自轉一圈的時間和繞地球公轉一圈的時間幾乎相同",
+            "why_zh": "兩個週期幾乎一樣，造成同一面朝向地球。"
+          }
+        },
+        {
+          "id": "u8-c2",
+          "keywords": [
+            "月相",
+            "phases",
+            "地球影子",
+            "earth's shadow",
+            "月食",
+            "eclipse",
+            "是地球擋住嗎",
+            "不是影子"
+          ],
+          "label_zh": "月相不是地球把月球擋住嗎？",
+          "simpler_explanation_zh": "不是。地球影子偶爾會擋到月球，那叫月食，並不是每個晚上都發生。平常月亮看起來缺一塊，是因為被太陽照亮的那一半，有一部分轉到我們看不見的方向。月球永遠有一半朝向太陽是亮的，我們只是有時看到那一半的全部，有時只看到一小角。",
+          "analogy_zh": "拿一個球，用手電筒從旁邊照它，球永遠有一半是亮的。你繞著球走，看到的亮面就會時而多、時而少。這不是你的身體影子印在球上，是你看的角度變了。",
+          "even_simpler_zh": "兩件事情分開：phases＝我們看見多少亮面；eclipse＝地球影子真的擋到月球，只是偶爾發生。考試問月相，不要寫 Earth’s shadow。",
+          "confirm_question": {
+            "q_zh": "每天看到的月相，主要是因為什麼？",
+            "options": [
+              "A  地球的影子每天都蓋住月球不同的部分",
+              "B  我們看見被太陽照亮的那一半有多少朝向地球",
+              "C  月球自己會改變發光的強度",
+              "D  雲把月球切成不同形狀"
+            ],
+            "answer": "B  我們看見被太陽照亮的那一半有多少朝向地球",
+            "why_zh": "月相來自觀看被照亮的那一半的角度，不是地球影子。"
+          }
+        },
+        {
+          "id": "u8-c3",
+          "keywords": [
+            "盈",
+            "虧",
+            "waxing",
+            "waning",
+            "變大",
+            "變小",
+            "怎麼分",
+            "滿月前還是後"
+          ],
+          "label_zh": "盈和虧要怎麼分？",
+          "simpler_explanation_zh": "先找到滿月。滿月前，亮的部分一天天變大，叫 waxing（盈），好像在「長大」。滿月後，亮的部分一天天變小，叫 waning（虧），好像在「變瘦」。不必一開始就分得很細，先會分長大還是變瘦，再去記 crescent、quarter、gibbous 這些名字。",
+          "analogy_zh": "像月曆上的餅乾：先被一口一口咬得剩下很少（新月附近），再慢慢變回一整塊（滿月），然後又開始被咬小。變大的那段是盈，變小的那段是虧。",
+          "even_simpler_zh": "問自己：亮面是在變大還是變小？變大＝waxing。變小＝waning。滿月是分界點。",
+          "confirm_question": {
+            "q_zh": "滿月之後，亮面漸漸變小，這叫做什麼？",
+            "options": [
+              "A  waxing",
+              "B  waning",
+              "C  a solar eclipse every night",
+              "D  rotation of the Earth only"
+            ],
+            "answer": "B  waning",
+            "why_zh": "滿月後亮面變小是 waning（虧）。Waxing 是變大。"
+          }
+        },
+        {
+          "id": "u8-c4",
+          "keywords": [
+            "八個相位",
+            "8 phases",
+            "27天",
+            "29,5天",
+            "週期不一樣",
+            "怎麼記",
+            "29.5 days",
+            "月相多久一輪"
+          ],
+          "label_zh": "八個相位要怎麼記？27 天和 29,5 天為什麼不一樣？",
+          "simpler_explanation_zh": "八個相位可以想成四個主要點，中間再各加一個過渡：新月、上弦、滿月、下弦是四個主要點；新月和上弦之間是盈娥眉，上弦和滿月之間是盈凸，滿月和下弦之間是虧凸，下弦和新月之間是虧殘月。約 27 天是月球自轉／公轉一圈；約 29,5 天才是月相走完一輪，因為同時地球也在繞太陽走，要再對準「太陽－月球－地球」的相似位置，需要多一點時間。",
+          "analogy_zh": "好像兩個人在跑圓圈，要再回到「彼此和燈光同一個相對位置」，不一定等於其中一個人自己跑完一圈的時間。所以兩個數字不必相同。",
+          "even_simpler_zh": "考試時分開寫：same side faces us ≈ 27 days（自轉和公轉）。all phases ≈ 29,5 days。八個名字先會按順序數，不必第一天就全畫得完美。",
+          "confirm_question": {
+            "q_zh": "月球走完所有月相再回到同樣的新月，大約需要多久？",
+            "options": [
+              "A  24 hours",
+              "B  about 27 days",
+              "C  about 29,5 days",
+              "D  365¼ days"
+            ],
+            "answer": "C  about 29,5 days",
+            "why_zh": "月相週期約 29,5 天。約 27 天是自轉／繞地球公轉一圈的時間。"
+          }
+        },
+        {
+          "id": "u8-c5",
+          "keywords": [
+            "阿波羅",
+            "apollo 11",
+            "armstrong",
+            "aldrin",
+            "collins",
+            "1969",
+            "三個人都上去了嗎",
+            "20 july"
+          ],
+          "label_zh": "阿波羅 11 號是怎麼一回事？三個人都走上月球了嗎？",
+          "simpler_explanation_zh": "Apollo 11 是 1969 年把人送到月球的任務。登陸日期是 20 July 1969。Armstrong 第一個踏上月面，Aldrin 第二個。Collins 的工作同樣重要，可是他留在繞月飛行的指令艙，沒有走到月面上。寫答案時，日期、三個名字，以及誰登月、誰留在軌道，都要分清楚。",
+          "analogy_zh": "像三個人一起出任務：兩個人下車探勘，一個人留在車上負責守著回家的座位和聯絡。留在車上的人並不是比較不重要。",
+          "even_simpler_zh": "三句話：Date = 20 July 1969. Armstrong and Aldrin walked on the Moon. Collins stayed in orbit. 不要寫成三個人都走上月球，也不要把年份寫成 1971（那是後來的 Apollo 15 等任務）。",
+          "confirm_question": {
+            "q_zh": "Apollo 11 任務中，誰沒有踏上月球表面？",
+            "options": [
+              "A  Neil Armstrong",
+              "B  Buzz Aldrin",
+              "C  Michael Collins",
+              "D  三個人都走上月球"
+            ],
+            "answer": "C  Michael Collins",
+            "why_zh": "Collins 留在指令艙繞月飛行。Armstrong 和 Aldrin 走在月面上。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "「我們看得到月亮」要寫它 reflects sunlight，不要寫它自己會發光。",
+        "「為什麼總是同一面」要同時提到 rotate 和 revolve，以及 about the same time（約 27 days）。",
+        "問全部月相要多久，寫 about 29,5 days；不要和 27 天混用。",
+        "解釋月相不要寫 Earth’s shadow；那是月食。",
+        "Apollo 11：20 July 1969；Armstrong、Aldrin 登月；Collins in orbit."
+      ],
+      "common_mistakes_zh": [
+        "把月相說成地球影子造成。",
+        "以為月球背面永遠沒有陽光。",
+        "把 27 天和 29,5 天用反。",
+        "把 waxing 和 waning 記反。",
+        "寫成三位太空人都走上月球，或把登陸年份寫錯。"
+      ]
+    },
+    {
+      "id": "unit-09-telescopes",
+      "title_en": "Telescopes: optical, radio, space, SALT and MeerKAT / SKA",
+      "title_zh": "望遠鏡：光學、電波、太空望遠鏡，以及 SALT 和 MeerKAT／SKA",
+      "term": "Term 4: Planet Earth and Beyond",
+      "notes": [
+        "SALT 位於北開普省 Sutherland，主鏡由 91 片六角形鏡片拼接而成。學校備忘若寫「6 個國家合作」，這個數字可能不夠精確，本教材只寫由多個國家的機構合作，不要求孩子背國數。",
+        "MeerKAT 有 64 座碟形天線，位於北開普省 Carnarvon 附近的喀魯地區，是 SKA（平方公里陣列）的重要前導／組成部分。SKA 是更大的國際電波望遠鏡計畫，南非與澳洲等地都有相關設施。六年級先掌握：MeerKAT 64 dishes、near Carnarvon、radio-quiet、part of the SKA project。",
+        "Galileo 在 1609 年前後用望遠鏡系統觀察天空，看到月球表面、木星的衛星等。他不是望遠鏡的唯一發明者，但常被考成「早期用望遠鏡研究天空的科學家」。"
+      ],
+      "key_terms": [
+        {
+          "en": "optical telescope",
+          "zh": "光學望遠鏡",
+          "kid_definition_zh": "收集可見光，讓遠方的星星、行星或月球看起來更大、更清楚。我們用眼睛或相機去看它收集到的光。"
+        },
+        {
+          "en": "radio telescope",
+          "zh": "電波望遠鏡",
+          "kid_definition_zh": "收集來自太空的無線電波，不是看可見光。外形常像巨大的碟形天線，不像一般用眼睛看的望遠鏡。"
+        },
+        {
+          "en": "space telescope",
+          "zh": "太空望遠鏡",
+          "kid_definition_zh": "被送到地球大氣層外工作的望遠鏡，例如 Hubble。因為上面沒有雲、也較少大氣干擾，影像可以非常清楚。"
+        },
+        {
+          "en": "reflecting telescope",
+          "zh": "反射望遠鏡",
+          "kid_definition_zh": "用鏡子收集和反射光線的望遠鏡。主鏡（primary mirror）先把光收集起來，副鏡（secondary mirror）再把光送到目鏡或儀器。"
+        },
+        {
+          "en": "SALT",
+          "zh": "南非大型望遠鏡",
+          "kid_definition_zh": "Southern African Large Telescope 的簡稱，在北開普省 Sutherland，是南半球很大型的光學望遠鏡。主鏡由 91 片六角形鏡片組成。"
+        },
+        {
+          "en": "SKA / MeerKAT",
+          "zh": "平方公里陣列／MeerKAT",
+          "kid_definition_zh": "SKA（Square Kilometre Array）是超大型的國際電波望遠鏡計畫。MeerKAT 在 Carnarvon 附近，有 64 座碟形天線，是南非很重要的電波望遠鏡。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u9-s1",
+          "zh": "望遠鏡（telescope）用來觀察遠方的天體，讓它們看起來更大、更清楚。顯微鏡是看很小的東西，不要跟望遠鏡搞混。依它收集的是哪一種訊息，可以分成幾類：optical（光學，收集可見光）、radio（電波，收集無線電波），以及放在太空中的 space telescope。",
+          "en_exam_sentence": "A telescope makes distant objects in the sky look bigger and clearer."
+        },
+        {
+          "id": "u9-s2",
+          "zh": "很久以前，Galileo（伽利略）用望遠鏡仔細觀察天空。他看見月球表面不是完全光滑，也看見木星有衛星。這讓人們更確定：不是所有天體都繞著地球轉。考試提到 Galileo，通常是把他和早期的光學望遠鏡、觀察天空連在一起。",
+          "en_exam_sentence": "Galileo used a telescope to study the night sky, including the Moon and the moons of Jupiter."
+        },
+        {
+          "id": "u9-s3",
+          "zh": "很多大型光學望遠鏡是 reflecting telescope（反射望遠鏡）。它用鏡子而不是只用透鏡。Primary mirror（主鏡）是那面大鏡子，負責收集大量的光；secondary mirror（副鏡）再把光反射到目鏡或科學儀器。鏡子越大，通常能收集越多光，也能看更暗、更遠的天體。",
+          "en_exam_sentence": "A reflecting telescope uses a primary mirror to collect light and a secondary mirror to send the light to the eyepiece or instrument.",
+          "diagram_hint": "Side-view of a reflecting telescope: large primary mirror at the bottom, smaller secondary mirror near the top, light rays bouncing to an eyepiece or camera."
+        },
+        {
+          "id": "u9-s4",
+          "zh": "SALT 是 Southern African Large Telescope 的簡稱，位於北開普省的 Sutherland。它的主鏡由 91 片六角形鏡子拼成，像蜂巢一樣。這裡天空黑暗、空氣乾燥、雲較少，光害也較少，非常適合進行天文觀測。大型望遠鏡常常蓋在遠離城市的地方，就是為了避開城市燈光（light pollution）和較髒、較濕的空氣。",
+          "en_exam_sentence": "SALT is a large optical telescope at Sutherland in the Northern Cape; its primary mirror is made of 91 hexagonal mirrors.",
+          "diagram_hint": "Honeycomb of 91 hexagons labelled SALT primary mirror; small map pin at Sutherland, Northern Cape."
+        },
+        {
+          "id": "u9-s5",
+          "zh": "電波望遠鏡看起來常常像巨大的碗或碟子，因為它要收集的是無線電波，不是用眼睛直接看的可見光。南非常以這個主題為榮：MeerKAT 在 Carnarvon 附近，有 64 座碟形天線。這個地區 radio-quiet，也就是人為無線電波干擾很少，碟子才能聽清楚來自宇宙的微弱訊號。MeerKAT 也和更大的國際計畫 SKA（Square Kilometre Array）有關。",
+          "en_exam_sentence": "MeerKAT is a radio telescope with 64 dishes near Carnarvon; the area is radio-quiet, which means there is little radio interference.",
+          "diagram_hint": "Array of dish antennas on a dry, open Karoo landscape, labelled MeerKAT, 64 dishes, near Carnarvon."
+        },
+        {
+          "id": "u9-s6",
+          "zh": "Hubble 這類 space telescope 在地球大氣層外繞地球運行。地面望遠鏡會受到雲、空氣流動和光害影響；太空中這些干擾少很多，所以能拍到非常清晰的影像。光學、電波、太空望遠鏡不是互相取代，而是幫忙收集不同的訊息，讓我們更完整地認識宇宙。",
+          "en_exam_sentence": "A space telescope such as Hubble orbits above the Earth’s atmosphere, so its images are not blurred by air or clouds."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u9-q1",
+          "q_en": "Where is SALT, and what is special about its main mirror?",
+          "q_zh": "SALT 在哪裡？它的主鏡有什麼特別的地方？",
+          "options": [
+            "A  It is a radio telescope with 64 dishes near Carnarvon.",
+            "B  It is a large optical telescope at Sutherland, and its primary mirror is made of 91 hexagonal mirrors.",
+            "C  It is a space telescope that orbits the Moon.",
+            "D  It is in Johannesburg so that many people can visit it every night."
+          ],
+          "answer": "B  It is a large optical telescope at Sutherland, and its primary mirror is made of 91 hexagonal mirrors.",
+          "why_zh": "SALT 在 Sutherland，是光學望遠鏡，主鏡由 91 片六角形鏡片組成。64 座碟子的是 MeerKAT。"
+        },
+        {
+          "id": "u9-q2",
+          "q_en": "Why are large telescopes often built far from cities, in places like the Karoo?",
+          "q_zh": "為什麼大型望遠鏡常常蓋在像喀魯這樣遠離城市的地方？",
+          "options": [
+            "A  So that the telescopes can use mains electricity more easily.",
+            "B  Because the sky is darker, there is less light pollution, and (for radio telescopes) less radio interference; the air can also be dry and clear.",
+            "C  Because cities have too many trees for the dishes to fit.",
+            "D  Because Galileo lived in the Karoo."
+          ],
+          "answer": "B  Because the sky is darker, there is less light pollution, and (for radio telescopes) less radio interference; the air can also be dry and clear.",
+          "why_zh": "遠離城市是為了黑暗的天空、較少光害；電波望遠鏡還需要較少的電波干擾。乾燥、清晰的空氣也有幫助。"
+        },
+        {
+          "id": "u9-q3",
+          "q_en": "How is a radio telescope different from an optical telescope?",
+          "q_zh": "電波望遠鏡和光學望遠鏡有什麼不同？",
+          "options": [
+            "A  A radio telescope collects radio waves, often with dish antennas; an optical telescope collects visible light.",
+            "B  They are exactly the same, only the name is different.",
+            "C  A radio telescope can only be used in space.",
+            "D  An optical telescope collects radio waves from Carnarvon only."
+          ],
+          "answer": "A  A radio telescope collects radio waves, often with dish antennas; an optical telescope collects visible light.",
+          "why_zh": "差別在收集的是可見光還是無線電波。電波望遠鏡常是碟形天線，不一定要在太空。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u9-c1",
+          "keywords": [
+            "光學望遠鏡",
+            "電波望遠鏡",
+            "太空望遠鏡",
+            "optical",
+            "radio telescope",
+            "space telescope",
+            "差在哪",
+            "hubble"
+          ],
+          "label_zh": "光學、電波、太空望遠鏡差在哪？",
+          "simpler_explanation_zh": "先問兩個問題：它收集什麼？它放在哪裡？Optical 收集可見光，通常在地面。Radio 收集無線電波，常常是大碟子，也多在地面。Space telescope 放在大氣層外，常見的是收集可見光或其他光線，例如 Hubble。它們都是望遠鏡，只是「看」的方式和位置不同。",
+          "analogy_zh": "好像三種聽或看的工具：一種用眼睛看燈光，一種用大耳朵聽很輕的聲音，一種把相機拿到窗外不受霧氣影響。目標都是了解遠方，方法不一樣。",
+          "even_simpler_zh": "三張卡片：optical＝看光；radio＝收無線電波（大碟子）；space＝放到太空，少受大氣和雲影響。SALT 屬大型光學望遠鏡，MeerKAT 屬電波望遠鏡，Hubble 屬太空望遠鏡。",
+          "confirm_question": {
+            "q_zh": "MeerKAT 主要是哪一類望遠鏡？",
+            "options": [
+              "A  光學望遠鏡 optical",
+              "B  電波望遠鏡 radio",
+              "C  顯微鏡 microscope",
+              "D  只在月球上使用的望遠鏡"
+            ],
+            "answer": "B  電波望遠鏡 radio",
+            "why_zh": "MeerKAT 用碟形天線收集無線電波，是 radio telescope。"
+          }
+        },
+        {
+          "id": "u9-c2",
+          "keywords": [
+            "反射望遠鏡",
+            "reflecting",
+            "主鏡",
+            "副鏡",
+            "primary mirror",
+            "secondary mirror",
+            "鏡子做什麼",
+            "怎麼反射"
+          ],
+          "label_zh": "反射望遠鏡的鏡子是做什麼的？",
+          "simpler_explanation_zh": "大鏡子叫做 primary mirror，它的工作是收集盡量多的光，並把光反射集中。小一點的 secondary mirror 再把這些光送到目鏡或照相機。不是用鏡子來照自己的臉，而是用鏡子來「抓光」和「轉光」。",
+          "analogy_zh": "像用很大的凹面碗把陽光或手電筒的光集中到一點，再用一面小鏡子把那點光轉到你想看的地方。",
+          "even_simpler_zh": "兩面鏡子兩個工作：主鏡＝收集光；副鏡＝把光送到眼睛或儀器。SALT 的大主鏡就是由 91 片六角形鏡子拼起來的。",
+          "confirm_question": {
+            "q_zh": "反射望遠鏡裡，負責大量收集光線的是哪一面鏡子？",
+            "options": [
+              "A  primary mirror 主鏡",
+              "B  只是窗戶玻璃",
+              "C  電波碟子上的泥土",
+              "D  月球表面"
+            ],
+            "answer": "A  primary mirror 主鏡",
+            "why_zh": "主鏡收集光線，副鏡再把光送走。"
+          }
+        },
+        {
+          "id": "u9-c3",
+          "keywords": [
+            "salt",
+            "sutherland",
+            "91片",
+            "hexagonal",
+            "六角形",
+            "為什麼蓋在那裡",
+            "光害",
+            "northern cape"
+          ],
+          "label_zh": "SALT 在哪裡？為什麼要蓋在那裡？91 片鏡子是什麼意思？",
+          "simpler_explanation_zh": "SALT 在北開普省 Sutherland，不在大城市裡。那裡天空暗、空氣乾、雲較少，城市燈光也少，所以更適合看星星。它的主鏡不是一整塊圓玻璃那麼簡單，而是 91 片六角形鏡子拼成一個大鏡面，這樣才能做成很大的收集面積。",
+          "analogy_zh": "像用 91 片六角磁磚拼成一個大碗來接雨水，每一片都幫忙，拼起來就變成很大的收集面。",
+          "even_simpler_zh": "三個必記點：名稱 SALT（Southern African Large Telescope）；地點 Sutherland, Northern Cape；主鏡 91 hexagonal mirrors。蓋在那裡是因為黑暗、乾燥、光害少的天空。",
+          "confirm_question": {
+            "q_zh": "SALT 的主鏡是怎麼組成的？",
+            "options": [
+              "A  64 座電波碟子",
+              "B  91 片六角形鏡子",
+              "C  一面放在月球上的鏡子",
+              "D  只有一隻小目鏡，沒有主鏡"
+            ],
+            "answer": "B  91 片六角形鏡子",
+            "why_zh": "SALT 的 primary mirror 由 91 片 hexagonal mirrors 組成。64 dishes 是 MeerKAT。"
+          }
+        },
+        {
+          "id": "u9-c4",
+          "keywords": [
+            "ska",
+            "meerkat",
+            "carnarvon",
+            "64座",
+            "dishes",
+            "radio-quiet",
+            "電波安靜",
+            "喀魯"
+          ],
+          "label_zh": "SKA 和 MeerKAT 是什麼？為什麼要在 Carnarvon 附近？",
+          "simpler_explanation_zh": "MeerKAT 是南非一座由 64 座碟子組成的電波望遠鏡，在 Carnarvon 附近的喀魯。SKA 是更大的國際計畫，目標是建造非常龐大的電波望遠鏡陣列；MeerKAT 和這個計畫關係密切。選址看重 radio-quiet：附近人為電波少，比較不會干擾來自宇宙的微弱訊號。",
+          "analogy_zh": "如果你要聽很輕很輕的聲音，不會選在熱鬧的購物中心，而會選安靜的地方。電波望遠鏡也需要「電波很安靜」的環境。",
+          "even_simpler_zh": "記住：MeerKAT = 64 dishes, near Carnarvon. 它是 radio telescope。那裡 radio-quiet，干擾少。SKA 是更大的國際電波望遠鏡計畫。不要和 SALT 的 91 片光學鏡子搞混。",
+          "confirm_question": {
+            "q_zh": "關於 MeerKAT，哪一句正確？",
+            "options": [
+              "A  它在 Sutherland，有 91 片六角形鏡子",
+              "B  它在 Carnarvon 附近，有 64 座碟子，是電波望遠鏡",
+              "C  它是 Hubble 的另一個名字",
+              "D  它用來觀看細胞"
+            ],
+            "answer": "B  它在 Carnarvon 附近，有 64 座碟子，是電波望遠鏡",
+            "why_zh": "64 dishes、near Carnarvon 是 MeerKAT。91 hexagonal mirrors、Sutherland 是 SALT。"
+          }
+        },
+        {
+          "id": "u9-c5",
+          "keywords": [
+            "看起來不像",
+            "大碟子",
+            "為什麼長那樣",
+            "dish antenna",
+            "不像一般望遠鏡",
+            "為什麼是碗",
+            "長得不一樣"
+          ],
+          "label_zh": "為什麼電波望遠鏡看起來不像一般望遠鏡？",
+          "simpler_explanation_zh": "我們平常說的望遠鏡，多半是讓可見光進入眼睛或相機。無線電波是另一種訊息，眼睛看不見，所以要用大碟子把這些波收集起來，再由儀器處理。因此它長得像衛星天線，而不是一截又長又細、靠眼睛去瞄的管子。",
+          "analogy_zh": "耳朵和眼睛長得不一樣，因為一個負責聽，一個負責看。電波望遠鏡比較像「聽」宇宙，光學望遠鏡比較像「看」宇宙。",
+          "even_simpler_zh": "外形不同是因為工作不同：光學望遠鏡抓光，電波望遠鏡抓無線電波。看到大碟子，先想 radio telescope，不要以為那不是望遠鏡。",
+          "confirm_question": {
+            "q_zh": "電波望遠鏡常常做成大碟子，主要是為了什麼？",
+            "options": [
+              "A  收集來自太空的無線電波",
+              "B  讓遊客坐在碟子裡旋轉",
+              "C  收集泥土來做實驗",
+              "D  代替發電廠燒煤"
+            ],
+            "answer": "A  收集來自太空的無線電波",
+            "why_zh": "碟形天線用來收集 radio waves。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "SALT 和 MeerKAT 最容易考混，先分開記：SALT＝Sutherland、光學、91 hexagonal mirrors；MeerKAT＝Carnarvon、電波、64 dishes。",
+        "解釋選址時，光學望遠鏡強調 dark skies / little light pollution；電波望遠鏡加上 radio-quiet / little radio interference。也可以提到 dry, clear air。",
+        "寫全名能加分：Southern African Large Telescope、Square Kilometre Array。",
+        "反射望遠鏡要能說出 primary mirror 和 secondary mirror 的分工。",
+        "不要把 telescope 寫成 microscope。"
+      ],
+      "common_mistakes_zh": [
+        "把 SALT 的 91 片鏡子寫成 MeerKAT，或把 64 座碟子寫成 SALT。",
+        "把兩個地點對調：Sutherland 和 Carnarvon 記反。",
+        "以為所有望遠鏡都是用眼睛看的長管子。",
+        "只寫「蓋在鄉下」，沒有提到光害或電波干擾。",
+        "把 Galileo 和現代的 SALT 或 Hubble 說成同一座望遠鏡。"
+      ]
+    },
+    {
+      "id": "unit-10-rovers",
+      "title_en": "Moon and Mars vehicles: rovers and Ingenuity",
+      "title_zh": "月球和火星探測車，以及 Ingenuity",
+      "term": "Term 4: Planet Earth and Beyond",
+      "notes": [
+        "Lunokhod 1 於 1970 年登陸月球，是蘇聯的遙控探測車，也是第一輛成功在月球上工作的遙控漫遊車。Lunokhod 2 在 1973 年，本單元以 Lunokhod 1 為主，可補充 2 號。",
+        "Apollo 15 的 LRV（Lunar Roving Vehicle）於 1971 年使用，是太空人親自駕駛的月球車，不是從地球遙控的無人車。",
+        "Sojourner 隨 Mars Pathfinder 於 1997 年到火星，是第一輛成功的火星探測車。Spirit 與 Opportunity 於 2004 年登陸。Curiosity 於 2012 年登陸，Perseverance 於 2021 年登陸並帶了直升機 Ingenuity。以上年份採登陸年，足夠六年級使用。",
+        "Curiosity 和 Perseverance 使用放射性同位素熱電機（常被稱為 nuclear power source 或 nuclear battery）。Spirit、Opportunity、Sojourner 以及 Lunokhod 主要靠太陽能。向孩子說明時，用 solar power 和 a nuclear power source 即可，不必展開核技術細節。",
+        "Ingenuity 是直升機（helicopter），不是探測車（rover）。它在 2021 年成為第一架在另一個行星上成功飛行的航空器。",
+        "NASA 是美國的國家航空暨太空總署。Lunokhod 屬於當時的蘇聯，不是 NASA 的任務。"
+      ],
+      "key_terms": [
+        {
+          "en": "rover",
+          "zh": "探測車／漫遊車",
+          "kid_definition_zh": "在月球或行星表面移動、蒐集資料和照片的車輛。有的由太空人駕駛，有的從地球遙控或依指令自己行駛。"
+        },
+        {
+          "en": "Lunokhod 1",
+          "zh": "月球車 1 號",
+          "kid_definition_zh": "1970 年登陸月球的蘇聯遙控探測車，是第一輛成功在月球上工作的遙控漫遊車。"
+        },
+        {
+          "en": "LRV (Lunar Roving Vehicle)",
+          "zh": "月球巡行車",
+          "kid_definition_zh": "阿波羅任務中，太空人在月球上駕駛的車子。Apollo 15 在 1971 年首次使用。"
+        },
+        {
+          "en": "Sojourner",
+          "zh": "旅居者號",
+          "kid_definition_zh": "1997 年隨 Pathfinder 到達火星，是第一輛成功的火星探測車，由 NASA 執行。"
+        },
+        {
+          "en": "Spirit and Opportunity",
+          "zh": "勇氣號和機會號",
+          "kid_definition_zh": "2004 年登陸火星的一對 NASA 探測車，主要靠太陽能。"
+        },
+        {
+          "en": "Curiosity",
+          "zh": "好奇號",
+          "kid_definition_zh": "2012 年登陸火星的大型 NASA 探測車，使用核動力來源，可以走得比較遠、做較多實驗。"
+        },
+        {
+          "en": "Perseverance and Ingenuity",
+          "zh": "毅力號和機智號",
+          "kid_definition_zh": "Perseverance 是 2021 年登陸火星的 NASA 探測車。Ingenuity 是它帶去的直升機，不是車子，卻完成了在其他行星上的飛行。"
+        },
+        {
+          "en": "NASA",
+          "zh": "美國國家航空暨太空總署",
+          "kid_definition_zh": "National Aeronautics and Space Administration 的簡稱，是美國負責太空探索的機構。火星車 Spirit、Opportunity、Curiosity、Perseverance 都是 NASA 的任務。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "u10-s1",
+          "zh": "要了解月球或火星的地面，科學家常會送 rover（探測車）過去。車子可以移動、拍照、研究石頭和土壤。有時也送人去，例如阿波羅任務；可是火星非常遙遠，環境又危險，所以到目前為止，火星上工作的是機器人探測車，不是常駐的太空人。",
+          "en_exam_sentence": "A rover is a vehicle that moves over the surface of the Moon or a planet to collect information."
+        },
+        {
+          "id": "u10-s2",
+          "zh": "先記住幾輛常考的車和年份，像一條時間線：1970 年，Lunokhod 1 在月球上遙控行駛（蘇聯）。1971 年，Apollo 15 的 LRV 讓太空人在月球上開車（NASA）。1997 年，Sojourner 成為第一輛成功的火星探測車。2004 年，Spirit 和 Opportunity 登陸火星。2012 年輪到 Curiosity。2021 年則是 Perseverance，它還帶了直升機 Ingenuity。",
+          "en_exam_sentence": "Lunokhod 1 reached the Moon in 1970, and Sojourner was the first successful Mars rover in 1997.",
+          "diagram_hint": "A simple timeline: 1970 Lunokhod 1 (Moon), 1971 Apollo 15 LRV (Moon), 1997 Sojourner, 2004 Spirit & Opportunity, 2012 Curiosity, 2021 Perseverance + Ingenuity."
+        },
+        {
+          "id": "u10-s3",
+          "zh": "這些車子用什麼能量？有的用 solar power（太陽能），例如 Sojourner、Spirit、Opportunity，以及早期的 Lunokhod。太陽能板收集陽光，再轉成電。火星會有沙塵暴，太陽能板被灰塵蓋住時，電力可能變少。較新、較大的 Curiosity 和 Perseverance 使用 nuclear power source（核動力來源），比較不受夜晚和沙塵影響。Apollo 的 LRV 則是由電池供電，因為太空人只在月面使用較短的時間。",
+          "en_exam_sentence": "Some rovers use solar power, while Curiosity and Perseverance use a nuclear power source."
+        },
+        {
+          "id": "u10-s4",
+          "zh": "月球和火星表面有灰塵、沙和石頭，地面常常又鬆又不平。所以探測車的輪子通常又寬又有花紋（treads），比較不容易陷進粉塵裡，也能抓住地面。這跟在沙灘或泥地開的車子需要較寬、較有紋路的輪子，是相似的道理。",
+          "en_exam_sentence": "Rovers have wide wheels with treads so that they do not sink easily and can grip uneven, dusty ground.",
+          "diagram_hint": "Close-up of a wide rover wheel with deep treads on loose dust, compared with a smooth thin wheel sinking in."
+        },
+        {
+          "id": "u10-s5",
+          "zh": "無人探測車由地球上的科學家下指令。月球比較近，遙控較即時。火星很遠，無線電訊號要走好幾分鐘甚至更久，所以車子不能完全像遙控玩具一樣「立刻左轉」；它也會依事先設定的指令小心地自己行駛。Apollo 的 LRV 則是太空人自己在月球上駕駛。寫到控制方式時，要分清是遙控、自動依指令行駛，還是由太空人駕駛。",
+          "en_exam_sentence": "Unmanned rovers are controlled by instructions from scientists on Earth; the Apollo LRV was driven by astronauts on the Moon."
+        },
+        {
+          "id": "u10-s6",
+          "zh": "Ingenuity 要特別分開記：它是直升機，不是 rover。2021 年它在火星上成功起飛，成為第一架在另一個行星上飛行的航空器。NASA 負責美國的這些火星任務。如果題目問「為什麼常送機器人而不先送人去火星」，可以寫：路程非常遠、沒有可供呼吸的空氣、環境危險而且費用很高，機器人也不需要食物和氧氣。",
+          "en_exam_sentence": "Ingenuity is a helicopter, not a rover; it made the first powered flight on another planet in 2021."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "u10-q1",
+          "q_en": "Which was the first successful rover to travel on the Moon by remote control?",
+          "q_zh": "哪一輛是第一輛成功在月球上遙控行駛的探測車？",
+          "options": [
+            "A  Sojourner in 1997",
+            "B  Lunokhod 1 in 1970",
+            "C  Curiosity in 2012",
+            "D  Ingenuity in 2021"
+          ],
+          "answer": "B  Lunokhod 1 in 1970",
+          "why_zh": "Lunokhod 1 於 1970 年在月球上遙控行駛。Sojourner 是火星車；Ingenuity 是直升機。"
+        },
+        {
+          "id": "u10-q2",
+          "q_en": "Why do Moon and Mars rovers usually have wide wheels with treads?",
+          "q_zh": "為什麼月球和火星探測車通常有又寬又有花紋的輪子？",
+          "options": [
+            "A  To make the rover look bigger in photographs.",
+            "B  So that they do not sink easily into dust and can grip uneven ground.",
+            "C  Because wide wheels collect more sunlight.",
+            "D  So that astronauts can sit in the wheels."
+          ],
+          "answer": "B  So that they do not sink easily into dust and can grip uneven ground.",
+          "why_zh": "寬輪和花紋幫助車子在鬆軟、不平的灰塵地面上行駛，比較不陷入，也能抓地。"
+        },
+        {
+          "id": "u10-q3",
+          "q_en": "Which statement about Perseverance and Ingenuity is correct?",
+          "q_zh": "關於 Perseverance 和 Ingenuity，哪一句正確？",
+          "options": [
+            "A  Both are helicopters that landed in 1997.",
+            "B  Perseverance is a NASA Mars rover that landed in 2021, and Ingenuity is the helicopter it carried.",
+            "C  Ingenuity is a lunar rover driven by Armstrong.",
+            "D  Perseverance was a Soviet Moon rover in 1970."
+          ],
+          "answer": "B  Perseverance is a NASA Mars rover that landed in 2021, and Ingenuity is the helicopter it carried.",
+          "why_zh": "2021 年登陸的是 Perseverance；Ingenuity 是它所帶的直升機，不是探測車。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "u10-c1",
+          "keywords": [
+            "怎麼走路",
+            "誰在控制",
+            "remote control",
+            "遙控",
+            "駕駛",
+            "指令",
+            "訊號延遲",
+            "誰開車"
+          ],
+          "label_zh": "探測車要怎麼在月球或火星上走路？誰在控制它們？",
+          "simpler_explanation_zh": "它們有輪子，可以在地面上開，不是用腳走。月球車有的是太空人自己開，例如 Apollo 15 的 LRV；有的是從地球遙控，例如 Lunokhod 1。火星車由地球上的團隊傳送指令，但因為訊號要走一段時間，車子也會依照事先設定的步驟自己小心移動。",
+          "analogy_zh": "有點像兩種玩具車：一種你坐上去自己開，一種你用遙控器在旁邊指揮。火星車更像「先寫好一段路怎麼走，再把說明寄給很遠的車子」，因為遙控訊號沒辦法像在客廳那樣立刻到達。",
+          "even_simpler_zh": "先問：車上有沒有太空人？有，像 LRV，由太空人駕駛。沒有，就由地球傳送指令。月球比較近，遙控較快；火星很遠，指令會延遲，所以車子也要能自己完成一些動作。",
+          "confirm_question": {
+            "q_zh": "Apollo 15 的 LRV 是怎麼移動的？",
+            "options": [
+              "A  由地球完全像玩具遙控車一樣即時遙控，車上沒有人",
+              "B  由在月球上的太空人駕駛",
+              "C  它沒有輪子，只會飛",
+              "D  它是 2021 年的火星直升機"
+            ],
+            "answer": "B  由在月球上的太空人駕駛",
+            "why_zh": "LRV 是阿波羅太空人在月面駕駛的車，和無人遙控的 Lunokhod 或火星車不同。"
+          }
+        },
+        {
+          "id": "u10-c2",
+          "keywords": [
+            "用什麼能量",
+            "太陽能",
+            "核動力",
+            "solar power",
+            "nuclear power",
+            "用什麼電",
+            "太陽能板",
+            "power source"
+          ],
+          "label_zh": "它們用什麼能量？太陽能和核動力差在哪？",
+          "simpler_explanation_zh": "車子需要電才能開動和做實驗。有的用太陽能板收集陽光，例如 Spirit、Opportunity、Sojourner。有的用核動力來源，例如 Curiosity 和 Perseverance，比較不怕夜晚和沙塵蓋住太陽能板。Apollo 的 LRV 使用電池，因為使用時間較短。",
+          "analogy_zh": "太陽能像要靠天氣和白天的充電書包；核動力來源比較像一顆能用很久的特殊電池，不那麼依賴當下有沒有太陽。六年級不必追問核技術細節。",
+          "even_simpler_zh": "兩種主要方式：solar power＝用陽光發電；nuclear power source＝用特殊的核動力來源發電。看到 Curiosity 或 Perseverance，多半要想到後者。看到 Spirit 或 Opportunity，想到太陽能。",
+          "confirm_question": {
+            "q_zh": "Curiosity 主要使用哪一種能源？",
+            "options": [
+              "A  只用風力",
+              "B  一個核動力來源（nuclear power source）",
+              "C  只用煤",
+              "D  它不需要任何能量"
+            ],
+            "answer": "B  一個核動力來源（nuclear power source）",
+            "why_zh": "Curiosity 和 Perseverance 使用核動力來源。Spirit 和 Opportunity 才主要靠太陽能。"
+          }
+        },
+        {
+          "id": "u10-c3",
+          "keywords": [
+            "名字難記",
+            "時間線",
+            "lunokhod",
+            "sojourner",
+            "curiosity",
+            "怎麼記",
+            "年份",
+            "記不起名字"
+          ],
+          "label_zh": "Lunokhod、Sojourner、Curiosity 這些名字好難記，有沒有比較簡單的記法？",
+          "simpler_explanation_zh": "不要一次混在一起背，先依「地點 + 年份」排時間線。月球：1970 Lunokhod 1（遙控），1971 Apollo 15 LRV（人開）。火星：1997 Sojourner（第一輛成功的火星車），2004 Spirit 和 Opportunity，2012 Curiosity，2021 Perseverance 和 Ingenuity。先記年份和地點，名字就比較不容易跳錯。",
+          "analogy_zh": "像把家人的生日排在一條線上：先記誰比較早、誰比較晚，再記每個名字。先有順序，名字才站得住。",
+          "even_simpler_zh": "先會答三題就很好：第一輛遙控月球車是誰？Lunokhod 1，1970。第一輛成功火星車是誰？Sojourner，1997。2021 年那輛火星車是誰？Perseverance，它還帶了直升機 Ingenuity。",
+          "confirm_question": {
+            "q_zh": "第一輛成功的火星探測車是哪一輛？",
+            "options": [
+              "A  Lunokhod 1（1970）",
+              "B  Sojourner（1997）",
+              "C  Apollo 15 LRV（1971）",
+              "D  Ingenuity（2021）"
+            ],
+            "answer": "B  Sojourner（1997）",
+            "why_zh": "Sojourner 是第一輛成功的火星車。Lunokhod 1 和 LRV 在月球；Ingenuity 是直升機。"
+          }
+        },
+        {
+          "id": "u10-c4",
+          "keywords": [
+            "ingenuity",
+            "直升機",
+            "helicopter",
+            "是探測車嗎",
+            "不是 rover",
+            "會飛",
+            "perseverance帶的"
+          ],
+          "label_zh": "Ingenuity 是探測車嗎？",
+          "simpler_explanation_zh": "不是。Ingenuity 是直升機，會飛，沒有像探測車那樣在地面開車。它由 Perseverance 帶到火星，在 2021 年成功飛行，是第一架在另一個行星上做動力飛行的航空器。如果題目問 rover，不要把 Ingenuity 寫進去；如果題目問 flight 或 helicopter，就要想到它。",
+          "analogy_zh": "像一台越野車的車斗上載了一架小直升機。車子在地上開，直升機在天上飛，它們是一組的，但不是同一種機器。",
+          "even_simpler_zh": "兩句話：Perseverance = rover（車）。Ingenuity = helicopter（直升機）。年份都和 2021 有關。Ingenuity 不是月球車，也不是 NASA 在 1970 年的任務。",
+          "confirm_question": {
+            "q_zh": "Ingenuity 是什麼？",
+            "options": [
+              "A  1970 年的蘇聯月球探測車",
+              "B  一架在火星上飛行的直升機",
+              "C  一輛由 Armstrong 駕駛的月球車",
+              "D  南非的電波望遠鏡"
+            ],
+            "answer": "B  一架在火星上飛行的直升機",
+            "why_zh": "Ingenuity 是 helicopter，不是 rover。"
+          }
+        },
+        {
+          "id": "u10-c5",
+          "keywords": [
+            "輪子",
+            "寬輪",
+            "花紋",
+            "wheels",
+            "treads",
+            "為什麼不會陷下去",
+            "抓地",
+            "灰塵"
+          ],
+          "label_zh": "為什麼輪子要又寬又有花紋？",
+          "simpler_explanation_zh": "月球和火星地面常有很細的灰塵和鬆軟的土，還有石頭。如果輪子又窄又光滑，就容易陷下去或打滑。又寬又有花紋的輪子，可以把重量分在較大的面積上，比較不容易沉下去，花紋也能抓住地面。",
+          "analogy_zh": "在沙灘上走，穿細高跟鞋很容易陷進去；穿寬的沙灘鞋就比較不會。輪胎上的花紋，則像球鞋鞋底的紋路，幫助你在滑或不平的地方踩穩。",
+          "even_simpler_zh": "考試句子：Rovers have wide wheels with treads so they do not sink in the dust and can grip the ground. 不要寫「為了比較好看」。",
+          "confirm_question": {
+            "q_zh": "探測車使用寬輪和花紋，主要是為了什麼？",
+            "options": [
+              "A  比較好看",
+              "B  比較不容易陷入灰塵，也能抓住不平的地面",
+              "C  用來收集雨水",
+              "D  讓輪子變成太陽能板"
+            ],
+            "answer": "B  比較不容易陷入灰塵，也能抓住不平的地面",
+            "why_zh": "寬輪減少陷入，花紋增加抓地力。"
+          }
+        },
+        {
+          "id": "u10-c6",
+          "keywords": [
+            "nasa",
+            "蘇聯",
+            "為什麼送機器人",
+            "不先送人",
+            "lunokhod不是nasa",
+            "robots not people",
+            "誰做的任務",
+            "為什麼不送太空人"
+          ],
+          "label_zh": "這些任務都是 NASA 做的嗎？為什麼常送機器人去火星，而不是先送人？",
+          "simpler_explanation_zh": "不是全部都是 NASA。Lunokhod 1 是當時蘇聯的任務。Apollo 的 LRV 以及後來的火星車 Sojourner、Spirit、Opportunity、Curiosity、Perseverance，則是 NASA 的任務。火星很遠，來回要很長時間，那裡沒有可呼吸的空氣，又冷又危險，送人的費用和風險都很高。機器人不必吃東西、呼吸氧氣，可以先去蒐集資料。",
+          "analogy_zh": "如果要先了解一座又遠又危險、沒有空氣的島，人們常常先派攝影機和遙控車去拍照，確認環境以後，才考慮人要不要去。",
+          "even_simpler_zh": "記兩個重點：Lunokhod 不是 NASA；多數著名火星車是 NASA 的。送機器人去火星的理由：太遠、太危險、沒有氧氣、費用高，而且機器人不必食物和空氣。",
+          "confirm_question": {
+            "q_zh": "下列哪一項不是 NASA 的任務？",
+            "options": [
+              "A  Curiosity",
+              "B  Perseverance",
+              "C  Lunokhod 1",
+              "D  Sojourner"
+            ],
+            "answer": "C  Lunokhod 1",
+            "why_zh": "Lunokhod 1 是蘇聯的月球車。另外三個是 NASA 的火星任務。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "用時間線記名字，先分 Moon 還是 Mars，再記年份。",
+        "Ingenuity 一定要寫成 helicopter，不要列進 rover 名單。",
+        "解釋輪子：wide wheels and treads、do not sink、grip uneven dusty ground。",
+        "能源要分：solar power 或 nuclear power source，不要全部寫成同一種。",
+        "若問為什麼送機器人去火星：far away、no breathable air、dangerous and expensive、robots do not need food or oxygen。",
+        "寫 NASA 時可用全名 National Aeronautics and Space Administration，但不要把 Lunokhod 算進去。"
+      ],
+      "common_mistakes_zh": [
+        "把 Ingenuity 當成探測車。",
+        "把 Lunokhod 1 說成 NASA 的火星車，或把 Sojourner 說成月球車。",
+        "年份記錯，例如把 Apollo 11（1969）和 Apollo 15 的 LRV（1971）混在一起。",
+        "只寫「輪子很大」而沒有說明用途。",
+        "以為火星車可以像玩具遙控車一樣完全即時轉彎，忽略訊號延遲。"
+      ]
+    }
+  ]
+}

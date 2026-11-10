@@ -156,13 +156,39 @@
             input[type="text"] { min-width: 0; }
             .question-main { font-size: 1.1rem; }
         }
+        .subject-row { margin-bottom: 1.25rem; }
+        .subject-switch { display: flex; flex-wrap: wrap; gap: 12px; }
+        .subject-btn { padding: 10px 20px; border: 2px solid var(--border); background: var(--bg-primary); border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.3s ease; color: var(--text-secondary); font-family: inherit; }
+        .subject-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 12px rgba(91, 86, 228, 0.3); }
+        .subject-btn:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+        .nst-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+        .nst-unit, .nst-conf { text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 64px; white-space: normal; }
+        .nst-unit small { font-weight: 500; color: var(--text-secondary); line-height: 1.35; }
+        .topic-btn.active small { color: rgba(255, 255, 255, 0.88); }
+        .nst-choices { grid-template-columns: 1fr; }
+        .nst-choices .choice-btn { text-align: left; white-space: normal; }
+        .diagram-hint { margin-top: 0.65rem; background: #EEF2FF; border: 1px dashed var(--primary); border-radius: 8px; padding: 0.55rem 0.75rem; font-size: 0.88rem; color: var(--text-secondary); }
+        .diagram-hint strong { color: var(--primary-dark); margin-right: 0.35rem; }
+        .nst-gloss { display: grid; gap: 0.45rem; margin-top: 0.6rem; }
+        .nst-gloss div { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.55rem 0.7rem; }
+        .nst-gloss b { color: var(--primary-dark); }
+        .nst-list { margin: 0.35rem 0 0 1.1rem; }
+        .nst-ai-note { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem; }
+        .nst-prog { height: 12px; background: var(--border); border-radius: 99px; overflow: hidden; margin-top: 0.65rem; }
+        .nst-prog-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary), #8B5CF6); border-radius: 99px; }
+        .nst-ai-card { margin-bottom: 1rem; }
+        .nst-reply { white-space: pre-wrap; overflow-wrap: anywhere; }
+        @media (max-width: 520px) {
+            .nst-grid { grid-template-columns: 1fr; }
+            .subject-btn { flex: 1 1 140px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🎓 數學互動學習平台</h1>
-            <p>Grade 6 Math Interactive Tutor</p>
+            <h1 id="siteTitle">🎓 數學互動學習平台</h1>
+            <p id="siteSubtitle">Grade 6 Math Interactive Tutor</p>
         </header>
 
         <div class="main-card">
@@ -171,7 +197,7 @@
                 <button class="lang-btn" onclick="setLanguage('en', this)">English (English)</button>
             </div>
 
-            <div class="stats-section">
+            <div class="stats-section" id="statsSection">
                 <div class="stat-card">
                     <div class="stat-label" id="label-correct">正確</div>
                     <div class="stat-value" id="correctCount">0</div>
@@ -187,7 +213,14 @@
             </div>
 
             <div class="content-section">
-                <div class="topic-section">
+                <div class="subject-row" id="subjectRow">
+                    <div class="section-title" id="subjectLabel">選擇科目</div>
+                    <div class="subject-switch">
+                        <button type="button" class="subject-btn active" data-subject="maths" onclick="setSubject('maths', this)">數學 Maths</button>
+                        <button type="button" class="subject-btn" data-subject="nst" onclick="setSubject('nst', this)">自然科學 NS&T</button>
+                    </div>
+                </div>
+                <div class="topic-section" id="topicSection">
                     <div class="section-title" id="topicTitle">選擇主題開始練習</div>
                     <div class="topic-grid" id="topicSelector"></div>
                 </div>
@@ -210,11 +243,12 @@
                     <div class="alt-box" id="altBox"></div>
                     <button class="next-btn hidden" id="nextBtn" onclick="generateNewQuestion()"></button>
                 </div>
+                <div id="nstRoot" class="hidden"></div>
             </div>
         </div>
 
         <footer>
-            <p>💡 答錯沒關係：可以看提示、一步一步做、換個方法理解，再練一題類似的。每個主題的題目不會重複。 | Hints, step-by-step help, another way to think, and similar questions — no repeated questions.</p>
+            <p id="siteFooter">💡 答錯沒關係：可以看提示、一步一步做、換個方法理解，再練一題類似的。每個主題的題目不會重複。 | Hints, step-by-step help, another way to think, and similar questions — no repeated questions.</p>
         </footer>
     </div>
 
@@ -1317,6 +1351,7 @@ function nextQuestion(topic, sub) {
 /*DEDUP-END*/
 // ---------- UI ----------
 let language = 'zh';
+let subject = 'maths';
 let stats = { correct: 0, incorrect: 0 };
 let currentTopic = null, currentQuestion = null;
 let qs = null; // per-question state
@@ -1327,7 +1362,7 @@ const $ = id => document.getElementById(id);
 const PRAISE = [L('太棒了！', 'Excellent!'), L('答對了，好厲害！', 'Correct — well done!'), L('完全正確！', 'Spot on!'), L('你做到了！', 'You got it!')];
 const ENCOURAGE = [L('差一點！再試一次，或用下面的提示幫忙。', 'Nearly! Try again, or use a hint below.'), L('沒關係，錯誤是學習的一部分。看看提示再試試。', "That's okay — mistakes help us learn. Check a hint and try again."), L('再想一想，你可以的！', 'Have another think — you can do it!')];
 const UI = {
-    correct: L('正確', 'Correct'), incorrect: L('錯誤', 'Incorrect'), accuracy: L('準確率', 'Accuracy'), choose: L('選擇主題開始練習', 'Select a Topic'),
+    correct: L('正確', 'Correct'), incorrect: L('錯誤', 'Incorrect'), accuracy: L('準確率', 'Accuracy'), choose: L('選擇主題開始練習', 'Select a Topic'), subject: L('選擇科目', 'Choose a subject'),
     submit: L('提交答案', 'Submit'), hint: L('💡 提示', '💡 Hint'), hint2: L('💡 再多一點提示', '💡 Another hint'), guided: L('🪜 一步一步來', '🪜 Step by step'), solution: L('📖 看完整解答', '📖 Full solution'),
     alt: L('🤔 還是不懂', "🤔 I still don't get it"), similar: L('🔁 練習類似題', '🔁 Try a similar question'), next: L('下一題 ➜', 'Next ➜'), placeholder: L('輸入你的答案', 'Enter answer'),
     check: L('檢查', 'Check'), practice: L('練習題', 'Practice'), progress: L('這個主題已練習', 'Practised in this topic'), resetDone: L('🎉 這個主題的題目你全部練過了！題庫重新開始。', '🎉 You have done every question in this topic! The question bank starts over.'),
@@ -1340,21 +1375,23 @@ const UI = {
 };
 function setLanguage(lang, btn) {
     language = lang;
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.language-section .lang-btn').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
     document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
     updateUIText();
     if (currentQuestion) renderAll();
+    if (subject === 'nst') nstOnLanguage();
 }
 function updateUIText() {
     $('label-correct').textContent = tx(UI.correct); $('label-incorrect').textContent = tx(UI.incorrect); $('label-accuracy').textContent = tx(UI.accuracy); $('topicTitle').textContent = tx(UI.choose);
+    const subjectLabel = $('subjectLabel'); if (subjectLabel) subjectLabel.textContent = tx(UI.subject);
 }
 function initializeTopic() {
     const selector = $('topicSelector');
     Object.keys(TOPICS).forEach(topic => { const b = document.createElement('button'); b.className = 'topic-btn'; b.textContent = topic; b.onclick = () => selectTopic(topic, b); selector.appendChild(b); });
 }
 function selectTopic(topic, btn) {
-    document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
+    document.querySelectorAll('#topicSelector .topic-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active');
     currentTopic = topic; $('questionSection').style.display = 'block'; const T = TOPICS[topic]; $('topicIntro').innerHTML = T.intro ? T.intro() : ''; if (T.afterIntro) T.afterIntro(); generateNewQuestion();
     $('questionSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -1457,6 +1494,597 @@ function updateStats() {
     $('correctCount').textContent = stats.correct; $('incorrectCount').textContent = stats.incorrect; $('accuracy').textContent = acc + '%';
 }
 $('answer').addEventListener('keydown', e => { if (e.key === 'Enter') submitAnswer(); });
+/*NST-START*/
+// Natural Sciences & Technology. Lesson text is loaded from nst-lessons.json.
+const NST_TODO_KEY = 'g6nst_to_add_v1';
+const MATHS_CHROME = {
+    title: '🎓 數學互動學習平台',
+    sub: 'Grade 6 Math Interactive Tutor',
+    footer: ''
+};
+
+/* ============================================================
+ * On-device tutor (Chrome Prompt API / Gemini Nano).
+ * Edit NST_AI_SYSTEM_PROMPT to change how the AI speaks.
+ * English only: the API does not support Chinese (en, ja, es, de, fr).
+ * Confirm questions are graded from the JSON, never by the model.
+ * ============================================================ */
+const NST_AI_OPTIONS = {
+    expectedInputs: [{ type: 'text', languages: ['en'] }],
+    expectedOutputs: [{ type: 'text', languages: ['en'] }]
+};
+const NST_AI_SYSTEM_PROMPT = `You are a patient tutor for Grade 6 Natural Sciences and Technology (South African CAPS).
+The learner is about 11 or 12 years old and writes school answers in English.
+
+How to reply:
+- Write in simple English, in about 4 to 6 short sentences.
+- Keep English science terms as they are (voltage, series, rotation, cell, battery). Do not invent translated names.
+- Use ONLY the unit text in the user message (key terms, explanation steps, common confusions). Do not add facts from outside that unit. If the question is not covered there, say you can only help with this unit and suggest asking a parent or teacher.
+- Stay at CAPS Grade 6. Do not teach senior-phase formulas or extra detail.
+- Ask which word or step is confusing when that is not already clear.
+- Explain more simply. One everyday example is fine when it fits this unit.
+- Never write a graded homework or test answer. If the message looks like a whole homework question (a full exam question, the word calculate, options A to D, or "show your working"), do not give the final answer. Ask which word or step they do not understand.
+- If the message is off-topic (another subject, a story, or a personal question), refuse in one kind sentence and invite a question about this unit.
+- Do not say whether an answer choice is correct or incorrect. The page checks those from the lesson file, not you.`;
+
+const nst = {
+    data: null, error: null, loading: false, loaded: false,
+    view: 'grid', unitId: null, qIndex: 0, qResult: null,
+    askCursor: -1, confusionId: null, layer: 0, showConfirm: false,
+    confirmResult: null, parentHint: false, freeNote: null,
+    aiChecked: false,
+    ai: { mode: 'off', progress: 0, preparing: false, busy: false, failed: false, session: null, token: 0, pending: false, reply: '', show: false }
+};
+
+function nz(zh, en) { return language === 'zh' ? zh : en; }
+function nstUnit() {
+    return nst.data && nst.data.units.find(u => u.id === nst.unitId) || null;
+}
+function nstConfusion() {
+    const u = nstUnit();
+    return u && (u.confusions || []).find(c => c.id === nst.confusionId) || null;
+}
+function nstPrompts(data) {
+    const ask = data && data.ask_what_confused;
+    if (Array.isArray(ask)) return ask.filter(s => typeof s === 'string' && s.trim());
+    if (ask && Array.isArray(ask.prompts_zh)) return ask.prompts_zh.filter(s => typeof s === 'string' && s.trim());
+    return [];
+}
+function nstAskField(key) {
+    const ask = nst.data && nst.data.ask_what_confused;
+    if (ask && !Array.isArray(ask) && typeof ask[key] === 'string') return ask[key];
+    return '';
+}
+function nstAnswersEqual(a, b) {
+    const norm = s => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
+    return norm(a) === norm(b);
+}
+function nstQuestionId(unit, q, index) {
+    if (q && typeof q.id === 'string' && q.id.trim()) return q.id.trim();
+    return `${unit.id}-q${index + 1}`;
+}
+function nstFold(s) {
+    return toHalfWidth(String(s || '')).toLowerCase().normalize('NFKC');
+}
+function nstEscRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function nstKeywordHit(folded, keyword) {
+    const k = nstFold(keyword).trim();
+    if (!k || !folded) return false;
+    if (/[\u3400-\u9fff]/.test(k)) return folded.includes(k);
+    return new RegExp('(^|[^a-z0-9])' + nstEscRe(k) + '($|[^a-z0-9])').test(folded);
+}
+function nstMatchConfusion(unit, text) {
+    if (!unit || !String(text || '').trim()) return null;
+    const folded = nstFold(text);
+    const confusions = unit.confusions || [];
+    let best = null, bestScore = 0, bestLen = 0;
+    confusions.forEach(c => {
+        let score = 0, len = 0;
+        (Array.isArray(c.keywords) ? c.keywords : []).forEach(kw => {
+            if (!nstKeywordHit(folded, kw)) return;
+            const k = nstFold(kw).trim();
+            score += 10 + k.length;
+            len += k.length;
+        });
+        if (score > bestScore || (score === bestScore && score > 0 && len > bestLen)) {
+            best = c; bestScore = score; bestLen = len;
+        }
+    });
+    if (bestScore > 0) return best;
+    let fb = null, fbScore = 0;
+    confusions.forEach(c => {
+        let score = 0;
+        const labelRaw = String(c.label_zh || '');
+        const label = nstFold(labelRaw).replace(/[？?！!。，,…、．.：:]/g, '');
+        if (label && folded.includes(label)) score += 30 + label.length;
+        else labelRaw.split(/[？?！!。，,…、\s]+/).forEach(ch => {
+            const bit = nstFold(ch);
+            if (bit.length >= 2 && folded.includes(bit)) score += bit.length;
+        });
+        const blob = nstFold([c.label_zh, c.simpler_explanation_zh, c.analogy_zh, c.even_simpler_zh].join('\n'));
+        (unit.key_terms || []).forEach(kt => {
+            const en = nstFold(kt.en || '').trim(), zh = nstFold(kt.zh || '').trim();
+            const inputHas = (en && nstKeywordHit(folded, en)) || (zh && zh.length >= 1 && folded.includes(zh));
+            if (!inputHas) return;
+            if ((en && blob.includes(en)) || (zh && blob.includes(zh))) score += 8 + Math.max(en.length, zh.length);
+        });
+        if (score > fbScore) { fb = c; fbScore = score; }
+    });
+    return fbScore >= 6 ? fb : null;
+}
+function nstAsList(v) {
+    if (Array.isArray(v)) return v.filter(x => typeof x === 'string' && x.trim());
+    if (typeof v === 'string' && v.trim()) return [v];
+    return [];
+}
+function nstValidate(data) {
+    const errors = [];
+    const bad = (msg) => errors.push(msg);
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return { ok: false, errors: ['nst-lessons.json 的最外層必須是物件。'] };
+    if (!Array.isArray(data.units) || !data.units.length) bad('units 必須是有內容的陣列。');
+    if (!nstPrompts(data).length) bad('ask_what_confused 需要至少一句 prompts_zh（或字串陣列）。');
+    (data.units || []).forEach((u, i) => {
+        const where = (u && u.id) || `units[${i}]`;
+        if (!u || typeof u !== 'object') { bad(`${where} 不是物件。`); return; }
+        ['id', 'title_zh', 'title_en'].forEach(k => { if (typeof u[k] !== 'string' || !u[k].trim()) bad(`${where} 缺少 ${k}。`); });
+        if (!Array.isArray(u.explanation_steps) || !u.explanation_steps.length) bad(`${where} 缺少 explanation_steps。`);
+        else u.explanation_steps.forEach((s, j) => {
+            if (!s || typeof s.zh !== 'string' || !s.zh.trim()) bad(`${where} 的第 ${j + 1} 步缺少 zh。`);
+            if (s && s.diagram_hint != null && typeof s.diagram_hint !== 'string') bad(`${where} 的第 ${j + 1} 步 diagram_hint 必須是字串。`);
+        });
+        if (!Array.isArray(u.check_questions)) bad(`${where} 的 check_questions 必須是陣列。`);
+        else u.check_questions.forEach((q, j) => nstValidateQuestion(`${where} 練習題 ${j + 1}`, q, errors));
+        if (!Array.isArray(u.confusions)) bad(`${where} 的 confusions 必須是陣列。`);
+        else u.confusions.forEach((c, j) => {
+            const cw = `${where} 困惑 ${j + 1}`;
+            if (!c || typeof c !== 'object') { bad(`${cw} 不是物件。`); return; }
+            if (typeof c.id !== 'string' || !c.id.trim()) bad(`${cw} 缺少 id。`);
+            ['label_zh', 'simpler_explanation_zh', 'analogy_zh', 'even_simpler_zh'].forEach(k => {
+                if (typeof c[k] !== 'string' || !c[k].trim()) bad(`${cw} 缺少 ${k}。`);
+            });
+            if (c.keywords != null && (!Array.isArray(c.keywords) || c.keywords.some(k => typeof k !== 'string'))) bad(`${cw} 的 keywords 必須是字串陣列。`);
+            nstValidateQuestion(`${cw} 的確認題`, c.confirm_question, errors);
+        });
+        if (!Array.isArray(u.key_terms)) bad(`${where} 的 key_terms 必須是陣列。`);
+        if (u.exam_tips_zh != null && !Array.isArray(u.exam_tips_zh) && typeof u.exam_tips_zh !== 'string') bad(`${where} 的 exam_tips_zh 格式不對。`);
+        if (u.common_mistakes_zh != null && !Array.isArray(u.common_mistakes_zh) && typeof u.common_mistakes_zh !== 'string') bad(`${where} 的 common_mistakes_zh 格式不對。`);
+    });
+    if (data.flagged_facts != null) {
+        if (!Array.isArray(data.flagged_facts)) bad('flagged_facts 必須是陣列。');
+        else data.flagged_facts.forEach((f, i) => {
+            if (!f || typeof f.note_zh !== 'string' || !Array.isArray(f.units)) bad(`flagged_facts[${i}] 需要 units 與 note_zh。`);
+        });
+    }
+    return { ok: errors.length === 0, errors };
+}
+function nstValidateQuestion(where, q, errors) {
+    if (!q || typeof q !== 'object') { errors.push(`${where} 不是物件。`); return; }
+    if (typeof q.q_zh !== 'string' && typeof q.q_en !== 'string') errors.push(`${where} 缺少題目。`);
+    if (!Array.isArray(q.options) || !q.options.length || q.options.some(o => typeof o !== 'string' || !o.trim())) errors.push(`${where} 的 options 必須是非空字串陣列。`);
+    if (typeof q.answer !== 'string' || !q.answer.trim()) errors.push(`${where} 缺少 answer。`);
+    else if (Array.isArray(q.options) && !q.options.some(o => nstAnswersEqual(o, q.answer))) errors.push(`${where} 的 answer 沒有對上任何一個 option。`);
+}
+
+function nstLoadTodo() {
+    try { const v = JSON.parse(localStorage.getItem(NST_TODO_KEY)); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+}
+function nstSaveTodo(text, unit) {
+    const list = nstLoadTodo();
+    list.push({ text: String(text).slice(0, 500), unitId: unit ? unit.id : '', at: new Date().toISOString() });
+    try { localStorage.setItem(NST_TODO_KEY, JSON.stringify(list.slice(-80))); } catch (e) { /* private mode */ }
+}
+function nstApplyChrome() {
+    if (!MATHS_CHROME.footer && $('siteFooter')) MATHS_CHROME.footer = $('siteFooter').textContent;
+    if (subject !== 'nst') {
+        $('siteTitle').textContent = MATHS_CHROME.title;
+        $('siteSubtitle').textContent = MATHS_CHROME.sub;
+        if (MATHS_CHROME.footer) $('siteFooter').textContent = MATHS_CHROME.footer;
+        return;
+    }
+    $('siteTitle').textContent = nz('🎓 自然科學與技術', '🎓 Natural Sciences & Technology');
+    $('siteSubtitle').textContent = nz('六年級 · 南非 CAPS', 'Grade 6 · CAPS (South Africa)');
+    $('siteFooter').textContent = nz(
+        '自然科學：先看課文，再做練習。不懂就挑一個困惑，或自己寫一句。內容只留在這台裝置，不會送出。',
+        'Natural Sciences: read the lesson, try the check, then pick a confusion or write your own. Nothing leaves this device.'
+    );
+}
+function setSubject(which) {
+    subject = which === 'nst' ? 'nst' : 'maths';
+    document.querySelectorAll('.subject-btn').forEach(b => b.classList.toggle('active', b.dataset.subject === subject));
+    const maths = subject === 'maths';
+    $('statsSection').classList.toggle('hidden', !maths);
+    $('topicSection').classList.toggle('hidden', !maths);
+    $('nstRoot').classList.toggle('hidden', maths);
+    if (maths) {
+        $('questionSection').style.display = currentTopic ? 'block' : 'none';
+        nstApplyChrome();
+    } else {
+        $('questionSection').style.display = 'none';
+        nstEnter();
+    }
+}
+function nstEnter() {
+    nstApplyChrome();
+    if (!nst.loaded && !nst.loading) nstLoad();
+    else nstRender();
+    if (!nst.aiChecked) nstDetectAI();
+}
+function nstOnLanguage() { nstApplyChrome(); if (nst.loaded || nst.error) nstRender(); }
+async function nstLoad() {
+    nst.loading = true; nst.error = null; nstRender();
+    try {
+        const res = await fetch('nst-lessons.json');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const v = nstValidate(data);
+        if (!v.ok) { nst.data = null; nst.error = v.errors; }
+        else { nst.data = data; nst.error = null; nst.loaded = true; }
+    } catch (e) {
+        nst.data = null; nst.loaded = false;
+        nst.error = ['讀不到 nst-lessons.json。請把這個檔案和網頁放在一起，並用網頁伺服器開啟（不要直接雙擊檔案）。 / Could not load nst-lessons.json. Serve the folder with a local web server.'];
+    } finally {
+        nst.loading = false;
+        if (subject === 'nst') nstRender();
+    }
+}
+async function nstDetectAI() {
+    nst.aiChecked = true;
+    const LM = window.LanguageModel;
+    if (!LM || typeof LM.availability !== 'function') { nst.ai.mode = 'off'; return; }
+    try {
+        const availability = await LM.availability(NST_AI_OPTIONS);
+        if (availability === 'available') nst.ai.mode = 'available';
+        else if (availability === 'downloadable' || availability === 'downloading') nst.ai.mode = availability;
+        else nst.ai.mode = 'off';
+    } catch (e) { nst.ai.mode = 'off'; }
+    if (subject === 'nst') nstRender();
+}
+function nstAiCanRun() { return nst.ai.mode === 'available' || nst.ai.mode === 'ready'; }
+function nstGrounding(unit, childText) {
+    const terms = (unit.key_terms || []).map(t => `- ${t.en} (${t.zh}): ${t.kid_definition_zh || ''}`).join('\n');
+    const steps = (unit.explanation_steps || []).map((s, i) => `${i + 1}. ${s.zh}\nExam sentence: ${s.en_exam_sentence || ''}`).join('\n');
+    const conf = (unit.confusions || []).map(c => `- ${c.label_zh}\n  simpler: ${c.simpler_explanation_zh}\n  analogy: ${c.analogy_zh}\n  even simpler: ${c.even_simpler_zh}`).join('\n');
+    return `UNIT: ${unit.title_en}\n\nKEY TERMS:\n${terms}\n\nEXPLANATION STEPS:\n${steps}\n\nCOMMON CONFUSIONS:\n${conf}\n\nThe child wrote:\n${String(childText).slice(0, 800)}\n\nReply in simple English only. Keep the English science terms. Stay inside this unit.`;
+}
+function nstUpdateAiBox() {
+    const el = $('nstAiText');
+    if (!el) return;
+    if (nst.ai.pending && !nst.ai.reply) el.textContent = nz('AI 小老師正在想…', 'The AI tutor is thinking…');
+    else el.textContent = nst.ai.reply || (nst.ai.failed ? nz('AI 小老師這次沒有回答，課文說明還在。', 'The AI tutor did not answer this time. The lesson is still here.') : '');
+}
+async function nstRunAI(unit, childText) {
+    const LM = window.LanguageModel;
+    if (!LM || !nstAiCanRun() || !unit) return;
+    const token = ++nst.ai.token;
+    nst.ai.show = true; nst.ai.pending = true; nst.ai.reply = ''; nst.ai.failed = false;
+    nstUpdateAiBox();
+    try {
+        if (!nst.ai.session) {
+            nst.ai.session = await LM.create(Object.assign({}, NST_AI_OPTIONS, {
+                initialPrompts: [{ role: 'system', content: NST_AI_SYSTEM_PROMPT }]
+            }));
+            if (token !== nst.ai.token) return;
+            nst.ai.mode = 'ready';
+        }
+        const session = nst.ai.session;
+        const prompt = nstGrounding(unit, childText);
+        if (typeof session.promptStreaming === 'function') {
+            const stream = session.promptStreaming(prompt);
+            let acc = '';
+            for await (const chunk of stream) {
+                if (token !== nst.ai.token) return;
+                const piece = String(chunk);
+                acc = piece.startsWith(acc) ? piece : acc + piece;
+                nst.ai.reply = acc;
+                nstUpdateAiBox();
+            }
+        } else {
+            const full = await session.prompt(prompt);
+            if (token !== nst.ai.token) return;
+            nst.ai.reply = String(full || '');
+        }
+    } catch (e) {
+        if (token !== nst.ai.token) return;
+        nst.ai.session = null;
+        nst.ai.failed = true;
+        nst.ai.reply = '';
+    } finally {
+        if (token === nst.ai.token) { nst.ai.pending = false; nstUpdateAiBox(); }
+    }
+}
+async function nstEnableAI() {
+    const LM = window.LanguageModel;
+    if (!LM || nst.ai.busy) return;
+    nst.ai.busy = true; nst.ai.failed = false; nst.ai.progress = 0; nst.ai.preparing = false;
+    nstRender();
+    try {
+        const session = await LM.create(Object.assign({}, NST_AI_OPTIONS, {
+            initialPrompts: [{ role: 'system', content: NST_AI_SYSTEM_PROMPT }],
+            monitor(m) {
+                m.addEventListener('downloadprogress', (e) => {
+                    const loaded = typeof e.loaded === 'number' ? e.loaded : 0;
+                    nst.ai.progress = loaded;
+                    nst.ai.preparing = loaded >= 1;
+                    const bar = $('nstProgBar');
+                    const label = $('nstProgLabel');
+                    const prog = $('nstProg');
+                    const pct = Math.max(0, Math.min(100, Math.round(loaded * 100)));
+                    if (bar) bar.style.width = pct + '%';
+                    if (prog) prog.setAttribute('aria-valuenow', String(pct));
+                    if (label) label.textContent = loaded >= 1 ? nz('正在準備模型…', 'Getting the model ready…') : (nz('下載中 ', 'Downloading ') + pct + '%');
+                });
+            }
+        }));
+        nst.ai.session = session;
+        nst.ai.mode = 'ready';
+        nst.ai.busy = false;
+    } catch (e) {
+        nst.ai.busy = false;
+        nst.ai.failed = true;
+        if (nst.ai.mode !== 'downloading') nst.ai.mode = 'downloadable';
+    }
+    if (subject === 'nst') nstRender();
+}
+
+function nstBind() {
+    const root = $('nstRoot');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = '1';
+    root.addEventListener('click', nstClick);
+    root.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && e.target && e.target.id === 'nstFree') { e.preventDefault(); nstSubmitFree(); }
+    });
+}
+function nstClick(e) {
+    const btn = e.target.closest('[data-act]');
+    if (!btn || !$('nstRoot').contains(btn)) return;
+    const act = btn.dataset.act;
+    if (act === 'unit') nstOpenUnit(btn.dataset.id);
+    else if (act === 'grid') { nst.ai.token += 1; nst.ai.show = false; nst.ai.pending = false; nst.view = 'grid'; nst.freeNote = null; nstRender(); }
+    else if (act === 'lesson') { nst.view = 'lesson'; nst.ai.show = false; nstRender(); }
+    else if (act === 'dont') nstOpenConfused();
+    else if (act === 'confusion') nstOpenConfusion(btn.dataset.id);
+    else if (act === 'free') nstSubmitFree();
+    else if (act === 'still' || act === 'next-layer') nstAdvanceLayer();
+    else if (act === 'quiz') { nst.showConfirm = true; nst.confirmResult = null; nstRender(); const q = $('nstConfirm'); if (q) q.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    else if (act === 'adult') { nst.parentHint = true; nstRender(); }
+    else if (act === 'opt') nstPickOption(btn.dataset.kind, btn.dataset.opt);
+    else if (act === 'next-q') nstNextQ();
+    else if (act === 'ai') nstEnableAI();
+    else if (act === 'copy') nstCopyTodo();
+    else if (act === 'clear-todo') { try { localStorage.removeItem(NST_TODO_KEY); } catch (err) {} nstRender(); }
+}
+function nstOpenUnit(id) {
+    nst.ai.token += 1; nst.ai.show = false; nst.ai.pending = false;
+    nst.unitId = id; nst.view = 'lesson'; nst.qIndex = 0; nst.qResult = null; nst.freeNote = null;
+    nstRender();
+    const el = $('nstLesson'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function nstOpenConfused() {
+    nst.ai.token += 1; nst.ai.show = false; nst.ai.pending = false; nst.ai.reply = '';
+    nst.askCursor += 1; nst.view = 'confused'; nst.freeNote = null;
+    nstRender();
+    const el = $('nstConfused'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function nstOpenConfusion(id) {
+    nst.ai.token += 1; nst.ai.show = false; nst.ai.pending = false;
+    nst.confusionId = id; nst.view = 'detail'; nst.layer = 0; nst.showConfirm = false; nst.confirmResult = null; nst.parentHint = false;
+    nstRender();
+    const el = $('nstDetail'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function nstAdvanceLayer() {
+    if (nst.layer < 2) { nst.layer += 1; nst.showConfirm = false; }
+    else nst.parentHint = true;
+    nstRender();
+}
+function nstPickOption(kind, opt) {
+    if (kind === 'check') {
+        const unit = nstUnit(); const q = unit && unit.check_questions[nst.qIndex];
+        if (!q) return;
+        nst.qResult = { ok: nstAnswersEqual(opt, q.answer), why: q.why_zh || '' };
+    } else {
+        const c = nstConfusion(); if (!c) return;
+        const ok = nstAnswersEqual(opt, c.confirm_question.answer);
+        nst.confirmResult = { ok, why: c.confirm_question.why_zh || '' };
+        if (!ok && nst.layer >= 2) nst.parentHint = true;
+    }
+    nstRender();
+}
+function nstNextQ() {
+    const unit = nstUnit(); if (!unit) return;
+    if (nst.qIndex < unit.check_questions.length - 1) { nst.qIndex += 1; nst.qResult = null; nstRender(); }
+}
+function nstSubmitFree() {
+    const input = $('nstFree');
+    const text = input ? input.value.trim() : '';
+    if (!text) { nst.freeNote = { kind: 'empty' }; nstRender(); return; }
+    const unit = nstUnit();
+    const hit = nstMatchConfusion(unit, text);
+    const runAi = nstAiCanRun();
+    if (hit) {
+        nst.confusionId = hit.id; nst.view = 'detail'; nst.layer = 0; nst.showConfirm = false; nst.confirmResult = null; nst.parentHint = false; nst.freeNote = null;
+    } else {
+        nstSaveTodo(text, unit);
+        nst.freeNote = { kind: 'saved', text }; nst.view = 'confused';
+    }
+    nst.ai.show = runAi; nst.ai.pending = runAi; nst.ai.reply = ''; nst.ai.failed = false;
+    nstRender();
+    if (runAi) nstRunAI(unit, text);
+}
+function nstCopyTodo() {
+    const lines = nstLoadTodo().map(item => `- [${item.unitId || ''}] ${item.text}`).join('\n');
+    const done = () => { const n = $('nstCopyNote'); if (n) n.textContent = nz('已複製。', 'Copied.'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(lines).then(done).catch(() => nstCopyFallback(lines, done));
+    else nstCopyFallback(lines, done);
+}
+function nstCopyFallback(lines, done) {
+    const ta = document.createElement('textarea');
+    ta.value = lines; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    ta.remove();
+}
+
+function nstListHtml(items) {
+    const arr = nstAsList(items);
+    if (!arr.length) return '';
+    return `<ul class="nst-list">${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`;
+}
+function nstOptionsHtml(options, kind, answer) {
+    return `<div class="choices nst-choices">${options.map(o => `<button type="button" class="choice-btn" data-act="opt" data-kind="${kind}" data-opt="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+}
+function nstAiOfferHtml() {
+    const mode = nst.ai.mode;
+    const showBtn = mode === 'downloadable' || mode === 'downloading' || (nst.ai.failed && mode !== 'ready' && mode !== 'available');
+    if (!showBtn && !nst.ai.busy) return '';
+    const pct = Math.max(0, Math.min(100, Math.round((nst.ai.progress || 0) * 100)));
+    const label = nst.ai.preparing ? nz('正在準備模型…', 'Getting the model ready…') : (nst.ai.busy ? (nz('下載中 ', 'Downloading ') + pct + '%') : '');
+    return `<div class="question-section nst-ai-card" id="nstAiOffer"><div class="steps-title">${nz('裝置上的 AI 小老師（可不使用）', 'On-device AI tutor (optional)')}</div>${showBtn ? `<button type="button" class="hint-btn" id="nstAiBtn" data-act="ai" ${nst.ai.busy ? 'disabled' : ''}>啟用 AI 小老師（需下載數 GB，請用 Wi-Fi）</button>` : ''}<p class="nst-ai-note">${nz('沒有 AI 也可以照課文學。下載只發生在你按下按鈕之後。', 'The lesson works with no AI. A download starts only after you press the button.')}</p>${nst.ai.busy || pct ? `<div class="nst-prog" id="nstProg" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}"><div class="nst-prog-bar" id="nstProgBar" style="width:${pct}%"></div></div><div id="nstProgLabel">${esc(label)}</div>` : ''}${nst.ai.failed ? `<div class="hint show" id="nstAiFail">${nz('AI 這次沒有啟動。課文、練習和「我不懂」都可以繼續用。', 'The AI tutor did not start. The lesson, checks, and “I don’t get it” still work.')}</div>` : ''}</div>`;
+}
+function nstAiBoxHtml() {
+    if (!nst.ai.show) return '';
+    const body = nst.ai.pending && !nst.ai.reply ? nz('AI 小老師正在想…', 'The AI tutor is thinking…') : (nst.ai.reply || '');
+    return `<div class="alt-box show" id="nstAiBox"><div class="steps-title">AI 小老師 · simple English</div><div class="nst-reply" id="nstAiText">${esc(body)}</div><p class="nst-ai-note">${nz('AI 只用簡單英文，而且只根據這個單元。下面的確認題仍由課文判斷，不由 AI 批改。', 'The AI replies in simple English from this unit only. The check below is marked from the lesson, not by the AI.')}</p></div>`;
+}
+function nstTodoHtml() {
+    const list = nstLoadTodo();
+    const open = nst.freeNote && nst.freeNote.kind === 'saved' ? ' open' : '';
+    const items = list.length ? list.map(item => `<li><b>${esc(item.unitId || '')}</b> ${esc(item.text)}</li>`).join('') : `<li>${nz('還沒有。', 'None yet.')}</li>`;
+    return `<details class="ap-intro" id="nstTodo"${open}><summary>${nz('家長：待補充的問題（只存在這台裝置）', 'Parent: questions to add (this device only)')}</summary><ul class="nst-list">${items}</ul><div class="button-group" style="margin-top:.75rem"><button type="button" class="hint-btn" data-act="copy">${nz('複製全部', 'Copy all')}</button><button type="button" class="hint-btn" data-act="clear-todo">${nz('清除清單', 'Clear list')}</button></div><div id="nstCopyNote" class="nst-ai-note"></div><p class="nst-ai-note">${nz('沒有姓名，也不會上傳。', 'No names, and nothing is uploaded.')}</p></details>`;
+}
+function nstFlagsHtml(unit) {
+    const facts = ((nst.data && nst.data.flagged_facts) || []).filter(f => Array.isArray(f.units) && f.units.includes(unit.id) && f.note_zh);
+    if (!facts.length) return '';
+    return `<details class="ap-intro" id="nstFlags"><summary>${nz('給家長', 'For a parent')}</summary>${facts.map(f => `<p>${esc(f.note_zh)}</p>${f.note_en ? `<p class="step-en">${esc(f.note_en)}</p>` : ''}`).join('')}</details>`;
+}
+function nstBack(act, zh, en) {
+    return `<button type="button" class="hint-btn" data-act="${act}" style="margin-bottom:1rem">${nz(zh, en)}</button>`;
+}
+function nstGridHtml() {
+    const meta = nst.data.meta || {};
+    const groups = [];
+    nst.data.units.forEach(u => {
+        const term = u.term || '';
+        let g = groups.find(x => x.term === term);
+        if (!g) { g = { term, units: [] }; groups.push(g); }
+        g.units.push(u);
+    });
+    const cards = groups.map(g => `<h3 class="section-title">${esc(g.term)}</h3><div class="topic-grid nst-grid">${g.units.map(u => {
+        const primary = nz(u.title_zh, u.title_en);
+        const secondary = language === 'zh' ? u.title_en : u.title_zh;
+        return `<button type="button" class="topic-btn nst-unit" data-act="unit" data-id="${esc(u.id)}"><span>${esc(primary)}</span><small>${esc(secondary || '')}</small></button>`;
+    }).join('')}</div>`).join('');
+    const heading = language === 'en' ? (meta.title_en || meta.title_zh || '') : (meta.title_zh || meta.title_en || '');
+    const sub = language === 'en' ? (meta.title_zh || '') : (meta.title_en || '');
+    const disclaimer = meta.disclaimer_zh ? `<div class="notice">${esc(meta.disclaimer_zh)}${language === 'en' ? '<div class="step-en">Practice for understanding — not a school test paper.</div>' : ''}</div>` : '';
+    return `<div id="nstGrid">${heading ? `<div class="question-title" style="font-size:1.15rem">${esc(heading)}</div>` : ''}${sub ? `<div class="progress-line">${esc(sub)}</div>` : ''}${disclaimer}${cards}</div>`;
+}
+function nstStepsHtml(unit) {
+    return (unit.explanation_steps || []).map((s, i) => {
+        const zh = s.zh || '', en = s.en_exam_sentence || '';
+        const primary = language === 'en' ? (en || zh) : zh;
+        const secondary = language === 'en' ? (en ? zh : '') : en;
+        const hint = s.diagram_hint ? `<div class="diagram-hint"><strong>${nz('圖示', 'Diagram')}</strong>${esc(s.diagram_hint)}</div>` : '';
+        return `<div class="gstep"><div class="gstep-head">${nz('步驟', 'Step')} ${i + 1}</div><div class="step-zh">${esc(primary)}</div>${secondary ? `<div class="step-en">${esc(secondary)}</div>` : ''}${hint}</div>`;
+    }).join('');
+}
+function nstGlossHtml(unit) {
+    const terms = unit.key_terms || [];
+    if (!terms.length) return '';
+    const rows = terms.map(t => `<div><b>${esc(t.en || '')}</b> <span class="step-en">${esc(t.zh || '')}</span><div>${esc(t.kid_definition_zh || '')}</div></div>`).join('');
+    return `<details class="ap-intro" id="nstGloss"><summary>${nz('關鍵詞', 'Key terms')} (${terms.length})</summary><div class="nst-gloss">${rows}</div></details>`;
+}
+function nstCheckHtml(unit) {
+    const qs = unit.check_questions || [];
+    if (!qs.length) return '';
+    const q = qs[nst.qIndex] || qs[0];
+    const qid = nstQuestionId(unit, q, nst.qIndex);
+    const en = q.q_en || '', zh = q.q_zh || '';
+    const primary = language === 'en' ? (en || zh) : (zh || en);
+    const secondary = language === 'en' ? (en ? zh : '') : en;
+    let fb = '';
+    if (nst.qResult) {
+        fb = `<div class="feedback show ${nst.qResult.ok ? 'correct' : 'incorrect'}"><strong>${nst.qResult.ok ? nz('對了。', 'Correct.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.qResult.why ? `<div>${esc(nst.qResult.why)}</div>` : ''}</div>`;
+        if (nst.qIndex < qs.length - 1) fb += `<button type="button" class="next-btn" data-act="next-q">${nz('下一題', 'Next question')}</button>`;
+        else fb += `<p class="gstep-final">${nz('這個單元的練習題做完了。還可以按「我不懂」再練困惑的地方。', 'That was the last check. You can still press “I don’t get it”.')}</p>`;
+    }
+    return `<div class="question-box" id="nstCheck" data-qid="${esc(qid)}"><div class="gstep-head">${nz('練習', 'Check')} ${nst.qIndex + 1} / ${qs.length}</div><div class="question-main">${esc(primary)}</div>${secondary ? `<div class="question-alt"><em>${esc(secondary)}</em></div>` : ''}${nst.qResult ? '' : nstOptionsHtml(q.options, 'check', q.answer)}${fb}</div>`;
+}
+function nstLessonHtml() {
+    const unit = nstUnit(); if (!unit) return nstGridHtml();
+    const title = nz(unit.title_zh, unit.title_en);
+    const alt = language === 'zh' ? unit.title_en : unit.title_zh;
+    const tips = nstListHtml(unit.exam_tips_zh);
+    const mistakes = nstListHtml(unit.common_mistakes_zh);
+    return `<div id="nstLesson">${nstBack('grid', '← 所有單元', '← All units')}<div class="question-title">${esc(title)}</div><div class="progress-line">${esc(alt || '')}${unit.term ? ' · ' + esc(unit.term) : ''}</div>${nstGlossHtml(unit)}<div id="nstSteps" class="guided show">${nstStepsHtml(unit)}</div>${nstCheckHtml(unit)}<div class="button-group"><button type="button" class="hint-btn" id="nstDont" data-act="dont">${nz('我不懂 / I don’t get it', 'I don’t get it / 我不懂')}</button></div>${tips ? `<div class="hint show"><strong>${nz('考試小提醒', 'Exam tips')}</strong>${tips}</div>` : ''}${mistakes ? `<div class="steps show"><div class="steps-title">${nz('常見錯誤', 'Common mistakes')}</div>${mistakes}</div>` : ''}${nstFlagsHtml(unit)}</div>`;
+}
+function nstConfusedHtml() {
+    const unit = nstUnit(); if (!unit) return nstGridHtml();
+    const prompts = nstPrompts(nst.data);
+    const prompt = prompts.length ? prompts[((nst.askCursor % prompts.length) + prompts.length) % prompts.length] : '';
+    const intro = nstAskField('intro_zh');
+    const encourage = nstAskField('encouragement_zh');
+    let note = '';
+    if (nst.freeNote && nst.freeNote.kind === 'saved') note = `<div class="hint show" id="nstSaved"><strong>問爸爸或老師</strong><div>${nz('這句還沒有對上這個單元的常見困惑。已經記在這台裝置的待補充清單，沒有送出。', 'This did not match a confusion in the unit. It is saved on this device to add later, and was not sent anywhere.')}</div><div class="hint-en">${esc(nst.freeNote.text)}</div></div>`;
+    else if (nst.freeNote && nst.freeNote.kind === 'empty') note = `<div class="feedback show incorrect">${nz('先寫一句你哪裡不懂。', 'Write what is confusing first.')}</div>`;
+    const buttons = (unit.confusions || []).map(c => `<button type="button" class="topic-btn nst-conf" data-act="confusion" data-id="${esc(c.id)}">${esc(c.label_zh)}</button>`).join('');
+    return `<div id="nstConfused">${nstBack('lesson', '← 回到課文', '← Back to the lesson')}<div class="question-title">${esc(nz(unit.title_zh, unit.title_en))}</div><div class="question-box"><div class="question-main">${esc(intro || nz('哪一個地方讓你卡住了？', 'Which part is confusing?'))}</div>${prompt ? `<div>${esc(prompt)}</div>` : ''}${encourage ? `<div class="step-en">${esc(encourage)}</div>` : ''}</div><div class="section-title">${nz('常見的困惑', 'Common confusions')}</div><div class="topic-grid nst-grid">${buttons}</div><label for="nstFree"><strong>${nz('我自己寫', 'I will write it myself')}</strong></label><div class="input-group"><input type="text" id="nstFree" autocomplete="off" placeholder="${nz('我自己寫', 'I will write it myself')}"><button type="button" class="submit-btn" data-act="free">${nz('送出', 'Send')}</button></div>${note}${nstAiBoxHtml()}</div>`;
+}
+function nstLayerBody(c) {
+    if (nst.layer <= 0) return { k: nz('更簡單的說法', 'A simpler way'), t: c.simpler_explanation_zh };
+    if (nst.layer === 1) return { k: nz('生活裡的例子', 'An everyday example'), t: c.analogy_zh };
+    return { k: nz('再更慢一次', 'Even simpler'), t: c.even_simpler_zh };
+}
+function nstDetailHtml() {
+    const unit = nstUnit(); const c = nstConfusion();
+    if (!unit || !c) return nstConfusedHtml();
+    const layer = nstLayerBody(c);
+    const follow = nstAskField('follow_up_zh');
+    let why = '';
+    if (nst.confirmResult) {
+        why = `<div class="feedback show ${nst.confirmResult.ok ? 'correct' : 'incorrect'}" id="nstWhy"><strong>${nst.confirmResult.ok ? nz('對，就是這樣。', 'Yes — that’s it.') : nz('還不是這一個。', 'Not this one.')}</strong>${nst.confirmResult.why ? `<div>${esc(nst.confirmResult.why)}</div>` : ''}</div>`;
+    }
+    let confirm = '';
+    if (nst.showConfirm && c.confirm_question) {
+        const q = c.confirm_question;
+        confirm = `<div class="question-box" id="nstConfirm"><div class="question-main">${esc(q.q_zh || '')}</div>${nst.confirmResult ? '' : nstOptionsHtml(q.options || [], 'confirm')}</div>`;
+    }
+    const stuck = nstAskField('if_still_stuck_zh');
+    const adult = nst.parentHint ? `<div class="hint show" id="nstAdult"><strong>問爸爸或老師</strong>${stuck ? `<div>${esc(stuck)}</div>` : ''}</div>` : '';
+    const more = nst.layer < 2 ? `<button type="button" class="hint-btn" id="nstStill" data-act="still">${nz('還是不懂', 'Still don’t get it')}</button>` : '';
+    const next = nst.confirmResult && !nst.confirmResult.ok && nst.layer < 2 ? `<button type="button" class="hint-btn" id="nstNextLayer" data-act="next-layer">${nz('再看下一層', 'Read the next layer')}</button>` : '';
+    return `<div id="nstDetail">${nstBack('dont', '← 其他困惑', '← Other confusions')}<div class="question-title">${esc(c.label_zh)}</div><div class="gstep current" id="nstLayer"><div class="gstep-head">${esc(layer.k)} · ${nst.layer + 1} / 3</div><div class="step-zh">${esc(layer.t || '')}</div></div>${why}${confirm}${follow && !nst.showConfirm ? `<p class="progress-line">${esc(follow)}</p>` : ''}<div class="ladder">${more}<button type="button" class="submit-btn" id="nstQuiz" data-act="quiz">${nz('我懂了，考考我', 'I get it — quiz me')}</button>${next}<button type="button" class="hint-btn" data-act="adult">${nz('問爸爸或老師', 'Ask a parent or teacher')}</button></div>${adult}${nstAiBoxHtml()}</div>`;
+}
+function nstRender() {
+    const root = $('nstRoot');
+    if (!root || subject !== 'nst') return;
+    nstBind();
+    nstApplyChrome();
+    if (nst.loading) { root.innerHTML = '<div class="notice">正在讀取單元… / Loading units…</div>'; return; }
+    if (nst.error) {
+        const items = nst.error.slice(0, 12).map(x => `<li>${esc(x)}</li>`).join('');
+        const more = nst.error.length > 12 ? `<p>…還有 ${nst.error.length - 12} 項</p>` : '';
+        root.innerHTML = `<div class="feedback show incorrect"><strong>${nz('單元內容讀取出了問題', 'The lesson file could not be used')}</strong><ul class="nst-list">${items}</ul>${more}<p>${nz('數學練習沒有受影響，可以切回數學。', 'Maths still works. Switch back to Maths.')}</p></div>`;
+        return;
+    }
+    if (!nst.data) { root.innerHTML = ''; return; }
+    let body = nstGridHtml();
+    if (nst.view === 'lesson') body = nstLessonHtml();
+    else if (nst.view === 'confused') body = nstConfusedHtml();
+    else if (nst.view === 'detail') body = nstDetailHtml();
+    root.innerHTML = nstAiOfferHtml() + body + nstTodoHtml();
+}
+
+window.NST = {
+    validate: nstValidate,
+    matchConfusion: nstMatchConfusion,
+    answersEqual: nstAnswersEqual,
+    questionId: nstQuestionId,
+    AI_OPTIONS: NST_AI_OPTIONS,
+    SYSTEM_PROMPT: NST_AI_SYSTEM_PROMPT,
+    TODO_KEY: NST_TODO_KEY
+};
+/*NST-END*/
+
 initializeTopic(); updateUIText();
     </script>
 </body>

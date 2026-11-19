@@ -1,6 +1,6 @@
-# 六年級學習站：數學 ＋ 自然科學與技術
+# 六年級學習站：數學 ＋ 自然科學與技術 ＋ 社會（地理）
 
-單一頁面 `index.html`。數學維持原本的互動練習；自然科學與技術（NS&T，南非 CAPS 六年級）的課文在 `nst-lessons.json`，換檔即可，不必改程式。
+單一頁面 `index.html`。數學維持原本的互動練習；自然科學與技術（NS&T，南非 CAPS 六年級）的課文在 `nst-lessons.json`，社會科學・地理（Geography）的課文在 `geo-lessons.json`，換檔即可，不必改程式。兩個課文科目用同一套畫面與流程（下面以 NS&T 說明，地理完全相同）。
 
 沒有建置步驟、沒有帳號、沒有 API 金鑰。孩子的作答和「待補充問題」只存在這台裝置的 `localStorage`，不會送到任何伺服器。
 
@@ -12,7 +12,7 @@
 python3 -m http.server 8765
 ```
 
-打開 <http://127.0.0.1:8765/>。科目開關在主題格子上方：**數學 Maths**｜**自然科學 NS&T**。右上角可切換中文／English。
+打開 <http://127.0.0.1:8765/>。科目開關在主題格子上方：**數學 Maths**｜**自然科學 NS&T**｜**社會 Geography**。右上角可切換中文／English。
 
 NS&T 流程：選單元 → 分段課文（中文說明，下面是英文考試句；有 `diagram_hint` 時顯示「圖示」說明，不產生圖片）→ 練習題。按 **我不懂** 會先問一句「卡在哪裡」，再列出這個單元的常見困惑，也可以在 **我自己寫** 打一句話。
 
@@ -28,19 +28,24 @@ NS&T 流程：選單元 → 分段課文（中文說明，下面是英文考試�
 
 - 沒有 API，或結果是 `unavailable`：不顯示任何 AI 介面，課文照常。
 - `downloadable` 或 `downloading`：顯示 **啟用 AI 小老師（需下載數 GB，請用 Wi-Fi）**。只有按下按鈕才呼叫 `LanguageModel.create({ monitor })`，並用 `downloadprogress` 的 `loaded` 畫進度。失敗時課文仍可用。
-- `available`：孩子在「我自己寫」送出後，用串流（`promptStreaming`）給一段簡單英文。內容只根據**目前這個單元**的 `key_terms`、`explanation_steps`、`confusions`。教學規則在 `index.html` 的 `NST_AI_SYSTEM_PROMPT`，改那段文字即可。
+- `available`：孩子在「我自己寫」送出後，用串流（`promptStreaming`）給一段簡單英文。內容只根據**目前這個單元**的 `key_terms`、`explanation_steps`、`confusions`。教學規則在 `index.html` 的 `NST_AI_SYSTEM_PROMPT`（地理是 `GEO_AI_SYSTEM_PROMPT`），改那段文字即可。
 
 ## 檢查
 
 需要本機的 Google Chrome：
 
 ```bash
-node test/nst-ai-mock.mjs
+node test/nst-ai-mock.mjs     # NS&T + 假的 Prompt API
+node test/geo-subject.mjs     # 地理 16 單元、對答案、困惑三層、關鍵字、給家長、切換科目、數學/NS&T 回歸、390px 寬
 ```
+
+截圖存到 `ARTIFACTS_DIR`（沒設定時 NS&T 測試用 `/opt/cursor/artifacts`，地理測試用 `/tmp/geo-shots`）。
 
 這支測試會用假的 `LanguageModel` 走 `available`、`downloadable`、`downloading`、`unavailable` 和「沒有 API」，並檢查幾個自由輸入會對上哪一個困惑。
 
-## `nst-lessons.json` 格式
+## `nst-lessons.json` / `geo-lessons.json` 格式
+
+兩個檔案格式相同。`geo-lessons.json` 的 `meta` 多一個 `source_zh`（內容來源），顯示在地理單元清單底部收合的「給家長：內容來源」，括號裡的本機檔案路徑不顯示。地理的待補充問題存在 `g6geo_to_add_v1`，和 NS&T 的 `g6nst_to_add_v1` 分開。
 
 最外層：
 

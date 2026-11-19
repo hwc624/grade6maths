@@ -8,7 +8,7 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const artifacts = '/opt/cursor/artifacts';
+const artifacts = process.env.ARTIFACTS_DIR || '/opt/cursor/artifacts';
 const port = 8765;
 let failures = 0;
 

@@ -1,0 +1,4215 @@
+{
+  "meta": {
+    "title_en": "Grade 6 Social Sciences – Geography: Terms 1–4 Lessons",
+    "title_zh": "六年級社會科學・地理：第一到第四學期分單元講解",
+    "subject": "Social Sciences – Geography",
+    "grade": 6,
+    "curriculum": "CAPS (South Africa)",
+    "audience_en": "An 11–12-year-old Taiwanese child at an English-medium South African school, preparing for English Social Sciences (Geography) tests.",
+    "language_notes_zh": "講解用臺灣慣用的繁體中文。專有名詞、地名和考試會用到的句子保留英文，方便孩子直接寫在考卷上。小數寫法跟南非學校一樣用逗號，例如 61,5 people per km² 和 56,7 °C。",
+    "disclaimer_zh": "這些是依照孩子課本內容整理的複習講解，不是學校正式考卷，也不是課本作業的答案。練習題都是另外出的。",
+    "source_zh": "唯一事實來源：家長拍的 47 張課本頁面，經文字轉錄（/workspace/grade6-geo-source/textbook_notes.md）。",
+    "how_the_site_should_use_this_zh": "每個單元先依 explanation_steps 分段講解，再做 check_questions。若孩子說還是不懂，先用 ask_what_confused 請他指出卡在哪個詞或哪一步，再打開對應的 confusions：先看 simpler_explanation_zh，不夠再看 analogy_zh，還不夠就用 even_simpler_zh，最後用 confirm_question 確認他懂了。不要一次倒出三層解釋。語氣要像有耐心的老師，不要責備孩子。"
+  },
+  "ask_what_confused": {
+    "intro_zh": "沒關係，我們慢慢來。你不用覺得自己應該一次就全部聽懂。先告訴我，哪一個地方讓你卡住了？",
+    "prompts_zh": [
+      "剛才哪個英文詞你覺得最陌生？例如 latitude、export、arid、density……",
+      "哪一個步驟你看完還是不太明白？",
+      "是計算不會做（比例尺、人口密度），還是道理聽起來怪怪的？",
+      "是地圖或圖表看不懂嗎？告訴我是哪一張。",
+      "你也可以指著某一句話跟我說：「這句我看不懂。」",
+      "如果一時說不出來，也可以選下面這些常見的困惑，我們再講一次。"
+    ],
+    "encouragement_zh": "卡住是正常的，很多小朋友一開始也會在同一個地方停住。你指出哪裡不懂，我就只講那一塊，用更簡單的方法再說一次。",
+    "follow_up_zh": "聽完這一小段以後，我們會再問你一個小小的問題。不是要考倒你，只是確認這一次有沒有講清楚。如果還是模糊，我們還可以再講得更慢。",
+    "if_still_stuck_zh": "如果講了兩三次還是不明白，沒關係。請你用自己的話說說「我現在想到的是……」，我們再從你的想法開始改。千萬不要隨便猜過就好。"
+  },
+  "flagged_facts": [
+    {
+      "id": "sa-population-62-vs-53-million",
+      "units": [
+        "geo-13-population-density"
+      ],
+      "note_zh": "課本 p76 寫南非人口「about 62 million」，同一頁後面又寫「53 million」，前後不一致（53 million 可能是舊資料）。本教材不考南非總人口數；若學校考到，以老師給的數字為準。",
+      "note_en": "The textbook gives South Africa's population as about 62 million and as 53 million on the same page. Not tested here."
+    },
+    {
+      "id": "mpumalanga-typo-and-rounding",
+      "units": [
+        "geo-13-population-density"
+      ],
+      "note_zh": "課本把 Mpumalanga 人口印成「4 700 000 million」，應為 4 700 000（四百七十萬）。另外 4 700 000 ÷ 76 495 精確算是約 61,44，四捨五入應為 61,4；課本寫 61,5。本教材寫「大約 61,5」以配合課本，自己出的小數例題用 123 000 ÷ 2 000 = 61,5（剛好整除）。",
+      "note_en": "Book misprints Mpumalanga's population as '4 700 000 million' (should be 4 700 000). 4 700 000 ÷ 76 495 ≈ 61,44, which the book gives as 61,5."
+    },
+    {
+      "id": "gold-dollar-vs-rand",
+      "units": [
+        "geo-07-cocoa-and-gold"
+      ],
+      "note_zh": "課本黃金流程圖第一階段寫黃金 $2 000 an ounce（美元），第二階段寫金飾 R4 000 an ounce（蘭特）。兩種貨幣不能直接比較，照匯率換算後 R4 000 其實比 $2 000 少很多，數字本身會誤導。本教材只教「加工後更值錢」的觀念，並把貨幣不同做成一個 confusion，不用這兩個數字做計算。",
+      "note_en": "The gold chain mixes currencies ($2 000/ounce for gold vs R4 000/ounce for jewellery). Not compared numerically."
+    },
+    {
+      "id": "ounce-28g",
+      "units": [
+        "geo-07-cocoa-and-gold"
+      ],
+      "note_zh": "課本說一盎司約 28 公克，這是一般的常衡盎司；量黃金通常用金衡盎司（troy ounce），約 31,1 公克。本教材照課本寫約 28 公克，考試也照課本寫。",
+      "note_en": "Book says an ounce is about 28 g (avoirdupois); gold is normally weighed in troy ounces (≈ 31,1 g). The book's figure is used."
+    },
+    {
+      "id": "climate-graph-values-approximate",
+      "units": [
+        "geo-10-rainfall-climate-graphs",
+        "geo-12-coniferous-forests"
+      ],
+      "note_zh": "Alberta 氣候圖（1 月約 –3 °C、7 月約 18 °C、6–7 月雨量約 120–130 mm、2 月和 12 月約 10–15 mm）和 Manaus 氣候圖（約 27–28 °C、最濕約 3 月約 260 mm、最乾約 8 月）都是從照片估讀的約略值。只有 Manaus 年雨量 1 800 mm 是圖上印的數字。教材都寫「大約」。課本 p61 沙漠氣候圖沒有拍到。",
+      "note_en": "Alberta and Manaus climate-graph values were read approximately from photos; only Manaus's 1 800 mm annual rainfall is printed."
+    },
+    {
+      "id": "province-graph-values-approximate",
+      "units": [
+        "geo-13-population-density"
+      ],
+      "note_zh": "省份面積（Northern Cape 約 370 000 km²、Gauteng 約 18 000 km²）、人口（Gauteng 約 1 500 萬以上、KwaZulu-Natal 約 1 200 萬、Northern Cape 約 130 萬）和密度（Gauteng 約 800、KwaZulu-Natal 約 100、Northern Cape 約 3 人／km²）都是從長條圖估讀的約略值。",
+      "note_en": "Province area, population and density figures were read approximately from bar graphs."
+    },
+    {
+      "id": "urban-69-vs-rural-40",
+      "units": [
+        "geo-15-rural-urban-migration"
+      ],
+      "note_zh": "課本寫「About 69% of SA population lives in urban areas」（南非），又寫「now less than 40% lives in rural areas」（全世界）。兩句範圍不同，孩子容易誤以為加起來應該是 100%。本教材明確標出一個是南非、一個是全世界，並做成一個 confusion。",
+      "note_en": "69% urban refers to South Africa; 'less than 40% rural' refers to the world. They should not be combined."
+    },
+    {
+      "id": "hot-mild-temperature-overlap",
+      "units": [
+        "geo-09-weather-climate"
+      ],
+      "note_zh": "課本說 hot climates「usually above 25 °C」、mild「usually between 10 °C and 30 °C」，25–30 °C 兩邊重疊。本教材照課本用「通常」，判斷時看一年大部分時間的溫度。",
+      "note_en": "The book's hot (>25 °C) and mild (10–30 °C) ranges overlap; both are 'usually'."
+    },
+    {
+      "id": "nine-province-names",
+      "units": [
+        "geo-02-coordinates-atlas"
+      ],
+      "note_zh": "課本照片用拼圖認省，沒有把九個省名列成一串。本教材列出九省名稱（Gauteng、Limpopo、Mpumalanga、North West、Free State、KwaZulu-Natal、Eastern Cape、Western Cape、Northern Cape），這是南非的基本事實，但不是從轉錄筆記逐字來的，請家長確認可以保留。",
+      "note_en": "The full list of nine province names is standard but not listed verbatim in the transcribed notes."
+    },
+    {
+      "id": "rio-tourists-claim",
+      "units": [
+        "geo-16-rio-de-janeiro"
+      ],
+      "note_zh": "課本說里約的觀光客「比南半球任何其他城市都多」。這是課本的說法，無法另外證實，教材寫成「課本說」。課本這幾頁沒有提到 favelas，教材也不提。",
+      "note_en": "'More tourists than any other city in the southern hemisphere' is presented as the textbook's claim."
+    }
+  ],
+  "units": [
+    {
+      "id": "geo-01-latitude-longitude",
+      "title_en": "Latitude, longitude and the hemispheres",
+      "title_zh": "緯線、經線和四個半球",
+      "term": "Term 1: Map skills",
+      "notes": [
+        "來源：課本 Term 1 Unit 1（p4–6）。課本用的例子座標是 Free State 29°S 26°E（Unit 7）。",
+        "「經度最多到 180°、緯度最多到 90°」是從課本的 180° 經線和 90°N/90°S 兩極直接推出來的，沒有加入課本以外的事實。"
+      ],
+      "key_terms": [
+        {
+          "en": "cartographer",
+          "zh": "製圖師",
+          "kid_definition_zh": "畫地圖的人。他們在地圖上畫直線，幫我們找到地方。"
+        },
+        {
+          "en": "lines of latitude (parallels)",
+          "zh": "緯線（又叫 parallels）",
+          "kid_definition_zh": "在地球儀上橫著畫、繞地球一圈的線，彼此平行，像梯子的橫桿。它告訴我們一個地方在赤道的北邊還是南邊，離赤道有多遠。"
+        },
+        {
+          "en": "lines of longitude (meridians)",
+          "zh": "經線（子午線）",
+          "kid_definition_zh": "從北極畫到南極、直直的線，像切柳丁的刀痕。它告訴我們一個地方在本初子午線的東邊還是西邊。"
+        },
+        {
+          "en": "Equator",
+          "zh": "赤道",
+          "kid_definition_zh": "最長的那一條緯線，是 0°，剛好在地球中間，把地球分成北半球和南半球。"
+        },
+        {
+          "en": "Greenwich Meridian (Prime Meridian)",
+          "zh": "格林威治子午線（本初子午線）",
+          "kid_definition_zh": "0° 的經線，通過英國一個叫 Greenwich 的小鎮，它的名字就是從這個鎮來的。經線從這裡開始往東、往西算。"
+        },
+        {
+          "en": "180° line of longitude",
+          "zh": "180° 經線",
+          "kid_definition_zh": "在地球另一面、正對著格林威治的經線。它和 0° 經線連起來繞地球一圈，把地球分成東半球和西半球。"
+        },
+        {
+          "en": "hemisphere",
+          "zh": "半球",
+          "kid_definition_zh": "地球的一半。hemi 是「一半」，sphere 是「球」。有北、南、東、西四種說法。"
+        },
+        {
+          "en": "degrees (°)",
+          "zh": "度",
+          "kid_definition_zh": "量緯度和經度用的單位，寫成小圈圈 °。緯度最多 90°，經度最多 180°。"
+        },
+        {
+          "en": "North Pole / South Pole",
+          "zh": "北極／南極",
+          "kid_definition_zh": "地球最北和最南的兩個點，緯度是 90°N 和 90°S。做地球儀時，球轉動時手指捏住的兩點就是南北極。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g01-s1",
+          "zh": "地球很大，要說清楚一個地方在哪裡，cartographers（製圖師）會在地圖和地球儀上畫直線，像一張「網」。這些線是想像出來的，地上並沒有真的畫線。橫的線叫 lines of latitude（緯線），直的線叫 lines of longitude（經線）。兩種線交叉的地方，就可以精準指出一個位置，就像在教室座位表上說「第三排第五個」。",
+          "en_exam_sentence": "Lines of latitude and longitude form a grid that helps us find the exact position of a place on Earth.",
+          "diagram_hint": "Globe with horizontal latitude lines and vertical longitude lines forming a grid."
+        },
+        {
+          "id": "g01-s2",
+          "zh": "緯線是橫的，繞地球一圈，而且彼此平行，永遠不會碰在一起。最中間最長的一條叫 Equator（赤道），是 0°。從赤道往北數到北極是 90°N，往南數到南極是 90°S。所以緯度告訴你「離赤道有多北或多南」。",
+          "en_exam_sentence": "Lines of latitude run from east to west, parallel to the Equator. They measure distance north or south of the Equator, from 0° to 90°N or 90°S.",
+          "diagram_hint": "Globe: Equator 0°, lines at 30°N, 60°N, 30°S, 60°S, poles at 90°."
+        },
+        {
+          "id": "g01-s3",
+          "zh": "赤道把地球切成上下兩半：上面是 Northern Hemisphere（北半球），下面是 Southern Hemisphere（南半球）。南非在赤道南邊，所以南非在南半球。",
+          "en_exam_sentence": "The Equator divides the Earth into the Northern Hemisphere and the Southern Hemisphere."
+        },
+        {
+          "id": "g01-s4",
+          "zh": "經線是直的，從北極連到南極，所有經線都在兩極碰在一起，所以又叫 meridians。起點是通過英國 Greenwich 小鎮的那一條，叫 Greenwich Meridian（格林威治子午線，也叫 Prime Meridian 本初子午線），是 0°。從它往東數是 °E，往西數是 °W，最多到 180°。",
+          "en_exam_sentence": "Lines of longitude (meridians) run from the North Pole to the South Pole. They measure distance east or west of the Greenwich Meridian (0°), up to 180°E or 180°W.",
+          "diagram_hint": "Globe seen from above the North Pole: meridians meeting at the pole like orange segments."
+        },
+        {
+          "id": "g01-s5",
+          "zh": "在地球另一面，正對著格林威治子午線的是 180° 經線。0° 經線和 180° 經線連起來剛好繞地球一圈，把地球分成左右兩半：東邊是 Eastern Hemisphere（東半球），西邊是 Western Hemisphere（西半球）。注意：經度只算到 180°，不會出現 200°E。",
+          "en_exam_sentence": "The Greenwich Meridian and the 180° line of longitude divide the Earth into the Eastern Hemisphere and the Western Hemisphere.",
+          "diagram_hint": "World map with 0° and 180° meridians highlighted, East and West hemispheres labelled."
+        },
+        {
+          "id": "g01-s6",
+          "zh": "把兩種切法放在一起看：課本的例子 Free State 在 29°S 26°E。S 表示在赤道南邊，E 表示在格林威治子午線東邊，所以南非同時在 Southern Hemisphere 和 Eastern Hemisphere。每個地方都同時屬於一個南北半球和一個東西半球。地球是圓的，所以我們沒辦法一次看到地球的每一面，地球儀要轉著看。",
+          "en_exam_sentence": "South Africa is in the Southern Hemisphere and the Eastern Hemisphere."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g01-q1",
+          "q_en": "Which line of latitude divides the Earth into the Northern and Southern Hemispheres?",
+          "q_zh": "哪一條緯線把地球分成北半球和南半球？",
+          "options": [
+            "A  the Equator",
+            "B  the Greenwich Meridian",
+            "C  the 180° line",
+            "D  the South Pole"
+          ],
+          "answer": "A  the Equator",
+          "why_zh": "赤道（0° 緯線）切出南北兩半。格林威治子午線和 180° 經線切出的是東西兩半。"
+        },
+        {
+          "id": "g01-q2",
+          "q_en": "A place is at 40°N, 75°W. In which two hemispheres is it?",
+          "q_zh": "某地在 40°N、75°W，它在哪兩個半球？",
+          "options": [
+            "A  Northern and Eastern",
+            "B  Southern and Western",
+            "C  Northern and Western",
+            "D  Southern and Eastern"
+          ],
+          "answer": "C  Northern and Western",
+          "why_zh": "N 代表在赤道北邊 → 北半球；W 代表在格林威治子午線西邊 → 西半球。"
+        },
+        {
+          "id": "g01-q3",
+          "q_en": "What is the largest number of degrees a line of longitude can have?",
+          "q_zh": "經度最大可以是幾度？",
+          "options": [
+            "A  90°",
+            "B  360°",
+            "C  180°",
+            "D  0°"
+          ],
+          "answer": "C  180°",
+          "why_zh": "經度從 0° 往東或往西各算到 180°。90° 是緯度的最大值（兩極）。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo01-lat-vs-long",
+          "label_zh": "緯線和經線哪一個是橫的、哪一個是直的？老是記反。",
+          "keywords": [
+            "緯線",
+            "經線",
+            "latitude",
+            "longitude",
+            "橫的直的",
+            "記反",
+            "ladder",
+            "哪個是橫"
+          ],
+          "simpler_explanation_zh": "緯線（latitude）是橫的，像梯子的一根根橫桿，彼此平行，告訴你在北邊還是南邊。經線（longitude）是直的，從北極連到南極，告訴你在東邊還是西邊。英文有個好記法：latitude 聽起來像 ladder（梯子），梯子的橫桿是橫的；longitude 有 long（長），經線從北極拉到南極，又長又直。",
+          "analogy_zh": "想像你在爬梯子：橫桿一格一格往上，就是緯線，越爬越北。再想像切柳丁：一刀一刀從頂端切到底部，那些刀痕就是經線。",
+          "even_simpler_zh": "Latitude = ladder = 橫的。Longitude = long = 直的、從北極到南極。",
+          "confirm_question": {
+            "q_zh": "從北極畫到南極、直直的線叫什麼？",
+            "options": [
+              "A  緯線 latitude",
+              "B  赤道 Equator",
+              "C  經線 longitude",
+              "D  半球 hemisphere"
+            ],
+            "answer": "C  經線 longitude",
+            "why_zh": "從北極到南極的直線是經線（longitude），記法：long 長長的。"
+          }
+        },
+        {
+          "id": "geo01-ns-ew-letters",
+          "label_zh": "為什麼緯度寫 N 或 S，經度寫 E 或 W？",
+          "keywords": [
+            "N S E W",
+            "北南東西",
+            "字母",
+            "為什麼寫N",
+            "degrees north",
+            "east west",
+            "緯度字母",
+            "經度字母"
+          ],
+          "simpler_explanation_zh": "緯線是橫的，它幫你量「離赤道往上（北）或往下（南）多遠」，所以緯度後面寫 N 或 S。經線是直的，它幫你量「離格林威治往右（東）或往左（西）多遠」，所以經度後面寫 E 或 W。緯度永遠配 N/S，經度永遠配 E/W，不會交換。",
+          "analogy_zh": "就像在操場：老師說「往前走 3 步」是前後方向，「往右走 5 步」是左右方向。緯度管南北（前後），經度管東西（左右）。",
+          "even_simpler_zh": "緯度 → N 或 S。經度 → E 或 W。",
+          "confirm_question": {
+            "q_zh": "「28°E」是緯度還是經度？",
+            "options": [
+              "A  緯度",
+              "B  都不是",
+              "C  經度",
+              "D  都可以"
+            ],
+            "answer": "C  經度",
+            "why_zh": "有 E（東）的一定是經度，因為經度量的是東西方向。"
+          }
+        },
+        {
+          "id": "geo01-equator-vs-greenwich",
+          "label_zh": "赤道和格林威治子午線都是 0°，有什麼不同？",
+          "keywords": [
+            "赤道",
+            "格林威治",
+            "Equator",
+            "Greenwich",
+            "0度",
+            "Prime Meridian",
+            "本初子午線",
+            "起點"
+          ],
+          "simpler_explanation_zh": "它們都是「起點」，所以都是 0°，但方向不同。Equator（赤道）是橫的，是緯度的起點，把地球分成南北兩半。Greenwich Meridian 是直的，是經度的起點，通過英國的 Greenwich 小鎮，和 180° 經線一起把地球分成東西兩半。",
+          "analogy_zh": "像尺有兩把：一把橫放、一把直放，兩把尺的開頭都寫 0，可是一把量左右，一把量上下。",
+          "even_simpler_zh": "赤道 = 橫的 0°（南北的起點）。格林威治 = 直的 0°（東西的起點）。",
+          "confirm_question": {
+            "q_zh": "哪一條線通過英國的 Greenwich 小鎮，是經度 0°？",
+            "options": [
+              "A  Equator",
+              "B  Greenwich Meridian",
+              "C  180° line",
+              "D  Tropic"
+            ],
+            "answer": "B  Greenwich Meridian",
+            "why_zh": "格林威治子午線通過英國的 Greenwich 小鎮，是經度的起點。"
+          }
+        },
+        {
+          "id": "geo01-180-not-360",
+          "label_zh": "經度為什麼最多只有 180°，不是 360°？",
+          "keywords": [
+            "180度",
+            "360度",
+            "180° line",
+            "180° longitude",
+            "最多幾度",
+            "對面",
+            "半圈",
+            "longitude max"
+          ],
+          "simpler_explanation_zh": "繞地球一整圈是 360°。我們從格林威治 0° 出發，往東走半圈是 180°E，往西走半圈是 180°W。往東走半圈和往西走半圈，會在地球的另一面碰到同一條線，就是 180° 經線。所以經度只要說「往東幾度」或「往西幾度」，最多 180°。",
+          "analogy_zh": "想像你站在一個圓形跑道的起跑線。往右跑半圈和往左跑半圈，會在跑道正對面碰頭。半圈就是 180°。",
+          "even_simpler_zh": "東邊半圈 180°，西邊半圈 180°，合起來 360°。所以經度最多寫 180°。",
+          "confirm_question": {
+            "q_zh": "下面哪一個經度寫法是錯的？",
+            "options": [
+              "A  30°E",
+              "B  200°W",
+              "C  180°",
+              "D  75°W"
+            ],
+            "answer": "B  200°W",
+            "why_zh": "經度最多 180°，所以 200°W 不可能。"
+          }
+        },
+        {
+          "id": "geo01-hemisphere",
+          "label_zh": "半球是什麼？一個地方怎麼會同時在兩個半球？",
+          "keywords": [
+            "半球",
+            "hemisphere",
+            "南半球",
+            "東半球",
+            "Southern Hemisphere",
+            "Eastern Hemisphere",
+            "兩個半球",
+            "南非在哪"
+          ],
+          "simpler_explanation_zh": "hemisphere 就是「半個地球」。地球可以用兩種方法切：橫切（用赤道）得到北半球和南半球；直切（用 0° 和 180° 經線）得到東半球和西半球。這兩種切法是分開的，所以每個地方都會有一個「南或北」，再加一個「東或西」。南非就是 Southern + Eastern。",
+          "analogy_zh": "像切蛋糕：先橫切一刀分成上下層，再直切一刀分成左右邊。你拿到的那一塊，一定同時是「上層或下層」以及「左邊或右邊」。",
+          "even_simpler_zh": "南非：在赤道下面 → 南半球；在格林威治右邊（東邊）→ 東半球。",
+          "confirm_question": {
+            "q_zh": "南非在哪兩個半球？",
+            "options": [
+              "A  北半球和東半球",
+              "B  南半球和西半球",
+              "C  北半球和西半球",
+              "D  南半球和東半球"
+            ],
+            "answer": "D  南半球和東半球",
+            "why_zh": "南非在赤道南邊、格林威治東邊，所以是南半球和東半球。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "寫緯度和經度一定要加度數符號 ° 和方向字母，例如 26°S、28°E。只寫 26 會被扣分。",
+        "被問「哪兩條線分出東西半球」時，要寫兩條：the Greenwich Meridian (0°) 和 the 180° line。",
+        "定義題可直接用：Lines of latitude run east–west and measure how far north or south a place is from the Equator.",
+        "赤道和格林威治子午線拼字要寫對：Equator（大寫 E）、Greenwich。"
+      ],
+      "common_mistakes_zh": [
+        "把緯線和經線的方向記反。",
+        "把赤道說成分東西半球。",
+        "寫出超過 90° 的緯度或超過 180° 的經度。",
+        "以為南非在西半球。記住 Free State 是 29°S 26°E，E 就是東半球。"
+      ]
+    },
+    {
+      "id": "geo-02-coordinates-atlas",
+      "title_en": "Co-ordinates and finding places in an atlas",
+      "title_zh": "座標和用地圖集找地方（含南非九省）",
+      "term": "Term 1: Map skills",
+      "notes": [
+        "來源：課本 Term 1 Unit 7（p19–20）。課本的座標例子：Free State 29°S 26°E；讀座標要沿著地圖邊緣讀數字。",
+        "九個省的完整名單課本照片沒有列成一串（課本用拼圖認省）；名單是南非的基本事實，已列入 flagged_facts 讓家長確認。"
+      ],
+      "key_terms": [
+        {
+          "en": "co-ordinates",
+          "zh": "座標",
+          "kid_definition_zh": "用一個緯度加一個經度，說出一個地方的確切位置，例如 26°S 28°E。"
+        },
+        {
+          "en": "grid",
+          "zh": "格網",
+          "kid_definition_zh": "地圖上橫線和直線交叉形成的方格。"
+        },
+        {
+          "en": "atlas",
+          "zh": "地圖集",
+          "kid_definition_zh": "一本裝滿很多地圖的書。"
+        },
+        {
+          "en": "contents page",
+          "zh": "目錄頁",
+          "kid_definition_zh": "地圖集前面的那一頁，告訴你每一張地圖在第幾頁，例如南非地圖在哪一頁。"
+        },
+        {
+          "en": "key (legend) and symbols",
+          "zh": "圖例和符號",
+          "kid_definition_zh": "地圖上的小圖案代表什麼東西，寫在 key 裡。有些地圖集把 key 放在同一頁，有些放在最前面。"
+        },
+        {
+          "en": "province",
+          "zh": "省",
+          "kid_definition_zh": "一個國家裡面分出來的大區域。南非有 9 個省，例如 Gauteng。"
+        },
+        {
+          "en": "country / city",
+          "zh": "國家／城市",
+          "kid_definition_zh": "國家比省大，省比城市大。南非是國家，Gauteng 是省，Johannesburg 是城市。"
+        },
+        {
+          "en": "border",
+          "zh": "邊界",
+          "kid_definition_zh": "地圖上分開兩個國家或兩個省的線。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g02-s1",
+          "zh": "Co-ordinates（座標）就是一個地方的「地址」，由兩個數字組成：先寫緯度（latitude），再寫經度（longitude）。課本的例子：Free State 在 29°S 26°E。順序很重要：先南北（°S），再東西（°E）。",
+          "en_exam_sentence": "Co-ordinates give the exact position of a place. We write the latitude first and then the longitude, for example 29°S 26°E."
+        },
+        {
+          "id": "g02-s2",
+          "zh": "找座標的方法：第一步，找到正確的緯線（看是 N 還是 S）。第二步，沿著這條緯線往左或往右，找到正確的經線（看是 E 還是 W）。兩條線交叉的那一點，就是答案。反過來，要讀出一個點的座標，就從那個點沿著線走到地圖邊緣，讀邊上寫的數字。",
+          "en_exam_sentence": "To find a place, first find its line of latitude, then follow it to its line of longitude. The place is where the two lines cross.",
+          "diagram_hint": "Grid with latitude 30°S highlighted, longitude 30°E highlighted, crossing point circled."
+        },
+        {
+          "id": "g02-s3",
+          "zh": "地圖上不會每一度都畫線，常常每 5° 或 10° 才畫一條。如果地方在兩條線中間，就要估計：例如在 20°S 和 30°S 的正中間，大約就是 25°S。",
+          "en_exam_sentence": "If a place lies between two lines, we estimate its position, for example halfway between 20°S and 30°S is about 25°S."
+        },
+        {
+          "id": "g02-s4",
+          "zh": "Atlas（地圖集）是一本裝滿地圖的書。先看前面的 contents page（目錄頁），找到你要的地圖在第幾頁。翻到地圖後，看 key（圖例）認識符號：河流、山脈、城鎮和邊界各用什麼表示。有些地圖集把 key 放在同一頁，有些放在書的最前面。",
+          "en_exam_sentence": "Use the contents page of an atlas to find the map you need, and use the key to understand the symbols on the map."
+        },
+        {
+          "id": "g02-s5",
+          "zh": "南非有 9 個 provinces（省）：Gauteng、Limpopo、Mpumalanga、North West、Free State、KwaZulu-Natal、Eastern Cape、Western Cape、Northern Cape。在地圖集的南非地圖上，省和省之間的邊界常用虛線或不同顏色表示。",
+          "en_exam_sentence": "South Africa has nine provinces, and each province is different.",
+          "diagram_hint": "Outline map of South Africa with the nine provinces labelled."
+        },
+        {
+          "id": "g02-s6",
+          "zh": "在一個省的地圖上，可以找到：和它有共同邊界的省、國家或海洋；河流；山脈；城鎮的名字。注意：一個省裡最大的城鎮，不一定是它的首府（capital）。也可以用比例尺量兩地之間的直線距離（下一單元會教）。",
+          "en_exam_sentence": "On a map of a province we can find borders, rivers, mountain ranges and settlements. The biggest settlement is not always the capital."
+        },
+        {
+          "id": "g02-s7",
+          "zh": "要分清楚大小：country（國家）> province（省）> city/town（城市／鎮）。例如：South Africa（國家）→ Gauteng（省）→ Johannesburg（城市）。Gauteng 是面積最小的省；Northern Cape 是面積最大的省。",
+          "en_exam_sentence": "Gauteng is the smallest province by area, and the Northern Cape is the largest."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g02-q1",
+          "q_en": "Which of these is written in the correct order for co-ordinates?",
+          "q_zh": "哪一個座標的寫法順序正確？",
+          "options": [
+            "A  26°S 28°E",
+            "B  28°E 26°S",
+            "C  26°E 28°S",
+            "D  S26° E28"
+          ],
+          "answer": "A  26°S 28°E",
+          "why_zh": "座標先寫緯度（N/S），再寫經度（E/W），數字後面要有 ° 和方向字母。"
+        },
+        {
+          "id": "g02-q2",
+          "q_en": "Which part of an atlas tells you on which page the map of South Africa is?",
+          "q_zh": "地圖集的哪一部分告訴你南非地圖在第幾頁？",
+          "options": [
+            "A  the contents page",
+            "B  the line scale",
+            "C  the map key",
+            "D  the equator"
+          ],
+          "answer": "A  the contents page",
+          "why_zh": "目錄頁列出每張地圖的頁數；key 是解釋符號用的。"
+        },
+        {
+          "id": "g02-q3",
+          "q_en": "Which one of these is a province of South Africa?",
+          "q_zh": "下面哪一個是南非的一個省？",
+          "options": [
+            "A  Limpopo",
+            "B  Johannesburg",
+            "C  Durban",
+            "D  Ghana"
+          ],
+          "answer": "A  Limpopo",
+          "why_zh": "Johannesburg 和 Durban 是城市；Ghana 是國家；Limpopo 是省。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo02-order",
+          "label_zh": "座標要先寫哪一個？緯度還是經度？",
+          "keywords": [
+            "座標順序",
+            "先寫哪個",
+            "co-ordinates",
+            "coordinates",
+            "latitude first",
+            "先緯度",
+            "順序",
+            "怎麼寫座標"
+          ],
+          "simpler_explanation_zh": "規定是先寫緯度（N 或 S），再寫經度（E 或 W）。例如 26°S 28°E。有個記法：字母表裡 L-a（latitude）在 L-o（longitude）前面，所以 latitude 先。",
+          "analogy_zh": "像寫住址：先寫路名，再寫門牌號。順序反了，郵差就找不到。座標也一樣，順序是固定的。",
+          "even_simpler_zh": "先 N/S，後 E/W。",
+          "confirm_question": {
+            "q_zh": "下面哪一個座標寫法順序正確？",
+            "options": [
+              "A  30°E 25°S",
+              "B  25°S 30°E",
+              "C  30°E",
+              "D  25°S"
+            ],
+            "answer": "B  25°S 30°E",
+            "why_zh": "完整座標要有兩部分，先緯度（S）再經度（E）。"
+          }
+        },
+        {
+          "id": "geo02-find-crossing",
+          "label_zh": "看地圖時，不知道怎麼從座標找到那個點。",
+          "keywords": [
+            "找不到",
+            "怎麼找",
+            "交叉",
+            "地圖上找點",
+            "find a place",
+            "grid",
+            "格子",
+            "手指"
+          ],
+          "simpler_explanation_zh": "分兩步走。第一步：看第一個數字（例如 30°S），在地圖左右兩邊找到寫著 30°S 的橫線，用手指壓著。第二步：看第二個數字（例如 25°E），在地圖上方或下方找到 25°E 的直線。手指沿著橫線滑過去，碰到那條直線的地方，就是答案。",
+          "analogy_zh": "像在電影院找座位：票上寫第 5 排、第 8 號。先找到第 5 排（橫的），再沿著那排數到第 8 號。",
+          "even_simpler_zh": "先找橫線，再找直線，兩條線碰到的地方就是。",
+          "confirm_question": {
+            "q_zh": "找座標 30°S 25°E 時，第一步要先找哪一條線？",
+            "options": [
+              "A  25°E 的直線",
+              "B  30°S 的橫線",
+              "C  赤道",
+              "D  格林威治"
+            ],
+            "answer": "B  30°S 的橫線",
+            "why_zh": "先找緯度那條橫線（30°S），再沿著它找經度。"
+          }
+        },
+        {
+          "id": "geo02-between-lines",
+          "label_zh": "地方剛好在兩條線中間，要寫多少度？",
+          "keywords": [
+            "中間",
+            "估計",
+            "estimate",
+            "兩條線之間",
+            "between lines",
+            "大約幾度",
+            "沒有線",
+            "halfway"
+          ],
+          "simpler_explanation_zh": "地圖常常每 10° 才畫一條線。如果城市在 20°S 和 30°S 的正中間，就取一半：大約 25°S。如果比較靠近 30°S，就寫 27° 或 28° 左右。考試通常接受合理的估計，所以要看清楚它比較靠近哪一條。",
+          "analogy_zh": "像量身高時尺上只有 140 和 150 的刻度，你在正中間，就說大約 145 公分。",
+          "even_simpler_zh": "兩條線中間 → 取中間的數字。",
+          "confirm_question": {
+            "q_zh": "一個地方在 10°E 和 20°E 的正中間，大約是幾度？",
+            "options": [
+              "A  10°E",
+              "B  20°E",
+              "C  30°E",
+              "D  15°E"
+            ],
+            "answer": "D  15°E",
+            "why_zh": "10 和 20 的中間是 15，所以大約 15°E。"
+          }
+        },
+        {
+          "id": "geo02-contents-key",
+          "label_zh": "地圖集的目錄頁和 key（圖例）有什麼不同？",
+          "keywords": [
+            "contents page",
+            "目錄",
+            "key",
+            "圖例",
+            "legend",
+            "符號",
+            "symbols",
+            "atlas"
+          ],
+          "simpler_explanation_zh": "Contents page（目錄頁）在書的前面，告訴你「哪一張地圖在第幾頁」。Key（圖例）是在地圖旁邊或書的最前面，告訴你「地圖上的小符號是什麼意思」，例如藍色線是河流。先用目錄找到地圖，再用 key 看懂地圖。",
+          "analogy_zh": "像在購物中心：入口的大牌子告訴你哪家店在幾樓（像目錄）；到了那一樓，地上的標誌告訴你哪裡是廁所、哪裡是出口（像 key）。",
+          "even_simpler_zh": "目錄 = 找頁數。Key = 看懂符號。",
+          "confirm_question": {
+            "q_zh": "想知道地圖上一個三角形符號代表什麼，要看哪裡？",
+            "options": [
+              "A  目錄頁",
+              "B  比例尺",
+              "C  封面",
+              "D  key（圖例）"
+            ],
+            "answer": "D  key（圖例）",
+            "why_zh": "符號的意思寫在 key 裡。"
+          }
+        },
+        {
+          "id": "geo02-country-province-city",
+          "label_zh": "國家、省、城市分不清楚。",
+          "keywords": [
+            "省",
+            "province",
+            "國家",
+            "城市",
+            "Gauteng",
+            "九個省",
+            "9 provinces",
+            "city"
+          ],
+          "simpler_explanation_zh": "從大到小排：國家 country（South Africa）→ 省 province（Gauteng）→ 城市 city（Johannesburg）。一個國家裡有很多省，一個省裡有很多城市和鎮。南非有 9 個省。",
+          "analogy_zh": "像俄羅斯娃娃：最大的是國家，打開裡面是省，再打開是城市，最裡面是你家那條街。",
+          "even_simpler_zh": "大到小：South Africa → Gauteng → Johannesburg。",
+          "confirm_question": {
+            "q_zh": "Gauteng 是什麼？",
+            "options": [
+              "A  國家",
+              "B  城市",
+              "C  大陸",
+              "D  省"
+            ],
+            "answer": "D  省",
+            "why_zh": "Gauteng 是南非 9 個省之一，Johannesburg 和 Pretoria 都在裡面。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "座標要寫完整：數字 + ° + 字母，兩個都要，例如 29°S 26°E。",
+        "九個省的英文拼法要練：KwaZulu-Natal 中間有連字號，North West 是兩個字。",
+        "估計題寫「about」或「approximately」也可以，例如 approximately 25°S。",
+        "被問省裡最大的城鎮和首府時，要分開看，兩個不一定一樣。"
+      ],
+      "common_mistakes_zh": [
+        "經度寫在前面、緯度寫在後面。",
+        "忘了寫 N/S 或 E/W，只寫數字。",
+        "把城市（Durban、Cape Town）當成省。",
+        "把 Gauteng 拼成 Guateng。"
+      ]
+    },
+    {
+      "id": "geo-03-map-scale",
+      "title_en": "Map scale and calculating distance",
+      "title_zh": "比例尺和計算距離",
+      "term": "Term 1: Map skills",
+      "notes": [
+        "來源：課本 Term 1 Unit 4（p12–13）。課本的四張地圖：世界地圖 1 cm = 3 200 km；南非地圖 1 cm = 200 km；North West 地圖 1 cm = 80 km；Durban 地圖 1 cm = 1 km。本單元用這些比例自己出練習數字。",
+        "課本 Activity 6（1 cm = 150 km，5 cm、12 cm、7 cm）是作業，本單元刻意不算那幾題。"
+      ],
+      "key_terms": [
+        {
+          "en": "scale",
+          "zh": "比例尺",
+          "kid_definition_zh": "地圖上的距離和地面上真實距離的比較。它告訴你真實世界被縮小了多少，才能「放進」地圖裡。"
+        },
+        {
+          "en": "word scale",
+          "zh": "文字比例尺",
+          "kid_definition_zh": "用文字寫出比例，例如課本的「1 cm on the map = 100 km on the ground」。"
+        },
+        {
+          "en": "line scale",
+          "zh": "線段比例尺",
+          "kid_definition_zh": "畫成一條有刻度的線，每一段標著代表多少公里，可以用紙條或尺去比。"
+        },
+        {
+          "en": "small-scale map",
+          "zh": "小比例尺地圖",
+          "kid_definition_zh": "畫很大一片地方（例如整個世界或整個非洲），所以細節很少。"
+        },
+        {
+          "en": "large-scale map",
+          "zh": "大比例尺地圖",
+          "kid_definition_zh": "畫很小一片地方（例如一個社區或學校），所以細節很多，看得到街道和建築。"
+        },
+        {
+          "en": "distance",
+          "zh": "距離",
+          "kid_definition_zh": "兩個地方之間有多遠。"
+        },
+        {
+          "en": "kilometre (km)",
+          "zh": "公里",
+          "kid_definition_zh": "量長距離的單位。1 km = 1 000 m。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g03-s1",
+          "zh": "真實的南非太大了，不可能畫在一張紙上一樣大，所以地圖都是「縮小版」。Scale（比例尺）告訴你縮小了多少：地圖上的 1 cm，代表真實世界的多少公里。",
+          "en_exam_sentence": "A map is a smaller drawing of a real place. The scale tells us how much smaller the map is than the real area."
+        },
+        {
+          "id": "g03-s2",
+          "zh": "Word scale（文字比例尺）是用文字寫的，例如課本的南非地圖：「1 cm = 200 km」，意思是地圖上量到 1 公分，地面上真實距離就是 200 公里。",
+          "en_exam_sentence": "A word scale explains the scale in words, for example: 1 cm on the map = 100 km on the ground."
+        },
+        {
+          "id": "g03-s3",
+          "zh": "算距離有三步：① 用尺量兩地在地圖上的直線距離（cm）。② 看比例尺 1 cm 代表多少 km。③ 相乘。例子：比例尺 1 cm = 200 km，量到 3 cm，3 × 200 = 600，所以真實距離是 600 km。再一個：量到 4,5 cm，4,5 × 200 = 900，所以是 900 km。",
+          "en_exam_sentence": "Real distance = map distance × scale. For example, 3 cm × 200 km = 600 km.",
+          "diagram_hint": "Ruler on map between two dots: 3 cm; scale box 1 cm = 200 km; working 3 × 200 = 600 km."
+        },
+        {
+          "id": "g03-s4",
+          "zh": "Line scale（線段比例尺）畫成一條有刻度的線，例如 0、100、200、300 km。用法：拿一張紙條，在地圖上兩個地方各畫一個記號，再把紙條放到線段比例尺上，看兩個記號之間是多少公里。不用乘法也可以讀出答案。",
+          "en_exam_sentence": "To use a line scale, mark the two places on a strip of paper, then place the strip along the line scale and read the distance.",
+          "diagram_hint": "Line scale 0–100–200–300 km with a paper strip laid along it."
+        },
+        {
+          "id": "g03-s5",
+          "zh": "Small-scale map（小比例尺地圖）畫很大的地區，例如國家、大陸、全世界，細節很少。課本的世界地圖是 1 cm = 3 200 km，南非地圖是 1 cm = 200 km。Large-scale map（大比例尺地圖）畫比較小的地區，例如一個城鎮，細節多，看得到路名。課本的 Durban 地圖是 1 cm = 1 km。記法：large-scale = large detail（細節多）。一張街道圖可以和世界地圖一樣大張，因為它們的比例尺不同。",
+          "en_exam_sentence": "A small-scale map shows a large area with little detail. A large-scale map shows a small area with a lot of detail.",
+          "diagram_hint": "Side by side: world map 1 cm = 3 200 km (small scale) and Durban map 1 cm = 1 km (large scale)."
+        },
+        {
+          "id": "g03-s6",
+          "zh": "寫答案時一定要寫單位和算式。練習：課本 North West 地圖 1 cm = 80 km，如果兩個鎮量到 4 cm，4 × 80 = 320，所以是 320 km。Durban 地圖 1 cm = 1 km，量到 3,5 cm，3,5 × 1 = 3,5，所以是 3,5 km。只寫「320」沒有 km 會被扣分。",
+          "en_exam_sentence": "Always show your working and write the unit: 4 cm × 80 km = 320 km."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g03-q1",
+          "q_en": "On a map the scale is 1 cm represents 100 km. Two towns are 5 cm apart on the map. How far apart are they in real life?",
+          "q_zh": "地圖比例尺是 1 cm 代表 100 km，兩個鎮在地圖上相距 5 cm，真實距離是多少？",
+          "options": [
+            "A  500 km",
+            "B  5 km",
+            "C  105 km",
+            "D  50 km"
+          ],
+          "answer": "A  500 km",
+          "why_zh": "5 × 100 = 500，所以是 500 km。不是加法，是乘法。"
+        },
+        {
+          "id": "g03-q2",
+          "q_en": "Which map would be the best to find your way around the streets of your suburb?",
+          "q_zh": "要在你住的社區裡找路，哪一種地圖最好用？",
+          "options": [
+            "A  a small-scale map of the world",
+            "B  a small-scale map of South Africa",
+            "C  a large-scale street map",
+            "D  a climate map"
+          ],
+          "answer": "C  a large-scale street map",
+          "why_zh": "大比例尺地圖畫小範圍、細節多，看得到路名。"
+        },
+        {
+          "id": "g03-q3",
+          "q_en": "The scale is 1 cm represents 20 km. The map distance is 2,5 cm. What is the real distance?",
+          "q_zh": "比例尺 1 cm 代表 20 km，地圖上量到 2,5 cm，真實距離是多少？",
+          "options": [
+            "A  50 km",
+            "B  22,5 km",
+            "C  40 km",
+            "D  25 km"
+          ],
+          "answer": "A  50 km",
+          "why_zh": "2,5 × 20 = 50，所以是 50 km。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo03-multiply",
+          "label_zh": "算距離時不知道要乘還是除，還是加？",
+          "keywords": [
+            "乘還是除",
+            "怎麼算距離",
+            "calculate distance",
+            "multiply",
+            "比例尺計算",
+            "公分變公里",
+            "cm to km",
+            "算式"
+          ],
+          "simpler_explanation_zh": "地圖上 1 cm 代表 200 km。量到 3 cm，就是有 3 個「1 cm」，每一個都代表 200 km，所以是 200 + 200 + 200，也就是 3 × 200 = 600 km。所以從地圖算到真實距離，用乘法。",
+          "analogy_zh": "1 包薯片 10 塊錢，買 3 包要多少？3 × 10 = 30。地圖上 1 cm 就像 1 包，200 km 就像它的價錢。",
+          "even_simpler_zh": "量到幾公分 × 每公分代表幾公里 = 真實距離。",
+          "confirm_question": {
+            "q_zh": "1 cm = 200 km，量到 2 cm，真實距離是？",
+            "options": [
+              "A  400 km",
+              "B  202 km",
+              "C  100 km",
+              "D  2 km"
+            ],
+            "answer": "A  400 km",
+            "why_zh": "2 × 200 = 400 km。"
+          }
+        },
+        {
+          "id": "geo03-small-large",
+          "label_zh": "小比例尺為什麼畫的是大地方？好奇怪。",
+          "keywords": [
+            "小比例尺",
+            "大比例尺",
+            "small scale",
+            "large scale",
+            "放大縮小",
+            "細節",
+            "detail",
+            "哪個比較大"
+          ],
+          "simpler_explanation_zh": "「小」和「大」說的是東西被畫得多小或多大，不是地方的大小。Small-scale map：每樣東西都被縮得很小，所以一張紙能塞下整個世界，但看不到街道。Large-scale map：每樣東西畫得比較大，所以只塞得下一個社區，但看得到每棟房子。",
+          "analogy_zh": "用手機看 Google 地圖：手指一捏縮小，看到整個南非，但路都不見了，這就像 small scale。手指一放大，看到你家那條街和隔壁的商店，這就像 large scale。",
+          "even_simpler_zh": "Large scale = 放大看 = 範圍小、細節多。Small scale = 縮小看 = 範圍大、細節少。",
+          "confirm_question": {
+            "q_zh": "一張畫出整個世界的地圖是哪一種？",
+            "options": [
+              "A  small-scale",
+              "B  large-scale",
+              "C  line scale",
+              "D  word scale"
+            ],
+            "answer": "A  small-scale",
+            "why_zh": "畫大範圍、細節少的是小比例尺地圖。"
+          }
+        },
+        {
+          "id": "geo03-line-scale",
+          "label_zh": "線段比例尺（line scale）不會用。",
+          "keywords": [
+            "line scale",
+            "線段比例尺",
+            "紙條",
+            "paper strip",
+            "怎麼用",
+            "刻度",
+            "量尺",
+            "對準0"
+          ],
+          "simpler_explanation_zh": "Line scale 像一把畫在地圖上的小尺，上面寫的不是公分而是公里。做法：拿一條紙條，貼著地圖上的兩個點，各畫一條小記號。再把紙條拿到 line scale 下面，左邊記號對準 0，看右邊記號落在幾公里。",
+          "analogy_zh": "像量鞋子大小：把鞋放到鞋店的量尺上，腳跟對準 0，看腳尖到哪裡。紙條就是鞋子，line scale 就是量尺。",
+          "even_simpler_zh": "紙條畫兩點 → 一點對 0 → 看另一點是幾 km。",
+          "confirm_question": {
+            "q_zh": "用線段比例尺時，紙條上第一個記號要對準哪裡？",
+            "options": [
+              "A  最右邊",
+              "B  100",
+              "C  地圖中央",
+              "D  0"
+            ],
+            "answer": "D  0",
+            "why_zh": "第一個記號對準 0，第二個記號指著的數字就是距離。"
+          }
+        },
+        {
+          "id": "geo03-units",
+          "label_zh": "答案要寫 cm 還是 km？量到的和算出來的搞混。",
+          "keywords": [
+            "單位",
+            "cm",
+            "km",
+            "公分",
+            "公里",
+            "unit",
+            "答案寫什麼",
+            "忘記單位"
+          ],
+          "simpler_explanation_zh": "你用尺在地圖上量到的是 cm（公分），這是「地圖上的距離」。乘上比例以後，得到的是真實距離，單位是 km（公里）。最後答案要寫 km。寫成「600 cm」就變成只有 6 公尺，差太多了。",
+          "analogy_zh": "照片裡的人只有 5 公分高，可是真人有 150 公分高。照片上的是小的，真實的是大的。地圖上的 cm 是小的，真實的 km 是大的。",
+          "even_simpler_zh": "尺量 → cm。答案 → km。",
+          "confirm_question": {
+            "q_zh": "比例尺 1 cm = 200 km，量到 3 cm，答案應該寫？",
+            "options": [
+              "A  600 km",
+              "B  3 cm",
+              "C  600 cm",
+              "D  200 km"
+            ],
+            "answer": "A  600 km",
+            "why_zh": "3 × 200 = 600，而且真實距離的單位是 km。"
+          }
+        },
+        {
+          "id": "geo03-straight-line",
+          "label_zh": "地圖上量的距離，和開車的路程一樣嗎？",
+          "keywords": [
+            "直線距離",
+            "開車",
+            "路程",
+            "straight line",
+            "as the crow flies",
+            "繞路",
+            "road distance",
+            "一樣嗎"
+          ],
+          "simpler_explanation_zh": "不一樣。用尺量的是兩點之間的直線距離（像鳥直接飛過去）。開車要沿著彎彎曲曲的路走，所以路程通常比直線長。課本的計算題，除非特別說明，量的都是直線距離。",
+          "analogy_zh": "從學校到家，鳥直接飛過屋頂很快到，但坐 taxi 要繞路、轉彎，走的路比較長。",
+          "even_simpler_zh": "尺量 = 直線（鳥飛）。開車 = 繞路，比較遠。",
+          "confirm_question": {
+            "q_zh": "用尺在地圖上量到的通常是哪一種距離？",
+            "options": [
+              "A  開車的路程",
+              "B  走路的時間",
+              "C  直線距離",
+              "D  火車的路線"
+            ],
+            "answer": "C  直線距離",
+            "why_zh": "尺量出的是兩點間的直線距離。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "計算題寫三行：Map distance = 3 cm；Scale: 1 cm = 200 km；Real distance = 3 × 200 = 600 km。",
+        "小數用逗號：4,5 cm，不要寫 4.5。",
+        "比較 small-scale 和 large-scale 時，要同時寫「範圍大／小」和「細節少／多」。",
+        "量距離要從點的中心量到點的中心，尺的 0 要對準起點。"
+      ],
+      "common_mistakes_zh": [
+        "把地圖距離和比例相加（3 + 200）而不是相乘。",
+        "答案忘了寫 km，或寫成 cm。",
+        "以為 small-scale map 畫的是小地方。",
+        "用尺量時從 1 開始而不是從 0 開始。"
+      ]
+    },
+    {
+      "id": "geo-04-why-trade",
+      "title_en": "Why people trade: barter, value, demand and supply",
+      "title_zh": "人為什麼要交易：以物易物、價值、需求和供給",
+      "term": "Term 2: Trade",
+      "notes": [
+        "來源：課本 Term 2 Unit 1（p30–31）。課本 Activity 2（炎熱夏天／寒冷冬天哪種飲料有需求）是作業，本單元的例子刻意換成別的情境。",
+        "「東西少、想要的人多 → 價格高」是課本「value depends on demand and supply」的簡單說明。"
+      ],
+      "key_terms": [
+        {
+          "en": "trade",
+          "zh": "貿易／交易",
+          "kid_definition_zh": "透過買和賣來交換東西。"
+        },
+        {
+          "en": "exchange / swap",
+          "zh": "交換",
+          "kid_definition_zh": "exchange：給出一樣東西，換回另一樣東西。swap：拿一樣東西換另一樣東西。"
+        },
+        {
+          "en": "barter",
+          "zh": "以物易物",
+          "kid_definition_zh": "交換「價值一樣」的東西，不用錢。例如用一籃水果換一隻雞，兩邊都覺得公平。"
+        },
+        {
+          "en": "money",
+          "zh": "錢",
+          "kid_definition_zh": "大家都同意可以拿來換東西的工具，讓交易比較方便。"
+        },
+        {
+          "en": "value",
+          "zh": "價值",
+          "kid_definition_zh": "一樣東西值多少，大家願意用多少東西或多少錢來換它。"
+        },
+        {
+          "en": "demand",
+          "zh": "需求",
+          "kid_definition_zh": "有多少人想要、想買這樣東西。"
+        },
+        {
+          "en": "supply",
+          "zh": "供給",
+          "kid_definition_zh": "有多少這樣東西可以賣。"
+        },
+        {
+          "en": "goods (products)",
+          "zh": "商品（產品）",
+          "kid_definition_zh": "人們買賣的東西，也叫 products，例如麵包、衣服、手機。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g04-s1",
+          "zh": "大部分的人不會自己做或種所有需要的東西。種菜的人不會做手機；做手機的工廠不會種菜。所以人們用 trade（交易）交換東西或工作。交易可以在市場、商店、網路上，甚至在街上進行。",
+          "en_exam_sentence": "Most people do not make or grow everything they need, so they trade goods or work with others."
+        },
+        {
+          "id": "g04-s2",
+          "zh": "還沒有錢以前，人們用 swap（交換）的方式：這叫 barter（以物易物），就是交換「價值一樣」的東西。現在還是有人這樣做，例如在網路上或在小村莊裡。",
+          "en_exam_sentence": "Barter is swapping goods of equal value. People bartered before money was used, and some still barter today."
+        },
+        {
+          "id": "g04-s3",
+          "zh": "今天我們用 money（錢），買賣變得容易多了：你不用帶著一大堆東西到處去換，只要帶錢就好。賣的人決定東西的 value（價值），也就是 price（價錢）。價錢太高，人們不會買；價錢太低，賣的人不想賣。",
+          "en_exam_sentence": "Money makes buying and selling easier, because we do not have to carry lots of objects. If the price is too high, people will not buy; if it is too low, people will not want to sell."
+        },
+        {
+          "id": "g04-s4",
+          "zh": "一樣東西的 value（價值）就是它值多少。當人們需要、想買某樣東西，就是 demand（需求）；有公司或人可以賣這樣東西，就是 supply（供給）。價值會跟著 demand 和 supply 改變。",
+          "en_exam_sentence": "The value of a product depends on demand (how many people want it) and supply (how much of it is available)."
+        },
+        {
+          "id": "g04-s5",
+          "zh": "簡單的規則：想要的人很多、東西卻很少（demand 高、supply 低）→ 價值和價格往上。東西很多、想要的人很少（demand 低、supply 高）→ 價值和價格往下。例子：大家都想買某個熱門歌手演唱會的門票，可是票很少，票價就很高。",
+          "en_exam_sentence": "When demand is high and supply is low, prices go up. When supply is high and demand is low, prices go down.",
+          "diagram_hint": "Simple seesaw: demand on one side, supply on the other, arrow showing price going up or down."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g04-q1",
+          "q_en": "What is barter?",
+          "q_zh": "什麼是 barter？",
+          "options": [
+            "A  exchanging goods for other goods without money",
+            "B  buying goods with money",
+            "C  selling goods to another country",
+            "D  making goods in a factory"
+          ],
+          "answer": "A  exchanging goods for other goods without money",
+          "why_zh": "Barter 是不用錢、交換價值一樣的東西。"
+        },
+        {
+          "id": "g04-q2",
+          "q_en": "Lots of people want to buy a new toy, but the shops only have a few. What will most likely happen to the price?",
+          "q_zh": "很多人想買一種新玩具，可是店裡只有一點點。價格最可能怎樣？",
+          "options": [
+            "A  It will go down.",
+            "B  It will go up.",
+            "C  It will stay at zero.",
+            "D  The toy will have no value."
+          ],
+          "answer": "B  It will go up.",
+          "why_zh": "需求高、供給少，價格會上升。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo04-barter-vs-trade",
+          "label_zh": "barter 和 trade 有什麼不同？",
+          "keywords": [
+            "barter",
+            "以物易物",
+            "trade",
+            "交易",
+            "不一樣",
+            "不用錢",
+            "exchange",
+            "東西換東西"
+          ],
+          "simpler_explanation_zh": "Trade（交易）是大名稱，只要是交換東西就算，不管有沒有用錢。Barter（以物易物）是 trade 的一種，特別指「不用錢、東西直接換東西」。所以 barter 一定是 trade，但 trade 不一定是 barter。",
+          "analogy_zh": "「水果」是大名稱，「蘋果」是水果的一種。trade 像水果，barter 像蘋果。",
+          "even_simpler_zh": "Barter = 不用錢的 trade。",
+          "confirm_question": {
+            "q_zh": "小明用一包貼紙換了同學的一支筆，這是哪一種交易？",
+            "options": [
+              "A  用錢買",
+              "B  barter 以物易物",
+              "C  export 出口",
+              "D  import 進口"
+            ],
+            "answer": "B  barter 以物易物",
+            "why_zh": "沒有用錢，東西換東西，就是 barter。"
+          }
+        },
+        {
+          "id": "geo04-barter-problems",
+          "label_zh": "以物易物為什麼不方便？為什麼要用錢？",
+          "keywords": [
+            "為什麼要錢",
+            "barter problem",
+            "以物易物缺點",
+            "money",
+            "不方便",
+            "發明錢",
+            "換不到",
+            "difficult"
+          ],
+          "simpler_explanation_zh": "以物易物時，你要帶著東西到處去換，例如扛著一袋玉米去換鞋子，很重又很麻煩。而且兩邊要同意東西的價值一樣才能換。用錢就簡單多了：你只要帶錢，不用帶一大堆東西。",
+          "analogy_zh": "想像你去購物中心，不能用錢，只能用東西換：你得推著一車馬鈴薯去換一件 T 恤、一雙鞋和一杯奶昔，累死了！帶錢包就輕鬆多了。",
+          "even_simpler_zh": "以物易物：要帶很多東西去換。錢：帶著就能買，很方便。",
+          "confirm_question": {
+            "q_zh": "課本說錢讓買賣更容易，主要是因為？",
+            "options": [
+              "A  錢比較好看",
+              "B  不用帶著很多東西去換",
+              "C  東西變得免費",
+              "D  不用商店了"
+            ],
+            "answer": "B  不用帶著很多東西去換",
+            "why_zh": "有了錢，就不用帶一大堆物品去交換。"
+          }
+        },
+        {
+          "id": "geo04-demand-vs-supply",
+          "label_zh": "demand 和 supply 老是搞混。",
+          "keywords": [
+            "demand",
+            "supply",
+            "需求",
+            "供給",
+            "搞混",
+            "供需",
+            "買的人",
+            "賣的人"
+          ],
+          "simpler_explanation_zh": "Demand（需求）看的是「買的人」：有多少人想買。Supply（供給）看的是「賣的人」：能賣出多少東西。記法：supply 的 s 像 store，商店裡有多少可以賣。",
+          "analogy_zh": "學校點心店：很多同學排隊要買熱狗，這是 demand 高。店裡只烤了 10 根熱狗，這是 supply 少。",
+          "even_simpler_zh": "Demand = 想買的人多不多。Supply = 能賣的東西多不多。",
+          "confirm_question": {
+            "q_zh": "「店裡有很多很多雨傘可以賣」說的是什麼？",
+            "options": [
+              "A  demand 高",
+              "B  value 低",
+              "C  supply 高",
+              "D  barter"
+            ],
+            "answer": "C  supply 高",
+            "why_zh": "能賣的東西很多，就是 supply（供給）高。"
+          }
+        },
+        {
+          "id": "geo04-price-change",
+          "label_zh": "為什麼東西少，價格會變貴？",
+          "keywords": [
+            "價格",
+            "變貴",
+            "便宜",
+            "price",
+            "為什麼貴",
+            "go up",
+            "go down",
+            "搶著買"
+          ],
+          "simpler_explanation_zh": "如果很多人想要，可是東西只有一點點，大家就會搶著買，賣的人知道就算賣貴一點也賣得掉，價格就上升。反過來，如果東西很多卻沒什麼人要，價錢太高就沒人買，賣的人只好降價。",
+          "analogy_zh": "新出的熱門球鞋大家都想要，店裡只有幾雙，價錢就很高。過了一年，到處都有、也沒那麼流行了，價錢就降下來。",
+          "even_simpler_zh": "大家搶 → 變貴。沒人要 → 變便宜。",
+          "confirm_question": {
+            "q_zh": "一種水果今年大豐收，市場上到處都是，價格可能？",
+            "options": [
+              "A  上升",
+              "B  不變",
+              "C  變成零",
+              "D  下降"
+            ],
+            "answer": "D  下降",
+            "why_zh": "供給很多、需求沒變，價格通常會下降。"
+          }
+        },
+        {
+          "id": "geo04-value",
+          "label_zh": "value（價值）和 price（價錢）一樣嗎？",
+          "keywords": [
+            "value",
+            "價值",
+            "price",
+            "價錢",
+            "值多少",
+            "worth",
+            "一樣嗎",
+            "稀少"
+          ],
+          "simpler_explanation_zh": "課本說：value 就是「一樣東西值多少」，賣的人決定的 value 就是 price（價錢）。所以在課本裡，你可以把它們當成很接近的意思。最重要的是：value 會跟著 demand 和 supply 改變。",
+          "analogy_zh": "一張普通的足球卡值不了多少，但如果是很少見、很多人想收集的明星卡，大家願意用很多張卡來換它，它的 value 就很高。",
+          "even_simpler_zh": "Value = 大家覺得它值多少。很多人想要又很少 → value 高。",
+          "confirm_question": {
+            "q_zh": "什麼會讓一樣東西的 value 變高？",
+            "options": [
+              "A  沒有人想要",
+              "B  數量非常多",
+              "C  它很舊",
+              "D  很多人想要，而且數量很少"
+            ],
+            "answer": "D  很多人想要，而且數量很少",
+            "why_zh": "需求高、供給少，東西就變得更有價值。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "解釋為什麼人要交易：寫「Most people do not make or grow everything they need」。",
+        "barter 的定義要寫出 equal value（價值一樣）。",
+        "供需題要寫因果：Demand is high and supply is low, so the price goes up.",
+        "說明為什麼用錢：we do not have to carry lots of objects to swap。"
+      ],
+      "common_mistakes_zh": [
+        "把 demand 和 supply 意思寫反。",
+        "以為 barter 也要用錢。",
+        "只說「價格會改變」，沒說是上升還是下降。"
+      ]
+    },
+    {
+      "id": "geo-05-imports-exports",
+      "title_en": "Imports, exports, domestic and international trade",
+      "title_zh": "進口、出口，國內貿易和國際貿易",
+      "term": "Term 2: Trade",
+      "notes": [
+        "來源：課本 Term 2 Unit 1 的 Exports and imports（p31）。課本地圖：南非出口 iron、gold、tourism、fruit、car parts；進口 oil、electrical goods、factory machines、medicines。"
+      ],
+      "key_terms": [
+        {
+          "en": "import",
+          "zh": "進口",
+          "kid_definition_zh": "從別的國家買東西進來我們的國家。im- 想成 in（進來）。"
+        },
+        {
+          "en": "export",
+          "zh": "出口",
+          "kid_definition_zh": "把我們國家的東西賣到別的國家去。ex- 想成 exit（出去）。"
+        },
+        {
+          "en": "domestic trade",
+          "zh": "國內貿易",
+          "kid_definition_zh": "在同一個國家裡面交換東西，例如一個省的農夫把水果賣給另一個省的商店。"
+        },
+        {
+          "en": "international trade",
+          "zh": "國際貿易",
+          "kid_definition_zh": "國家和國家之間交換商品和服務。"
+        },
+        {
+          "en": "natural resources",
+          "zh": "自然資源",
+          "kid_definition_zh": "從大自然來、可以拿來做有用東西的材料，例如岩石裡的礦物：黃金、鑽石、鐵。"
+        },
+        {
+          "en": "tourism",
+          "zh": "觀光業",
+          "kid_definition_zh": "人們出門度假旅行，以及為他們服務的各種活動和生意（旅館、導遊等）。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g05-s1",
+          "zh": "Domestic trade（國內貿易）是在同一個國家裡交換東西。例如一個省的農夫，把水果賣給另一個省的超市，這是國內貿易。",
+          "en_exam_sentence": "Domestic trade is trade that takes place within one country."
+        },
+        {
+          "id": "g05-s2",
+          "zh": "International trade（國際貿易）是國家和國家之間買賣東西。南非有很多 natural resources（自然資源），例如岩石裡的礦物：黃金、鑽石、鐵。南非的氣候也讓農夫能種很多種水果。南非把水果賣給北半球比較冷的國家。",
+          "en_exam_sentence": "International trade is trade between different countries."
+        },
+        {
+          "id": "g05-s3",
+          "zh": "Export（出口）是把東西賣到國外，ex 像 exit（出口、出去）。Import（進口）是從國外買東西進來，im 像 in（進來）。課本的地圖：南非 export（出口）iron（鐵）、gold（黃金）、fruit（水果）、car parts（汽車零件），還有 tourism（觀光）；南非 import（進口）oil（石油）、electrical goods（電器）、factory machines（工廠機器）、medicines（藥品）。",
+          "en_exam_sentence": "Exports are goods sold to other countries. Imports are goods bought from other countries.",
+          "diagram_hint": "Map: arrows leaving South Africa labelled EXPORTS (iron, gold, fruit, car parts, tourism); arrows coming in labelled IMPORTS (oil, electrical goods, factory machines, medicines)."
+        },
+        {
+          "id": "g05-s4",
+          "zh": "南非為什麼要進口？因為有些東西南非自己不做，例如電腦、一些機器、一些特別的藥，就要跟別的國家買。而且不只是東西，ideas（想法）、skills（技能）、生活方式和信仰也會在國家之間交流。",
+          "en_exam_sentence": "South Africa imports goods it does not make, such as computers, some machines and some special medicines. Ideas, skills, lifestyles and beliefs are also traded."
+        },
+        {
+          "id": "g05-s5",
+          "zh": "Tourism（觀光）為什麼算出口？外國遊客來南非玩，把錢花在南非的旅館、餐廳和導遊上，等於南非把「服務」賣給外國人，錢從國外流進南非。",
+          "en_exam_sentence": "Tourism is an export because visitors from other countries pay South African businesses for services."
+        },
+        {
+          "id": "g05-s6",
+          "zh": "同一個國家可以同時進口和出口。重點是看箭頭方向：東西「出去」是 export，「進來」是 import。從南非的角度看是出口的東西，從買方國家看就是進口。",
+          "en_exam_sentence": "A country can import and export at the same time. One country's export is another country's import."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g05-q1",
+          "q_en": "South Africa sells fruit to a colder country in the northern hemisphere. For South Africa, this is …",
+          "q_zh": "南非把水果賣給北半球一個比較冷的國家。對南非來說，這是……",
+          "options": [
+            "A  an import",
+            "B  domestic trade",
+            "C  barter",
+            "D  an export"
+          ],
+          "answer": "D  an export",
+          "why_zh": "東西從南非出去，賣到國外，就是 export。"
+        },
+        {
+          "id": "g05-q2",
+          "q_en": "A farmer in the Free State sells maize to a mill in Gauteng. What kind of trade is this?",
+          "q_zh": "Free State 的農夫把玉米賣給 Gauteng 的磨坊，這是哪一種貿易？",
+          "options": [
+            "A  international trade",
+            "B  domestic trade",
+            "C  an import",
+            "D  an export"
+          ],
+          "answer": "B  domestic trade",
+          "why_zh": "兩個省都在南非，所以是國內貿易。"
+        },
+        {
+          "id": "g05-q3",
+          "q_en": "Why do countries import goods?",
+          "q_zh": "國家為什麼要進口東西？",
+          "options": [
+            "A  because they have too much of those goods",
+            "B  because imports are always free",
+            "C  because they want to sell them back",
+            "D  because they do not make those goods themselves"
+          ],
+          "answer": "D  because they do not make those goods themselves",
+          "why_zh": "課本說南非進口自己不做的東西，例如電腦、一些機器和特別的藥。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo05-import-vs-export",
+          "label_zh": "import 和 export 哪個是進、哪個是出？",
+          "keywords": [
+            "import",
+            "export",
+            "進口",
+            "出口",
+            "哪個是進",
+            "exit",
+            "記反",
+            "進出口"
+          ],
+          "simpler_explanation_zh": "Export 的 ex- 跟 exit（出口標誌）一樣，就是「出去」：把東西賣到國外。Import 的 im- 跟 in 一樣，就是「進來」：從國外買東西進來。",
+          "analogy_zh": "購物中心的 EXIT 牌子是出去的門。export = 貨物從國家的 exit 出去。",
+          "even_simpler_zh": "Export = 出去（exit）。Import = 進來（in）。",
+          "confirm_question": {
+            "q_zh": "南非從其他國家買藥品進來，對南非來說是？",
+            "options": [
+              "A  export",
+              "B  domestic trade",
+              "C  import",
+              "D  barter"
+            ],
+            "answer": "C  import",
+            "why_zh": "東西進到南非，所以是 import。"
+          }
+        },
+        {
+          "id": "geo05-domestic-vs-international",
+          "label_zh": "domestic trade 和 international trade 怎麼分？",
+          "keywords": [
+            "domestic",
+            "international",
+            "國內",
+            "國際",
+            "怎麼分",
+            "同一個國家",
+            "不同國家",
+            "貿易種類"
+          ],
+          "simpler_explanation_zh": "只要問一個問題：買和賣的兩邊在不在同一個國家？在同一個國家（例如 KwaZulu-Natal 賣給 Gauteng）→ domestic（國內）。在不同國家（南非賣給中國）→ international（國際）。",
+          "analogy_zh": "domestic 這個字也用在「家裡的」，例如 domestic animals 是家裡養的動物。domestic trade 就是「自己國家裡面」的貿易。",
+          "even_simpler_zh": "同一個國家 = domestic。不同國家 = international。",
+          "confirm_question": {
+            "q_zh": "Western Cape 的水果賣到 Gauteng 的商店，是哪一種？",
+            "options": [
+              "A  international",
+              "B  import",
+              "C  domestic",
+              "D  export"
+            ],
+            "answer": "C  domestic",
+            "why_zh": "兩地都在南非，所以是國內貿易。"
+          }
+        },
+        {
+          "id": "geo05-both-sides",
+          "label_zh": "同一批貨，怎麼可能又是出口又是進口？",
+          "keywords": [
+            "又進又出",
+            "同一批貨",
+            "角度",
+            "export import same",
+            "一個國家的出口",
+            "另一個國家",
+            "站在哪邊",
+            "對方"
+          ],
+          "simpler_explanation_zh": "要看你站在哪個國家看。課本說南非的黃金很多賣到國外，例如印度：從南非看，黃金出去了 → export；從印度看，黃金進來了 → import。所以一個國家的出口，就是另一個國家的進口。",
+          "analogy_zh": "你把一張卡片送給同學：對你來說是「送出去」，對同學來說是「收進來」。同一張卡片，看你站在哪一邊。",
+          "even_simpler_zh": "我賣出去 = 我的 export = 他的 import。",
+          "confirm_question": {
+            "q_zh": "另一個國家賣工廠機器給南非。從南非來看，這些機器是？",
+            "options": [
+              "A  export",
+              "B  import",
+              "C  domestic trade",
+              "D  raw materials"
+            ],
+            "answer": "B  import",
+            "why_zh": "機器進到南非，對南非是 import；對賣出的國家是 export。"
+          }
+        },
+        {
+          "id": "geo05-why-import",
+          "label_zh": "為什麼要進口？自己做不行嗎？",
+          "keywords": [
+            "為什麼進口",
+            "why import",
+            "自己做",
+            "不夠",
+            "沒有",
+            "石油",
+            "oil",
+            "computers"
+          ],
+          "simpler_explanation_zh": "課本說：南非進口自己不做的東西，例如電腦、一些機器、一些特別的藥，還有石油。自己不做的，就跟別的國家買；自己有很多的（例如黃金、水果），就賣給別的國家。",
+          "analogy_zh": "你家烤肉（braai）有肉，但沒有炭。你不會自己去做炭，而是去商店買。國家也一樣，沒有的就跟別人買。",
+          "even_simpler_zh": "自己沒有或不夠 → 進口。自己有多的 → 出口。",
+          "confirm_question": {
+            "q_zh": "國家最可能進口哪一種東西？",
+            "options": [
+              "A  自己沒有或做不夠的東西",
+              "B  自己有很多的東西",
+              "C  不需要的東西",
+              "D  已經出口的東西"
+            ],
+            "answer": "A  自己沒有或做不夠的東西",
+            "why_zh": "進口通常是補足自己沒有或不夠的東西。"
+          }
+        },
+        {
+          "id": "geo05-tourism-export",
+          "label_zh": "觀光（tourism）又不是東西，怎麼會是出口？",
+          "keywords": [
+            "tourism",
+            "觀光",
+            "旅遊",
+            "服務",
+            "services",
+            "為什麼是出口",
+            "遊客",
+            "tourists"
+          ],
+          "simpler_explanation_zh": "出口不只是賣「東西」，也可以是賣「服務」。外國遊客來南非看動物、住旅館、吃飯，他們把錢付給南非的公司。錢從國外流進南非，就像南非把東西賣出去一樣，所以課本把 tourism 算在南非的 exports 裡。",
+          "analogy_zh": "你在家門口擺攤幫鄰居洗車，鄰居沒有帶走任何東西，可是付了你錢。你賣的是「服務」。觀光也是南非賣給外國人的服務。",
+          "even_simpler_zh": "外國人來玩 → 付錢給南非 → 算出口。",
+          "confirm_question": {
+            "q_zh": "為什麼 tourism 可以算南非的出口？",
+            "options": [
+              "A  因為遊客把東西帶走",
+              "B  因為南非人出國玩",
+              "C  因為遊客是原料",
+              "D  因為外國遊客付錢給南非的公司買服務"
+            ],
+            "answer": "D  因為外國遊客付錢給南非的公司買服務",
+            "why_zh": "外國遊客付錢買南非的服務，錢流進南非，所以算出口。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "定義要寫清楚方向：Exports are goods that a country sells to other countries.",
+        "舉例時用課本的例子：South Africa exports iron, gold, fruit and car parts; it imports oil, electrical goods, factory machines and medicines.",
+        "被問是哪一種貿易時，先看兩邊是不是同一個國家。"
+      ],
+      "common_mistakes_zh": [
+        "import 和 export 寫反。",
+        "把省和省之間的貿易說成 international trade。",
+        "以為一個國家不能同時進口和出口。",
+        "忘了 tourism 也是南非的出口。"
+      ]
+    },
+    {
+      "id": "geo-06-resources-processing",
+      "title_en": "Resources and their values: raw materials and manufactured goods",
+      "title_zh": "資源和它們的價值：原料和製成品",
+      "term": "Term 2: Trade",
+      "notes": [
+        "來源：課本 Term 2 Unit 3（p35–36）。",
+        "課本 Activity 6 的價格（iron ore R2 000 a ton、bicycle R5 000 等）和鉛筆盒流程圖是作業，本單元不替它們寫答案；練習題用自己的例子。"
+      ],
+      "key_terms": [
+        {
+          "en": "natural resources",
+          "zh": "自然資源",
+          "kid_definition_zh": "從大自然來、可以拿來做有用東西的材料，例如樹木、水、岩石裡的礦物。"
+        },
+        {
+          "en": "raw material",
+          "zh": "原料",
+          "kid_definition_zh": "還沒有被改變成有用產品的材料，例如一棵剛砍下的樹、鐵礦石、可可豆。"
+        },
+        {
+          "en": "process",
+          "zh": "加工流程",
+          "kid_definition_zh": "一連串按順序做的動作，最後帶來改變或結果，就像煮一頓飯。"
+        },
+        {
+          "en": "manufactured goods",
+          "zh": "製成品",
+          "kid_definition_zh": "用原料做出來的產品，例如汽車、船、腳踏車、巧克力。"
+        },
+        {
+          "en": "value",
+          "zh": "價值",
+          "kid_definition_zh": "一樣東西值多少，用錢來量。"
+        },
+        {
+          "en": "manufacturing",
+          "zh": "製造",
+          "kid_definition_zh": "用原料做出製成品的工作。課本說 processing（加工）也是一種 manufacturing。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g06-s1",
+          "zh": "東西的 value（價值）用錢來量。Natural resources（自然資源）來自大自然，例如樹木和岩石裡的礦物。從大自然拿來、還沒有被改變成有用產品的，叫 raw materials（原料）。例子：一棵剛砍下來的樹，就是原料。",
+          "en_exam_sentence": "Raw materials, such as a freshly-cut tree, have not yet been changed into a useful product."
+        },
+        {
+          "id": "g06-s2",
+          "zh": "原料被用來做 manufactured goods（製成品）。例如：鋼鐵可以做成汽車和船；木頭可以做成桌子和櫃子。",
+          "en_exam_sentence": "Raw materials are used to make manufactured goods, for example cars and ships are made from steel.",
+          "diagram_hint": "Flow chart: tree → wood → wooden furniture; iron → steel → car."
+        },
+        {
+          "id": "g06-s3",
+          "zh": "把原料變成產品，要經過一個 process（加工流程）：一連串按順序做的動作，最後帶來改變或結果，就像煮一頓飯要洗菜、切菜、煮、裝盤。",
+          "en_exam_sentence": "A process is a set order of actions that leads to a change or result, such as making a meal."
+        },
+        {
+          "id": "g06-s4",
+          "zh": "每一個加工步驟都要花錢（工人、機器、材料）。步驟越多，東西就越貴。例如汽車要經過非常多步驟才做得出來，所以很貴。",
+          "en_exam_sentence": "Each process costs money. The more processes a product goes through, the more it costs, for example a car."
+        },
+        {
+          "id": "g06-s5",
+          "zh": "所以大部分製成品的價值比原料高，可以用更高的價錢賣。記住這句話：raw materials → processes → manufactured goods with a higher value。下一單元的可可和黃金，就是這個道理的真實例子。",
+          "en_exam_sentence": "Most manufactured goods have a higher value than raw materials, so they are sold for higher prices."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g06-q1",
+          "q_en": "Which of these is a raw material?",
+          "q_zh": "下面哪一個是原料？",
+          "options": [
+            "A  a car",
+            "B  a freshly-cut tree",
+            "C  a wooden chair",
+            "D  a chocolate bar"
+          ],
+          "answer": "B  a freshly-cut tree",
+          "why_zh": "剛砍下的樹還沒被改變成產品，是原料；其他都是製成品。"
+        },
+        {
+          "id": "g06-q2",
+          "q_en": "Why does a product that goes through many processes usually cost more?",
+          "q_zh": "為什麼經過很多加工步驟的產品通常比較貴？",
+          "options": [
+            "A  because raw materials are free",
+            "B  because it has no value",
+            "C  because it is not manufactured",
+            "D  because each process costs money"
+          ],
+          "answer": "D  because each process costs money",
+          "why_zh": "課本說每一個步驟都要花錢，步驟越多成本越高。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo06-resource-vs-raw",
+          "label_zh": "自然資源和原料好像一樣？",
+          "keywords": [
+            "自然資源",
+            "原料",
+            "natural resource",
+            "raw material",
+            "一樣嗎",
+            "差別",
+            "different",
+            "資源"
+          ],
+          "simpler_explanation_zh": "很像。自然資源是大自然裡有、人可以拿來用的東西，例如森林和地底的礦物。當人們把它拿出來、準備用來做東西時，例如一棵剛砍下的樹，就叫原料。可以說：原料是從自然資源拿出來、還沒有被改變的材料。",
+          "analogy_zh": "森林裡的樹是自然資源。被砍下、放到卡車上準備送去工廠的那棵樹，就是原料。",
+          "even_simpler_zh": "大自然裡的 → 自然資源。拿出來、還沒改變 → 原料。",
+          "confirm_question": {
+            "q_zh": "剛被砍下、準備送去家具工廠的樹，最適合叫？",
+            "options": [
+              "A  製成品",
+              "B  原料",
+              "C  服務",
+              "D  進口"
+            ],
+            "answer": "B  原料",
+            "why_zh": "它還沒被改變成產品，是原料。"
+          }
+        },
+        {
+          "id": "geo06-raw-vs-manufactured",
+          "label_zh": "怎麼分原料和製成品？",
+          "keywords": [
+            "原料",
+            "製成品",
+            "manufactured",
+            "raw",
+            "怎麼分",
+            "工廠做的",
+            "goods",
+            "分辨"
+          ],
+          "simpler_explanation_zh": "問自己：「這個東西有沒有被改變、做成有用的產品？」還沒改變 → raw material。已經做成新產品 → manufactured goods。例：樹是原料，木頭桌子是製成品；鐵是原料，汽車是製成品。",
+          "analogy_zh": "剛從菜園拔起來的馬鈴薯是原料；超市袋子裡的洋芋片是製成品。",
+          "even_simpler_zh": "還沒改變 = 原料。做成產品 = 製成品。",
+          "confirm_question": {
+            "q_zh": "下面哪一個是製成品？",
+            "options": [
+              "A  剛砍下的樹",
+              "B  鐵礦石",
+              "C  腳踏車",
+              "D  可可豆"
+            ],
+            "answer": "C  腳踏車",
+            "why_zh": "腳踏車是用原料做出來的產品。"
+          }
+        },
+        {
+          "id": "geo06-process",
+          "label_zh": "process（加工流程）到底是什麼意思？",
+          "keywords": [
+            "process",
+            "加工",
+            "流程",
+            "步驟",
+            "steps",
+            "順序",
+            "怎麼做成",
+            "making a meal"
+          ],
+          "simpler_explanation_zh": "Process 是「一連串按順序做的動作，最後得到一個結果」。課本的例子是煮一頓飯：洗菜 → 切菜 → 煮 → 裝盤。順序不能亂，做完就得到一頓飯。工廠把原料變成產品，也是一個 process。",
+          "analogy_zh": "做三明治：拿麵包 → 抹奶油 → 放起司和番茄 → 蓋上麵包。四個步驟按順序做，就是一個 process。",
+          "even_simpler_zh": "Process = 按順序的步驟 → 得到結果。",
+          "confirm_question": {
+            "q_zh": "下面哪一個最像 process？",
+            "options": [
+              "A  一棵樹",
+              "B  一張地圖",
+              "C  一個國家",
+              "D  按順序洗、切、煮、裝盤做一頓飯"
+            ],
+            "answer": "D  按順序洗、切、煮、裝盤做一頓飯",
+            "why_zh": "按順序的動作帶來結果，就是 process。"
+          }
+        },
+        {
+          "id": "geo06-why-more-value",
+          "label_zh": "為什麼製成品比原料貴？",
+          "keywords": [
+            "為什麼貴",
+            "價值",
+            "value",
+            "worth more",
+            "製成品比較貴",
+            "higher price",
+            "步驟越多",
+            "成本"
+          ],
+          "simpler_explanation_zh": "因為每一個加工步驟都要花錢：要付工人薪水、買機器、用電、買其他材料。步驟越多，花的錢越多，所以做好的東西要賣得比原料貴。課本的例子：汽車要經過很多步驟，所以很貴。",
+          "analogy_zh": "一顆檸檬很便宜，可是做成一杯檸檬汁，要洗、切、擠、加糖、加冰、倒進杯子，每一步都要花時間和材料，所以一杯檸檬汁比一顆檸檬貴。",
+          "even_simpler_zh": "步驟多 → 花的錢多 → 賣得貴。",
+          "confirm_question": {
+            "q_zh": "課本說哪一種東西因為加工步驟很多而很貴？",
+            "options": [
+              "A  汽車",
+              "B  剛砍下的樹",
+              "C  雨水",
+              "D  石頭"
+            ],
+            "answer": "A  汽車",
+            "why_zh": "汽車要經過很多加工步驟，所以價值很高。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "定義 raw material 可以用課本例子：a freshly-cut tree that has not yet been changed into a useful product。",
+        "解釋為什麼製成品比較貴，要寫 each process costs money。",
+        "定義 process 時用課本的話：a set order of actions that leads to a change or result。"
+      ],
+      "common_mistakes_zh": [
+        "把已經做好的產品（桌子、鋼鐵製品）當成原料。",
+        "只說「比較貴」，沒說明是因為加工步驟要花錢。"
+      ]
+    },
+    {
+      "id": "geo-07-cocoa-and-gold",
+      "title_en": "Case studies: from cocoa to chocolate (Ghana) and from gold to jewellery (South Africa)",
+      "title_zh": "案例：迦納的可可變巧克力、南非的黃金變珠寶",
+      "term": "Term 2: Trade",
+      "notes": [
+        "來源：課本 Term 2 Unit 3（p37–40）。",
+        "課本黃金第一階段的價值寫 $2 000 an ounce（美元），珠寶寫 R4 000 an ounce（蘭特），兩個用不同貨幣，不能直接比較或相減。本單元只教「加工後更值錢」的觀念。見 flagged_facts。",
+        "課本說一盎司約 28 公克；但量黃金常用的金衡盎司（troy ounce）約 31 公克。本單元照課本寫約 28 公克，並列入 flagged_facts。",
+        "課本 Activity 7（迦納可以怎麼做）和 Activity 8 的 Q3、Q4 是作業，本單元不寫成作業答案。"
+      ],
+      "key_terms": [
+        {
+          "en": "cocoa beans",
+          "zh": "可可豆",
+          "kid_definition_zh": "可可樹的種子，是做巧克力的原料。"
+        },
+        {
+          "en": "Ghana",
+          "zh": "迦納",
+          "kid_definition_zh": "西非的一個國家，生產世界上大約 15% 的可可豆。"
+        },
+        {
+          "en": "gold ore",
+          "zh": "金礦石",
+          "kid_definition_zh": "含有黃金的石頭，是做金飾的原料。"
+        },
+        {
+          "en": "smelting",
+          "zh": "熔煉",
+          "kid_definition_zh": "用很高的溫度把金屬熔化，讓黃金和其他東西分開。"
+        },
+        {
+          "en": "carat",
+          "zh": "克拉（K）",
+          "kid_definition_zh": "表示黃金有多純的單位，純金是 24 carats（24K）。"
+        },
+        {
+          "en": "ounce",
+          "zh": "盎司",
+          "kid_definition_zh": "量黃金重量的單位。課本說一盎司大約 28 公克（1 公斤 = 1 000 公克）。"
+        },
+        {
+          "en": "jewellery",
+          "zh": "珠寶首飾",
+          "kid_definition_zh": "用黃金等做成的戒指、項鍊等。黃金是最受歡迎的珠寶貴金屬。"
+        },
+        {
+          "en": "eGoli",
+          "zh": "eGoli（黃金之城）",
+          "kid_definition_zh": "Johannesburg 的別名，意思是 City of Gold（黃金之城）。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g07-s1",
+          "zh": "巧克力來自可可樹。可可樹的種子叫 cocoa beans（可可豆），是原料。可可樹長在赤道附近溫暖的地方，世界上大部分的可可來自西非。Ghana（迦納）生產世界上大約 15% 的可可豆。",
+          "en_exam_sentence": "Cocoa trees grow in warm climates near the equator. Most of the world's cocoa comes from West Africa, and Ghana produces about 15% of the world's cocoa beans."
+        },
+        {
+          "id": "g07-s2",
+          "zh": "可可豆的旅程（課本的圖）：raw cocoa（生可可豆）→ drying（曬乾）→ export（出口）→ mixing（混合）→ processed chocolate（巧克力）。迦納把可可豆出口給歐洲（Europe）的公司，由那些公司加工做成巧克力。加工也是一種 manufacturing（製造）。",
+          "en_exam_sentence": "Ghana exports cocoa beans to companies in Europe, which process them into chocolate.",
+          "diagram_hint": "Journey: raw cocoa → drying → export (ship to Europe) → mixing → chocolate bar."
+        },
+        {
+          "id": "g07-s3",
+          "zh": "錢去了哪裡？大部分的錢給了「做巧克力」的國家，只有一小部分給了「種可可」的國家。課本的圖說：一條巧克力的價值，給迦納的不到四分之一，超過四分之三給了歐洲的公司。因為巧克力是製成品，比原料可可豆值錢得多。",
+          "en_exam_sentence": "Most of the money goes to the country that manufactures the chocolate. Less than a quarter of the value of a chocolate bar goes to Ghana.",
+          "diagram_hint": "Chocolate bar divided: less than ¼ Ghana, more than ¾ companies in Europe."
+        },
+        {
+          "id": "g07-s4",
+          "zh": "黃金是做珠寶最受歡迎的貴金屬。黃金的純度用 carats（克拉，K）表示，純金是 24 carats。重量用 ounce（盎司）量，課本說一盎司大約 28 公克。Johannesburg 被叫做 eGoli，意思是「黃金之城」。南非是世界第四大產金國，2023 年大約生產了 100 000 kg 黃金。",
+          "en_exam_sentence": "Johannesburg is called eGoli, the City of Gold. South Africa is the fourth largest producer of gold in the world."
+        },
+        {
+          "id": "g07-s5",
+          "zh": "黃金的第一階段（把黃金從石頭裡拿出來）：mining（採礦）→ crushing（壓碎石頭）→ separating（分離）→ smelting（熔煉）→ pouring（倒進模子）→ gold（黃金）。原料是 gold ore（金礦石），就是含有黃金的石頭。",
+          "en_exam_sentence": "Stage 1: gold ore is mined, crushed, separated, smelted and poured to make gold.",
+          "diagram_hint": "Flow chart Stage 1: mining → crushing → separating → smelting → pouring → gold."
+        },
+        {
+          "id": "g07-s6",
+          "zh": "第二階段：transporting/export（運送、出口）→ manufacturing（製造）→ selling（賣）→ gold jewellery（金飾）。南非大部分的黃金賣到國外；美國和印度把南非的黃金做成珠寶，南非自己做金飾的公司不多。所以南非的黃金和迦納的可可很像：都把原料賣出去，比較值錢的製造步驟在別的國家。",
+          "en_exam_sentence": "Most of South Africa's gold is sold overseas. Countries such as the USA and India make it into jewellery, because South Africa does not have many gold jewellery companies.",
+          "diagram_hint": "Flow chart Stage 2: transporting → manufacturing → selling → jewellery."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g07-q1",
+          "q_en": "Which is the correct order of the cocoa journey in the textbook diagram?",
+          "q_zh": "課本圖中可可豆旅程的正確順序是？",
+          "options": [
+            "A  raw cocoa → drying → export → mixing → chocolate",
+            "B  export → raw cocoa → drying → mixing → chocolate",
+            "C  raw cocoa → mixing → export → drying → chocolate",
+            "D  chocolate → mixing → export → drying → raw cocoa"
+          ],
+          "answer": "A  raw cocoa → drying → export → mixing → chocolate",
+          "why_zh": "先有生可可豆，曬乾後出口，到歐洲混合加工，最後變成巧克力。"
+        },
+        {
+          "id": "g07-q2",
+          "q_en": "Where are most of Ghana's cocoa beans made into chocolate?",
+          "q_zh": "迦納的可可豆大多在哪裡被做成巧克力？",
+          "options": [
+            "A  in Ghana",
+            "B  in Antarctica",
+            "C  by companies in Europe",
+            "D  in South Africa's gold mines"
+          ],
+          "answer": "C  by companies in Europe",
+          "why_zh": "課本說迦納把可可豆出口給歐洲的公司，由它們加工成巧克力。"
+        },
+        {
+          "id": "g07-q3",
+          "q_en": "What does '24 carats' tell us about gold?",
+          "q_zh": "「24 carats」告訴我們黃金的什麼？",
+          "options": [
+            "A  that it weighs 24 grams",
+            "B  that it is pure gold",
+            "C  that it costs R24",
+            "D  that it came from 24 mines"
+          ],
+          "answer": "B  that it is pure gold",
+          "why_zh": "carat 量的是純度，24 carats 表示純金。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo07-cocoa-order",
+          "label_zh": "可可變巧克力的步驟記不住。",
+          "keywords": [
+            "可可",
+            "cocoa",
+            "巧克力",
+            "chocolate",
+            "步驟",
+            "順序",
+            "drying",
+            "曬乾"
+          ],
+          "simpler_explanation_zh": "照課本的圖，五個詞：raw cocoa（生可可豆）→ drying（曬乾）→ export（出口）→ mixing（混合）→ chocolate（巧克力）。用中文記：「生、曬、運、混、成」。生可可豆先曬乾，裝船運到歐洲，在工廠混合加工，最後成為巧克力。",
+          "analogy_zh": "像做 biltong（肉乾）：先有生肉，再風乾，然後送到商店，最後變成你吃的零食。順序不能亂。",
+          "even_simpler_zh": "生 → 曬 → 運 → 混 → 成。",
+          "confirm_question": {
+            "q_zh": "可可豆曬乾以後，下一步是？",
+            "options": [
+              "A  生可可豆",
+              "B  做成巧克力",
+              "C  種樹",
+              "D  出口 export"
+            ],
+            "answer": "D  出口 export",
+            "why_zh": "曬乾後就出口到歐洲。"
+          }
+        },
+        {
+          "id": "geo07-ghana-earns-little",
+          "label_zh": "迦納種可可，為什麼賺得很少？巧克力不是很貴嗎？",
+          "keywords": [
+            "賺很少",
+            "迦納",
+            "Ghana",
+            "四分之一",
+            "quarter",
+            "錢去哪",
+            "Europe",
+            "歐洲"
+          ],
+          "simpler_explanation_zh": "巧克力是貴，但大部分的錢不是迦納拿到的。迦納只賣原料（可可豆），做巧克力這個比較值錢的步驟在歐洲進行。課本說：一條巧克力的價值，迦納拿到不到四分之一，歐洲的公司拿到超過四分之三。",
+          "analogy_zh": "把一條巧克力切成四小塊：迦納連一小塊都拿不滿，其他三塊多都給了做巧克力的公司。",
+          "even_simpler_zh": "迦納賣原料 → 拿不到 ¼。歐洲做巧克力 → 拿超過 ¾。",
+          "confirm_question": {
+            "q_zh": "一條巧克力的價值，迦納大約拿到多少？",
+            "options": [
+              "A  超過四分之三",
+              "B  全部",
+              "C  剛好一半",
+              "D  不到四分之一"
+            ],
+            "answer": "D  不到四分之一",
+            "why_zh": "課本的圖說迦納拿到不到四分之一。"
+          }
+        },
+        {
+          "id": "geo07-ore-vs-gold",
+          "label_zh": "金礦石和黃金有什麼不同？第一階段的步驟好多。",
+          "keywords": [
+            "金礦石",
+            "gold ore",
+            "黃金",
+            "smelting",
+            "熔煉",
+            "crushing",
+            "步驟",
+            "stage 1"
+          ],
+          "simpler_explanation_zh": "Gold ore（金礦石）是含有黃金的石頭，看起來像普通的石頭。要把黃金拿出來：先 mining（從地下挖出來）→ crushing（把石頭壓碎）→ separating（把黃金分出來）→ smelting（高溫熔化）→ pouring（倒進模子），最後才是閃亮的黃金。",
+          "analogy_zh": "像巧克力豆餅乾：餅乾是礦石，巧克力豆是黃金。你要把餅乾挖出來、壓碎、把巧克力豆挑出來，再把它們熔化倒進模子，做成一塊巧克力磚。",
+          "even_simpler_zh": "挖 → 壓碎 → 分出 → 熔化 → 倒模 → 黃金。",
+          "confirm_question": {
+            "q_zh": "把金礦石壓碎（crushing）之後，下一步是？",
+            "options": [
+              "A  selling",
+              "B  separating 分離",
+              "C  mining",
+              "D  jewellery"
+            ],
+            "answer": "B  separating 分離",
+            "why_zh": "第一階段順序：mining → crushing → separating → smelting → pouring。"
+          }
+        },
+        {
+          "id": "geo07-currency",
+          "label_zh": "黃金一盎司 $2 000，珠寶一盎司 R4 000，那珠寶是兩倍貴嗎？",
+          "keywords": [
+            "美元",
+            "蘭特",
+            "dollar",
+            "rand",
+            "貨幣",
+            "currency",
+            "盎司",
+            "兩倍"
+          ],
+          "simpler_explanation_zh": "不能這樣比！$ 是美元（US dollar），R 是南非蘭特（rand），是兩種不同的錢，1 美元比 1 蘭特值錢很多，所以 $2 000 和 R4 000 不能直接比大小。課本想讓你懂的是：黃金做成珠寶後更值錢。比較價錢時，一定要用同一種貨幣。",
+          "analogy_zh": "就像比身高時，一個人寫 1,5 公尺，另一個寫 160 公分，你不能說「160 比 1,5 大很多，所以第二個人高 100 多倍」。單位一樣才能比。",
+          "even_simpler_zh": "$ 和 R 是不同的錢，不能直接比。重點：做成珠寶更值錢。",
+          "confirm_question": {
+            "q_zh": "$2 000 和 R4 000 為什麼不能直接比較？",
+            "options": [
+              "A  因為數字太大",
+              "B  因為它們是不同的貨幣",
+              "C  因為黃金不值錢",
+              "D  因為珠寶是原料"
+            ],
+            "answer": "B  因為它們是不同的貨幣",
+            "why_zh": "美元和蘭特是不同貨幣，比較前要換成同一種。"
+          }
+        },
+        {
+          "id": "geo07-carat-vs-ounce",
+          "label_zh": "carat 和 ounce 有什麼不同？",
+          "keywords": [
+            "carat",
+            "克拉",
+            "ounce",
+            "盎司",
+            "純度",
+            "重量",
+            "24K",
+            "28 grams"
+          ],
+          "simpler_explanation_zh": "Carat（克拉）量的是「多純」：純金是 24 carats，數字越小，裡面混的其他金屬越多。Ounce（盎司）量的是「多重」：課本說一盎司大約 28 公克。一個說純度，一個說重量。",
+          "analogy_zh": "一杯果汁：carat 像「是不是 100% 純果汁」，ounce 像「這杯有多少毫升」。",
+          "even_simpler_zh": "Carat = 多純。Ounce = 多重。",
+          "confirm_question": {
+            "q_zh": "要說黃金有多重，要用哪個單位？",
+            "options": [
+              "A  ounce",
+              "B  carat",
+              "C  rand",
+              "D  degree"
+            ],
+            "answer": "A  ounce",
+            "why_zh": "ounce 是重量單位；carat 是純度。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "可可旅程照課本寫：raw cocoa → drying → export → mixing → processed chocolate。",
+        "黃金第一階段：mining → crushing → separating → smelting → pouring；第二階段：transporting → manufacturing → selling。",
+        "jewellery 是南非／英國拼法，不要寫成 jewelry。",
+        "比較價錢時注意貨幣符號：$ 是美元，R 是蘭特。"
+      ],
+      "common_mistakes_zh": [
+        "以為迦納自己把大部分可可做成巧克力。",
+        "把 carat 當成重量單位。",
+        "直接比較 $ 和 R 的數字。",
+        "把金礦石說成純金。"
+      ]
+    },
+    {
+      "id": "geo-08-fair-trade-development",
+      "title_en": "Fair trading: developed and developing countries",
+      "title_zh": "公平貿易：已開發國家與開發中國家",
+      "term": "Term 2: Trade",
+      "notes": [
+        "來源：課本 Term 2 Unit 4（p41）。課本沒有把哪些國家明確歸類，本單元不替任何國家貼標籤。"
+      ],
+      "key_terms": [
+        {
+          "en": "developing country",
+          "zh": "開發中國家",
+          "kid_definition_zh": "資源和錢都比較少的國家，人民的生活水準通常比較低。也叫低收入國家。"
+        },
+        {
+          "en": "developed country",
+          "zh": "已開發國家",
+          "kid_definition_zh": "資源和錢都很多的國家，人民的生活水準比較高。"
+        },
+        {
+          "en": "standard of living",
+          "zh": "生活水準",
+          "kid_definition_zh": "人們生活過得好不好，例如有沒有好的房子、食物、學校和醫療。"
+        },
+        {
+          "en": "skills training",
+          "zh": "技能訓練",
+          "kid_definition_zh": "學習怎麼做困難的工作。"
+        },
+        {
+          "en": "taxes",
+          "zh": "稅",
+          "kid_definition_zh": "公司和人民付給政府的錢，政府用它來提供服務，例如學校和醫院。"
+        },
+        {
+          "en": "unfair trade",
+          "zh": "不公平貿易",
+          "kid_definition_zh": "賣原料的一方拿到太少錢，價格由買方決定，讓很多國家一直很窮。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g08-s1",
+          "zh": "為什麼貿易會不公平？第一，製成品賣得比原料貴很多。第二，賣原料的人說：價格是買方決定的，不是賣方。價格太低，就讓很多國家一直很窮。",
+          "en_exam_sentence": "Trade can be unfair because manufactured goods sell at higher prices than raw materials, and buyers, not sellers, often decide the price of raw materials."
+        },
+        {
+          "id": "g08-s2",
+          "zh": "Developed country（已開發國家）：資源和錢都很多，生活水準高。Developing country（開發中國家）：資源和錢比較少，生活水準通常比較低，也叫低收入國家。",
+          "en_exam_sentence": "A developing country has few resources and little money and usually a low standard of living. A developed country has a lot of resources and money and a high standard of living."
+        },
+        {
+          "id": "g08-s3",
+          "zh": "窮的國家買不起昂貴的機器，就沒辦法自己加工原料，只能繼續賣便宜的原料。課本的漫畫裡，農夫說：「你們買我們的可可付這麼少錢，我們根本沒錢買你們的機器。」",
+          "en_exam_sentence": "Poor countries cannot afford expensive machines to process their own raw materials.",
+          "diagram_hint": "Cartoon: farmer says 'You pay so little for our cocoa crop that we have no money to buy your machines.'"
+        },
+        {
+          "id": "g08-s4",
+          "zh": "不公平貿易帶來的問題：農夫和礦工的薪水很低；有時候小孩被迫工作；低收入的社區付不起教育和醫療等基本服務；人們很難學到新技能。",
+          "en_exam_sentence": "Unfair trade causes problems: farmers and mine workers get low wages, children are sometimes forced to work, and communities cannot pay for education and health care."
+        },
+        {
+          "id": "g08-s5",
+          "zh": "政府也受影響：人民和公司賺得少，政府收到的 taxes（稅）就少，就沒有足夠的錢提供服務和 skills training（技能訓練）。這樣國家就更難發展，形成一個圈圈。",
+          "en_exam_sentence": "Governments collect too little tax, so they cannot provide services and skills training.",
+          "diagram_hint": "Circle diagram: low prices → low wages → little tax → few services and skills → cannot process raw materials → low prices."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g08-q1",
+          "q_en": "Which sentence describes a developing country?",
+          "q_zh": "哪一句話在描述開發中國家？",
+          "options": [
+            "A  It has a lot of resources and money and a high standard of living.",
+            "B  It has no people.",
+            "C  It only sells manufactured goods.",
+            "D  It has few resources and little money, and usually a low standard of living."
+          ],
+          "answer": "D  It has few resources and little money, and usually a low standard of living.",
+          "why_zh": "開發中國家資源和錢少，生活水準通常比較低。"
+        },
+        {
+          "id": "g08-q2",
+          "q_en": "Why can't some governments provide enough schools and skills training?",
+          "q_zh": "為什麼有些政府沒辦法提供足夠的學校和技能訓練？",
+          "options": [
+            "A  because they have too many machines",
+            "B  because they collect too little tax",
+            "C  because taxes are not money",
+            "D  because skills training is free everywhere"
+          ],
+          "answer": "B  because they collect too little tax",
+          "why_zh": "人民和公司賺得少，政府收到的稅就少。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo08-why-unfair",
+          "label_zh": "貿易為什麼會不公平？",
+          "keywords": [
+            "不公平",
+            "unfair",
+            "為什麼",
+            "價格誰決定",
+            "買方",
+            "buyers",
+            "原料便宜",
+            "貿易"
+          ],
+          "simpler_explanation_zh": "兩個原因：① 製成品（巧克力、機器）比原料（可可豆）貴很多。② 原料的價格常常是買方決定的，不是賣方。所以賣原料的國家拿到的錢太少，一直很窮。",
+          "analogy_zh": "你烤餅乾去學校賣，可是價錢不是你定的，是買的同學說「我只給你 1 塊」。你一直虧錢，就沒錢買新烤箱。",
+          "even_simpler_zh": "製成品貴、原料便宜，而且價格由買方決定 → 不公平。",
+          "confirm_question": {
+            "q_zh": "課本說原料的價格常常由誰決定？",
+            "options": [
+              "A  買方",
+              "B  賣方",
+              "C  小孩",
+              "D  沒有人"
+            ],
+            "answer": "A  買方",
+            "why_zh": "賣原料的人說價格是買方決定的。"
+          }
+        },
+        {
+          "id": "geo08-developed-developing",
+          "label_zh": "developed 和 developing 怎麼分？",
+          "keywords": [
+            "developed",
+            "developing",
+            "已開發",
+            "開發中",
+            "怎麼分",
+            "standard of living",
+            "生活水準",
+            "國家"
+          ],
+          "simpler_explanation_zh": "看字尾：-ed 表示「已經完成」，developed 是「已經發展好了」，資源和錢多，生活水準高。-ing 表示「正在進行」，developing 是「還在發展中」，資源和錢比較少，生活水準通常比較低。",
+          "analogy_zh": "像蓋房子：developed 是已經蓋好、有水有電的房子；developing 是還在蓋的房子，有些房間還沒完成。",
+          "even_simpler_zh": "-ed = 已經發展好。-ing = 還在發展中。",
+          "confirm_question": {
+            "q_zh": "資源和錢很多、生活水準高的國家是？",
+            "options": [
+              "A  developing country",
+              "B  raw material",
+              "C  export",
+              "D  developed country"
+            ],
+            "answer": "D  developed country",
+            "why_zh": "已開發國家資源多、錢多、生活水準高。"
+          }
+        },
+        {
+          "id": "geo08-machines-cycle",
+          "label_zh": "為什麼窮的國家不自己做巧克力就好？",
+          "keywords": [
+            "機器",
+            "machines",
+            "自己做",
+            "為什麼不自己加工",
+            "買不起",
+            "漫畫",
+            "cartoon",
+            "process"
+          ],
+          "simpler_explanation_zh": "因為做巧克力要很昂貴的機器。原料賣得太便宜，國家賺不到錢，就買不起機器；買不起機器，就只能繼續賣便宜的原料。課本漫畫裡的農夫就是在說這件事。",
+          "analogy_zh": "你想開一家果汁店，可是賣水果賺的錢太少，存不夠錢買果汁機，只好繼續賣水果，永遠開不了店。",
+          "even_simpler_zh": "賣便宜 → 沒錢 → 買不起機器 → 只能繼續賣原料。",
+          "confirm_question": {
+            "q_zh": "課本漫畫中，農夫為什麼買不起機器？",
+            "options": [
+              "A  因為機器很便宜",
+              "B  因為可可賣得太便宜，沒有錢",
+              "C  因為不需要機器",
+              "D  因為機器是原料"
+            ],
+            "answer": "B  因為可可賣得太便宜，沒有錢",
+            "why_zh": "可可被付得太少，農夫沒錢買機器。"
+          }
+        },
+        {
+          "id": "geo08-tax-services",
+          "label_zh": "稅（taxes）跟學校、醫院有什麼關係？",
+          "keywords": [
+            "稅",
+            "taxes",
+            "tax",
+            "政府",
+            "government",
+            "學校",
+            "醫院",
+            "services"
+          ],
+          "simpler_explanation_zh": "Taxes 是人民和公司付給政府的錢，政府用這些錢蓋學校、醫院，提供技能訓練。如果大家的薪水都很低，政府收到的稅就很少，就沒錢提供這些服務。",
+          "analogy_zh": "像班費：每個同學都交一點錢，班上才能買球和彩色筆。如果大家都交不出錢，班上就什麼都買不了。",
+          "even_simpler_zh": "稅 = 大家交給政府的錢 → 用來做學校、醫院。收得少 → 服務少。",
+          "confirm_question": {
+            "q_zh": "政府用稅來做什麼？",
+            "options": [
+              "A  買巧克力給自己",
+              "B  提供學校、醫院等服務",
+              "C  減少工作",
+              "D  出口原料"
+            ],
+            "answer": "B  提供學校、醫院等服務",
+            "why_zh": "稅用來提供服務和技能訓練。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "定義兩種國家時要寫三個重點：resources、money、standard of living。",
+        "說明不公平貿易的問題時，至少寫兩點，例如 low wages 和 children forced to work。",
+        "可以用課本的連鎖關係回答：too little tax → no services or skills training。"
+      ],
+      "common_mistakes_zh": [
+        "把 developed 和 developing 寫反。",
+        "只說「不公平」，沒說是誰拿得少、為什麼。",
+        "忘了 taxes 和政府服務的關係。"
+      ]
+    },
+    {
+      "id": "geo-09-weather-climate",
+      "title_en": "Weather and climate: hot, mild and cold climates",
+      "title_zh": "天氣和氣候：熱、溫和、冷的氣候",
+      "term": "Term 3: Climate and vegetation around the world",
+      "notes": [
+        "來源：課本 Term 3 Unit 1（p50–52）。",
+        "課本的溫度範圍有重疊：hot「usually above 25 °C」、mild「usually between 10 °C and 30 °C」。25–30 °C 兩邊都可能，所以課本用 usually（通常）。見 flagged_facts。",
+        "Revision activity 的天氣／氣候句子是作業，本單元的練習題用自己的句子。"
+      ],
+      "key_terms": [
+        {
+          "en": "weather",
+          "zh": "天氣",
+          "kid_definition_zh": "某一天的溫度、雨量和風的情況。今天下雨、明天出太陽，這是天氣。"
+        },
+        {
+          "en": "climate",
+          "zh": "氣候",
+          "kid_definition_zh": "一個地方很長一段時間裡天氣通常是什麼樣子，用 20 到 30 年的天氣算出來。"
+        },
+        {
+          "en": "temperature",
+          "zh": "溫度",
+          "kid_definition_zh": "有多熱或多冷，用 °C（攝氏度）量。"
+        },
+        {
+          "en": "hot climate",
+          "zh": "炎熱氣候",
+          "kid_definition_zh": "通常高於 25 °C，有些地方 35 °C 以上。"
+        },
+        {
+          "en": "mild climate",
+          "zh": "溫和氣候",
+          "kid_definition_zh": "一年大部分時間不太熱也不太冷，通常在 10 °C 到 30 °C 之間。"
+        },
+        {
+          "en": "cold climate",
+          "zh": "寒冷氣候",
+          "kid_definition_zh": "一年大部分時間都很低溫，通常低於 10 °C，有些地方低到 –20 °C。"
+        },
+        {
+          "en": "rainfall",
+          "zh": "雨量",
+          "kid_definition_zh": "下了多少雨，用 mm（毫米）量。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g09-s1",
+          "zh": "Weather（天氣）是某一天的溫度、雨量和風。Climate（氣候）是一個地方很長一段時間裡天氣通常的樣子，要用 20 到 30 年的天氣來算。所以「今天」是天氣，「這裡通常」是氣候。",
+          "en_exam_sentence": "Weather is the temperature, rainfall and wind conditions on a particular day. Climate is what the weather is like in an area over a long time (20–30 years)."
+        },
+        {
+          "id": "g09-s2",
+          "zh": "描述氣候用兩件事：temperature（溫度：hot 熱、mild 溫和、cold 冷）和 rainfall（雨量：wet 濕、dry 乾）。例如「hot and wet」或「cold and dry」。",
+          "en_exam_sentence": "We describe climate using temperature (hot, mild or cold) and rainfall (wet or dry)."
+        },
+        {
+          "id": "g09-s3",
+          "zh": "Hot climate（炎熱氣候）：通常高於 25 °C，有些地方 35 °C 以上。世界最高紀錄是美國 California 的 56,7 °C。炎熱的地方可能很熱又很濕，也可能很熱又很乾。課本的例子：Libya、Kuwait、Mali。",
+          "en_exam_sentence": "Hot climates are usually above 25 °C. The highest temperature ever recorded was 56,7 °C in California."
+        },
+        {
+          "id": "g09-s4",
+          "zh": "Mild climate（溫和氣候）：一年大部分時間不太熱也不太冷，通常在 10 °C 到 30 °C 之間。例子：New Zealand、Uruguay。Cold climate（寒冷氣候）：大部分時間低溫，通常低於 10 °C，有些地方低到 –20 °C；最低紀錄是 Antarctica（南極洲）的 –89 °C。寒冷的地方可能冷又濕，或冷又乾。例子：Bolivia、Chile、Canada。",
+          "en_exam_sentence": "Mild climates are usually between 10 °C and 30 °C. Cold climates are usually below 10 °C; the lowest temperature recorded was –89 °C in Antarctica.",
+          "diagram_hint": "Thermometer: cold below 10 °C, mild 10–30 °C, hot above 25 °C (note the overlap)."
+        },
+        {
+          "id": "g09-s5",
+          "zh": "南北半球的季節是相反的。1 月是北半球的冬天、南半球的夏天；7 月是北半球的夏天、南半球的冬天。所以在 Johannesburg，1 月很熱，7 月很冷；在加拿大剛好相反。",
+          "en_exam_sentence": "In January it is winter in the northern hemisphere and summer in the southern hemisphere. In July it is summer in the northern hemisphere and winter in the southern hemisphere.",
+          "diagram_hint": "Two-column table: January = summer in the south, winter in the north; July = winter in the south, summer in the north."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g09-q1",
+          "q_en": "Which sentence describes WEATHER, not climate?",
+          "q_zh": "哪一句話說的是天氣，不是氣候？",
+          "options": [
+            "A  Our town usually has hot, wet summers.",
+            "B  The desert gets very little rain every year.",
+            "C  Winters here are usually cold and dry.",
+            "D  This afternoon there is a strong wind and it is 18 °C."
+          ],
+          "answer": "D  This afternoon there is a strong wind and it is 18 °C.",
+          "why_zh": "說「今天下午」的情況是天氣；其他句子說的是長時間通常的情況，是氣候。"
+        },
+        {
+          "id": "g09-q2",
+          "q_en": "A place is below 10 °C for most of the year. What kind of climate does it have?",
+          "q_zh": "一個地方一年大部分時間都低於 10 °C，它是哪一種氣候？",
+          "options": [
+            "A  cold",
+            "B  hot",
+            "C  mild",
+            "D  humid"
+          ],
+          "answer": "A  cold",
+          "why_zh": "課本說寒冷氣候通常低於 10 °C。"
+        },
+        {
+          "id": "g09-q3",
+          "q_en": "In July, which season is it in South Africa?",
+          "q_zh": "7 月時，南非是什麼季節？",
+          "options": [
+            "A  summer",
+            "B  winter",
+            "C  spring",
+            "D  there are no seasons"
+          ],
+          "answer": "B  winter",
+          "why_zh": "南非在南半球，7 月是南半球的冬天。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo09-weather-vs-climate",
+          "label_zh": "天氣和氣候分不清楚。",
+          "keywords": [
+            "天氣",
+            "氣候",
+            "weather",
+            "climate",
+            "分不清",
+            "today",
+            "usually",
+            "20-30 years"
+          ],
+          "simpler_explanation_zh": "Weather（天氣）只講某一天：今天熱不熱、有沒有下雨、風大不大。Climate（氣候）講的是很長時間（20 到 30 年）裡通常的樣子。看到「today、this morning、tomorrow」→ 天氣；看到「usually、every year、in winter」→ 氣候。",
+          "analogy_zh": "天氣像你今天的心情（今天開心、明天生氣）；氣候像你的個性（你通常是個開朗的人）。",
+          "even_simpler_zh": "今天 = 天氣。通常 = 氣候。",
+          "confirm_question": {
+            "q_zh": "「Johannesburg 的夏天通常有雷雨」說的是？",
+            "options": [
+              "A  天氣",
+              "B  比例尺",
+              "C  氣候",
+              "D  座標"
+            ],
+            "answer": "C  氣候",
+            "why_zh": "「通常」表示長時間的規律，是氣候。"
+          }
+        },
+        {
+          "id": "geo09-hot-mild-cold",
+          "label_zh": "hot、mild、cold 的溫度範圍記不住。",
+          "keywords": [
+            "hot",
+            "mild",
+            "cold",
+            "溫度範圍",
+            "幾度",
+            "10度",
+            "25度",
+            "溫和"
+          ],
+          "simpler_explanation_zh": "三個數字記好：10 和 25（還有 30）。Cold：通常低於 10 °C。Mild：通常在 10 °C 到 30 °C 之間。Hot：通常高於 25 °C。課本用的是 usually（通常），範圍有一點重疊，判斷時看那個地方一年大部分時間的溫度。",
+          "analogy_zh": "像洗澡水：太冷（低於 10）會發抖；溫溫的（10 到 30）剛剛好；太燙（25 以上的夏天感覺）就很熱。",
+          "even_simpler_zh": "Cold < 10 °C；Mild 10–30 °C；Hot > 25 °C。",
+          "confirm_question": {
+            "q_zh": "一個地方大部分時間在 15 °C 到 25 °C，它比較像哪一種氣候？",
+            "options": [
+              "A  mild",
+              "B  hot",
+              "C  cold",
+              "D  arid"
+            ],
+            "answer": "A  mild",
+            "why_zh": "15–25 °C 在 10–30 °C 之間，是溫和氣候。"
+          }
+        },
+        {
+          "id": "geo09-seasons-reversed",
+          "label_zh": "為什麼 1 月南非是夏天，北半球卻是冬天？",
+          "keywords": [
+            "季節",
+            "相反",
+            "seasons",
+            "January",
+            "July",
+            "夏天",
+            "冬天",
+            "northern hemisphere"
+          ],
+          "simpler_explanation_zh": "課本告訴我們：南北半球的季節剛好相反。1 月時，南半球（南非）是夏天，北半球（例如加拿大）是冬天；7 月時倒過來。所以在南非過聖誕節是夏天，可以去游泳、braai。",
+          "analogy_zh": "像翹翹板：一邊上去（夏天），另一邊就下來（冬天）。南北半球就是翹翹板的兩頭。",
+          "even_simpler_zh": "1 月：南非夏天，北半球冬天。7 月：南非冬天，北半球夏天。",
+          "confirm_question": {
+            "q_zh": "1 月時，加拿大（北半球）是什麼季節？",
+            "options": [
+              "A  夏天",
+              "B  雨季",
+              "C  沒有季節",
+              "D  冬天"
+            ],
+            "answer": "D  冬天",
+            "why_zh": "1 月是北半球的冬天。"
+          }
+        },
+        {
+          "id": "geo09-hot-wet-dry",
+          "label_zh": "熱的地方不是都很乾嗎？怎麼會又熱又濕？",
+          "keywords": [
+            "又熱又濕",
+            "hot and wet",
+            "hot and dry",
+            "雨量",
+            "溫度",
+            "rainfall",
+            "temperature",
+            "沙漠"
+          ],
+          "simpler_explanation_zh": "溫度和雨量是兩件分開的事。熱的地方可能很乾（例如沙漠），也可能很濕（例如雨林）。冷的地方也一樣，可以冷又濕，也可以冷又乾。所以描述氣候要兩個字一起說：例如 hot and wet、cold and dry。",
+          "analogy_zh": "就像一個人可以「高又瘦」，也可以「高又壯」。高矮是一件事，胖瘦是另一件事。",
+          "even_simpler_zh": "溫度一個字 + 雨量一個字 = 氣候。",
+          "confirm_question": {
+            "q_zh": "描述氣候時，最好用哪兩種資料？",
+            "options": [
+              "A  人口和面積",
+              "B  經度和緯度",
+              "C  溫度和雨量",
+              "D  價錢和需求"
+            ],
+            "answer": "C  溫度和雨量",
+            "why_zh": "課本說用 temperature 和 rainfall 描述氣候。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "weather 和 climate 的定義要能寫：climate 要寫出 over a long time (20–30 years)。",
+        "溫度記得寫 °C；負數寫 –20 °C。小數用逗號：56,7 °C。",
+        "描述氣候要兩個詞：溫度 + 雨量，例如 hot and dry。"
+      ],
+      "common_mistakes_zh": [
+        "把「今天很熱」說成氣候。",
+        "忘了南北半球季節相反，以為 7 月南非是夏天。",
+        "以為熱的地方一定很乾。"
+      ]
+    },
+    {
+      "id": "geo-10-rainfall-climate-graphs",
+      "title_en": "Wet and dry areas, rainfall maps and climate graphs",
+      "title_zh": "濕地區和乾地區、雨量圖和氣候圖",
+      "term": "Term 3: Climate and vegetation around the world",
+      "notes": [
+        "來源：課本 Term 3 Unit 1（p53–54）和 Term 3 Revision activity。",
+        "Manaus 和 Alberta 氣候圖的數值是從照片讀出來的約略數字，只有 Manaus 年雨量 1 800 mm 是圖上印的。見 flagged_facts。",
+        "課本 Activity 9（讀沙漠氣候圖，p61）的圖沒有被拍到，本單元不替那一題寫答案。",
+        "課本照片沒有寫「溫度用線、雨量用長條」這條慣例；本單元只說「看圖例的顏色分辨」，並提醒常見畫法。"
+      ],
+      "key_terms": [
+        {
+          "en": "humid",
+          "zh": "潮濕",
+          "kid_definition_zh": "空氣裡有很多雨水或水氣。濕的地區一年通常超過 1 000 mm 的雨，叫 humid areas。"
+        },
+        {
+          "en": "arid",
+          "zh": "乾燥",
+          "kid_definition_zh": "空氣裡水氣和雨都很少。乾的地區一年通常少於 250 mm 的雨，叫 arid areas。"
+        },
+        {
+          "en": "millimetre (mm)",
+          "zh": "毫米",
+          "kid_definition_zh": "量雨量的單位。1 000 mm 的雨，就是雨水堆起來有 1 公尺高。"
+        },
+        {
+          "en": "rain gauge",
+          "zh": "雨量計",
+          "kid_definition_zh": "量雨量的工具。任何罐子或容器都可以當雨量計。"
+        },
+        {
+          "en": "annual rainfall",
+          "zh": "年雨量",
+          "kid_definition_zh": "一整年加起來下了多少雨。"
+        },
+        {
+          "en": "climate graph",
+          "zh": "氣候圖",
+          "kid_definition_zh": "一張圖同時畫出一個地方每個月的溫度和雨量。"
+        },
+        {
+          "en": "key (legend)",
+          "zh": "圖例",
+          "kid_definition_zh": "告訴你地圖或圖表上每種顏色、符號代表什麼。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g10-s1",
+          "zh": "雨量用 mm（毫米）量，量雨的工具叫 rain gauge（雨量計），其實任何罐子或容器都可以。濕的地區一年通常有超過 1 000 mm 的雨，叫 humid areas（潮濕地區）；乾的地區幾乎不下雨或很少下雨，一年通常少於 250 mm，叫 arid areas（乾燥地區）。",
+          "en_exam_sentence": "Wet (humid) areas usually get more than 1 000 mm of rain a year. Dry (arid) areas usually get less than 250 mm of rain a year.",
+          "diagram_hint": "Number line of annual rainfall: 0 — 250 mm (arid) — 1 000 mm — humid beyond."
+        },
+        {
+          "id": "g10-s2",
+          "zh": "課本的年雨量地圖用顏色分四級：0–250 mm、250–1 000 mm、1 000–3 000 mm、超過 3 000 mm。讀地圖時，先看 key（圖例）的顏色，再找地方是什麼顏色，就知道它一年大概下多少雨。",
+          "en_exam_sentence": "An annual rainfall map uses colours to show how much rain falls in a year: 0–250 mm, 250–1 000 mm, 1 000–3 000 mm and over 3 000 mm.",
+          "diagram_hint": "Rainfall map key with four colour boxes."
+        },
+        {
+          "id": "g10-s3",
+          "zh": "Climate graph（氣候圖）把一個地方 12 個月的溫度和雨量畫在同一張圖上。下面是月份（J F M A M J J A S O N D），一邊的刻度是溫度（°C），另一邊的刻度是雨量（mm）。先看圖例，分清楚哪個顏色是溫度、哪個顏色是雨量。常見的畫法是溫度畫成一條線、雨量畫成長條。",
+          "en_exam_sentence": "A climate graph shows the temperature and rainfall of a place for each month of the year. Use the key to see which colour shows temperature and which shows rainfall.",
+          "diagram_hint": "Climate graph: months along the bottom, °C axis on one side, mm axis on the other."
+        },
+        {
+          "id": "g10-s4",
+          "zh": "例子一：Manaus（熱帶雨林 tropical rainforest）。溫度整年都差不多，大約 27–28 °C，一直很熱。年雨量是 1 800 mm，遠超過 1 000 mm，所以是 humid（潮濕）。最濕的月份大約在 3 月（大約 260 mm），最乾大約在 8 月。所以 Manaus 是 hot and wet（又熱又濕）。",
+          "en_exam_sentence": "Manaus has a hot, wet climate: about 27–28 °C all year and an annual rainfall of about 1 800 mm.",
+          "diagram_hint": "Manaus graph: flat temperature line near 27 °C; tall rain bars early in the year, lowest around August."
+        },
+        {
+          "id": "g10-s5",
+          "zh": "例子二：Alberta（加拿大，針葉林）。溫度變化很大：1 月最冷，大約 –3 °C；7 月最熱，大約 18 °C；12 月又回到大約 –3 °C。雨量 6、7 月最多（大約 120–130 mm），2 月和 12 月最少（大約 10–15 mm）。這些數字是從圖上估計的，大約就好。Alberta 在北半球，所以 7 月是夏天。",
+          "en_exam_sentence": "In Alberta, temperatures are lowest in January (about –3 °C) and highest in July (about 18 °C).",
+          "diagram_hint": "Alberta graph: temperature line from –3 °C up to 18 °C in July and back down."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g10-q1",
+          "q_en": "A town receives about 150 mm of rain in a year. How would you describe it?",
+          "q_zh": "一個鎮一年大約下 150 mm 的雨，該怎麼形容它？",
+          "options": [
+            "A  humid",
+            "B  arid",
+            "C  mild",
+            "D  wet"
+          ],
+          "answer": "B  arid",
+          "why_zh": "少於 250 mm 是乾燥（arid）地區。"
+        },
+        {
+          "id": "g10-q2",
+          "q_en": "On a climate graph, what should you look at first to know which colour shows rainfall?",
+          "q_zh": "看氣候圖時，要先看什麼，才知道哪個顏色代表雨量？",
+          "options": [
+            "A  the title of the book",
+            "B  the page number",
+            "C  the key",
+            "D  the scale of a map"
+          ],
+          "answer": "C  the key",
+          "why_zh": "圖例（key）告訴你每個顏色代表什麼。"
+        },
+        {
+          "id": "g10-q3",
+          "q_en": "A place has an annual rainfall of 1 800 mm. Is it humid or arid?",
+          "q_zh": "一個地方年雨量 1 800 mm，它是潮濕還是乾燥？",
+          "options": [
+            "A  arid, because it is more than 250 mm",
+            "B  arid, because it is less than 3 000 mm",
+            "C  neither",
+            "D  humid, because it is more than 1 000 mm"
+          ],
+          "answer": "D  humid, because it is more than 1 000 mm",
+          "why_zh": "超過 1 000 mm 就是潮濕（humid）地區。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo10-humid-arid",
+          "label_zh": "humid 和 arid 哪個是濕、哪個是乾？數字也記不住。",
+          "keywords": [
+            "humid",
+            "arid",
+            "潮濕",
+            "乾燥",
+            "1000mm",
+            "250mm",
+            "哪個是濕",
+            "雨量"
+          ],
+          "simpler_explanation_zh": "Humid = 濕，一年通常超過 1 000 mm 的雨。Arid = 乾，一年通常少於 250 mm。記法：arid 聽起來像「啊，乾！」，而且 arid 很短，雨也很少；humid 裡有 hum，想成濕熱的浴室裡嗡嗡的水氣。",
+          "analogy_zh": "Humid 像洗完熱水澡的浴室，鏡子都是霧氣；arid 像放了一整天的餅乾，乾乾脆脆。",
+          "even_simpler_zh": "Humid > 1 000 mm（濕）。Arid < 250 mm（乾）。",
+          "confirm_question": {
+            "q_zh": "一年少於 250 mm 雨量的地區叫？",
+            "options": [
+              "A  humid",
+              "B  mild",
+              "C  arid",
+              "D  rainforest"
+            ],
+            "answer": "C  arid",
+            "why_zh": "arid 是乾燥地區，雨量通常少於 250 mm。"
+          }
+        },
+        {
+          "id": "geo10-graph-colours",
+          "label_zh": "氣候圖上兩種東西擠在一起，看不懂。",
+          "keywords": [
+            "氣候圖",
+            "climate graph",
+            "看不懂",
+            "線",
+            "長條",
+            "bar",
+            "line",
+            "顏色"
+          ],
+          "simpler_explanation_zh": "氣候圖其實是兩張圖疊在一起。先看 key：哪個顏色是溫度（°C），哪個顏色是雨量（mm）。看溫度時，只看溫度那一邊的刻度；看雨量時，只看雨量那一邊的刻度。常見的畫法是溫度用一條線，雨量用長條。",
+          "analogy_zh": "像透明投影片：一張畫溫度，一張畫雨量，疊在一起。你一次只看一張，就不會亂。",
+          "even_simpler_zh": "先看 key → 線（通常是溫度）看一邊 → 長條（通常是雨量）看另一邊。",
+          "confirm_question": {
+            "q_zh": "讀雨量時，要看哪一邊的刻度？",
+            "options": [
+              "A  °C 那一邊",
+              "B  月份那一邊",
+              "C  mm 那一邊",
+              "D  都不用看"
+            ],
+            "answer": "C  mm 那一邊",
+            "why_zh": "雨量的單位是 mm，要讀 mm 的刻度。"
+          }
+        },
+        {
+          "id": "geo10-annual-total",
+          "label_zh": "年雨量是什麼？要怎麼看？",
+          "keywords": [
+            "年雨量",
+            "annual rainfall",
+            "一整年",
+            "加起來",
+            "總雨量",
+            "total",
+            "1800",
+            "怎麼算"
+          ],
+          "simpler_explanation_zh": "Annual rainfall（年雨量）就是 12 個月的雨量全部加起來。有些氣候圖會直接把年雨量寫在圖上，例如 Manaus 寫 1 800 mm。如果沒寫，就把每個月的雨量加起來。",
+          "analogy_zh": "像存零用錢：每個月存一點，年底把 12 個月加起來，就是你一年存了多少。",
+          "even_simpler_zh": "年雨量 = 12 個月的雨加起來。",
+          "confirm_question": {
+            "q_zh": "如果一個地方每個月都下 100 mm 的雨，年雨量是？",
+            "options": [
+              "A  1 200 mm",
+              "B  100 mm",
+              "C  12 mm",
+              "D  1 000 mm"
+            ],
+            "answer": "A  1 200 mm",
+            "why_zh": "12 × 100 = 1 200 mm。"
+          }
+        },
+        {
+          "id": "geo10-southern-graph",
+          "label_zh": "為什麼 Alberta 7 月最熱？我們南非 7 月很冷啊。",
+          "keywords": [
+            "Alberta",
+            "7月最熱",
+            "北半球",
+            "南半球",
+            "氣候圖季節",
+            "July",
+            "January",
+            "Canada"
+          ],
+          "simpler_explanation_zh": "因為 Alberta 在加拿大，在北半球。北半球的 7 月是夏天，所以最熱（大約 18 °C）；1 月是冬天，最冷（大約 –3 °C）。南非在南半球，季節剛好相反，所以南非的氣候圖通常 6、7 月比較冷。",
+          "analogy_zh": "像住在地球兩頭的兩個朋友：你在南非穿短褲過聖誕節，加拿大的朋友卻在玩雪。",
+          "even_simpler_zh": "北半球 7 月 = 夏天。南半球 7 月 = 冬天。",
+          "confirm_question": {
+            "q_zh": "Alberta 一年中最冷的大約是幾月？",
+            "options": [
+              "A  7 月",
+              "B  3 月",
+              "C  8 月",
+              "D  1 月"
+            ],
+            "answer": "D  1 月",
+            "why_zh": "Alberta 在北半球，1 月是冬天，大約 –3 °C。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "濕和乾的數字一定要記：humid > 1 000 mm，arid < 250 mm（一年）。",
+        "讀氣候圖的題目，寫數字時加單位（°C 或 mm），讀不準可以寫 about。",
+        "說明一個地方的氣候時，溫度和雨量都要講，例如 hot all year and very wet。"
+      ],
+      "common_mistakes_zh": [
+        "把 humid 和 arid 寫反。",
+        "讀雨量時看錯成溫度那一邊的刻度。",
+        "忘記北半球的氣候圖 7 月是夏天。"
+      ]
+    },
+    {
+      "id": "geo-11-hot-deserts",
+      "title_en": "Hot deserts: plants, animals and people",
+      "title_zh": "熱沙漠：植物、動物和人",
+      "term": "Term 3: Climate and vegetation around the world",
+      "notes": [
+        "來源：課本 Term 3 Unit 3（p60–66）。",
+        "Activity 10（瀕危沙漠動植物表）和 Activity 11（在沙漠怎麼找水、食物和住處）是作業，本單元不寫成作業答案。"
+      ],
+      "key_terms": [
+        {
+          "en": "hot desert",
+          "zh": "熱沙漠",
+          "kid_definition_zh": "很少下雨、溫度通常很高的地方。沙漠一年的雨少於 250 mm。"
+        },
+        {
+          "en": "Sahara",
+          "zh": "撒哈拉沙漠",
+          "kid_definition_zh": "世界上最大的熱沙漠，在非洲北部。"
+        },
+        {
+          "en": "nomadic / nomads",
+          "zh": "遊牧的／遊牧民族",
+          "kid_definition_zh": "一直從一個地方搬到另一個地方，去找水和給動物吃的草。"
+        },
+        {
+          "en": "lifestyle",
+          "zh": "生活方式",
+          "kid_definition_zh": "一群人過日子的方式。"
+        },
+        {
+          "en": "oasis (plural: oases)",
+          "zh": "綠洲",
+          "kid_definition_zh": "沙漠裡一直都有水的地方。"
+        },
+        {
+          "en": "European settlers",
+          "zh": "歐洲移民",
+          "kid_definition_zh": "從歐洲來、住到別的國家的人。"
+        },
+        {
+          "en": "survive",
+          "zh": "生存",
+          "kid_definition_zh": "就算很困難也繼續活下去。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g11-s1",
+          "zh": "Hot desert（熱沙漠）是很少下雨、溫度通常很高的地方。沙漠一年的雨少於 250 mm（就是 arid）。不是所有沙漠都熱，例如南極洲大部分是冷沙漠。世界最大的熱沙漠是非洲北部的 Sahara。北美洲、南美洲、北非、阿拉伯／亞洲、南部非洲和澳洲都有熱沙漠。",
+          "en_exam_sentence": "A hot desert is an area where very little rain falls and temperatures are usually high. Deserts receive less than 250 mm of rain a year. The largest hot desert is the Sahara in northern Africa.",
+          "diagram_hint": "World map with main hot deserts shaded."
+        },
+        {
+          "id": "g11-s2",
+          "zh": "因為雨很少，沙漠裡的植物很少。能活下來的植物不太需要水，或有辦法用很少的水生存：① 長長的根去找水；② 把水存在莖或葉子裡；③ 用刺或毒保護自己不被吃掉。例子：barrel cactus（北美的桶狀仙人掌）把水存起來，以前的美洲原住民會喝它存的水。Sturt's desert pea（澳洲）一年大部分時間是種子，只在雨季發芽、開花、做出新種子。",
+          "en_exam_sentence": "Desert plants survive with little water: some have long roots that search for water, some store water in their stems or leaves, and some have spikes or poisons to protect themselves.",
+          "diagram_hint": "Cactus cross-section: long roots, thick water-storing stem, spikes."
+        },
+        {
+          "id": "g11-s3",
+          "zh": "沙漠動物會躲開炎熱的太陽：牠們在地上挖洞，在涼涼暗暗的洞裡休息。例子：Dromedary camel（單峰駱駝，阿拉伯沙漠）把脂肪存在駝峰裡，可以三到四天不喝水，嘴巴很硬，可以吃有刺的植物。Meerkats（狐獴，Kalahari 沙漠）有長爪子挖蟲吃，成群生活，會互相警告危險（例如大鳥），毒蛇和蠍子傷不了牠們。",
+          "en_exam_sentence": "Desert animals escape the hot sun by digging holes and resting in them. A dromedary camel stores fat in its hump and can go three to four days without water."
+        },
+        {
+          "id": "g11-s4",
+          "zh": "沙漠裡的人：Tuareg 人住在 Sahara，是 nomadic（遊牧的），隨著季節改變搬家，去找水和給動物吃的草。他們養綿羊、山羊和駱駝，吃肉、喝奶，用獸皮做帳篷和用品，而且熟悉沙漠裡的路線。",
+          "en_exam_sentence": "The Tuareg of the Sahara are nomads. They herd sheep, goats and camels, eat meat, drink milk and use hides for tents."
+        },
+        {
+          "id": "g11-s5",
+          "zh": "澳洲沙漠的 Aboriginal people（原住民）以前也是遊牧民族：他們打獵沙漠動物、吃特定的植物，知道什麼時候、哪裡會下雨，隨身帶著打獵和採集的工具。大約 200 年前，European settlers（歐洲移民）佔了土地，逼他們改變生活方式。現在他們大多住在城市裡，不再遊牧。",
+          "en_exam_sentence": "Aboriginal people in Australian deserts were nomads who hunted and gathered. About 200 years ago European settlers took over the land, and most now live in urban areas."
+        },
+        {
+          "id": "g11-s6",
+          "zh": "Oasis（綠洲，複數 oases）是沙漠裡一直有水的地方。人們在綠洲旁邊建立聚落，種 date palms（椰棗樹）、無花果和橄欖。椰棗樹很有用：果實可以吃，樹幹可以當木材，葉子可以做繩子和屋頂。以前沙漠的人挖井或挖水道把水引到農作物；現在用地下水管、現代抽水機和卡車送水。",
+          "en_exam_sentence": "An oasis is a place in a desert where water is permanently found. People settle near oases and grow date palms, figs and olives.",
+          "diagram_hint": "Oasis: pool of water, date palms, small settlement around it."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g11-q1",
+          "q_en": "Which of these is a way that desert plants survive?",
+          "q_zh": "下面哪一個是沙漠植物生存的方法？",
+          "options": [
+            "A  They have very short roots.",
+            "B  They need lots of rain every day.",
+            "C  They store water in their stems or leaves.",
+            "D  They only grow in snow."
+          ],
+          "answer": "C  They store water in their stems or leaves.",
+          "why_zh": "把水存在莖或葉子裡是沙漠植物的方法之一。"
+        },
+        {
+          "id": "g11-q2",
+          "q_en": "What does 'nomadic' mean?",
+          "q_zh": "nomadic 是什麼意思？",
+          "options": [
+            "A  living in one big city forever",
+            "B  growing date palms at an oasis",
+            "C  working in a factory",
+            "D  moving from place to place in search of water and grazing for animals"
+          ],
+          "answer": "D  moving from place to place in search of water and grazing for animals",
+          "why_zh": "遊牧民族為了找水和草地，從一個地方搬到另一個地方。"
+        },
+        {
+          "id": "g11-q3",
+          "q_en": "What is an oasis?",
+          "q_zh": "什麼是綠洲（oasis）？",
+          "options": [
+            "A  a very large sand dune",
+            "B  a type of camel",
+            "C  a place in a desert where water is permanently found",
+            "D  a cold desert"
+          ],
+          "answer": "C  a place in a desert where water is permanently found",
+          "why_zh": "綠洲是沙漠裡一直有水的地方。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo11-desert-definition",
+          "label_zh": "沙漠一定很熱嗎？怎樣才算沙漠？",
+          "keywords": [
+            "沙漠",
+            "desert",
+            "一定很熱嗎",
+            "冷沙漠",
+            "Antarctica",
+            "250mm",
+            "Sahara",
+            "定義"
+          ],
+          "simpler_explanation_zh": "沙漠的重點是「雨很少」：一年少於 250 mm。熱沙漠是又少雨、溫度又高的地方，例如 Sahara。可是也有冷沙漠，例如南極洲的大部分地方，雨（雪）也很少。所以判斷沙漠先看雨量，再看熱不熱。",
+          "analogy_zh": "「沙漠」像「很渴的地方」，不一定熱。冰箱裡很冷，可是也可以很乾。",
+          "even_simpler_zh": "沙漠 = 一年雨 < 250 mm。熱沙漠 = 少雨 + 很熱。",
+          "confirm_question": {
+            "q_zh": "下面哪一個是判斷沙漠最重要的條件？",
+            "options": [
+              "A  很熱",
+              "B  有很多沙子",
+              "C  雨很少（少於 250 mm）",
+              "D  有駱駝"
+            ],
+            "answer": "C  雨很少（少於 250 mm）",
+            "why_zh": "沙漠的定義是雨量非常少。"
+          }
+        },
+        {
+          "id": "geo11-plant-adaptations",
+          "label_zh": "沙漠植物的三種生存方法記不住。",
+          "keywords": [
+            "植物",
+            "plants",
+            "仙人掌",
+            "cactus",
+            "長根",
+            "存水",
+            "刺",
+            "spikes"
+          ],
+          "simpler_explanation_zh": "三招：① 根長長的，去很深、很遠的地方找水。② 把水存在莖或葉子裡，像存錢筒一樣。③ 用刺或毒保護自己，不讓動物吃掉它存的水。仙人掌三招都用：長根、胖胖的莖存水、滿身是刺。",
+          "analogy_zh": "像一個準備去遠足的小朋友：吸管很長（長根）、背一大瓶水（存水）、書包上有鎖（刺），不讓別人偷喝。",
+          "even_simpler_zh": "長根找水、莖葉存水、刺毒保護。",
+          "confirm_question": {
+            "q_zh": "仙人掌身上的刺有什麼用？",
+            "options": [
+              "A  讓它長得更快",
+              "B  吸收陽光",
+              "C  讓它變冷",
+              "D  保護自己不被吃掉"
+            ],
+            "answer": "D  保護自己不被吃掉",
+            "why_zh": "刺和毒用來保護植物不被動物吃掉。"
+          }
+        },
+        {
+          "id": "geo11-animals",
+          "label_zh": "沙漠動物怎麼活下來？駱駝的駝峰裡是水嗎？",
+          "keywords": [
+            "動物",
+            "animals",
+            "駱駝",
+            "camel",
+            "駝峰",
+            "hump",
+            "meerkat",
+            "狐獴"
+          ],
+          "simpler_explanation_zh": "沙漠動物會在地上挖洞，在涼涼暗暗的洞裡躲太陽。駱駝的駝峰裡存的不是水，是脂肪（fat）。單峰駱駝可以三到四天不喝水，嘴巴很硬，可以吃有刺的植物。狐獴（meerkats）住在 Kalahari，用長爪子挖蟲吃，成群生活、互相警告危險。",
+          "analogy_zh": "熱天中午，你會躲到樹蔭或冷氣房裡，沙漠動物則躲到地洞裡，像有天然冷氣的房間。",
+          "even_simpler_zh": "動物挖洞躲太陽。駝峰存脂肪，不是水。",
+          "confirm_question": {
+            "q_zh": "單峰駱駝的駝峰裡存的是什麼？",
+            "options": [
+              "A  脂肪 fat",
+              "B  水",
+              "C  沙子",
+              "D  種子"
+            ],
+            "answer": "A  脂肪 fat",
+            "why_zh": "課本說駱駝把脂肪存在駝峰裡。"
+          }
+        },
+        {
+          "id": "geo11-tuareg-aboriginal",
+          "label_zh": "Tuareg 人和 Aboriginal people 有什麼不同？",
+          "keywords": [
+            "Tuareg",
+            "Aboriginal",
+            "原住民",
+            "遊牧",
+            "nomads",
+            "Sahara",
+            "Australia",
+            "澳洲"
+          ],
+          "simpler_explanation_zh": "兩者都是沙漠裡的遊牧民族，但住在不同地方、過著不同的生活。Tuareg 住在非洲的 Sahara，養綿羊、山羊和駱駝，跟著季節搬家。Aboriginal people 住在澳洲沙漠，以前靠打獵和採集植物生活，知道哪裡會下雨。大約 200 年前歐洲移民佔了土地，現在他們大多住在城市，不再遊牧。",
+          "analogy_zh": "像兩個都愛露營的家庭：一家帶著羊和駱駝在非洲搬家；另一家在澳洲靠打獵和找植物過生活。",
+          "even_simpler_zh": "Tuareg：Sahara、養動物。Aboriginal：澳洲、打獵採集，現在大多住城市。",
+          "confirm_question": {
+            "q_zh": "哪一群人住在 Sahara，養綿羊、山羊和駱駝？",
+            "options": [
+              "A  Aboriginal people",
+              "B  European settlers",
+              "C  Native Americans",
+              "D  Tuareg"
+            ],
+            "answer": "D  Tuareg",
+            "why_zh": "Tuareg 是 Sahara 的遊牧民族。"
+          }
+        },
+        {
+          "id": "geo11-oasis",
+          "label_zh": "綠洲（oasis）是什麼？人為什麼住在那裡？",
+          "keywords": [
+            "綠洲",
+            "oasis",
+            "oases",
+            "椰棗",
+            "date palm",
+            "沙漠的水",
+            "water",
+            "settlement"
+          ],
+          "simpler_explanation_zh": "Oasis 是沙漠裡一直都有水的地方。有水就能喝、能種東西，所以人們在綠洲旁邊住下來，種椰棗樹、無花果和橄欖。椰棗樹全身是寶：果實可以吃、樹幹當木材、葉子做繩子和屋頂。",
+          "analogy_zh": "在很熱的操場中間，只有一個飲水機，大家下課都會聚到那裡。綠洲就是沙漠裡的飲水機。",
+          "even_simpler_zh": "Oasis = 沙漠裡一直有水的地方 → 人住在旁邊、種椰棗。",
+          "confirm_question": {
+            "q_zh": "人們在綠洲旁邊常種什麼樹？",
+            "options": [
+              "A  椰棗樹 date palm",
+              "B  松樹",
+              "C  雲杉",
+              "D  可可樹"
+            ],
+            "answer": "A  椰棗樹 date palm",
+            "why_zh": "課本說人們在綠洲種椰棗樹、無花果和橄欖。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "沙漠定義要寫 less than 250 mm of rain a year。",
+        "植物生存方法要寫具體：long roots / store water in stems or leaves / spikes or poisons。",
+        "nomadic 的定義要寫出原因：in search of water and grazing for their animals。",
+        "oasis 的複數是 oases。"
+      ],
+      "common_mistakes_zh": [
+        "以為駝峰裡存的是水。",
+        "以為所有沙漠都很熱，忘了南極洲是冷沙漠。",
+        "把 Tuareg（Sahara）和 Aboriginal people（澳洲）的地方弄混。"
+      ]
+    },
+    {
+      "id": "geo-12-coniferous-forests",
+      "title_en": "Coniferous forests",
+      "title_zh": "針葉林",
+      "term": "Term 3: Climate and vegetation around the world",
+      "notes": [
+        "來源：課本 Term 3 Unit 4（p67–71）。Alberta 氣候圖數值是約略讀值，見 flagged_facts。"
+      ],
+      "key_terms": [
+        {
+          "en": "coniferous",
+          "zh": "針葉的／毬果的",
+          "kid_definition_zh": "種子長在毬果（cone）裡，而不是長在花裡。"
+        },
+        {
+          "en": "precipitation",
+          "zh": "降水",
+          "kid_definition_zh": "從天上落下來的水，包括雨和雪。"
+        },
+        {
+          "en": "hibernate",
+          "zh": "冬眠",
+          "kid_definition_zh": "整個冬天都在睡覺或休息。"
+        },
+        {
+          "en": "migrate",
+          "zh": "遷徙",
+          "kid_definition_zh": "為了某個原因（例如找食物）搬到別的地方住。"
+        },
+        {
+          "en": "prey",
+          "zh": "獵物",
+          "kid_definition_zh": "被別的動物抓來吃的動物。"
+        },
+        {
+          "en": "needle-like leaves",
+          "zh": "針狀葉",
+          "kid_definition_zh": "細細的、像針一樣的葉子，幫助樹在寒冷中活下來。"
+        },
+        {
+          "en": "survive",
+          "zh": "生存",
+          "kid_definition_zh": "就算很困難也繼續活下去。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g12-s1",
+          "zh": "Coniferous（針葉的）意思是種子長在 cones（毬果）裡，不是長在花裡。針葉林大約覆蓋地球陸地的 15%，是世界上最大的森林，但植物和動物的種類比其他森林少，常常在有湖泊的地方。針葉樹可以長在比較高的山坡上，葉子像針，一整年都是綠色的。",
+          "en_exam_sentence": "Coniferous means having seeds in cones rather than in flowers. Coniferous forests cover about 15% of the Earth's land surface."
+        },
+        {
+          "id": "g12-s2",
+          "zh": "針葉林在哪裡？北美洲（例如加拿大的 Alberta）、Scandinavia（北歐）、北歐其他地方和 Siberia（西伯利亞）。",
+          "en_exam_sentence": "Coniferous forests are found in North America (such as Alberta in Canada), Scandinavia, northern Europe and Siberia.",
+          "diagram_hint": "World map: coniferous forest belt across North America, Scandinavia, northern Europe and Siberia."
+        },
+        {
+          "id": "g12-s3",
+          "zh": "氣候：夏天短，冬天又長又冷，還會下很多雪。Precipitation（降水）包括雨和雪。以 Alberta 為例：1 月大約 –3 °C，7 月大約 18 °C；雨量 6、7 月最多。",
+          "en_exam_sentence": "Coniferous forests have short summers and long, cold winters with heavy snowfall."
+        },
+        {
+          "id": "g12-s4",
+          "zh": "植物怎麼適應：針葉樹（例如 pine 松樹）長毬果不長花；葉子細細的像針，不是大片的葉子，幫助它熬過寒冷。Spruce（雲杉）的樹枝短，有些往下彎，雪就會滑下去，樹枝不會被厚雪壓斷。樹又高又窄，地面上有矮矮的灌木和草本植物。植物長得慢，所以動物要走很遠找食物。",
+          "en_exam_sentence": "Coniferous trees have thin, needle-like leaves that help them survive the cold. Spruce trees have short branches that bend downwards so that heavy snow slides off.",
+          "diagram_hint": "Spruce tree shaped like a cone with downward branches; snow sliding off."
+        },
+        {
+          "id": "g12-s5",
+          "zh": "動物怎麼適應：Moose（駝鹿，北美洲，最大的鹿）有特別的毛皮，冬天保暖。Great grey owl（烏林鴞）大多吃老鼠，飛的時候幾乎沒有聲音，還能衝進雪裡抓 prey（獵物）。Russian flying squirrel（俄羅斯鼯鼠，西伯利亞）手腕和腳之間有皮膜，晚上可以在樹枝間滑翔找食物。有些動物會 hibernate（冬眠）或 migrate（遷徙）。",
+          "en_exam_sentence": "Animals survive in different ways: the moose has a special coat that keeps it warm, and some animals hibernate or migrate."
+        },
+        {
+          "id": "g12-s6",
+          "zh": "人們在針葉林做什麼？冬天長又冷、土壤貧瘠，很少農場能種食物 → 人們需要食物和錢 → 他們打獵、設陷阱抓動物，賣毛皮；冬天砍樹（logging）賺錢；清除森林來蓋工廠、道路、房子、垃圾掩埋場和滑雪場 → 結果針葉林的植物和動物受到威脅。",
+          "en_exam_sentence": "People hunt and trap animals for fur, log trees and clear forests for factories, roads, housing, landfill sites and ski slopes, so coniferous vegetation and wildlife are under threat.",
+          "diagram_hint": "Flow diagram: cold climate & poor soil → few farms → people need food and money → hunting, logging, clearing → forest under threat."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g12-q1",
+          "q_en": "Why do coniferous trees have thin, needle-like leaves?",
+          "q_zh": "針葉樹為什麼有細細的針狀葉？",
+          "options": [
+            "A  to help them survive the cold",
+            "B  to catch more rain in the desert",
+            "C  to make flowers",
+            "D  to attract tourists"
+          ],
+          "answer": "A  to help them survive the cold",
+          "why_zh": "課本說針狀葉幫助樹在寒冷中生存。"
+        },
+        {
+          "id": "g12-q2",
+          "q_en": "Why are there few farms in coniferous forest areas?",
+          "q_zh": "為什麼針葉林地區的農場很少？",
+          "options": [
+            "A  because winters are long and cold and the soil is poor",
+            "B  because it is too hot",
+            "C  because there are no trees",
+            "D  because it never snows"
+          ],
+          "answer": "A  because winters are long and cold and the soil is poor",
+          "why_zh": "冬天長又冷、土壤貧瘠，很難種食物。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo12-coniferous-meaning",
+          "label_zh": "coniferous 是什麼意思？跟一般的樹有什麼不同？",
+          "keywords": [
+            "coniferous",
+            "針葉",
+            "毬果",
+            "cone",
+            "松果",
+            "pine",
+            "什麼意思",
+            "seeds"
+          ],
+          "simpler_explanation_zh": "Coniferous 的意思是「種子長在毬果（cone）裡，不是長在花裡」。你看過松果嗎？那就是毬果。針葉樹不開花、長毬果，葉子細細的像針，而且一整年都是綠的。",
+          "analogy_zh": "一般的花樹像把種子放在漂亮的花盒子裡；針葉樹像把種子藏在硬硬的松果盒子裡。",
+          "even_simpler_zh": "Coniferous = 種子在毬果裡、針狀葉、整年綠。",
+          "confirm_question": {
+            "q_zh": "針葉樹的種子長在哪裡？",
+            "options": [
+              "A  花裡",
+              "B  根裡",
+              "C  毬果 cone 裡",
+              "D  葉子上"
+            ],
+            "answer": "C  毬果 cone 裡",
+            "why_zh": "coniferous 的意思就是種子長在毬果裡。"
+          }
+        },
+        {
+          "id": "geo12-spruce-snow",
+          "label_zh": "雲杉的樹枝為什麼往下彎？",
+          "keywords": [
+            "雲杉",
+            "spruce",
+            "樹枝",
+            "往下彎",
+            "雪",
+            "snow",
+            "branches",
+            "壓斷"
+          ],
+          "simpler_explanation_zh": "冬天下很多雪，雪堆在樹枝上會很重。雲杉的樹枝短，有些往下彎，雪就會滑下去，不會一直堆著，樹枝就不會被壓斷。",
+          "analogy_zh": "像斜斜的屋頂：雨和雪會滑下去；平平的屋頂雪會越堆越多，最後可能被壓壞。",
+          "even_simpler_zh": "樹枝往下彎 → 雪滑下去 → 樹枝不會斷。",
+          "confirm_question": {
+            "q_zh": "雲杉的樹枝往下彎，有什麼好處？",
+            "options": [
+              "A  讓它開花",
+              "B  讓雪滑下去，樹枝不會斷",
+              "C  讓它長得比較矮",
+              "D  讓動物吃不到"
+            ],
+            "answer": "B  讓雪滑下去，樹枝不會斷",
+            "why_zh": "雪滑下去，樹枝就不會被厚雪壓斷。"
+          }
+        },
+        {
+          "id": "geo12-hibernate-migrate",
+          "label_zh": "hibernate 和 migrate 有什麼不同？",
+          "keywords": [
+            "hibernate",
+            "migrate",
+            "冬眠",
+            "遷徙",
+            "不同",
+            "冬天",
+            "動物",
+            "搬走"
+          ],
+          "simpler_explanation_zh": "兩種都是動物對付冬天的方法。Hibernate（冬眠）：留在原地，整個冬天睡覺或休息。Migrate（遷徙）：搬到別的地方去住，例如去找食物。一個是「留下來睡」，一個是「搬走」。",
+          "analogy_zh": "放寒假時，有的同學整個假期在家睡懶覺（hibernate）；有的同學全家搬去別的城市找親戚過假期（migrate）。",
+          "even_simpler_zh": "Hibernate = 留下來睡一整個冬天。Migrate = 搬到別的地方。",
+          "confirm_question": {
+            "q_zh": "動物為了找食物搬到別的地區住，這叫？",
+            "options": [
+              "A  hibernate",
+              "B  survive",
+              "C  migrate",
+              "D  prey"
+            ],
+            "answer": "C  migrate",
+            "why_zh": "migrate 是為了某個原因搬到別的地方。"
+          }
+        },
+        {
+          "id": "geo12-human-threat",
+          "label_zh": "人們為什麼會讓針葉林受威脅？",
+          "keywords": [
+            "人類活動",
+            "human activities",
+            "砍樹",
+            "logging",
+            "毛皮",
+            "fur",
+            "威脅",
+            "threat"
+          ],
+          "simpler_explanation_zh": "這是一條連鎖：冬天長又冷、土壤不好 → 很少農場種食物 → 人們需要食物和錢 → 所以他們打獵賣毛皮、冬天砍樹賺錢、清除森林蓋工廠、道路、房子、垃圾場和滑雪場 → 森林和動物就越來越少。",
+          "analogy_zh": "像推骨牌：第一張是「冷又土壤差」，最後一張倒下的是「森林受威脅」。",
+          "even_simpler_zh": "沒辦法種田 → 打獵、砍樹、清森林 → 森林受威脅。",
+          "confirm_question": {
+            "q_zh": "下面哪一個是人們在針葉林賺錢的方法？",
+            "options": [
+              "A  種可可",
+              "B  挖金礦",
+              "C  冬天砍樹（logging）",
+              "D  種椰棗"
+            ],
+            "answer": "C  冬天砍樹（logging）",
+            "why_zh": "課本說人們在冬天砍樹賺錢，也打獵賣毛皮。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "針葉林位置要能寫四個：North America (Canada)、Scandinavia、northern Europe、Siberia。",
+        "說明植物適應時，要把「特徵」和「好處」連起來：needle-like leaves → survive the cold。",
+        "人類活動題可以照課本的流程圖寫成因果句。"
+      ],
+      "common_mistakes_zh": [
+        "以為針葉林在南非或赤道附近。",
+        "把 hibernate 和 migrate 寫反。",
+        "只寫特徵，沒寫它怎麼幫助生存。"
+      ]
+    },
+    {
+      "id": "geo-13-population-density",
+      "title_en": "People and provinces: population distribution and density",
+      "title_zh": "人口和省份：人口分布和人口密度",
+      "term": "Term 4: Population – why people live where they do",
+      "notes": [
+        "來源：課本 Term 4 Unit 1（p76–81）。",
+        "課本同一頁寫南非人口「about 62 million」又寫「53 million」，前後不一致；本單元不考這個數字。見 flagged_facts。",
+        "課本把 Mpumalanga 人口印成「4 700 000 million」，應該是 4 700 000（四百七十萬）。4 700 000 ÷ 76 495 ≈ 61,4，課本寫 61,5；本單元寫「大約 61,5」並列入 flagged_facts。",
+        "省份面積、人口、密度的長條圖數字是從照片估計的約略值。"
+      ],
+      "key_terms": [
+        {
+          "en": "population",
+          "zh": "人口",
+          "kid_definition_zh": "住在一個地方或國家的所有人。"
+        },
+        {
+          "en": "population distribution",
+          "zh": "人口分布",
+          "kid_definition_zh": "人們在一個地區裡是怎麼散開住的：有的地方擠、有的地方空。"
+        },
+        {
+          "en": "population density",
+          "zh": "人口密度",
+          "kid_definition_zh": "一個地區裡有多少人。用「人數 ÷ 面積（km²）」算，單位是 people per km²。"
+        },
+        {
+          "en": "densely populated",
+          "zh": "人口稠密",
+          "kid_definition_zh": "人很多、住得很擠。"
+        },
+        {
+          "en": "sparsely populated",
+          "zh": "人口稀少",
+          "kid_definition_zh": "人很少、住得很分散。"
+        },
+        {
+          "en": "settle",
+          "zh": "定居",
+          "kid_definition_zh": "在一個地方長久住下來。"
+        },
+        {
+          "en": "square kilometre (km²)",
+          "zh": "平方公里",
+          "kid_definition_zh": "量面積的單位：長 1 公里、寬 1 公里的正方形那麼大。"
+        },
+        {
+          "en": "dot map",
+          "zh": "點子地圖",
+          "kid_definition_zh": "用點表示人在哪裡的地圖。課本的地圖：一個紅點 = 50 000 人。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g13-s1",
+          "zh": "Population（人口）是住在一個地方的所有人。Population distribution（人口分布）是人們在一個地區怎麼散開住。南非的人口分布不平均（uneven）：有些地方很擠，有些地方很空。",
+          "en_exam_sentence": "Population distribution is the way people are spread across an area. In South Africa the population is unevenly distributed."
+        },
+        {
+          "id": "g13-s2",
+          "zh": "課本用四個方格說明：A 點子平均散開（evenly distributed）；B 點子不平均（unevenly distributed）；C 點子很少（sparsely populated 人口稀少）；D 點子很多很擠（densely populated 人口稠密）。",
+          "en_exam_sentence": "Densely populated areas have many people living close together. Sparsely populated areas have few people living far apart.",
+          "diagram_hint": "Four squares of dots: A even, B uneven, C sparse, D dense."
+        },
+        {
+          "id": "g13-s3",
+          "zh": "南非的點子地圖：一個紅點代表 50 000 人；綠點是超過 100 萬人的城市地區，例如 Pretoria、Johannesburg、Bloemfontein、Durban、Cape Town、Gqeberha 和 East London 一帶。地圖告訴我們：Gauteng 人口最密集；東邊比西邊稠密；Northern Cape 很稀少。住在城市和鎮上的人住得近，密度高；住在村莊和農場的人住得遠，密度低。",
+          "en_exam_sentence": "On the dot map, Gauteng is the most densely populated province, the east is more densely populated than the west, and the Northern Cape is sparsely populated.",
+          "diagram_hint": "Dot map of South Africa: one red dot = 50 000 people; green dots = urban areas over 1 million."
+        },
+        {
+          "id": "g13-s4",
+          "zh": "面積大不代表人多！Northern Cape 面積最大（大約 370 000 km²），人口卻最少（大約 130 萬，1,3 million）。Gauteng 面積最小（大約 18 000 km²），人口卻最多（超過大約 1 500 萬）。KwaZulu-Natal 人口第二多（大約 1 200 萬）。所以一個地方的大小，和住多少人關係不大。",
+          "en_exam_sentence": "The smallest province by area does not have the lowest population. The size of an area has little to do with how many people live there.",
+          "diagram_hint": "Two bar graphs side by side: area (Northern Cape tallest, Gauteng shortest) and population (Gauteng tallest, Northern Cape shortest)."
+        },
+        {
+          "id": "g13-s5",
+          "zh": "Population density（人口密度）= 人數 ÷ 面積（km²），答案的單位是 people per km²（每平方公里幾人）。簡單例子：一個 20 km² 的地方住了 1 200 人，1 200 ÷ 20 = 60，就是每平方公里 60 人。小數例子：123 000 人住在 2 000 km²，123 000 ÷ 2 000 = 61,5，就是每平方公里 61,5 人。",
+          "en_exam_sentence": "Average population density = number of people ÷ area in km². For example, 1 200 ÷ 20 = 60 people per km².",
+          "diagram_hint": "Working box: Density = people ÷ km² → 1 200 ÷ 20 = 60 people per km²."
+        },
+        {
+          "id": "g13-s6",
+          "zh": "課本的例子：Mpumalanga 面積 76 495 km²，人口 4 700 000（課本誤印成「4 700 000 million」）。4 700 000 ÷ 76 495 ≈ 61,5，所以大約每平方公里 61,5 人。課本的密度圖：Gauteng 大約每平方公里 800 人（最密）；KwaZulu-Natal 大約 100 人，第二密，可是面積只排第三小；Northern Cape 大約只有 3 人。Gauteng 大部分人住在城市和鎮上。",
+          "en_exam_sentence": "Mpumalanga: 4 700 000 people ÷ 76 495 km² = about 61,5 people per km². Gauteng has about 800 people per km²; the Northern Cape has about 3."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g13-q1",
+          "q_en": "An area of 50 km² has 4 000 people. What is its population density?",
+          "q_zh": "一個 50 km² 的地區住了 4 000 人，人口密度是多少？",
+          "options": [
+            "A  200 000 people per km²",
+            "B  4 050 people per km²",
+            "C  8 people per km²",
+            "D  80 people per km²"
+          ],
+          "answer": "D  80 people per km²",
+          "why_zh": "4 000 ÷ 50 = 80，每平方公里 80 人。要用除法：人數 ÷ 面積。"
+        },
+        {
+          "id": "g13-q2",
+          "q_en": "Which province is the largest by area but has the smallest population?",
+          "q_zh": "哪一個省面積最大，人口卻最少？",
+          "options": [
+            "A  Gauteng",
+            "B  KwaZulu-Natal",
+            "C  Mpumalanga",
+            "D  Northern Cape"
+          ],
+          "answer": "D  Northern Cape",
+          "why_zh": "Northern Cape 面積最大（約 370 000 km²），人口最少（約 130 萬）。"
+        },
+        {
+          "id": "g13-q3",
+          "q_en": "On a dot map, one dot = 50 000 people. An area has 6 dots. About how many people live there?",
+          "q_zh": "點子地圖上一個點 = 50 000 人，一個地區有 6 個點，大約住了多少人？",
+          "options": [
+            "A  56 000",
+            "B  50 006",
+            "C  8 333",
+            "D  300 000"
+          ],
+          "answer": "D  300 000",
+          "why_zh": "6 × 50 000 = 300 000 人。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo13-distribution-vs-density",
+          "label_zh": "人口分布和人口密度有什麼不同？",
+          "keywords": [
+            "分布",
+            "密度",
+            "distribution",
+            "density",
+            "不同",
+            "差別",
+            "人口",
+            "per km²"
+          ],
+          "simpler_explanation_zh": "Distribution（分布）說的是人「住在哪裡、怎麼散開」：是平均散開，還是擠在某些地方。Density（密度）說的是「一塊地上有多少人」，是一個可以算出來的數字（人數 ÷ km²）。分布是看地圖說樣子，密度是算出一個數字。",
+          "analogy_zh": "灑巧克力碎片在蛋糕上：分布是看碎片「灑得平不平均」；密度是數「每一小塊蛋糕上有幾片」。",
+          "even_simpler_zh": "分布 = 怎麼散開。密度 = 每 km² 幾個人。",
+          "confirm_question": {
+            "q_zh": "「每平方公里 800 人」說的是？",
+            "options": [
+              "A  人口分布",
+              "B  人口密度",
+              "C  比例尺",
+              "D  氣候"
+            ],
+            "answer": "B  人口密度",
+            "why_zh": "有數字、每 km² 幾人，是人口密度。"
+          }
+        },
+        {
+          "id": "geo13-divide-order",
+          "label_zh": "算人口密度時，是誰除以誰？",
+          "keywords": [
+            "怎麼算",
+            "除法",
+            "誰除以誰",
+            "people per km²",
+            "density formula",
+            "人數除以面積",
+            "calculate",
+            "公式"
+          ],
+          "simpler_explanation_zh": "永遠是「人數 ÷ 面積」。人數放前面，面積（km²）放後面。答案的意思是「每 1 平方公里有幾個人」，所以單位寫 people per km²。例：1 200 人 ÷ 20 km² = 60 people per km²。",
+          "analogy_zh": "10 片披薩分給 5 個人，每人幾片？10 ÷ 5 = 2。人口密度就是把「人」分到每一塊「平方公里」上：人 ÷ km²。",
+          "even_simpler_zh": "人 ÷ km² = 每 km² 幾人。",
+          "confirm_question": {
+            "q_zh": "一個地區 30 km²，住了 900 人，密度怎麼算？",
+            "options": [
+              "A  900 ÷ 30 = 30 people per km²",
+              "B  30 ÷ 900",
+              "C  900 × 30",
+              "D  900 + 30"
+            ],
+            "answer": "A  900 ÷ 30 = 30 people per km²",
+            "why_zh": "人數 ÷ 面積：900 ÷ 30 = 30 people per km²。"
+          }
+        },
+        {
+          "id": "geo13-big-not-many",
+          "label_zh": "Northern Cape 那麼大，為什麼人那麼少？",
+          "keywords": [
+            "Northern Cape",
+            "Gauteng",
+            "面積大",
+            "人少",
+            "為什麼",
+            "最大的省",
+            "最小的省",
+            "size"
+          ],
+          "simpler_explanation_zh": "面積大不代表人多。Northern Cape 是面積最大的省，但人口最少，所以人口密度很低（大約每平方公里 3 人）。Gauteng 面積最小，人口最多，所以最擠（大約每平方公里 800 人）。課本說：一個地方的大小，和住多少人關係不大。",
+          "analogy_zh": "一個大大的空操場只有 3 個人在跑步；一間小小的教室卻擠了 30 個同學。大小和人多不多是兩回事。",
+          "even_simpler_zh": "大 ≠ 人多。Northern Cape 大但人少；Gauteng 小但人最多。",
+          "confirm_question": {
+            "q_zh": "哪一個省面積最小，人口卻最多？",
+            "options": [
+              "A  Gauteng",
+              "B  Northern Cape",
+              "C  Free State",
+              "D  Western Cape"
+            ],
+            "answer": "A  Gauteng",
+            "why_zh": "Gauteng 面積最小（約 18 000 km²），人口最多。"
+          }
+        },
+        {
+          "id": "geo13-dot-map",
+          "label_zh": "點子地圖（dot map）怎麼看？",
+          "keywords": [
+            "dot map",
+            "點子地圖",
+            "紅點",
+            "50000",
+            "一個點",
+            "怎麼看",
+            "dots",
+            "綠點"
+          ],
+          "simpler_explanation_zh": "每一個點代表一群人，不是一個人。課本的南非地圖：一個紅點 = 50 000 人。點越多越擠的地方，人越多、越稠密；點很少的地方，人口稀少。綠點表示超過 100 萬人的城市地區。要算大約多少人，就用「點的數目 × 50 000」。",
+          "analogy_zh": "像班上投票的貼紙：老師規定一張貼紙代表 10 票，你看到 3 張貼紙，就知道是 30 票。",
+          "even_simpler_zh": "一個紅點 = 50 000 人。點多 = 人多。",
+          "confirm_question": {
+            "q_zh": "一個地區有 4 個紅點（一點 = 50 000 人），大約有多少人？",
+            "options": [
+              "A  200 000 人",
+              "B  4 人",
+              "C  50 004 人",
+              "D  54 000 人"
+            ],
+            "answer": "A  200 000 人",
+            "why_zh": "4 × 50 000 = 200 000 人。"
+          }
+        },
+        {
+          "id": "geo13-comma-decimal",
+          "label_zh": "61,5 是什麼意思？為什麼用逗號？",
+          "keywords": [
+            "逗號",
+            "小數",
+            "61,5",
+            "comma",
+            "decimal",
+            "半個人",
+            "平均",
+            "average"
+          ],
+          "simpler_explanation_zh": "南非寫小數用逗號，所以 61,5 就是「六十一點五」（我們在台灣寫成 61.5）。每平方公里 61,5 人是「平均」的意思，不是真的有半個人，而是把所有人平均分到每一平方公里上的結果。",
+          "analogy_zh": "全班 30 人分 45 塊餅乾，每人平均 1,5 塊。沒有人真的拿到半塊，可是平均起來就是 1,5。",
+          "even_simpler_zh": "61,5 = 61.5，是平均數。南非用逗號寫小數。",
+          "confirm_question": {
+            "q_zh": "南非寫法「1,3 million」是多少？",
+            "options": [
+              "A  13 million",
+              "B  13 萬",
+              "C  一百三十萬",
+              "D  1 300 萬"
+            ],
+            "answer": "C  一百三十萬",
+            "why_zh": "1,3 million = 1.3 百萬 = 一百三十萬。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "密度計算寫三行：Density = number of people ÷ area；= 4 000 ÷ 50；= 80 people per km²。",
+        "答案單位一定要寫 people per km²。",
+        "小數用逗號：61,5。",
+        "被問「面積大的省人一定多嗎？」要回答 No，並用 Northern Cape 和 Gauteng 做例子。"
+      ],
+      "common_mistakes_zh": [
+        "把面積除以人數，算反了。",
+        "忘了寫單位 people per km²。",
+        "以為點子地圖上一個點就是一個人。",
+        "把分布和密度混為一談。"
+      ]
+    },
+    {
+      "id": "geo-14-why-people-live-where",
+      "title_en": "Why people live where they do: resources and settlement",
+      "title_zh": "人為什麼住在那裡：資源和聚落",
+      "term": "Term 4: Population – why people live where they do",
+      "notes": [
+        "來源：課本 Term 4 Unit 2（p82–87）和 Unit 4（p89–92）。",
+        "Activity 9（用理由詞配對照片）和 Activity 13（澳洲、撒哈拉的地圖題）是作業，本單元不寫成作業答案。"
+      ],
+      "key_terms": [
+        {
+          "en": "settlement",
+          "zh": "聚落",
+          "kid_definition_zh": "人們定居住下來的地方，可以是村莊、鎮或城市。"
+        },
+        {
+          "en": "natural resources",
+          "zh": "自然資源",
+          "kid_definition_zh": "大自然給的東西，例如水、肥沃的土地、礦物。"
+        },
+        {
+          "en": "minerals",
+          "zh": "礦物",
+          "kid_definition_zh": "埋在地下、很有價值的東西，例如黃金、鑽石、銅、鐵礦、鈾。"
+        },
+        {
+          "en": "energy resources",
+          "zh": "能源資源",
+          "kid_definition_zh": "可以產生能量的資源，例如石油、煤、天然氣。"
+        },
+        {
+          "en": "natural harbour",
+          "zh": "天然港灣",
+          "kid_definition_zh": "海岸邊天然形成、船可以安全停靠的地方。"
+        },
+        {
+          "en": "refugees",
+          "zh": "難民",
+          "kid_definition_zh": "為了自己的安全，被迫搬到別的國家的人。"
+        },
+        {
+          "en": "grazing",
+          "zh": "放牧",
+          "kid_definition_zh": "讓羊、牛等動物吃草。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g14-s1",
+          "zh": "人們住在某個地方，有很多原因：climate（氣候）、vegetation（植被）、natural features（自然地形）、resources and jobs（資源和工作）、laws（法律）和 history（歷史）。其他原因還有：礦物、貿易和交通、天然港灣、魚、野生動物、觀光、水和可以耕種的土地。",
+          "en_exam_sentence": "People live where they do because of climate, vegetation, natural features, resources and jobs, laws and history."
+        },
+        {
+          "id": "g14-s2",
+          "zh": "好的自然資源吸引人住下來。課本照片 A：有充足的水和溫和的氣候，適合種農作物；灌木叢是很好的牧場，可以放牧綿羊。",
+          "en_exam_sentence": "Areas with good natural resources, such as plenty of water and a mild climate, are good for growing crops and grazing animals."
+        },
+        {
+          "id": "g14-s3",
+          "zh": "水非常重要。河流從山上流過乾燥的地區，人們就沿著河邊住下來。在沙漠裡，可以用管子把水送進來；在寒冷的地方，燃料要從外地運進來。",
+          "en_exam_sentence": "Rivers flow through dry areas from the mountains, and people settle along the rivers."
+        },
+        {
+          "id": "g14-s4",
+          "zh": "礦物和能源也會讓聚落長大。有價值的礦物：黃金、鑽石、銅、鐵礦、鈾；能源：石油、煤、天然氣。Johannesburg 因為黃金吸引了大量的人；石油讓北非和沙烏地阿拉伯變得富有；美國的淘金熱（gold rush）吸引人們往西部去，雖然美國大部分人住在東邊。",
+          "en_exam_sentence": "Valuable mineral resources brought more settlers. In Johannesburg, gold attracted large numbers of people.",
+          "diagram_hint": "Map symbols: gold, diamonds, copper, iron ore, uranium; oil, coal, natural gas."
+        },
+        {
+          "id": "g14-s5",
+          "zh": "課本照片 B：Kimberley（Northern Cape）。它一開始只是一個農場；後來發現了鑽石，人們來這裡挖礦；為了貿易建了鐵路和道路；今天它是重要的採礦和交通中心。這是「礦物 → 人來 → 交通 → 城鎮長大」的例子。",
+          "en_exam_sentence": "Kimberley started as a farm. Diamonds were found, people came to mine, and railways and roads were built. Today it is an important mining and transport centre.",
+          "diagram_hint": "Timeline: farm → diamonds found → miners arrive → railway and roads → mining and transport centre."
+        },
+        {
+          "id": "g14-s6",
+          "zh": "有些人搬家不是因為想搬，而是被逼的。Refugees（難民）是為了自己的安全，被迫搬到別的國家的人。",
+          "en_exam_sentence": "Refugees are people who are forced to move to another country for their own safety."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g14-q1",
+          "q_en": "Why do people often settle along rivers in dry areas?",
+          "q_zh": "為什麼在乾燥地區，人們常常沿著河邊住？",
+          "options": [
+            "A  because rivers are cold",
+            "B  because there is no water there",
+            "C  because rivers provide water",
+            "D  because rivers stop trade"
+          ],
+          "answer": "C  because rivers provide water",
+          "why_zh": "水是生活和種作物最需要的資源。"
+        },
+        {
+          "id": "g14-q2",
+          "q_en": "What made Kimberley grow from a farm into a town?",
+          "q_zh": "什麼讓 Kimberley 從一個農場變成城鎮？",
+          "options": [
+            "A  Oil was found there.",
+            "B  It is next to the sea.",
+            "C  Diamonds were found there and people came to mine.",
+            "D  It has a cold climate."
+          ],
+          "answer": "C  Diamonds were found there and people came to mine.",
+          "why_zh": "發現鑽石吸引人來挖礦，接著建了鐵路和道路。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo14-reasons-list",
+          "label_zh": "人住在哪裡的原因太多了，記不住。",
+          "keywords": [
+            "原因",
+            "reasons",
+            "為什麼住",
+            "記不住",
+            "climate",
+            "water",
+            "jobs",
+            "settlement"
+          ],
+          "simpler_explanation_zh": "把原因分成三類就好記：① 大自然：氣候、水、土地、植被、地形、天然港灣。② 錢和工作：礦物、能源、貿易和交通、觀光。③ 人訂的規則和過去：法律、歷史。看到一個地方，問自己：這裡有水嗎？有工作嗎？有什麼歷史？",
+          "analogy_zh": "選一個好的露營地：要有水（河邊）、地要平、天氣不要太糟，附近最好有商店。人選擇住的地方也是這樣想。",
+          "even_simpler_zh": "大自然 + 工作 + 法律歷史。",
+          "confirm_question": {
+            "q_zh": "下面哪一個是人住在某地的「自然」原因？",
+            "options": [
+              "A  法律",
+              "B  歷史",
+              "C  觀光業",
+              "D  溫和的氣候和充足的水"
+            ],
+            "answer": "D  溫和的氣候和充足的水",
+            "why_zh": "氣候和水是大自然的原因。"
+          }
+        },
+        {
+          "id": "geo14-minerals-settlement",
+          "label_zh": "為什麼找到礦物，城鎮就會長大？",
+          "keywords": [
+            "礦物",
+            "minerals",
+            "鑽石",
+            "diamonds",
+            "黃金",
+            "Kimberley",
+            "Johannesburg",
+            "城鎮長大"
+          ],
+          "simpler_explanation_zh": "礦物很值錢，要有人挖，所以很多人來找工作。人多了，就需要房子、商店、學校；要把礦物運出去，就要建鐵路和道路。慢慢地，小地方就長成城鎮。Johannesburg（黃金）和 Kimberley（鑽石）都是這樣。",
+          "analogy_zh": "學校操場有人發現一大堆寶可夢卡，全校同學都會跑過去，旁邊馬上有人擺攤賣飲料。人越聚越多，就熱鬧起來。",
+          "even_simpler_zh": "找到礦物 → 很多人來工作 → 建路和房子 → 城鎮長大。",
+          "confirm_question": {
+            "q_zh": "哪個城市因為黃金吸引了大量的人？",
+            "options": [
+              "A  Kimberley",
+              "B  Johannesburg",
+              "C  Durban",
+              "D  Bloemfontein"
+            ],
+            "answer": "B  Johannesburg",
+            "why_zh": "課本說黃金吸引大量的人到 Johannesburg。Kimberley 是鑽石。"
+          }
+        },
+        {
+          "id": "geo14-kimberley-steps",
+          "label_zh": "Kimberley 的故事順序是什麼？",
+          "keywords": [
+            "Kimberley",
+            "順序",
+            "農場",
+            "farm",
+            "鐵路",
+            "railway",
+            "交通中心",
+            "transport"
+          ],
+          "simpler_explanation_zh": "四步：① 一開始是一個農場。② 發現了鑽石，人們來挖礦。③ 為了貿易，建了鐵路和道路。④ 今天是重要的採礦和交通中心。",
+          "analogy_zh": "像一顆種子長成大樹：種子（農場）→ 下雨（發現鑽石）→ 長出枝幹（鐵路和道路）→ 大樹（採礦和交通中心）。",
+          "even_simpler_zh": "農場 → 鑽石 → 鐵路道路 → 採礦交通中心。",
+          "confirm_question": {
+            "q_zh": "Kimberley 發現鑽石以後，為了貿易建了什麼？",
+            "options": [
+              "A  鐵路和道路",
+              "B  機場和港口",
+              "C  滑雪場",
+              "D  綠洲"
+            ],
+            "answer": "A  鐵路和道路",
+            "why_zh": "課本說建了鐵路和道路來做貿易。"
+          }
+        },
+        {
+          "id": "geo14-refugees",
+          "label_zh": "難民（refugees）和一般搬家的人有什麼不同？",
+          "keywords": [
+            "難民",
+            "refugees",
+            "被迫",
+            "forced",
+            "安全",
+            "safety",
+            "搬家",
+            "國家"
+          ],
+          "simpler_explanation_zh": "一般人搬家，常常是自己選擇的，例如找工作。Refugees（難民）是「被迫」搬走的，為了自己的安全，不得不離開自己的國家，搬到另一個國家。",
+          "analogy_zh": "一個是你想換新學校而轉學；另一個是學校發生危險，大家不得不馬上離開。",
+          "even_simpler_zh": "難民 = 為了安全被迫離開自己的國家。",
+          "confirm_question": {
+            "q_zh": "refugees 為什麼搬到別的國家？",
+            "options": [
+              "A  為了度假",
+              "B  為了上大學",
+              "C  為了買東西",
+              "D  為了自己的安全，被迫離開"
+            ],
+            "answer": "D  為了自己的安全，被迫離開",
+            "why_zh": "難民是為了安全被迫搬到別的國家。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "列出原因時用課本的詞：climate, vegetation, natural features, resources and jobs, laws, history。",
+        "Kimberley 的例子要寫出順序：farm → diamonds → mining → railways and roads → mining and transport centre。",
+        "refugees 的定義要有 forced 和 for their own safety。"
+      ],
+      "common_mistakes_zh": [
+        "把 Kimberley（鑽石）和 Johannesburg（黃金）弄混。",
+        "只寫「因為好」，沒說是哪一種資源。",
+        "以為難民是自己想搬家。"
+      ]
+    },
+    {
+      "id": "geo-15-rural-urban-migration",
+      "title_en": "Rural and urban areas; rural-to-urban migration",
+      "title_zh": "鄉村和城市；從鄉村搬到城市",
+      "term": "Term 4: Population – why people live where they do",
+      "notes": [
+        "來源：課本 Term 4 Unit 2（p82）和 Unit 3（p87–89）。",
+        "課本寫「About 69% of SA population lives in urban areas」（南非），又寫「now less than 40% lives in rural areas」（全世界）。兩個數字說的範圍不同，不能拿來互相加減或比較。見 flagged_facts。"
+      ],
+      "key_terms": [
+        {
+          "en": "urban",
+          "zh": "城市的",
+          "kid_definition_zh": "有很多建築和道路的地方，就是鎮或城市，人們住得很近。"
+        },
+        {
+          "en": "rural",
+          "zh": "鄉村的",
+          "kid_definition_zh": "有農場和小村莊的鄉下，人們住得比較遠。"
+        },
+        {
+          "en": "commercial farm",
+          "zh": "商業農場",
+          "kid_definition_zh": "種作物或養動物拿去賣的農場。"
+        },
+        {
+          "en": "subsistence farmer",
+          "zh": "自給農民",
+          "kid_definition_zh": "土地不多，種的食物只夠自己和家人吃，可能很窮。"
+        },
+        {
+          "en": "rural-to-urban migration",
+          "zh": "鄉村往城市遷移",
+          "kid_definition_zh": "人們從鄉下搬到鎮或城市住。"
+        },
+        {
+          "en": "overpopulation",
+          "zh": "人口過多",
+          "kid_definition_zh": "一個地方的人太多，道路、醫院、房子都不夠用。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g15-s1",
+          "zh": "Urban areas（城市地區）有很多建築和道路，是鎮或城市，人們住得很近，在辦公室、醫院、工廠工作。Rural areas（鄉村地區）是有農場和小村莊的鄉下，人們住得比較遠，種作物、養動物，也有人在學校、診所、商店工作。鄉村的人口比較稀少。",
+          "en_exam_sentence": "Urban areas are towns and cities with many buildings and roads where people live close together. Rural areas are countryside areas with farms and small villages where people live further apart.",
+          "diagram_hint": "Two pictures: a city with tall buildings and roads; countryside with farms and a small village."
+        },
+        {
+          "id": "g15-s2",
+          "zh": "南非大約 69% 的人住在城市地區，而且還在增加。從全世界看：1950 年大部分人住在鄉村，現在住在鄉村的人不到 40%，而且預計還會減少。",
+          "en_exam_sentence": "About 69% of South Africa's population lives in urban areas. In 1950 most people in the world lived in rural areas; now less than 40% do."
+        },
+        {
+          "id": "g15-s3",
+          "zh": "鄉村有兩種農民：commercial farms（商業農場）種作物或養動物拿去賣；subsistence farmers（自給農民）土地不多，種的食物只夠自己和家人吃，可能很窮。很多住在較窮鄉村的人會搬到鎮和城市。",
+          "en_exam_sentence": "Commercial farms grow crops or keep animals to sell. Subsistence farmers grow food only for themselves and their families."
+        },
+        {
+          "id": "g15-s4",
+          "zh": "人們為什麼從鄉村搬到城市？課本的公車上，大家說：種田太累了，今年乾旱、明年淹水；要去鎮上讀高中；要住在醫院附近；去礦場工作，把錢寄回家；家鄉沒工作，去和姊姊住、找工作；想要有電、家裡有廁所、有乾淨的水。",
+          "en_exam_sentence": "People move from rural to urban areas to find jobs, go to high school, live near a hospital, and have electricity, a toilet in the house and clean water.",
+          "diagram_hint": "A bus full of people with speech bubbles giving reasons for moving to the city."
+        },
+        {
+          "id": "g15-s5",
+          "zh": "城市長大會影響道路、醫院、商店和住房。從鄉村大量搬到城市，可能讓城市 overpopulation（人口過多）：路很塞、醫院排很久、房子不夠。",
+          "en_exam_sentence": "Rural-to-urban migration can cause overpopulation in cities, which puts pressure on roads, hospitals, shops and housing."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g15-q1",
+          "q_en": "Which of these is a reason people move from rural to urban areas?",
+          "q_zh": "下面哪一個是人們從鄉村搬到城市的原因？",
+          "options": [
+            "A  to find a job",
+            "B  to get away from electricity",
+            "C  to have less clean water",
+            "D  to live further from a hospital"
+          ],
+          "answer": "A  to find a job",
+          "why_zh": "找工作是常見原因；其他選項都和課本說的相反。"
+        },
+        {
+          "id": "g15-q2",
+          "q_en": "What is a subsistence farmer?",
+          "q_zh": "什麼是自給農民？",
+          "options": [
+            "A  a farmer who grows food only for himself or herself and the family",
+            "B  a farmer who sells all crops overseas",
+            "C  a factory worker in a city",
+            "D  a miner"
+          ],
+          "answer": "A  a farmer who grows food only for himself or herself and the family",
+          "why_zh": "自給農民種的食物只夠自己和家人吃。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo15-rural-vs-urban",
+          "label_zh": "rural 和 urban 哪個是城市、哪個是鄉村？",
+          "keywords": [
+            "rural",
+            "urban",
+            "鄉村",
+            "城市",
+            "哪個是",
+            "城鄉",
+            "countryside",
+            "town"
+          ],
+          "simpler_explanation_zh": "Urban = 城市（鎮或城市，很多建築和道路，大家住得近）。Rural = 鄉村（農場和小村莊，大家住得遠）。記法：urban 聽起來像「烏班」，想成「烏壓壓一班人擠在一起」= 城市；rural 的 r 想成 rice farm（稻田）= 鄉下。",
+          "analogy_zh": "Johannesburg 市中心高樓大廈、taxi 很多，就是 urban；開車幾小時看到一大片農田和幾間小房子，就是 rural。",
+          "even_simpler_zh": "Urban = 城市。Rural = 鄉村。",
+          "confirm_question": {
+            "q_zh": "有很多農場和小村莊、人住得很分散的地方是？",
+            "options": [
+              "A  rural",
+              "B  urban",
+              "C  oasis",
+              "D  harbour"
+            ],
+            "answer": "A  rural",
+            "why_zh": "鄉村（rural）有農場和小村莊，人住得比較遠。"
+          }
+        },
+        {
+          "id": "geo15-why-move",
+          "label_zh": "人為什麼要從鄉下搬到城市？",
+          "keywords": [
+            "為什麼搬",
+            "why move",
+            "migration",
+            "遷移",
+            "找工作",
+            "jobs",
+            "城市",
+            "鄉下"
+          ],
+          "simpler_explanation_zh": "課本的公車上有六個理由：① 種田太辛苦，乾旱和淹水輪流來。② 要去鎮上讀高中。③ 要住在醫院附近。④ 去礦場工作，把錢寄回家。⑤ 家鄉沒工作，去投靠親戚找工作。⑥ 想要電、家裡的廁所和乾淨的水。歸納起來：工作、讀書、醫療、生活設施。",
+          "analogy_zh": "如果你家附近沒有學校、沒有醫院、晚上沒電，你也會想搬到有這些東西的地方。",
+          "even_simpler_zh": "工作、讀書、醫院、電和水 → 搬去城市。",
+          "confirm_question": {
+            "q_zh": "課本公車上的人想搬到城市，下面哪一個不是他們的理由？",
+            "options": [
+              "A  找工作",
+              "B  讀高中",
+              "C  想要乾淨的水",
+              "D  想住得離醫院更遠"
+            ],
+            "answer": "D  想住得離醫院更遠",
+            "why_zh": "他們想住得離醫院近，不是更遠。"
+          }
+        },
+        {
+          "id": "geo15-commercial-subsistence",
+          "label_zh": "商業農場和自給農民有什麼不同？",
+          "keywords": [
+            "commercial",
+            "subsistence",
+            "商業農場",
+            "自給",
+            "農民",
+            "farmer",
+            "賣",
+            "自己吃"
+          ],
+          "simpler_explanation_zh": "差在「種出來的東西給誰」。Commercial farm（商業農場）：種作物、養動物拿去賣，賺錢。Subsistence farmer（自給農民）：土地不多，種的只夠自己和家人吃，可能很窮。",
+          "analogy_zh": "你在陽台種了幾棵番茄自己吃，這像自給；有人有一大片番茄田，每天載去超市賣，這是商業農場。",
+          "even_simpler_zh": "商業 = 種來賣。自給 = 種來自己吃。",
+          "confirm_question": {
+            "q_zh": "一個農民種的玉米只夠全家吃，他是？",
+            "options": [
+              "A  commercial farmer",
+              "B  miner",
+              "C  subsistence farmer",
+              "D  factory worker"
+            ],
+            "answer": "C  subsistence farmer",
+            "why_zh": "只種給自己和家人吃，是自給農民。"
+          }
+        },
+        {
+          "id": "geo15-overpopulation",
+          "label_zh": "很多人搬到城市，會發生什麼事？",
+          "keywords": [
+            "人口過多",
+            "overpopulation",
+            "太多人",
+            "城市問題",
+            "塞車",
+            "housing",
+            "醫院",
+            "影響"
+          ],
+          "simpler_explanation_zh": "城市的人突然變很多，道路、醫院、商店和房子都要分給更多人用。如果太多人，就會 overpopulation（人口過多）：路很塞、醫院要排很久、房子不夠住。",
+          "analogy_zh": "一台 taxi 原本坐 15 個人剛好，如果硬塞 30 個人，大家都擠得很難受，車子也開不動。",
+          "even_simpler_zh": "太多人搬來 → 路、醫院、房子不夠 → 人口過多。",
+          "confirm_question": {
+            "q_zh": "鄉村往城市大量遷移，可能讓城市怎樣？",
+            "options": [
+              "A  人口變少",
+              "B  變成沙漠",
+              "C  變成農場",
+              "D  人口過多"
+            ],
+            "answer": "D  人口過多",
+            "why_zh": "課本說可能造成城市人口過多。"
+          }
+        },
+        {
+          "id": "geo15-69-vs-40",
+          "label_zh": "69% 住城市，又說不到 40% 住鄉村，怎麼加起來不是 100%？",
+          "keywords": [
+            "69%",
+            "40%",
+            "百分比",
+            "percent",
+            "加起來",
+            "不是100",
+            "南非",
+            "全世界"
+          ],
+          "simpler_explanation_zh": "因為這兩個數字說的不是同一群人！69% 說的是「南非」的人住在城市；「不到 40% 住在鄉村」說的是「全世界」的人。範圍不一樣，就不能加在一起。如果只看南非，69% 住城市，大約 31% 住鄉村。",
+          "analogy_zh": "「我們班 69% 的人喜歡足球」和「全校不到 40% 的人不喜歡運動」，一個說班上、一個說全校，不能直接加減。",
+          "even_simpler_zh": "69% = 南非。不到 40% = 全世界。不能加。",
+          "confirm_question": {
+            "q_zh": "「約 69% 住在城市」說的是哪裡的人？",
+            "options": [
+              "A  全世界",
+              "B  澳洲",
+              "C  加拿大",
+              "D  南非"
+            ],
+            "answer": "D  南非",
+            "why_zh": "69% 是南非的城市人口比例。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "urban 和 rural 的定義要寫出「住得近／住得遠」和「建築道路／農場村莊」。",
+        "列遷移原因時寫完整句子，例如 People move to cities to find jobs.",
+        "百分比要注明是南非還是全世界。"
+      ],
+      "common_mistakes_zh": [
+        "rural 和 urban 寫反。",
+        "把 69%（南非）和 40%（全世界）混在一起算。",
+        "只寫「城市比較好」，沒說具體原因。"
+      ]
+    },
+    {
+      "id": "geo-16-rio-de-janeiro",
+      "title_en": "Case study: Rio de Janeiro",
+      "title_zh": "案例：里約熱內盧",
+      "term": "Term 4: Population – why people live where they do",
+      "notes": [
+        "來源：課本 Term 4 Unit 5。課本這幾頁沒有提到 favelas（貧民窟），本單元也不提。",
+        "「比南半球任何其他城市都有更多觀光客」是課本的說法，本單元寫成「課本說」。",
+        "奴隸制度的內容只照課本說明事實，語氣平實，不加細節。"
+      ],
+      "key_terms": [
+        {
+          "en": "Rio de Janeiro",
+          "zh": "里約熱內盧",
+          "kid_definition_zh": "巴西（Brazil）的一個城市，以海灘和海灣聞名。"
+        },
+        {
+          "en": "Sugarloaf Mountain",
+          "zh": "糖麵包山",
+          "kid_definition_zh": "里約熱內盧有名的地標（一座山）。"
+        },
+        {
+          "en": "bay",
+          "zh": "海灣",
+          "kid_definition_zh": "海水彎進陸地的地方。海灣是天然的港口。"
+        },
+        {
+          "en": "explorers",
+          "zh": "探險家",
+          "kid_definition_zh": "到遠方尋找新地方的人。"
+        },
+        {
+          "en": "slave",
+          "zh": "奴隸",
+          "kid_definition_zh": "被別人「擁有」、工作卻拿不到錢的人。"
+        },
+        {
+          "en": "trade centre",
+          "zh": "貿易中心",
+          "kid_definition_zh": "很多人來買賣東西的繁忙地方。"
+        }
+      ],
+      "explanation_steps": [
+        {
+          "id": "g16-s1",
+          "zh": "Rio de Janeiro（里約熱內盧）在 Brazil（巴西），以美麗的海灘和海灣聞名，有名的地標是 Sugarloaf Mountain（糖麵包山）。課本用一個流程圖，從 A 到 F 說明里約為什麼長成大城市。",
+          "en_exam_sentence": "Rio de Janeiro in Brazil is famous for its beaches and bays. Sugarloaf Mountain is a famous landmark.",
+          "diagram_hint": "Flow chart A → B → C → D → E → F."
+        },
+        {
+          "id": "g16-s2",
+          "zh": "A：500 多年前，只有一小群一小群的巴西原住民住在熱帶森林裡。B：歐洲的探險家橫越大西洋來到這裡。海灣是天然港口，船可以停；歐洲人想要木材，就和巴西人做交易。",
+          "en_exam_sentence": "Over 500 years ago only small groups of Native Brazilians lived in the tropical forests. Explorers from Europe crossed the Atlantic; the bays were natural harbours, and the Europeans traded for wood."
+        },
+        {
+          "id": "g16-s3",
+          "zh": "C：糖。這裡的氣候和山坡很適合種甘蔗（sugar cane），所以種了很多甘蔗。為了種甘蔗，有成千上萬的奴隸從非洲被買來。Slave（奴隸）是被別人「擁有」、工作卻拿不到錢的人。",
+          "en_exam_sentence": "The climate and hilly slopes were good for growing sugar cane. Thousands of slaves were bought from Africa to work."
+        },
+        {
+          "id": "g16-s4",
+          "zh": "D：大約 300 年前，在內陸發現了黃金和鑽石，里約的港口變成更繁忙的貿易中心。E：咖啡在炎熱潮濕的氣候裡長得很好，更多人搬來這裡。",
+          "en_exam_sentence": "About 300 years ago gold and diamonds were discovered inland, and the port of Rio became a busier trade centre. Coffee grew well in the hot, wet climate, and more people moved there."
+        },
+        {
+          "id": "g16-s5",
+          "zh": "F：今天，里約是繁忙的貿易中心。課本說，它的觀光客比南半球任何其他城市都多。人們來看海灘和自然美景，也來享受運動、音樂和節慶。",
+          "en_exam_sentence": "Today Rio is a busy trade centre and, according to the textbook, has more tourists than any other city in the southern hemisphere."
+        },
+        {
+          "id": "g16-s6",
+          "zh": "把里約的故事和前面的單元連起來：天然港口 → 貿易（木材）；氣候 → 農作物（糖、咖啡）；礦物（黃金、鑽石）→ 更多人和貿易；美景 → 觀光。這些就是「人為什麼住在那裡」的原因。",
+          "en_exam_sentence": "Rio grew because of its natural harbour, its climate for crops, the discovery of minerals and, today, tourism."
+        }
+      ],
+      "check_questions": [
+        {
+          "id": "g16-q1",
+          "q_en": "Why were the bays of Rio de Janeiro important to the European explorers?",
+          "q_zh": "為什麼里約的海灣對歐洲探險家很重要？",
+          "options": [
+            "A  They were deserts.",
+            "B  They had snow for skiing.",
+            "C  They were coniferous forests.",
+            "D  They were natural harbours for ships."
+          ],
+          "answer": "D  They were natural harbours for ships.",
+          "why_zh": "海灣是天然港口，船可以停靠，方便貿易。"
+        },
+        {
+          "id": "g16-q2",
+          "q_en": "Which crop grew well on Rio's hilly slopes and led to thousands of slaves being brought from Africa?",
+          "q_zh": "哪一種作物在里約的山坡長得很好，導致成千上萬的奴隸從非洲被帶來？",
+          "options": [
+            "A  cocoa",
+            "B  date palms",
+            "C  sugar cane",
+            "D  pine trees"
+          ],
+          "answer": "C  sugar cane",
+          "why_zh": "課本 C 說氣候和山坡適合種甘蔗。"
+        }
+      ],
+      "confusions": [
+        {
+          "id": "geo16-order",
+          "label_zh": "A 到 F 的順序記不住。",
+          "keywords": [
+            "順序",
+            "A到F",
+            "流程圖",
+            "flow chart",
+            "記不住",
+            "Rio",
+            "里約",
+            "order"
+          ],
+          "simpler_explanation_zh": "用六個詞記：原住民 → 歐洲人（木材）→ 糖 → 黃金鑽石 → 咖啡 → 今天（貿易和觀光）。中文口訣：「原、歐、糖、金、啡、今」。",
+          "analogy_zh": "像一本有六章的故事書：第一章森林裡的原住民，第二章歐洲船來了，第三章種糖，第四章挖到黃金，第五章種咖啡，第六章變成熱鬧的觀光城市。",
+          "even_simpler_zh": "原住民 → 歐洲人 → 糖 → 黃金鑽石 → 咖啡 → 今天。",
+          "confirm_question": {
+            "q_zh": "在里約的故事裡，糖（C）之後是什麼？",
+            "options": [
+              "A  歐洲探險家來了",
+              "B  原住民住在森林",
+              "C  發現黃金和鑽石",
+              "D  咖啡"
+            ],
+            "answer": "C  發現黃金和鑽石",
+            "why_zh": "順序：A 原住民、B 歐洲人、C 糖、D 黃金和鑽石、E 咖啡、F 今天。"
+          }
+        },
+        {
+          "id": "geo16-natural-harbour",
+          "label_zh": "為什麼海灣可以當港口？",
+          "keywords": [
+            "海灣",
+            "bay",
+            "港口",
+            "harbour",
+            "天然",
+            "natural harbour",
+            "船",
+            "ships"
+          ],
+          "simpler_explanation_zh": "海灣是海水彎進陸地的地方，兩邊有陸地擋住大浪，海水比較平靜，船可以安全停靠，不需要人工去建，所以叫 natural harbour（天然港口）。有港口，就能和別的地方做貿易。",
+          "analogy_zh": "像游泳池旁邊一個小小的凹角，水很平靜，你可以靠在那裡休息，不會被浪打到。",
+          "even_simpler_zh": "海灣 = 平靜的水 → 船可以停 → 貿易。",
+          "confirm_question": {
+            "q_zh": "天然港口對一個城市有什麼幫助？",
+            "options": [
+              "A  讓它下雪",
+              "B  讓它變成沙漠",
+              "C  讓船停靠、方便貿易",
+              "D  讓人口變少"
+            ],
+            "answer": "C  讓船停靠、方便貿易",
+            "why_zh": "有港口就能貿易，城市因此長大。"
+          }
+        },
+        {
+          "id": "geo16-slaves",
+          "label_zh": "奴隸是什麼？為什麼會有奴隸被帶到里約？",
+          "keywords": [
+            "奴隸",
+            "slave",
+            "slaves",
+            "非洲",
+            "Africa",
+            "甘蔗",
+            "sugar",
+            "為什麼"
+          ],
+          "simpler_explanation_zh": "Slave（奴隸）是被別人「擁有」、工作卻拿不到錢的人。課本說，因為里約的氣候和山坡適合種甘蔗，需要很多人做工，所以有成千上萬的奴隸從非洲被買來。這是歷史上很不公平、很不對的事，我們學它是為了了解這座城市怎麼形成的。",
+          "analogy_zh": "想像你每天辛苦工作，卻一毛錢都拿不到，也不能離開，這就是奴隸的處境。這是錯的事情。",
+          "even_simpler_zh": "奴隸 = 被別人擁有、工作沒錢拿。里約的甘蔗田用了從非洲帶來的奴隸。",
+          "confirm_question": {
+            "q_zh": "課本說奴隸被帶到里約主要是做什麼工作？",
+            "options": [
+              "A  做巧克力",
+              "B  挖金礦石送到南非",
+              "C  滑雪",
+              "D  種甘蔗"
+            ],
+            "answer": "D  種甘蔗",
+            "why_zh": "課本 C：甘蔗田需要工人，所以奴隸從非洲被買來。"
+          }
+        },
+        {
+          "id": "geo16-why-grow",
+          "label_zh": "里約為什麼會變成大城市？",
+          "keywords": [
+            "為什麼變大",
+            "城市長大",
+            "grow",
+            "tourists",
+            "觀光",
+            "咖啡",
+            "coffee",
+            "黃金"
+          ],
+          "simpler_explanation_zh": "四個原因：① 天然港口讓船停、方便貿易。② 氣候和山坡適合種甘蔗和咖啡。③ 在內陸發現黃金和鑽石，港口更忙。④ 今天有美麗的海灘和大自然，加上運動、音樂、節慶，吸引很多觀光客。每一個原因都吸引更多人搬來。",
+          "analogy_zh": "像一家店越來越熱鬧：先有好位置（港口），再有好商品（糖、咖啡），然後有寶貝（黃金、鑽石），最後大家都來拍照打卡（觀光）。",
+          "even_simpler_zh": "港口 + 農作物 + 礦物 + 觀光 → 大城市。",
+          "confirm_question": {
+            "q_zh": "下面哪一個是今天吸引人去里約的原因？",
+            "options": [
+              "A  很冷的冬天",
+              "B  沙漠和駱駝",
+              "C  海灘、自然美景、運動、音樂和節慶",
+              "D  針葉林"
+            ],
+            "answer": "C  海灘、自然美景、運動、音樂和節慶",
+            "why_zh": "課本 F 說今天的觀光客被海灘、美景、運動、音樂和節慶吸引。"
+          }
+        }
+      ],
+      "exam_tips_zh": [
+        "流程圖題照 A–F 的順序寫，每一步寫一個關鍵詞：Native Brazilians → European explorers (wood) → sugar → gold and diamonds → coffee → trade and tourism。",
+        "說明海灣的重要性時，寫 natural harbours。",
+        "slave 的定義：a person who is owned by another person and works for no money。"
+      ],
+      "common_mistakes_zh": [
+        "把糖和咖啡的順序寫反。",
+        "以為黃金和鑽石是在里約海邊發現的，課本說是在內陸（inland）。",
+        "寫出課本沒有提到的內容當答案。"
+      ]
+    }
+  ]
+}

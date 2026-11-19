@@ -223,6 +223,7 @@
                     <div class="subject-switch">
                         <button type="button" class="subject-btn active" data-subject="maths" onclick="setSubject('maths', this)">數學 Maths</button>
                         <button type="button" class="subject-btn" data-subject="nst" onclick="setSubject('nst', this)">自然科學 NS&T</button>
+                        <button type="button" class="subject-btn" data-subject="geo" onclick="setSubject('geo', this)">社會 Geography</button>
                     </div>
                 </div>
                 <div class="topic-section" id="topicSection">
@@ -1385,7 +1386,7 @@ function setLanguage(lang, btn) {
     document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
     updateUIText();
     if (currentQuestion) renderAll();
-    if (subject === 'nst') nstOnLanguage();
+    if (isLessonSubject(subject)) nstOnLanguage();
 }
 function updateUIText() {
     $('label-correct').textContent = tx(UI.correct); $('label-incorrect').textContent = tx(UI.incorrect); $('label-accuracy').textContent = tx(UI.accuracy); $('topicTitle').textContent = tx(UI.choose);
@@ -1622,8 +1623,11 @@ function ttsAfterRender() {
 window.TTS = { split: ttsSplit, pickVoice: ttsPickVoice, speak: ttsSpeak, stop: ttsStop, toggle: ttsToggle, ready: ttsReady, updateReady: ttsUpdateReady };
 
 /*NST-START*/
-// Natural Sciences & Technology. Lesson text is loaded from nst-lessons.json.
+// Lesson subjects: Natural Sciences & Technology (nst-lessons.json) and
+// Social Sciences Geography (geo-lessons.json). Both share one renderer below;
+// `nst` always points at the state of the subject on screen.
 const NST_TODO_KEY = 'g6nst_to_add_v1';
+const GEO_TODO_KEY = 'g6geo_to_add_v1';
 const MATHS_CHROME = {
     title: '🎓 數學互動學習平台',
     sub: 'Grade 6 Math Interactive Tutor',
@@ -1632,7 +1636,7 @@ const MATHS_CHROME = {
 
 /* ============================================================
  * On-device tutor (Chrome Prompt API / Gemini Nano).
- * Edit NST_AI_SYSTEM_PROMPT to change how the AI speaks.
+ * Edit NST_AI_SYSTEM_PROMPT / GEO_AI_SYSTEM_PROMPT to change how the AI speaks.
  * English only: the API does not support Chinese (en, ja, es, de, fr).
  * Confirm questions are graded from the JSON, never by the model.
  * ============================================================ */
@@ -1653,15 +1657,49 @@ How to reply:
 - Never write a graded homework or test answer. If the message looks like a whole homework question (a full exam question, the word calculate, options A to D, or "show your working"), do not give the final answer. Ask which word or step they do not understand.
 - If the message is off-topic (another subject, a story, or a personal question), refuse in one kind sentence and invite a question about this unit.
 - Do not say whether an answer choice is correct or incorrect. The page checks those from the lesson file, not you.`;
+const GEO_AI_SYSTEM_PROMPT = `You are a patient tutor for Grade 6 Social Sciences: Geography (South African CAPS).
+The learner is about 11 or 12 years old and writes school answers in English.
 
-const nst = {
+How to reply:
+- Write in simple English, in about 4 to 6 short sentences.
+- Keep English geography terms and place names as they are (latitude, longitude, scale, export, climate, population density). Do not invent translated names.
+- Use ONLY the unit text in the user message (key terms, explanation steps, common confusions). Do not add facts, numbers, or places from outside that unit. If the question is not covered there, say you can only help with this unit and suggest asking a parent or teacher.
+- Stay at CAPS Grade 6. Do not add extra detail beyond the unit.
+- Ask which word or step is confusing when that is not already clear.
+- Explain more simply. One everyday example is fine when it fits this unit.
+- Never write a graded homework or test answer. If the message looks like a whole homework question (a full exam question, the word calculate, options A to D, or "show your working"), do not give the final answer. Ask which word or step they do not understand.
+- If the message is off-topic (another subject, a story, or a personal question), refuse in one kind sentence and invite a question about this unit.
+- Do not say whether an answer choice is correct or incorrect. The page checks those from the lesson file, not you.`;
+
+const LESSON_SUBJECTS = {
+    nst: {
+        file: 'nst-lessons.json', todoKey: NST_TODO_KEY, systemPrompt: NST_AI_SYSTEM_PROMPT, termsWord: 'science terms',
+        title: ['🎓 自然科學與技術', '🎓 Natural Sciences & Technology'],
+        sub: ['六年級 · 南非 CAPS', 'Grade 6 · CAPS (South Africa)'],
+        footer: ['自然科學：先看課文，再做練習。不懂就挑一個困惑，或自己寫一句。內容只留在這台裝置，不會送出。',
+            'Natural Sciences: read the lesson, try the check, then pick a confusion or write your own. Nothing leaves this device.']
+    },
+    geo: {
+        file: 'geo-lessons.json', todoKey: GEO_TODO_KEY, systemPrompt: GEO_AI_SYSTEM_PROMPT, termsWord: 'geography terms and place names',
+        title: ['🎓 社會科學 · 地理', '🎓 Social Sciences · Geography'],
+        sub: ['六年級 · 南非 CAPS', 'Grade 6 · CAPS (South Africa)'],
+        footer: ['地理：先看課文，再做練習。不懂就挑一個困惑，或自己寫一句。內容只留在這台裝置，不會送出。',
+            'Geography: read the lesson, try the check, then pick a confusion or write your own. Nothing leaves this device.']
+    }
+};
+function isLessonSubject(key) { return Object.prototype.hasOwnProperty.call(LESSON_SUBJECTS, key); }
+
+function nstNewState(key) { return {
+    key, cfg: LESSON_SUBJECTS[key],
     data: null, error: null, loading: false, loaded: false,
     view: 'grid', unitId: null, qIndex: 0, qResult: null,
     askCursor: -1, confusionId: null, layer: 0, showConfirm: false,
     confirmResult: null, parentHint: false, freeNote: null,
     aiChecked: false,
     ai: { mode: 'off', progress: 0, preparing: false, busy: false, failed: false, session: null, token: 0, pending: false, reply: '', show: false }
-};
+}; }
+const lessonStates = { nst: nstNewState('nst'), geo: nstNewState('geo') };
+let nst = lessonStates.nst;
 
 function nz(zh, en) { return language === 'zh' ? zh : en; }
 function nstUnit() {
@@ -1744,10 +1782,10 @@ function nstAsList(v) {
     if (typeof v === 'string' && v.trim()) return [v];
     return [];
 }
-function nstValidate(data) {
+function nstValidate(data, fileName) {
     const errors = [];
     const bad = (msg) => errors.push(msg);
-    if (!data || typeof data !== 'object' || Array.isArray(data)) return { ok: false, errors: ['nst-lessons.json 的最外層必須是物件。'] };
+    if (!data || typeof data !== 'object' || Array.isArray(data)) return { ok: false, errors: [`${fileName || 'nst-lessons.json'} 的最外層必須是物件。`] };
     if (!Array.isArray(data.units) || !data.units.length) bad('units 必須是有內容的陣列。');
     if (!nstPrompts(data).length) bad('ask_what_confused 需要至少一句 prompts_zh（或字串陣列）。');
     (data.units || []).forEach((u, i) => {
@@ -1793,30 +1831,29 @@ function nstValidateQuestion(where, q, errors) {
 }
 
 function nstLoadTodo() {
-    try { const v = JSON.parse(localStorage.getItem(NST_TODO_KEY)); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+    try { const v = JSON.parse(localStorage.getItem(nst.cfg.todoKey)); return Array.isArray(v) ? v : []; } catch (e) { return []; }
 }
 function nstSaveTodo(text, unit) {
     const list = nstLoadTodo();
     list.push({ text: String(text).slice(0, 500), unitId: unit ? unit.id : '', at: new Date().toISOString() });
-    try { localStorage.setItem(NST_TODO_KEY, JSON.stringify(list.slice(-80))); } catch (e) { /* private mode */ }
+    try { localStorage.setItem(nst.cfg.todoKey, JSON.stringify(list.slice(-80))); } catch (e) { /* private mode */ }
 }
 function nstApplyChrome() {
     if (!MATHS_CHROME.footer && $('siteFooter')) MATHS_CHROME.footer = $('siteFooter').textContent;
-    if (subject !== 'nst') {
+    if (!isLessonSubject(subject)) {
         $('siteTitle').textContent = MATHS_CHROME.title;
         $('siteSubtitle').textContent = MATHS_CHROME.sub;
         if (MATHS_CHROME.footer) $('siteFooter').textContent = MATHS_CHROME.footer;
         return;
     }
-    $('siteTitle').textContent = nz('🎓 自然科學與技術', '🎓 Natural Sciences & Technology');
-    $('siteSubtitle').textContent = nz('六年級 · 南非 CAPS', 'Grade 6 · CAPS (South Africa)');
-    $('siteFooter').textContent = nz(
-        '自然科學：先看課文，再做練習。不懂就挑一個困惑，或自己寫一句。內容只留在這台裝置，不會送出。',
-        'Natural Sciences: read the lesson, try the check, then pick a confusion or write your own. Nothing leaves this device.'
-    );
+    const cfg = LESSON_SUBJECTS[subject];
+    $('siteTitle').textContent = nz(cfg.title[0], cfg.title[1]);
+    $('siteSubtitle').textContent = nz(cfg.sub[0], cfg.sub[1]);
+    $('siteFooter').textContent = nz(cfg.footer[0], cfg.footer[1]);
 }
 function setSubject(which) {
-    subject = which === 'nst' ? 'nst' : 'maths';
+    subject = isLessonSubject(which) ? which : 'maths';
+    if (subject !== 'maths') nst = lessonStates[subject];
     document.querySelectorAll('.subject-btn').forEach(b => b.classList.toggle('active', b.dataset.subject === subject));
     const maths = subject === 'maths';
     $('statsSection').classList.toggle('hidden', !maths);
@@ -1838,42 +1875,46 @@ function nstEnter() {
 }
 function nstOnLanguage() { nstApplyChrome(); if (nst.loaded || nst.error) nstRender(); }
 async function nstLoad() {
-    nst.loading = true; nst.error = null; nstRender();
+    const st = nst, file = st.cfg.file;
+    st.loading = true; st.error = null; nstRender();
     try {
-        const res = await fetch('nst-lessons.json');
+        const res = await fetch(file);
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
-        const v = nstValidate(data);
-        if (!v.ok) { nst.data = null; nst.error = v.errors; }
-        else { nst.data = data; nst.error = null; nst.loaded = true; }
+        const v = nstValidate(data, file);
+        if (!v.ok) { st.data = null; st.error = v.errors; }
+        else { st.data = data; st.error = null; st.loaded = true; }
     } catch (e) {
-        nst.data = null; nst.loaded = false;
-        nst.error = ['讀不到 nst-lessons.json。請把這個檔案和網頁放在一起，並用網頁伺服器開啟（不要直接雙擊檔案）。 / Could not load nst-lessons.json. Serve the folder with a local web server.'];
+        st.data = null; st.loaded = false;
+        st.error = [`讀不到 ${file}。請把這個檔案和網頁放在一起，並用網頁伺服器開啟（不要直接雙擊檔案）。 / Could not load ${file}. Serve the folder with a local web server.`];
     } finally {
-        nst.loading = false;
-        if (subject === 'nst') nstRender();
+        st.loading = false;
+        if (st === nst && subject === st.key) nstRender();
     }
 }
 async function nstDetectAI() {
-    nst.aiChecked = true;
+    const st = nst;
+    st.aiChecked = true;
     const LM = window.LanguageModel;
-    if (!LM || typeof LM.availability !== 'function') { nst.ai.mode = 'off'; return; }
+    if (!LM || typeof LM.availability !== 'function') { st.ai.mode = 'off'; return; }
     try {
         const availability = await LM.availability(NST_AI_OPTIONS);
-        if (availability === 'available') nst.ai.mode = 'available';
-        else if (availability === 'downloadable' || availability === 'downloading') nst.ai.mode = availability;
-        else nst.ai.mode = 'off';
-    } catch (e) { nst.ai.mode = 'off'; }
-    if (subject === 'nst') nstRender();
+        if (availability === 'available') st.ai.mode = 'available';
+        else if (availability === 'downloadable' || availability === 'downloading') st.ai.mode = availability;
+        else st.ai.mode = 'off';
+    } catch (e) { st.ai.mode = 'off'; }
+    if (st === nst && subject === st.key) nstRender();
 }
 function nstAiCanRun() { return nst.ai.mode === 'available' || nst.ai.mode === 'ready'; }
-function nstGrounding(unit, childText) {
+function nstGrounding(unit, childText, st) {
+    const cfg = (st || nst).cfg;
     const terms = (unit.key_terms || []).map(t => `- ${t.en} (${t.zh}): ${t.kid_definition_zh || ''}`).join('\n');
     const steps = (unit.explanation_steps || []).map((s, i) => `${i + 1}. ${s.zh}\nExam sentence: ${s.en_exam_sentence || ''}`).join('\n');
     const conf = (unit.confusions || []).map(c => `- ${c.label_zh}\n  simpler: ${c.simpler_explanation_zh}\n  analogy: ${c.analogy_zh}\n  even simpler: ${c.even_simpler_zh}`).join('\n');
-    return `UNIT: ${unit.title_en}\n\nKEY TERMS:\n${terms}\n\nEXPLANATION STEPS:\n${steps}\n\nCOMMON CONFUSIONS:\n${conf}\n\nThe child wrote:\n${String(childText).slice(0, 800)}\n\nReply in simple English only. Keep the English science terms. Stay inside this unit.`;
+    return `UNIT: ${unit.title_en}\n\nKEY TERMS:\n${terms}\n\nEXPLANATION STEPS:\n${steps}\n\nCOMMON CONFUSIONS:\n${conf}\n\nThe child wrote:\n${String(childText).slice(0, 800)}\n\nReply in simple English only. Keep the English ${cfg.termsWord}. Stay inside this unit.`;
 }
-function nstUpdateAiBox() {
+function nstUpdateAiBox(st) {
+    if (st && st !== nst) return;
     const el = $('nstAiText');
     if (!el) return;
     if (nst.ai.pending && !nst.ai.reply) el.textContent = nz('AI 小老師正在想…', 'The AI tutor is thinking…');
@@ -1882,56 +1923,59 @@ function nstUpdateAiBox() {
 async function nstRunAI(unit, childText) {
     const LM = window.LanguageModel;
     if (!LM || !nstAiCanRun() || !unit) return;
-    const token = ++nst.ai.token;
-    nst.ai.show = true; nst.ai.pending = true; nst.ai.reply = ''; nst.ai.failed = false;
-    nstUpdateAiBox();
+    const st = nst;
+    const token = ++st.ai.token;
+    st.ai.show = true; st.ai.pending = true; st.ai.reply = ''; st.ai.failed = false;
+    nstUpdateAiBox(st);
     try {
-        if (!nst.ai.session) {
-            nst.ai.session = await LM.create(Object.assign({}, NST_AI_OPTIONS, {
-                initialPrompts: [{ role: 'system', content: NST_AI_SYSTEM_PROMPT }]
+        if (!st.ai.session) {
+            st.ai.session = await LM.create(Object.assign({}, NST_AI_OPTIONS, {
+                initialPrompts: [{ role: 'system', content: st.cfg.systemPrompt }]
             }));
-            if (token !== nst.ai.token) return;
-            nst.ai.mode = 'ready';
+            if (token !== st.ai.token) return;
+            st.ai.mode = 'ready';
         }
-        const session = nst.ai.session;
-        const prompt = nstGrounding(unit, childText);
+        const session = st.ai.session;
+        const prompt = nstGrounding(unit, childText, st);
         if (typeof session.promptStreaming === 'function') {
             const stream = session.promptStreaming(prompt);
             let acc = '';
             for await (const chunk of stream) {
-                if (token !== nst.ai.token) return;
+                if (token !== st.ai.token) return;
                 const piece = String(chunk);
                 acc = piece.startsWith(acc) ? piece : acc + piece;
-                nst.ai.reply = acc;
-                nstUpdateAiBox();
+                st.ai.reply = acc;
+                nstUpdateAiBox(st);
             }
         } else {
             const full = await session.prompt(prompt);
-            if (token !== nst.ai.token) return;
-            nst.ai.reply = String(full || '');
+            if (token !== st.ai.token) return;
+            st.ai.reply = String(full || '');
         }
     } catch (e) {
-        if (token !== nst.ai.token) return;
-        nst.ai.session = null;
-        nst.ai.failed = true;
-        nst.ai.reply = '';
+        if (token !== st.ai.token) return;
+        st.ai.session = null;
+        st.ai.failed = true;
+        st.ai.reply = '';
     } finally {
-        if (token === nst.ai.token) { nst.ai.pending = false; nstUpdateAiBox(); }
+        if (token === st.ai.token) { st.ai.pending = false; nstUpdateAiBox(st); }
     }
 }
 async function nstEnableAI() {
     const LM = window.LanguageModel;
-    if (!LM || nst.ai.busy) return;
-    nst.ai.busy = true; nst.ai.failed = false; nst.ai.progress = 0; nst.ai.preparing = false;
+    const st = nst;
+    if (!LM || st.ai.busy) return;
+    st.ai.busy = true; st.ai.failed = false; st.ai.progress = 0; st.ai.preparing = false;
     nstRender();
     try {
         const session = await LM.create(Object.assign({}, NST_AI_OPTIONS, {
-            initialPrompts: [{ role: 'system', content: NST_AI_SYSTEM_PROMPT }],
+            initialPrompts: [{ role: 'system', content: st.cfg.systemPrompt }],
             monitor(m) {
                 m.addEventListener('downloadprogress', (e) => {
                     const loaded = typeof e.loaded === 'number' ? e.loaded : 0;
-                    nst.ai.progress = loaded;
-                    nst.ai.preparing = loaded >= 1;
+                    st.ai.progress = loaded;
+                    st.ai.preparing = loaded >= 1;
+                    if (st !== nst) return;
                     const bar = $('nstProgBar');
                     const label = $('nstProgLabel');
                     const prog = $('nstProg');
@@ -1942,15 +1986,15 @@ async function nstEnableAI() {
                 });
             }
         }));
-        nst.ai.session = session;
-        nst.ai.mode = 'ready';
-        nst.ai.busy = false;
+        st.ai.session = session;
+        st.ai.mode = 'ready';
+        st.ai.busy = false;
     } catch (e) {
-        nst.ai.busy = false;
-        nst.ai.failed = true;
-        if (nst.ai.mode !== 'downloading') nst.ai.mode = 'downloadable';
+        st.ai.busy = false;
+        st.ai.failed = true;
+        if (st.ai.mode !== 'downloading') st.ai.mode = 'downloadable';
     }
-    if (subject === 'nst') nstRender();
+    if (st === nst && subject === st.key) nstRender();
 }
 
 function nstBind() {
@@ -1979,7 +2023,7 @@ function nstClick(e) {
     else if (act === 'next-q') nstNextQ();
     else if (act === 'ai') nstEnableAI();
     else if (act === 'copy') nstCopyTodo();
-    else if (act === 'clear-todo') { try { localStorage.removeItem(NST_TODO_KEY); } catch (err) {} nstRender(); }
+    else if (act === 'clear-todo') { try { localStorage.removeItem(nst.cfg.todoKey); } catch (err) {} nstRender(); }
 }
 function nstOpenUnit(id) {
     nst.ai.token += 1; nst.ai.show = false; nst.ai.pending = false;
@@ -2104,7 +2148,14 @@ function nstGridHtml() {
     const heading = language === 'en' ? (meta.title_en || meta.title_zh || '') : (meta.title_zh || meta.title_en || '');
     const sub = language === 'en' ? (meta.title_zh || '') : (meta.title_en || '');
     const disclaimer = meta.disclaimer_zh ? `<div class="notice">${esc(meta.disclaimer_zh)}${language === 'en' ? '<div class="step-en">Practice for understanding — not a school test paper.</div>' : ''}</div>` : '';
-    return `<div id="nstGrid">${heading ? `<div class="question-title" style="font-size:1.15rem">${esc(heading)}</div>` : ''}${sub ? `<div class="progress-line">${esc(sub)}</div>` : ''}${disclaimer}${cards}</div>`;
+    return `<div id="nstGrid">${heading ? `<div class="question-title" style="font-size:1.15rem">${esc(heading)}</div>` : ''}${sub ? `<div class="progress-line">${esc(sub)}</div>` : ''}${disclaimer}${cards}${nstSourceHtml(meta)}</div>`;
+}
+// meta.source_zh (Geography): a collapsed note for parents on the unit list.
+// Local file paths in the note are editor-only and are not shown.
+function nstSourceHtml(meta) {
+    const text = String(meta.source_zh || '').replace(/[（(]\s*(?:[A-Za-z]:)?[\\/][^）)]*[）)]/g, '').trim();
+    if (!text) return '';
+    return `<details class="ap-intro" id="nstSource"><summary>${nz('給家長：內容來源', 'For a parent: where this comes from')}</summary><p>${esc(text)}</p></details>`;
 }
 function nstStepsHtml(unit) {
     return (unit.explanation_steps || []).map((s, i) => {
@@ -2185,7 +2236,7 @@ function nstDetailHtml() {
 }
 function nstRender() {
     const root = $('nstRoot');
-    if (!root || subject !== 'nst') return;
+    if (!root || !isLessonSubject(subject) || nst.key !== subject) return;
     nstBind();
     nstApplyChrome();
     if (nst.loading) { root.innerHTML = '<div class="notice">正在讀取單元… / Loading units…</div>'; return; }
@@ -2206,12 +2257,16 @@ function nstRender() {
 
 window.NST = {
     validate: nstValidate,
+    subjects: LESSON_SUBJECTS,
+    state: key => lessonStates[key],
     matchConfusion: nstMatchConfusion,
     answersEqual: nstAnswersEqual,
     questionId: nstQuestionId,
     AI_OPTIONS: NST_AI_OPTIONS,
     SYSTEM_PROMPT: NST_AI_SYSTEM_PROMPT,
-    TODO_KEY: NST_TODO_KEY
+    TODO_KEY: NST_TODO_KEY,
+    GEO_TODO_KEY: GEO_TODO_KEY,
+    GEO_SYSTEM_PROMPT: GEO_AI_SYSTEM_PROMPT
 };
 /*NST-END*/
 

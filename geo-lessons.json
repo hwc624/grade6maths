@@ -8,7 +8,7 @@
     "audience_en": "An 11–12-year-old Taiwanese child at an English-medium South African school, preparing for English Social Sciences (Geography) tests.",
     "language_notes_zh": "講解用臺灣慣用的繁體中文。專有名詞、地名和考試會用到的句子保留英文，方便孩子直接寫在考卷上。小數寫法跟南非學校一樣用逗號，例如 61,5 people per km² 和 56,7 °C。",
     "disclaimer_zh": "這些是依照孩子課本內容整理的複習講解，不是學校正式考卷，也不是課本作業的答案。練習題都是另外出的。",
-    "source_zh": "唯一事實來源：家長拍的 47 張課本頁面，經文字轉錄（/workspace/grade6-geo-source/textbook_notes.md）。",
+    "source_zh": "唯一事實來源：家長拍的 47 張課本頁面，經文字轉錄整理。",
     "how_the_site_should_use_this_zh": "每個單元先依 explanation_steps 分段講解，再做 check_questions。若孩子說還是不懂，先用 ask_what_confused 請他指出卡在哪個詞或哪一步，再打開對應的 confusions：先看 simpler_explanation_zh，不夠再看 analogy_zh，還不夠就用 even_simpler_zh，最後用 confirm_question 確認他懂了。不要一次倒出三層解釋。語氣要像有耐心的老師，不要責備孩子。"
   },
   "ask_what_confused": {
@@ -1186,7 +1186,7 @@
           "keywords": [
             "value",
             "價值",
-            "price",
+            "價值和價錢",
             "價錢",
             "值多少",
             "worth",
@@ -1592,7 +1592,7 @@
           "label_zh": "自然資源和原料好像一樣？",
           "keywords": [
             "自然資源",
-            "原料",
+            "資源還是原料",
             "natural resource",
             "raw material",
             "一樣嗎",
@@ -1850,6 +1850,7 @@
             "巧克力",
             "chocolate",
             "步驟",
+            "可可步驟",
             "順序",
             "drying",
             "曬乾"
@@ -1907,7 +1908,7 @@
             "smelting",
             "熔煉",
             "crushing",
-            "步驟",
+            "第一階段步驟",
             "stage 1"
           ],
           "simpler_explanation_zh": "Gold ore（金礦石）是含有黃金的石頭，看起來像普通的石頭。要把黃金拿出來：先 mining（從地下挖出來）→ crushing（把石頭壓碎）→ separating（把黃金分出來）→ smelting（高溫熔化）→ pouring（倒進模子），最後才是閃亮的黃金。",
@@ -1935,7 +1936,7 @@
             "rand",
             "貨幣",
             "currency",
-            "盎司",
+            "不能比較",
             "兩倍"
           ],
           "simpler_explanation_zh": "不能這樣比！$ 是美元（US dollar），R 是南非蘭特（rand），是兩種不同的錢，1 美元比 1 蘭特值錢很多，所以 $2 000 和 R4 000 不能直接比大小。課本想讓你懂的是：黃金做成珠寶後更值錢。比較價錢時，一定要用同一種貨幣。",
@@ -2838,7 +2839,7 @@
             "冷沙漠",
             "Antarctica",
             "250mm",
-            "Sahara",
+            "怎樣才算",
             "定義"
           ],
           "simpler_explanation_zh": "沙漠的重點是「雨很少」：一年少於 250 mm。熱沙漠是又少雨、溫度又高的地方，例如 Sahara。可是也有冷沙漠，例如南極洲的大部分地方，雨（雪）也很少。所以判斷沙漠先看雨量，再看熱不熱。",
@@ -3645,7 +3646,7 @@
             "鑽石",
             "diamonds",
             "黃金",
-            "Kimberley",
+            "因礦物長大",
             "Johannesburg",
             "城鎮長大"
           ],
@@ -3869,7 +3870,7 @@
             "遷移",
             "找工作",
             "jobs",
-            "城市",
+            "搬到城市",
             "鄉下"
           ],
           "simpler_explanation_zh": "課本的公車上有六個理由：① 種田太辛苦，乾旱和淹水輪流來。② 要去鎮上讀高中。③ 要住在醫院附近。④ 去礦場工作，把錢寄回家。⑤ 家鄉沒工作，去投靠親戚找工作。⑥ 想要電、家裡的廁所和乾淨的水。歸納起來：工作、讀書、醫療、生活設施。",

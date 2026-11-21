@@ -62,6 +62,11 @@ async function logic() {
     // Every confusion should be reachable by typing one of its own keywords.
     const unreach = await ev(`fetch('geo-lessons.json').then(r => r.json()).then(d => { const out = []; d.units.forEach(u => u.confusions.forEach(c => { const ok = (c.keywords || []).some(k => { const h = NST.matchConfusion(u, k); return h && h.id === c.id; }); if (!ok) out.push(c.id); })); return out; })`);
     assert(unreach.length === 0, 'every Geography confusion is reachable by one of its own keywords' + (unreach.length ? ': ' + unreach.join(', ') : ''));
+    // A keyword may belong to only one confusion inside a unit (the expert's build.py enforces this too).
+    const dupKw = [];
+    geo.units.forEach(u => { const seen = new Map(); u.confusions.forEach(c => (c.keywords || []).forEach(k => { const f = k.trim().toLowerCase(); if (seen.has(f) && seen.get(f) !== c.id) dupKw.push(`${u.id}: "${k}" in ${seen.get(f)} and ${c.id}`); seen.set(f, c.id); })); });
+    assert(dupKw.length === 0, 'no keyword is shared by two confusions of the same Geography unit' + (dupKw.length ? ': ' + dupKw.join('; ') : ''));
+    assert(!JSON.stringify(geo.meta || {}).includes('/workspace'), 'geo-lessons.json meta has no local file path');
 
     // Maths still works
     await click('#topicSelector .topic-btn');
